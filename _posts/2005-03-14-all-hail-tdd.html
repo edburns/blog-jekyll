@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "All Hail TDD! Blog"
+date:   2005-03-14 2:57:00 -0500
+---
+<div class="jive-rendered-content"><p>Way
+ back in October 2002, I had the enviable position of ramping up the 
+development effort for the Sun RI for JavaServer Faces. At that time, 
+Test Driven Development (TDD) was just starting to catch on, and I used 
+my position as team leader to mandate (HA!) that we would use TDD on the
+ project. I realized that for any mandate to succeed, it must be easy to
+ implement, so the team and I invested in building the infrastructure 
+iteratively growing our test codebase. I can't tell you how many times 
+that investment has paid off, but I'll tell you one time: right now.</p><span></span><p>While implementing Adam Winer's proposal for fixing the <a class="jive-link-external-small" href="https://javaserverfaces-spec-public.dev.java.net/issues/show_bug.cgi?id=11" rel="nofollow">State Saving Window Id</a>
+ problem, I came across a corner case not covered explicitly in the 
+proposal. Basically, the proposal re-allocated some responsibilities and
+ neglected to re-allocate this one corner case, which happened to be 
+caught in an <a class="jive-link-external-small" href="http://htmlunit.sourceforge.net/" rel="nofollow">HTMLUnit</a>
+ test, written by Craig, I think. Unfortunately, the net effect of this 
+neglect was to throw the webapp into an infinite loop. It was very easy 
+to re-produce: just visit the prefix mapped webapp and include only the 
+servlet-mapping with no trailing slash and no viewId. Thanks to the unit
+ test, I quickly found and fixed the problem, without introducing the 
+bug into the code.</p></div>

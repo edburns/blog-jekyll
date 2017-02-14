@@ -1,0 +1,58 @@
+---
+layout: post
+title:  "JavaServer Faces 1.2 and JavaServer Pages 2.1 Public Review Specifications available Blog"
+date:   2005-04-14 11:12:00 -0500
+---
+<div class="jive-rendered-content"><p>I'm pleased to announce the availability of the Public Review revisions of the next release of the JavaServer<sup>TM</sup> Faces and Pages specifications. The Faces spec may be downloaded from &lt;<a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=252" rel="nofollow">http://www.jcp.org/en/jsr/detail?id=252</a>&gt; and the Pages spec may be downloaded from &lt;<a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=245" rel="nofollow">http://www.jcp.org/en/jsr/detail?id=245</a>&gt;<i>We really want feedback!</i> <strong>Please use our <a class="jive-link-external-small" href="http://forum.java.sun.com/thread.jspa?threadID=617376&amp;tstart=0" rel="nofollow">Forum</a> to share your thoughts on the specs</strong>. Or you may send feedback to the comments alias for <a class="jive-link-email-small" href="mailto:jsr-252-comments@jcp.org">Faces</a> or <a class="jive-link-email-small" href="mailto:jsr-245-comments@jcp.org">JSP</a> (<a class="jive-link-email-small" href="mailto:jsr-252-comments@jcp.org">jsr-252-comments@jcp.org</a> and <a class="jive-link-email-small" href="mailto:jsr-245-comments@jcp.org">jsr-245-comments@jcp.org</a>respectively) .</p><span></span><p>In
+ this entry, I link to a comprehensive high level outline of the changes
+ to the spec since the 1.1 release of the Faces spec. I've decided 
+include changes present in the <a class="jive-link-external-small" href="http://jcp.org/aboutJava/communityprocess/edr/jsr252/index.html" rel="nofollow">December Early Draft Release</a>
+ as well as the current release for completeness. Keep in mind this is a
+ high level outline, for details, I encourage you to read the relevant 
+sections of the spec itself.</p><span></span><p>Before we get to the outline, here is a brief summary of the main changes:</p><span></span><ul><li><p>Unified EL</p><p>The
+ expression language used in Faces, which was inspired by the expression
+ language used in JSTL and JSP, has been generalized and extracted into 
+its own top level <code>javax.el</code> package. The EL is agnostic of 
+the technology hosting it, such as JSP or Faces, and is intended to be 
+generally useful in the same way one can use OGNL in a variety of 
+applications. Faces now has deprecated its internal EL in favor of using
+ the Unified EL.</p></li><li><p>New Tree Creation and Content Interweaving Model for Faces applications that use JSP</p><p>While
+ it is perfectly acceptable to use Faces without using JSP, many people 
+find their productivity increases when using these two technologies 
+together. Unfortunately, as amply documented by <a class="jive-link-external-small" href="http://www.onjava.com/pub/a/onjava/2004/06/09/jsf.html" rel="nofollow">Hans Bergsten in his article at onjava.com</a>,
+ there were some integration cases that didn't work as expected. By 
+changing the specification of the implementation of the Faces 
+ViewHandler for JSP, as well as changing the JSP custom tag base class 
+used by all Faces component tags, these problems have all been resolved.</p></li><li><p>Integration with JSTL</p><p>Another long standing problem was in using JSTL's<code>&lt;c:forEach&gt;</code>
+ tag to contain Faces input components. Because JSP has no notion of a 
+postback, it was not possible to apply the values correctly to the 
+nested input components on postback. By introducing some new concepts 
+into the EL, it is now possible to fully use <code>&lt;c:forEach&gt;</code>with
+ any kind of Faces component. This will require a new release of JSTL, 
+which will also be present in J2EE 5, along with Faces and JSP.</p></li><li><p>Back Button issues and Multi Frame or Multi Window Faces Apps</p><p>Due
+ to a deficiency in the State Management API using Faces in Multi Frame 
+or Multi Window applications presented some problems. The browser back 
+button also could cause application state to become confused. These 
+problems have now been fixed.</p></li><li><p>Associating a message with a particular component in the page.</p><p>Previous
+ revisions of the spec didn't allow for dynamically including the label 
+of a component in an error message for that component. New spec features
+ now allow for this to happen.</p></li></ul><span></span><p>The golden 
+question, of course, where's the implementation? It's all implemented, 
+but the implementation of the Faces spec is only partially available, 
+due to the unavailability of a public implementation of the JSP 2.1 
+spec. There are two reasons for this.</p><span></span><ol><li><p>We 
+heavily leverage the new, Unified EL, that is a separate spec document 
+but, for convenience, is being delivered under the JSP 2.1 spec. So, 
+while using the Unified EL does introduce a dependency on JSP 2.1, there
+ is nothing stopping someone from implementing the EL spec outside of 
+JSP.</p></li><li><p>In order to fix the Tree Creation and Content 
+Interweaving problems (which are inherent to the old way of using Faces 
+and JSP together, and therefore already implicitly dependent on JSP), as
+ well as using &lt;c:forEach&gt; with Faces input components (and 
+therefore implicitly dependent on JSTL), we had to make changes to the 
+JSP spec, which are being delivered as part of JSP 2.1</p></li></ol><span></span><p><strong>The parts that are unavailable are those parts that a user would encounter only when using Faces and JSP together.</strong>
+ The parts that are available are those parts that a user would 
+encounter whether they use Faces with JSP or not. Features that are 
+unavailable at this time are listed in <span style="color: gray;">gray</span>,
+ available features are listed in non-gray text. Available features are 
+present in the latest release of the official Faces implementation on <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/" rel="nofollow">java.net</a> which continues to run on J2EE 1.3 containers. Note that the content in section IV is mostly available.</p><span></span><p>Now, the outline of changes is available <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/outline.html" rel="nofollow">here</a>.</p></div>

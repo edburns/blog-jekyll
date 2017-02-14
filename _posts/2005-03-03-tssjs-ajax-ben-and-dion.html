@@ -1,0 +1,182 @@
+---
+layout: post
+title:  "TSSJS - AJAX with Ben and Dion Blog"
+date:   2005-03-03 6:29:00 -0500
+---
+<div class="jive-rendered-content"><p>I'm at <a class="jive-link-external-small" href="http://symposiumwiki.theserverside.com/tsswiki/display/symposium2005/Home" rel="nofollow">The ServerSide Java Symposium</a>, blogging live.</p><span></span><p>Let
+ me use this forum to list the people I'd like to meet here: Ben 
+Galbraith, Howard Lewis Ship, Matt Raible, The Bile Blogger. If you see 
+me, please say hi.</p><span></span><p>I just attended Dion Almaer and Ben Galbraith's talk on ajax. Here are my notes.</p><span></span><pre>I The Myth:
+
+&nbsp; Not possible too create rich ui only inbrowser
+
+II What is ajax
+
+&nbsp; A. History: HTML-&gt;JS-&gt;Applets-&gt;Flash (Back Button) and SVG (Not impl)
+
+&nbsp; B. JS Pain 1998
+&nbsp; 
+&nbsp;&nbsp; debugging was nightmare
+
+&nbsp;&nbsp; xp pain
+
+ C. Defining
+
+&nbsp;&nbsp;&nbsp; Asynchronous JavaScript and XmlHttpRequest
+
+&nbsp;&nbsp;&nbsp; Standards based presentation
+
+&nbsp;&nbsp;&nbsp; Use XML to manipulate data with XSLT
+
+&nbsp; D. Client model
+
+&nbsp;&nbsp;&nbsp;&nbsp; No more single request/response restrictions, more flexibility to
+&nbsp;&nbsp;&nbsp;&nbsp; go back to server at will.
+
+&nbsp; E. Can do it asynchronous, it's a big deal because it changes the
+&nbsp;&nbsp;&nbsp;&nbsp; request/response paradigm.&nbsp; Gets rid of submit button
+
+&nbsp; F. A bit on how
+
+&nbsp;&nbsp;&nbsp;&nbsp; a. still have to do the browser detection thing, but can be abstracted.
+
+&nbsp;&nbsp;&nbsp;&nbsp; b. showed the code to do the request, handle the response, by
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; installing a JS callback.&nbsp; Get the response as XML, use dom to
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; extract info, use dom to put it back into the form.
+
+&nbsp; G. History of the XmlHttpRequest, methods on it.
+
+&nbsp;&nbsp;&nbsp; open(), send(), can pass basic auth credentials. (What about certs?)
+
+&nbsp;&nbsp;&nbsp; JS has function pointers
+
+&nbsp; H. Ecmascript for XML (E4X)
+
+&nbsp;&nbsp;&nbsp;&nbsp; Build dom straight into Ecmascript
+&nbsp; 
+III Who's doing it
+
+&nbsp; A. Google: maps
+
+&nbsp;&nbsp;&nbsp; images are tiled.&nbsp; Requested asynchronously, that's how panning
+&nbsp;&nbsp;&nbsp; works.&nbsp; JS supports layering, with transparent images.&nbsp; 
+
+&nbsp;&nbsp;&nbsp;&nbsp; They use IFRAME, which allows history to work.&nbsp; 
+
+&nbsp; B. Google maps becomes a platform
+
+&nbsp;&nbsp; When you get into this world, you are building a platform
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; If you are lucky, there will be a Google hacks on the way.
+
+&nbsp;&nbsp; Lots of cool hack out there already
+
+&nbsp; C. Google suggest
+
+&nbsp;&nbsp;&nbsp; aim: let you know what people are searching
+
+&nbsp; D. TadaList
+
+&nbsp;&nbsp;&nbsp; Built on Ruby on Rails
+
+&nbsp;&nbsp;&nbsp; Simple List component, keeps server side component updated.
+
+IV General Framework
+
+&nbsp; A. General Solns
+
+&nbsp;&nbsp;&nbsp; CRUD on the DOM
+
+&nbsp;&nbsp;&nbsp; Ideal for portals
+
+&nbsp;&nbsp;&nbsp; Animations, feedback messages
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Feedback messages: just show a message and not re-display the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whole page.
+
+&nbsp;&nbsp;&nbsp; Deleting from the Admin Panel
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A tree control, delete a node, don't re-render the tree: just nuke
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; it from the DOM.
+
+&nbsp;&nbsp;&nbsp; Recalculate:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Why not recalculate on the fly?
+
+&nbsp; B. SOAP access
+
+&nbsp;&nbsp;&nbsp;&nbsp; RESTful web services.
+
+&nbsp; C. Frameworks: Custom...
+
+&nbsp;&nbsp;&nbsp;&nbsp; Listed examples of common things you can specify as patterns of usage.&nbsp; 
+
+&nbsp; D. JSON: JavaScript Object Notation
+
+&nbsp;&nbsp;&nbsp;&nbsp; Lightweight format to get objects back that are not XML.&nbsp; Built on
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Object, Array, String, Number, etc
+
+&nbsp; E. JSON RPC: essentially a Java ORB
+
+&nbsp; F. JavaScript Templates
+
+&nbsp;&nbsp;&nbsp;&nbsp; Manipulating the DOM is a pain.&nbsp; Use templating.&nbsp; Basically, allow
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parameterized DOM access.
+
+&nbsp; G. AOP with JavaScript?&nbsp; Yes, you can.&nbsp; 
+
+&nbsp; H. How to fit with frameworks?
+
+&nbsp;&nbsp;&nbsp; Have component that integrates this functionality.
+
+&nbsp;&nbsp;&nbsp; You can register a component with tapestry that will receive all the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requests dynamically.
+
+&nbsp;&nbsp; (I'll be talking with Ben immediately after this talk)
+
+&nbsp; I. JSUnit: how to do test first with JavaScript.
+
+&nbsp;&nbsp; Solenium
+
+V RSS Reader Demo
+
+&nbsp; Show you can build an offline capable application with AJAX.
+
+VI Conclusion, warnings
+
+&nbsp; A. Warnings
+
+&nbsp; Don't use for technoligies sake.
+
+&nbsp; Understand Usability testing
+
+&nbsp; Understand restrictions
+
+&nbsp; Still in creative mode
+
+&nbsp;&nbsp;&nbsp; Frameworks will be coming, take the work out of it
+
+&nbsp; B. JS Survival tips
+
+&nbsp;&nbsp;&nbsp; You'll miss the IDE
+
+&nbsp;&nbsp;&nbsp; Packaging as source only lets people see source code
+
+&nbsp;&nbsp;&nbsp; Debugging, tougher, firefox, mozilla has something
+
+&nbsp;&nbsp;&nbsp; Packaging libraries: be wary of namespace.&nbsp; The packaging scheme is
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; basic
+
+&nbsp; C. JS Limitations,
+
+&nbsp;&nbsp;&nbsp; Can't access resources on other sites: wrong, must sign code.
+
+&nbsp;&nbsp;&nbsp; Signed code can also read from and write to the local filesystem.
+
+&nbsp;&nbsp;&nbsp; You have to get permission in every function.
+
+&nbsp; D. ajaxian.com
+
+&nbsp;&nbsp;&nbsp;&nbsp; Don't build your own framework.&nbsp; It's probably been done before.
+
+</pre></div>

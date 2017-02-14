@@ -1,0 +1,106 @@
+---
+layout: post
+title:  "TSSJS - Tapestry Blog"
+date:   2005-03-04 6:39:00 AM
+---
+<div class="jive-rendered-content"><pre>&nbsp; Tapestry Overview
+
+&nbsp;&nbsp;&nbsp; Component-based
+
+&nbsp;&nbsp;&nbsp; Minimizes java coding
+
+&nbsp;&nbsp;&nbsp; Developer Focused
+
+&nbsp; Benefits
+
+&nbsp;&nbsp;&nbsp; Simplified, readable HTML
+
+&nbsp;&nbsp;&nbsp; True separation of MVC
+
+&nbsp;&nbsp;&nbsp; minimal java coding
+
+&nbsp;&nbsp;&nbsp; Great I18N
+ 
+&nbsp;&nbsp;&nbsp; Great developer feedback (fix)
+
+&nbsp;&nbsp;&nbsp; True component reuse
+
+&nbsp; Simple Forms
+
+&nbsp;&nbsp;&nbsp; Login page
+
+&nbsp; WAR layout
+
+&nbsp;&nbsp;&nbsp; Page is three:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HTML file, the view
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java Code
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XML file that tie two together
+
+&nbsp; Start with Plain HTML
+
+&nbsp;&nbsp;&nbsp; Mark tags as components by giving them the jwcid attrs.&nbsp; There is a
+&nbsp;&nbsp;&nbsp; standard set of components that can be bound to html elements
+
+&nbsp;&nbsp;&nbsp; OGNL does the value binding with the value attribute.
+
+&nbsp; Create the XML part.&nbsp; 
+
+&nbsp;&nbsp;&nbsp; Identifies the java class
+
+&nbsp;&nbsp;&nbsp; (problem) three artifacts for the page
+
+&nbsp; Create the Java Part
+
+&nbsp; Q.1 Is there a scoped namespace facility?
+
+&nbsp; Listeners are constrained to be a certain type.&nbsp; 
+
+&nbsp; Q.2 Are there any other kinds of listeners?
+
+&nbsp; Has the concept of an active page.
+
+&nbsp; Validation
+
+&nbsp;&nbsp;&nbsp; Error message is per page.&nbsp; Can there be per-component error
+&nbsp;&nbsp;&nbsp; messages? Yes.&nbsp; He mentions lots of things that can be done with the
+&nbsp;&nbsp;&nbsp; implementation.&nbsp; More components.&nbsp; 
+
+&nbsp;&nbsp;&nbsp; Client side validation, is easy to do.&nbsp; Just turn it on.
+
+&nbsp; Has conditional tags.&nbsp; This is done by having &lt;span&gt; with id
+
+&nbsp; (copy) When displaying the error page:
+
+&nbsp;&nbsp;&nbsp; Line precise error message
+
+&nbsp;&nbsp;&nbsp; Display evey possible piece of info you have.&nbsp; Query params, system
+&nbsp;&nbsp;&nbsp; properties, etc.&nbsp; 
+
+&nbsp;&nbsp;&nbsp; Only do this during development.
+
+&nbsp; The incorrect page pooling problem shouldn't happen
+ 
+&nbsp; Q.3: Are all beans defined in .page files?&nbsp; Can you have app session,
+&nbsp; scoped beans?
+
+&nbsp; Mega Components
+
+&nbsp;&nbsp;&nbsp; Table Component
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; They have per-cell renderer.
+
+&nbsp;&nbsp;&nbsp; Palette: does some AJAX stuff
+
+&nbsp; Principles
+
+&nbsp;&nbsp;&nbsp; Simplicity
+
+&nbsp;&nbsp;&nbsp; Consistency
+
+&nbsp;&nbsp;&nbsp; Efficiency
+
+&nbsp;&nbsp;&nbsp; Feedback
+</pre></div>

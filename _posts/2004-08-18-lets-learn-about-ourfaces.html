@@ -1,0 +1,74 @@
+---
+layout: post
+title:  "Let's learn about ourfaces Blog"
+date:   2004-08-18 1:59:00 -0500
+---
+<div class="jive-rendered-content"><p>The
+ ourfaces project is intended to be a casual, yet very useful repository
+ of JavaServer Faces components. I say casual because we want have a low
+ barrier to entry for adding new components to the repository. The 
+project leader, Matthias Unverzagt, has made it very easy to get started
+ as a contributor, in <a class="jive-link-external-small" href="https://ourfaces.dev.java.net/#participate" rel="nofollow">four simple steps</a>. Of course, if it's easy to be a contributor, <a class="jive-link-external-small" href="https://ourfaces.dev.java.net/#build" rel="nofollow">it's even easier to be a user</a>.</p><span></span><p>If you look at <a class="jive-link-external-small" href="http://www.jsfcentral.com/products/#Components" rel="nofollow">http://www.jsfcentral.com/</a>you'll
+ see there are at least ten different entries for JavaServer Faces 
+component libraries, and most of them are not dollar cost free, nor are 
+they free software. I feel it is important to have a high quality, open 
+source, dollar cost free component library for Faces, and the OurFaces 
+project intends to be just that.</p><span></span><p>Let's take a look at
+ how the project is structured. We've made the project easy to access by
+ building the component catalog in an easy-to-deploy WAR file during the
+ standard build process. This enables you to explore the runtime 
+performance of the components. The source tree is broken down as 
+follows.</p><span></span><div style="margin-left: 2em;"><pre>ourfaces/
+
+&nbsp; licenses/ 
+
+&nbsp;&nbsp;&nbsp; Any licenses that apply to this project go here
+
+&nbsp; src/
+
+&nbsp;&nbsp;&nbsp; &lt;component&gt;/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Where &lt;component&gt; is one of the components in the catalog.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Currently, we have calendar, code, tree, and table.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catalog/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Any artifacts relating to displaying this component in the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catalog.&nbsp; These are user-level artifacts, not core component
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; artifacts.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; java/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java code for displaying the component in the catalog
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; web/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Any non-java code artifacts for displaying the component
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in the catalog.&nbsp; This includes skinability, sample HTML,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CSS, XML config files, etc.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; owner.xml
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The XML file that declares the owner of this component.&nbsp; The
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; owner is responsible for everything in this component,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; including its display in the catalog.&nbsp; 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; taglibrary/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The java code that makes up the UIComponent subclass,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (optional) Renderer, and UIComponentTag subclass.
+
+
+&nbsp;&nbsp;&nbsp; code/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Any supporting code relating to the display of the catalog
+
+&nbsp;&nbsp;&nbsp; platform/
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Any supporting code used by the components.
+</pre></div><span></span><p>This framework allows the component library 
+to accept contributions from arbitrary parties, while allowing each 
+party to own their components in the repository. As you can see, we 
+currently only have three components, so we're eager to accept more 
+contributors. We hope that becoming a member of the java-enterprise 
+community will give us more visibility.</p><span></span><p>Please feel free to read and post on the <a class="jive-link-external-small" href="https://ourfaces.dev.java.net/servlets/ForumMessageList?forumID=337" rel="nofollow">discussion forum</a>!</p></div>

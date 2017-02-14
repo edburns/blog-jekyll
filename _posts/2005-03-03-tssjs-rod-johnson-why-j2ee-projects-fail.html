@@ -1,0 +1,249 @@
+---
+layout: post
+title:  "TSSJS Rod Johnson - Why J2EE projects Fail Blog"
+date:   2005-03-03 9:42:00 -0500
+---
+<div class="jive-rendered-content"><p>Rod Johnson, why J2EE projects fail</p><span></span><pre>I. Enterprise Development is Hard
+
+&nbsp; A. Why
+
+&nbsp;&nbsp;&nbsp;&nbsp; May integrate disparate systems
+
+&nbsp;&nbsp;&nbsp;&nbsp; Hard performance problems
+
+&nbsp;&nbsp;&nbsp;&nbsp; Complex domains
+
+&nbsp; B. hard to test
+
+&nbsp; C. Hard to maintain
+
+&nbsp;&nbsp;&nbsp; Software is never finished.&nbsp; Maintenance accounts for the bulk of
+&nbsp;&nbsp;&nbsp; effort
+
+II. J2EE is not a panacea
+
+&nbsp; High failure rate
+
+&nbsp; Good technology doesn't guarantee success
+
+&nbsp; Bad technology does guarantee failure
+
+III. It is possible to succeed in J2EE
+
+&nbsp; Sound fundamentals
+
+&nbsp; More mature app servers and tools
+
+&nbsp; More mature developers.
+
+&nbsp; Recounted anecdotes around impl problems a while ago.&nbsp; 
+
+IV. General reasons for failure
+
+&nbsp; 1. Poorly understood requirements
+
+&nbsp;&nbsp;&nbsp; Nothing to do with J2EE
+
+&nbsp; 2. Ideology (come back to this)
+
+&nbsp;&nbsp;&nbsp;&nbsp; What constituted a pure J2EE system
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RDBs are evil
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Java is the center of the world
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; J2EE is distributed, so everything is remote.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Technology is more important than the problem
+
+&nbsp; 3. Lack of attention to performance
+
+&nbsp; 4. Bad team dynamics
+
+&nbsp;&nbsp;&nbsp; God-like architect
+
+&nbsp;&nbsp;&nbsp; Too big a team
+
+&nbsp;&nbsp;&nbsp; Overworked team (reactive v. strategic modes)
+
+V. Technical reasons
+
+&nbsp; Missed deliverables
+
+&nbsp; Too much code
+
+&nbsp; Take small example and extrapolate when it doesn't scale
+
+VI. Requirements
+
+&nbsp; There are less excuses for technical failure
+
+&nbsp; He emphasized the importance of communication, more important than
+&nbsp; technical.&nbsp; The importance of working with your manager.
+
+VII. Requirements checklist
+
+&nbsp; Do we know what the application should do?
+
+&nbsp; How it should do it?
+
+&nbsp; Whether does it does it?
+
+&nbsp; Also mentioned the importance of testing.
+
+VII. Solutions
+
+&nbsp; Establish Continuall feedback
+
+&nbsp; Listen to business
+
+&nbsp; No waterfall usage
+
+&nbsp;&nbsp;&nbsp; J2EE is particularly ill suited to waterfall
+
+&nbsp; Educate the business about the process.&nbsp; 
+
+VIII. Ideology part II
+
+&nbsp; Lots of it is kinda receding, he thinks this recession is one of the
+&nbsp; reason that more J2EE projects are succeeding.
+
+IX. Lack of attention to performance
+
+&nbsp;&nbsp; one of the key failure causes
+
+&nbsp;&nbsp; "First get it to work, then optimize"
+
+&nbsp;&nbsp; Use architectural approaches that allows a degree architectural
+&nbsp;&nbsp; refactoring.&nbsp; Such as?
+
+&nbsp;&nbsp;&nbsp;&nbsp; Loosely coupled layers (but be mindful of performance)
+
+X. Team dynamics: the God-like architect
+
+&nbsp; Politically astute, technically not.
+
+&nbsp; Two varieties
+
+&nbsp;&nbsp;&nbsp; non-coding: powerpoint, UML, (motivation: not enough), big picture
+&nbsp;&nbsp;&nbsp; only
+
+&nbsp;&nbsp;&nbsp; The prescriptive framework builder: obsessed with the small and big
+&nbsp;&nbsp;&nbsp; picture.&nbsp; Cares about controlling every aspect of the programmer's
+&nbsp;&nbsp;&nbsp; life.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The myth of the code monkey: they exist to knock out code.&nbsp; 
+
+&nbsp;&nbsp;&nbsp; The framework builder believes that his main role is to prevent
+&nbsp;&nbsp;&nbsp; developers from doing things.&nbsp; This is not how to develop
+&nbsp;&nbsp;&nbsp; frameworks.
+
+&nbsp;&nbsp; Successful Frameworks make best practice easy to do, but doesn't get
+&nbsp;&nbsp; in the way of developers doing whatever they want.
+
+XI. Team Dynamics: Consequences of prescriptive framework builder
+
+&nbsp;&nbsp; Team morale plummets
+
+&nbsp;&nbsp; People leave
+
+XII. TD: Loss of communication
+
+&nbsp; His view of the architect is that they can actually do any role on the
+&nbsp; team.&nbsp; There must be mututal respect.&nbsp; Communication is essential to
+&nbsp; success.&nbsp; He listed an example of bad communications
+
+XIII. TD: too big a team
+
+&nbsp; Scale the team up at a managable level.&nbsp; Do proof of concept first,
+&nbsp; then grow the team.&nbsp; You have to know how to solve the problem before
+&nbsp; you grow the team.
+
+XIV. It's about working smart, not doing more work
+
+&nbsp; Rod is interested in history
+
+&nbsp;&nbsp;&nbsp; Higher up decisions are very important.&nbsp; You can't succeeded with bad
+&nbsp;&nbsp;&nbsp; top down decisions.
+
+&nbsp; Using frameworks allow working smarter
+
+&nbsp; 1. Big problems
+
+&nbsp;&nbsp;&nbsp; Too much code.&nbsp; Too much maintenance
+
+&nbsp;&nbsp;&nbsp; Why?&nbsp; Failure to use appropriate frameworks, insufficient refactoring.
+
+XV. TD: overwork
+
+&nbsp; people work less effectively when they are tired and stressed.
+
+&nbsp; Cosmetic overwork is really dangerous.&nbsp; Impress the client with activity.
+
+XVI. Re-inventing the wheel
+
+&nbsp; No excuse to build an in house framework from scratch.
+
+&nbsp; Start from existing generic framework
+
+&nbsp; Spring
+
+&nbsp;&nbsp;&nbsp; Lots of extension points (he feels extension points are key for a
+&nbsp;&nbsp;&nbsp; successful framework).&nbsp; 
+
+&nbsp; People apply high bar for accepting third party frameworks, have total
+&nbsp; trust in their in-house framework.
+
+XVII. Data access framework
+
+&nbsp; Need to use one.&nbsp; Stock JDBC isn't enough.&nbsp; Never use straight JDBC.
+
+&nbsp; Understandding how to judge OR mapping solution is appropriate.&nbsp; 
+
+&nbsp; Understand core O/R mapping concepts
+
+XVIII. Testing
+
+&nbsp; Test first
+
+&nbsp; Integration testing
+
+IXX. Poor productivity
+
+&nbsp; Lots of little hurdles
+
+&nbsp;&nbsp;&nbsp; Slow deploy-test cycles
+
+&nbsp;&nbsp;&nbsp; Slow build process
+
+&nbsp;&nbsp;&nbsp; Slow hardware
+
+&nbsp;&nbsp;&nbsp; Slow integration servers
+
+&nbsp; MAJOR productivity hits.&nbsp; Increase the chance of failure
+
+&nbsp; Design build process and infrastructure to minimize these delays.
+
+&nbsp; Traditional J2EE development was laden with these little hurdles.
+
+&nbsp; 
+
+XX. Recommendations
+
+&nbsp; Always begin with proof of concept, or executable vertical slice.&nbsp; All
+&nbsp; modern methodologies recommend this.
+
+&nbsp; Establish clear metrics.
+
+&nbsp;&nbsp;&nbsp; RUP (rational unified process) calls this the inception phase.
+
+&nbsp; Don't trust architecture-or technologies, until you've tried it with
+&nbsp; your needs.
+
+&nbsp; Automate everything
+
+&nbsp;&nbsp;&nbsp; Unit tests don't require container (due to dependency injection)
+
+&nbsp; Choose good frameworks, that allow customization
+
+</pre></div>
