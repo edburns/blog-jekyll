@@ -1,0 +1,55 @@
+---
+layout: post
+title:  "Java EE SDK Runs ADF Faces Blog"
+date:   2006-02-27 2:15:00 -0500
+---
+<div class="jive-rendered-content"><p>The saga of Oracle ADF Faces on the Java EE SDK continues. In our last installment, <a class="jive-link-external-small" href="http://sfjsf.blogspot.com/2006/02/adf-faces-and-jsf-12.html" rel="nofollow">Adam Winer explained why ADF Faces won't run on Glassfish</a>.
+ I'm happy to report that after some minor tweaks to Sun's JSF 
+implementation in the Java EE SDK, I think I have it running. However, I
+ would appreciate any testing people could give to see if the entirety 
+of ADF Faces works. ADF Faces is a large piece of software and their 
+demo app is rather comprehensive. Incidentally, it's also a great 
+testcase for extending JSF and exposed a few bugs which have also been 
+fixed.</p><span></span><p>Here's how to try it. I'm using the jsf-glasssfish-updater technique described in <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2006/01/glassfish_jsf_1.html" rel="nofollow">an earlier blog</a>.</p><span></span><ol><li><p><a class="jive-link-external-small" href="http://java.sun.com/javaee/5/downloads/" rel="nofollow">Download and install the Java EE 5 SDK.</a> If you already have JDK 5.0 installed, you can just download <code>Sun Java System Application Server PE 9 Beta</code>. Currently there is no Mac OS X build of the Java EE SDK, but don't despair! Mac Users will have to use <a class="jive-link-external-small" href="https://glassfish.dev.java.net/public/downloadsindex.html" rel="nofollow">Glassfish</a>,
+ the Open Source Application Server from which the Java EE SDK is built.
+ Mac OS X is my main development platform, so I know it works there.</p></li><li><p>Go to the <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/servlets/ProjectDocumentList?folderID=1703" rel="nofollow">the nightly download area</a>. If you're running the Java EE SDK Preview, download the <code>jsf-sjsas9pebeta-updater.jar</code>. If you're running Glassfish, download<code>jsf-glassfish-updater.jar</code></p></li><li><p>Execute this with the JDK 5 Java interpreter.</p><pre>java -jar jsf-&lt;glassfish-or-sjsas9pebeta&gt;-updater.jar &lt;PATH_TO_YOUR_ASINSTALL_DIRECTORY&gt;
+</pre><p>Where <code>&lt;glassfish-or-sjsas9pebeta&gt;</code>sjsas9pebeta or glassfish, and<code>PATH_TO_YOUR_AS_INSTALL_DIRECTORY</code> is the parent of the<code>lib</code>, <code>bin</code>, <code>domains</code> (and so on) directories.</p></li><li><p>Download Oracle ADF Faces from <a class="jive-link-external-small" href="http://www.oracle.com/technology/products/jdev/htdocs/partners/addins/exchange/jsf/" rel="nofollow">Oracle's website</a>. Note, you have to join their developer network to get it.</p></li><li><p>Unfortunately, ADF Faces appears to have been developed without taking advantage of the benefits of the robust <a class="jive-link-external-small" href="http://java.sun.com/javaee/5/docs/api/javax/security/jacc/package-summary.html" rel="nofollow">SecurityManager</a> in Java EE 5. Therefore, you'll have to put the following entry in your <code>server.policy</code> file if you want the <code>chooseDate</code> component to work from the<code>adf-faces-demo.war</code>.</p><pre>grant codeBase "file:${com.sun.aas.installRoot}/domains/domain1/applications/j2ee-modules/adf-faces-demo/WEB-INF/lib/adf-faces-api-SNAPSHOT.jar" {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; permission java.net.NetPermission "specifyStreamHandler";
+};
+</pre><p>Of course, you'll have to tweak the entries if you use the 
+components in your apps. Also of note, the Sun App Server team has been 
+debating turning the security manager off by default, so this step may 
+not be necessary in the future.</p></li><li><p>Make sure any attempts to deploy a previous version of<code>adf-faces-demo.war</code> have been completely removed from the App Server. For example, I have noticed that occasionally the<code>adf-faces-demo</code> directory stick around in<code>domains/domain1/applications/j2ee-modules</code>. I had to manually remove this directory to enable the demo to work.</p></li><li><p>From the ADF Faces download, deploy the<code>adf-faces-demo.war</code> to your running Java EE SDK App Server and visit the demo to enjoy ADF Faces on Java EE 5!</p></li></ol><span></span><p>If you find any bugs when trying the demo please file them on the <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/servlets/ProjectIssues" rel="nofollow">JSF issue tracker</a> or the <a class="jive-link-external-small" href="https://glassfish.dev.java.net/servlets/ProjectIssues" rel="nofollow">Glassfish issue tracker</a>.</p><span></span><p>Also, note that this version of JSF includes the new<code>invokeOnComponent</code> feature we developed with help from Jacob Hookom and mentioned <a class="jive-link-external-small" href="http://weblogs.java.net/blog/jhook/archive/2006/02/new_feature_for.html" rel="nofollow">in his blog</a>. Lastly, the jsf jars in the <a class="jive-link-external-small" href="https://maven-repository.dev.java.net/nonav/repository/javax.faces/jars/" rel="nofollow">java.net Maven 1 Repository</a> have been updated as well.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>
+
+<h3><span id="jive-comments-count" class="j-comment-count">1</span> Comment</h3>
+
+            <div id="jive-comments">
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964328" data-object-type="105" data-object-id="964328">
+
+
+komarios Dec 7, 2009 5:48 AM
+
+                <div id="comment-body-964328">
+
+                        <!-- [DocumentBodyStart:29a86db9-d1d4-4ada-bdcb-5139cf74de0c] --><div class="jive-rendered-content">
+Ed you have saved me.<br>
+
+Without you I would never have been able to deploy an adf application to glassfish.
+
+I have posted a more recent successful attempt to deploy adf faces in glassfish:<br>
+http://mariosgaee.blogspot.com/2009/12/glassfish-and-adf-faces.html<br>
+
+along with another successful attempt to deploy Adf Toplink Ejbs 10g here:<br>
+http://mariosgaee.blogspot.com/2009/12/glassfish-and-adf-toplink-10g.html<br>
+and here<br>
+http://mariosgaee.blogspot.com/2009/12/glassfish-and-adf-toplink-part-2.html<br>
+
+keep up the very good work!<br>
+glassfish rocks!
+
+//</div><!-- [DocumentBodyEnd:29a86db9-d1d4-4ada-bdcb-5139cf74de0c] -->
+                </div>
+
+</div>
