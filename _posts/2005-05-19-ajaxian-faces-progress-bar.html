@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "AJAXian Faces Progress Bar Blog"
+date:   2005-05-19 12:30:00 -0500
+---
+<div class="jive-rendered-content"><p>I've written my first AJAXian JSF component. I took Greg Murray's very useful but utterly non-componentized <a class="jive-link-external-small" href="https://bpcatalog.dev.java.net/nonav/ajax/progress-bar/frames.html" rel="nofollow">Progress Bar</a> example and generalized it into a faces component that allows you to simply put this in your page:</p><span></span><pre>&lt;d:progressBar id="progressBar" 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; value="#{process.percentage}" 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interval="1000" /&gt;
+</pre><span></span><br><br><span>&nbsp; </span><p>And there you have a dynamically updating progress bar that doesn't cause a page refresh.</p><span></span><p>I've written the component up in the <a class="jive-link-external-small" href="https://bpcatalog.dev.java.net/nonav/ajax/progress-bar-jsf/frames.html" rel="nofollow">Solutions Catalog</a>
+ and you can get the source there as well. The main thing this building 
+this component taught me is that writing and debugging JavaScript is 
+no-fun so I'm glad to see that Faces can relieve the page author of such
+ nonsense.</p><span></span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

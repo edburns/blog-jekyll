@@ -1,0 +1,104 @@
+---
+layout: post
+title:  "Ultra quick JSF 2.2 in progress changelog Blog"
+date:   2011-06-16 8:25:00 -0500
+---
+<div class="jive-rendered-content"><p>I'm
+ trying to get the first snapshot of JSF 2.2 published and I've just 
+scanned through the svn logs and arrived at the following text, from 
+which I'll derive the "Changes between 2.1 and 2.2" content.</p><span></span><pre>* Deprecate the CURRENT_COMPONENT and CURRENT_COMPOSITE_COMPONENT attributes 
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-784
+
+* Fix incorrect VDLDoc http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-967
+&nbsp; f:selectItems itemValue description incorrect.
+
+* Remove maxlength from f:viewParam
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-922
+
+* Additional clarification about binding attribute in VDLdocs
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-998
+
+* http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-998
+&nbsp; Document that ui:fragment should not be bound to a bean with wider
+&nbsp; than request scope, document that the type of the property must extend
+&nbsp; from UIComponent.
+
+* Wrapper for ActionListener http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-993
+
+* Changes to "template" attribute requiredness for ui:decorate and
+&nbsp; ui:composition
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-999
+
+* http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-997
+&nbsp; 
+M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jsf-api/src/main/java/javax/faces/event/ComponentSystemEvent.java
+
+- Mark this class as changed_modified_2_2
+
+- Override isAppropriateListener so that it first asks the listener,
+&nbsp; "are you a ComponentSystemEventListener", then, if not, asks
+&nbsp; super.isAppropriateListener()
+
+M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jsf-api/src/main/java/javax/faces/event/SystemEvent.java
+
+- Mark this class as changed_modified_2_2
+
+- in isAppropriateListener(), document the default implementation.
+
+M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jsf-api/src/main/java/javax/faces/component/UIComponent.java
+
+- Make inner class ComponentSystemEventListenerAdapter implement
+&nbsp; ComponentSystemEventListener.
+
+* http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-917
+
+&nbsp;&nbsp;&nbsp; javax.faces.application.ResourceWrapper:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - getContentType()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - getLibraryName()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - getResourceName()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - setContentType(String)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - setLibraryName(String)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - setResourceName(String)
+&nbsp;&nbsp;&nbsp; javax.faces.context.ExternalContextWrapper:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - getSessionMaxInactiveInterval()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - isSecure()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - setSessionMaxInactiveInterval()
+&nbsp;&nbsp;&nbsp; javax.faces.context.PartialViewContextWrapper
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - setPartialRequest(boolean)
+
+* http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-915
+
+&nbsp; Non-normative text about http methods.
+
+* 12.1.3 add this text to the javax.faces.STATE_SAVING_METHOD spec.
+
+When examining the value, the runtime must ignore the case.
+
+* Add ExternalContext.getApplicationContextPath()
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-1012
+
+* http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-787: restore
+&nbsp; ViewScope before templates are processed with buildView()
+
+* Tweak circumstances for skipping intervening lifecycle phases in the
+&nbsp; case of view metadata
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-762
+
+* - Section 2.2.1.&nbsp; Now has this text.
+
+&nbsp; Otherwise, call getViewMetadata() on the ViewDeclarationLanguage
+&nbsp; instance. If the result is non-null, call createMetadataView() on the
+&nbsp; ViewMetadata instance. Call ViewMetadata.getViewParameters(). If the
+&nbsp; result is a non-empty Collection, do not call
+&nbsp; facesContext.renderResponse(). If the result is an empty collection,
+&nbsp; try to obtain the metadata facet of the UIViewRoot by asking the
+&nbsp; UIViewRoot for the facet named UIViewRoot.METADATA_FACET_NAME. This
+&nbsp; facet must exist. If the facet has no children, call
+&nbsp; facesContext.renderResponse(). Otherwise, none of the previous steps
+&nbsp; have yielded the discovery any of metadata, so call
+&nbsp; facesContext.renderResponse().
+
+* outputText and inputText do not render children by default
+&nbsp; http://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-585
+
+</pre><span></span><p>We're making some progress, but it's been challenging to balance operations issues with specification work.</p><span></span><p><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>

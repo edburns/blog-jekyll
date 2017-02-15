@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Need to compile code that imports JSR-303 javax.validation.*? Blog"
+date:   2009-07-17 8:05:00 -0500
+---
+<div class="jive-rendered-content"><p>One
+ of my side-jobs at Sun is shepherding JSR-303 into Glassfish. Because 
+JSR-303 spec lead does such a fantastic job leading the spec, and 
+JSR-303 RI lead Hardy Ferentschik does such a fantastic job implementing
+ it, it's pretty easy. My boss requested I write up a Wiki page 
+describing the integration work, which can be seen <a class="jive-link-external-small" href="http://wiki.glassfish.java.net/Wiki.jsp?page=V3Jsr303BeanValidationIntegration" rel="nofollow">here</a>. The most useful part, of course, is the fact that <a class="jive-link-external-small" href="http://java.sun.com/javaee/downloads/preview/index.jsp" rel="nofollow">Glassfish V3 Preview</a> has full support for version 1.0.CR2 of Bean Validation. If are using Glassfish V3 Preview, and you have code that depends on <code>javax.validation</code> classes, you can use this maven repository information to satisfy your compile time dependencies.</p><span></span><ul><li>Repository <a class="jive-link-external-small" href="http://download.java.net/maven/2/" rel="nofollow">http://download.java.net/maven/2/</a><img alt="http://wiki.glassfish.java.net/images/out.png" class="outlink jive-external-image"></li><li>Put this in your &lt;dependencies&gt; section</li></ul><span></span><pre>&lt;dependency&gt;
+&nbsp; &lt;groupId&gt;org.glassfish&lt;/groupId&gt;
+&nbsp; &lt;artifactId&gt;bean-validator&lt;/artifactId&gt;
+&nbsp; &lt;version&gt;3.0-JBoss-4.0.0.Beta1-b01&lt;/version&gt;
+&nbsp; &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</pre><span></span><p><span>JSR-314 EG Member Dan Allen contributed a 
+simple demo to the Mojarra project, the source code for which can be 
+checked out from svn url &lt;</span><a class="jive-link-external-small" href="https://mojarra.dev.java.net/svn/mojarra/trunk/jsf-demo/bean-validator" rel="nofollow">https://mojarra.dev.java.net/svn/mojarra/trunk/jsf-demo/bean-validator</a><span>&gt;. This demo depends on the version of JSF included with GlassfishV3 preview.</span></p><span></span><p><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>

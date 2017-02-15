@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "(near) Zero (re-)Deployment Time for JSF Blog"
+date:   2006-12-01 12:52:00 -0500
+---
+<div class="jive-rendered-content"><p>One oft cited complaint about Java Web Applications is the slow
+&nbsp;&nbsp;&nbsp;&nbsp; and laborious <a class="jive-link-external-small" href="http://www.theserverside.com/news/thread.tss?thread_id=35538" rel="nofollow">deployment
+&nbsp;&nbsp;&nbsp;&nbsp; step</a>.&nbsp; This step seriously undermines the ability to get into a
+&nbsp;&nbsp;&nbsp;&nbsp; <a class="jive-link-external-small" href="http://web.ionsys.com/%7Eremedy/FLOW%20%20.htm" rel="nofollow">flow
+&nbsp;&nbsp;&nbsp;&nbsp; state</a> and is generally a major buzz kill.&nbsp; The absense of a
+&nbsp;&nbsp;&nbsp;&nbsp; deployment step is one reason why people like Ruby on Rails so
+&nbsp;&nbsp;&nbsp;&nbsp; much.</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp; <p><a class="jive-link-external-small" href="https://jsf-extensions.dev.java.net/nonav/mvn/#Design%20Time" rel="nofollow">JSF-Extensions Design Time</a> brings good news for
+&nbsp;&nbsp;&nbsp;&nbsp; flow-impaired Java Web application Developers: the JMX
+&nbsp;&nbsp;&nbsp;&nbsp; PhaseListener.</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp; <p>The implementation of this was really simple.&nbsp; I just took <a class="jive-link-external-small" href="http://weblogs.java.net/blog/jfarcand/archive/2006/01/fast_web_applic_1.html" rel="nofollow">Jean-Francios
+&nbsp;&nbsp;&nbsp;&nbsp; Arcand's JMXDeploy class</a>, modded it ever so slightly, as you
+&nbsp;&nbsp;&nbsp;&nbsp; can see in <a class="jive-link-external-small" href="https://jsf-extensions.dev.java.net/source/browse/jsf-extensions/trunk/code/dev-time/src/main/java/com/sun/faces/extensions/devtime/zdt/JMXDeploy.java" rel="nofollow">the
+&nbsp;&nbsp;&nbsp;&nbsp; source code</a>, and called it from a
+&nbsp;&nbsp;&nbsp;&nbsp; <code>PhaseListener</code>. </p>
+
+&nbsp;&nbsp;&nbsp; <p>I did a <a class="jive-link-external-small" href="https://sas.elluminate.com/site/external/launch/play.jnlp?psid=2006-12-01.1228.M.A30E5F9A6C6658A6AEB70B313207BE.vcr" rel="nofollow">screencast about it too</a>.</p>
+
+<span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

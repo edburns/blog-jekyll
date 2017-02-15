@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "Clearing Up JSF 1.2 JSF 1.1 and MyFaces Confusion (Updated) Blog"
+date:   2005-09-19 8:30:00 -0500
+---
+<div class="jive-rendered-content"><p>A
+ couple of weeks ago, Rick Hightower asked some pointed questions and 
+made some interesting assertions about JSF 1.2, JSF 1.1 and MyFaces in 
+his <a class="jive-link-external-small" href="http://jroller.com/page/RickHigh?entry=confusion_about_jsf_1_2" rel="nofollow">blog</a>. This blog entry is a response to that blog.</p><span></span><p>I'd like to address some of these questions and assertions in light of Rick's blog.</p><span></span><ol><li><p>What's deal with JSF and Open Source? Exactly what was open sourced on <a class="jive-link-external-small" href="http://weblogs.java.net/blog/rogerk/archive/2005/08/open_javaserver.html" rel="nofollow">24 August 2005</a>? Why was this done?</p><p>I know it sounds like marketing spin and all that, but, really,<a class="jive-link-external-small" href="http://www.sun.com/emrkt/share/philosophy.jsp" rel="nofollow">Sun does understand the value of sharing</a> for its investors, customers, and employees. It takes a long time to <a class="jive-link-external-small" href="http://www.bushsecrecy.org/" rel="nofollow">open</a> things up that have been closed for a while. We started by moving all of our development and processes out into the open <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2004/06/welcome_to_the.html" rel="nofollow">back in June of 2004</a>.
+ While the process was open, the licensing for the code was not. Sun 
+followed up by releasing the source code and processes for developing 
+our Java EE App Server in <a class="jive-link-external-small" href="http://weblogs.java.net/blog/carlavmott/archive/2005/07/getting_started.html" rel="nofollow">July of 2005</a>, and shortly thereafter we relicensed the source code for Sun's implementation of JSF 1.2 under the OSI approved CDDL license.</p><p>To summarize, Sun's JSF team is using an open developement process and an open source license for its JSF 1.2 implementation.</p></li><li><p>What's the status of the JSF 1.2 spec and implementation? Has it been released yet?</p><p>The spec is currently in <a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=252" rel="nofollow">JCP Proposed Final Draft</a>. Per JCP rules, no one can release a <strong>final</strong>
+ product based on a JCP spec until that spec is final. However, because 
+both the container in which Sun's JSF 1.2 implementation runs, <a class="jive-link-external-small" href="https://glassfish.dev.java.net/" rel="nofollow">glassfish</a>,
+ and the JSF implementation itself are developed using an open process 
+and open source license, there is nothing stopping you from using a <a class="jive-link-external-small" href="https://glassfish.dev.java.net/public/downloadsindex.html" rel="nofollow">promoted build of glassfish</a> to try out JSF 1.2.</p><p>Sun's JSF 1.2 implementation in Glassfish implements the entire JSF 1.2 specification, <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2005/08/javaserver_face_3.html" rel="nofollow">is feature complete</a>, and we'd <a class="jive-link-external-small" href="http://forum.java.sun.com/forum.jsp?forum=427" rel="nofollow">love to have your feedback on it on the public forum</a> or <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/servlets/ProjectMailingListList" rel="nofollow">project mailing lists</a>. Please note that the binary code is licensed under Sun's <a class="jive-link-external-small" href="https://glassfish.dev.java.net./public/BinariesLicense.html" rel="nofollow">Binary License</a>.</p></li><li><p>Which is "better" MyFaces or Sun's JSF Implementation?</p><p>This
+ question sounds like an invitation to a contentious debate which 
+usually results in no clear winners. Rather than engage in such a debate
+ I'd like to point out that I'm delighted that MyFaces exists and has 
+recently passed the JSF 1.1 TCK. This validates the whole JCP process of
+ open specifications that allow implementations to compte on the basis 
+of quality and performance. More of that sharing jazz. Let me follow up 
+by trying to refute some claims I've heard about Sun's JSF project.</p><ul><li><p>Our <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/issues/buglist.cgi?component=javaserverfaces&amp;issue_status=NEW&amp;issue_status=STARTED&amp;issue_status=REOPENED&amp;email1=&amp;emailtype1=exact&amp;emailassigned_to1=1&amp;email2=&amp;emailtype2=exact&amp;emailreporter2=1&amp;issueidtype=include&amp;issue_id=&amp;changedin=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;short_desc=&amp;short_desc_type=substring&amp;long_desc=&amp;long_desc_type=substring&amp;issue_file_loc=&amp;issue_file_loc_type=substring&amp;status_whiteboard=&amp;status_whiteboard_type=substring&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=&amp;cmdtype=doit&amp;newqueryname=&amp;order=Reuse+same+sort+as+last+time&amp;Submit+query=Submit+query" rel="nofollow">issue tracker</a>
+ is totally open. File bugs and they get fixed. Pretty simple. I've also
+ heard some complaints about the turnaround time for bug fixes. Of 
+course, your mileage may vary, but one thing the Sun JSF team does that 
+MyFaces does not, and can not, is to keep up with the latest spec <strong>as it is being developed by the EG</strong>.
+ Fortunately, due to our open process, the general public can follow 
+along with the development of the spec by watching what the Sun 
+implementation is doing. Therefore, during periods of heavy spec 
+development, the turnaround time can be slower, but we always make the 
+best effort to fix bugs as soon as possible after they are filed.</p></li><li><p>We have a standard process for becoming a committer on the project, and anyone is welcome to join.</p></li><li><p>We do have some active external committers. The famous <a class="jive-link-external-small" href="http://weblogs.java.net/blog/jhook/" rel="nofollow">Jacob Hookom</a>
+ provided several bugfixes and the entire EL implementation. Jacob 
+started as a JSF committer but went on to become an Expert Group member.
+ Mike Youngstrom is also active in submitting bugs and patches.</p></li><li><p>We've
+ fixed over 75 issues since our last release of JSF, but because we're a
+ JSF 1.2 implementation, people can't reap the benefits unless they move
+ to JSF 1.2.</p></li><li><p>Lastly, the general perception in the public
+ is that reference implementations (RI) are not production quality. 
+Sun's JSF implementation isn't just an RI, it is product ready and used 
+in several products right now. Of course, <a class="jive-link-external-small" href="http://developer.sun.com/prodtech/javatools/jscreator/index.jsp" rel="nofollow">Sun Java Studio Creator (new version now available in Early Access)</a>, and all of its customers, use the Sun JSF implementation. I'm also told that <a class="jive-link-external-small" href="https://demopaystatements.adp.com/index.jsf" rel="nofollow">ADP uses Sun's JSF impl</a>, and I think that FedEx does as well, but I have to verify that.</p></li></ul></li><li><p>JSF and AJAX, synergy or disharmony?</p><p>I'm surprised this one is still out there. <a class="jive-link-external-small" href="http://www.ajaxian.com/" rel="nofollow">Ben and Dion</a>, <a class="jive-link-external-small" href="http://weblogs.java.net/blog/gmurray71/archive/2005/08/ajax_solutions.html" rel="nofollow">Greg</a> and <a class="jive-link-external-small" href="http://blogs.sun.com/roller/page/tor/Weblog?catname=%2FAJAX" rel="nofollow">Tor</a>and
+ I have stated on numerous occasions that the page author should not 
+have to write AJAX by hand. Use a framework instead. As demonstrated at 
+JavaOne, and in the <a class="jive-link-external-small" href="https://bpcatalog.dev.java.net/nonav/ajax/jsf-ajax/frames.html" rel="nofollow">Java Blueprints Solutions Catalog</a>, JSF lends itself very well to developing components that use AJAX.</p></li></ol><span></span><p>I
+ hope this clears up the confusion, and I welcome your comments. In 
+particular, I want to hear why people may choose MyFaces over the Sun 
+implementation, both to join as a contributor, or as a user.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "The case for EL in Dolphin Blog"
+date:   2006-08-15 4:01:00 -0500
+---
+<div class="jive-rendered-content"><h1>The case for EL in Dolphin</h1>
+
+<p>If you're well connected to the JSF and Web Tier world, you'd know
+that the Expression Language used in JSF and JSP in Java EE 5 is slated
+to become a separate JSR.&nbsp; It is my hope, and the hope of several
+others, that this JSR be moved into the core JDK in the Dolphin
+timeframe.</p>
+
+<p>I'd like to use the comments on this blog entry to gather use cases
+to justify the inclusion of the EL into the core JDK.&nbsp; I'll start off
+with some use-cases of mine, and some I collected from <a class="jive-link-external-small" href="http://wiki.java.net/bin/view/Projects/JavaServerFacesSpecFaq#ChatRoom" rel="nofollow">##jsf</a>.</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Make it easier for different frameworks, notably web
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; frameworks, to interoperate </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Make it easier to write frameworks.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Make performing Inversion of Control easier, reduce
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; complexity of frameworks using IoC.&nbsp; IoC is not just for
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; server apps.&nbsp; It can benefit desktop apps as well (look at
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spring Rich Client).</p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Be the underpinning of how <a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=295" rel="nofollow">Beans
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Binding</a> links are specified.&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Could enable a markup based UI descriptions in Swing
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and allow for easily specifying links between ui components
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and their data models.</p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Desktop applictions also have the notion of scope, but
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; it goes beyond the normal "request/session/application", and
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; it tends to be more specific to the application requirements
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itself.&nbsp; For example, when doing a sub-dialog, you're really
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entering into a scope.&nbsp; It would be nice to have a place to
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; store model objects in that scope that would automatically go
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; away when the dialog is dismissed.&nbsp; EL is a good way to do
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; that.&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+
+<p>Any others?&nbsp; I'm sure I'm just hitting the tip of the iceberg
+here.</p>
+
+<span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

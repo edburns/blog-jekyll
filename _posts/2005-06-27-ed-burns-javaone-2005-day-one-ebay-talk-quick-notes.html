@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "Ed Burns JavaOne 2005 Day One eBay talk quick notes Blog"
+date:   2005-06-27 6:10:00 -0500
+---
+<div class="jive-rendered-content"><p>Show how to use Ebay to make money for yourself.</p><span></span><p>Ebay opportunity: more efficient way to buy/sell. Obvious value proposition you already know about.</p><span></span><p>Emphasis
+ on making money makes it feel a bit like an amway pitch, but in the end
+ they did show some code and how to use their APIs.</p><span></span><p>Ebay developers are a massive driver of innovation.</p><span></span><ul><li><p>selling apps</p></li><li><p>category specific apps</p><p>Motors, boating, trade-in</p></li><li><p>buying apps</p><p>Bonfire media: notifications, alarms, wireless comparison shopping, buyout: cable system ebay tie-in.</p></li><li><p>affiliate apps.</p><p>Didn't say much, but there was an apple logo</p></li></ul><span></span><p>15 billion web services calls a year. A fun stat.</p><span></span><p>Ebay web services: started XML, SOAP, REST (just for get search results). SDK for windows and Java.</p><span></span><p>Resources: <a class="" href="https://community.oracle.com/developer.ebay.com">developer.ebay.com</a>. Forums: <a class="" href="https://community.oracle.com/developer.ebay.com/help/forums">developer.ebay.com</a></p><span></span><p>Roadmap: <a class="" href="https://community.oracle.com/developer.ebay.com/roadmap">developer.ebay.com/roadmap</a>.</p><span></span><p>Ebay community codebase: <a class="" href="https://community.oracle.com/codebase.ebay.com">codebse.ebay.com</a>.
+ Place where eBay dev community can work together on software projects 
+or contribute ccode. Projects released on an open source license.</p><span></span><p>Ebay will pay you for new users and bids. Sign up to be affiliate API tier member.</p><span></span><p>How
+ it works: use the search web service, natural, paid or category. URL is
+ redirected to commision junction. $0.10 per bid. Deliver a new user, 
+get $25.</p><span></span><p>Finally seeing a way to get direct money for your technology without any employment contract. Micropayments have arrived.</p><span></span><p>Important API calls</p><span></span><div style="margin-left: 2em;"><pre>HelloWorld
+
+&nbsp; GeteBayOfficialTime
+
+Search
+
+&nbsp; GetSearchResults
+
+&nbsp; GetItem
+
+Listing
+
+&nbsp; AddItem
+
+&nbsp; VerifyAddItem
+
+&nbsp; ReviseItem
+
+Status
+
+&nbsp; GetUser
+
+&nbsp; GetFeedback, LeaveFeedback
+
+&nbsp; GetItemShipping, GetShippingRates
+
+&nbsp; Search by ISBN
+
+Bidding
+
+&nbsp; PlaceOffer
+
+</pre></div><span></span><p>Idea: faces components that access the ebay java API.</p><span></span><p>Example: <a class="" href="https://community.oracle.com/www.campusi.com">campusi</a>.</p><span></span><p>Sample App, tuned in. Didn't take notes.</p><span></span><p>Questions</p><span></span><p>People
+ want to know how you built the infrastructure. They were very vague. 
+Back end solaris. Middle Tier websphere on Windows NT. front tier 
+clustered.</p><span></span><p>Someone asked do they use EJB in the middle tier or a lightweight framework. They didn't know the answer.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

@@ -1,0 +1,37 @@
+---
+layout: post
+title:  "Using EJB Annotations Outside of EJB Blog"
+date:   2005-08-29 7:05:00 -0500
+---
+<div class="jive-rendered-content"><p>The <a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=250" rel="nofollow">Common Annotations</a> and <a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=220" rel="nofollow">EJB 3</a>
+ JSRs both provide a number of annotations that are useful to enterprise
+ Java developers. This blog entry examines the use of two from EJB3 that
+ I feel really should be in Common Annotations:<code>@PostConstruct</code> and <code>@PreDestroy</code>.</p><span></span><p>Let's review the purpose of these annotations.</p><span></span><dl><dt><code>@PostConstruct</code></dt><dd><pre> * Designates a method to receive a callback during creation of a
+ * session bean or message driven bean instance.
+</pre></dd><dt><code>@PreDestroy</code></dt><dd><pre> * Designates a method to receive a callback before a session bean or 
+ * message driven instance is destroyed.
+</pre></dd></dl><span></span><p>These annotations are useful for any 
+container managed instance, not just session beans or message driven 
+beans. This blog shows how I leveraged the new <code>ManagedBeanFactory</code>
+ SPI in Sun's implementation of JSF technology to create a prototype 
+that allows JSF authors to use these annotations in their managed beans.
+ I'm doing this to make the case to move these two annotations out of 
+EJB and into Common Annotations. If this is done, it's easy to see that 
+using this feature will find its way into a future version of the JSF 
+spec.</p><span></span><p>The running code for this example is checked into the "components" jsf-demo in the <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/" rel="nofollow">JSF project on java.net</a>. You have to get a nightly build more recent than 30 August 2005 to get a build with this code in it, though.</p><span></span><h2>Details</h2><span></span><p>The <code>com.sun.faces.spi.ManagedBeanFactoryWrapper</code>class
+ in the Sun JSF implementation allows the user to decorate the internal 
+implementation class used to instantiate managed beans such that the 
+creation process can be intercepted and methods annotated with <code>@PostConstruct</code> can be called. The listeners for request, session, and <code>ServletContext</code>classes in the Servlet API can be used to intercept destruction events and call managed bean methods annotated with<code>@PreDestroy</code>.</p><span></span><p>The
+ following two classes leverage these hook points to implement the 
+feature. The classes are presented in the form of a JSF project <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/faq.html#change_bundle" rel="nofollow">change-bundle</a>To see the real code, please <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/faq.html#Code_checkout" rel="nofollow">get the source from java.net</a>.</p><span></span><h3><code>A components/src/java/components/model/LifecycleManagedBeanFactory.java</code></h3><span></span><p><code>This class leverages the decorator pattern provided by the<code>ManagedBeanFactory</code> SPI to decorate the<code>newInstance()</code> method and inject calling the<code>@PostConstruct</code> method on the ManagedBean instance being created, if present. It also establishes a contract with the<code>LifecycleManagedBeanListener</code> to call the<code>@PreDestroy</code> annotated methods, if present, when the time comes.</code></p><span></span><h3><code>A components/src/java/components/model/LifecycleManagedBeanListener.java</code></h3><span></span><p>This class implements <code>ServletRequestListener, HttpSessionListener</code>, and <code>ServletContextListener</code>and uses the <code>*Destroyed</code> methods to look into the list established by the <code>LifecycleManagedBeanFactory</code> for this scope and call any appropriately annotated methods.</p><span></span><h3><code>M components/src/java/demo/model/RepeaterBean.java</code></h3><span></span><p>annotate some methods to be called.</p><span></span><h3><code>M components/web/WEB-INF/web.xml</code></h3><span></span><p>Declare the above <code>LifecycleManagedBeanListener</code>.</p><span></span><h3><code>M components/build.xml</code></h3><span></span><p>Declare a compile time dependency on<code>jsf-impl.jar</code>.</p><span></span><h2>Summary</h2><span></span><p>It
+ could be said that using annotations in this way is just making up for 
+Java's lack of a proper destructor, as one has in Objective C and C++. 
+However, using annotations in this way is far more flexible than 
+constructors and destructors, while not adding any conceptual burden for
+ the new developer. New developers can simply avoid using annotations 
+until they feel ready to do so. Another factor to consider is that the 
+servlet API could be enhanced to automatically call methods annotated 
+with these or similar annotations when objects are added to the request,
+ session, or application scope. I hope I've demonstrated the usefulness 
+of these two annotations outside of EJB and made a good case for moving 
+them out to Common Annotations.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

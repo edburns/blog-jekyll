@@ -1,0 +1,67 @@
+---
+layout: post
+title:  "(Updated) JavaServer Faces 1.2 and JavaServer Pages 2.1 Proposed Final Draft Specifications available Blog"
+date:   2005-08-25 11:57:00 -0500
+---
+<div class="jive-rendered-content"><p>I'm pleased to announce the availability of the Proposed Final Draft revisions of the next release of the JavaServer<sup>TM</sup>Faces and Pages specifications. The Faces spec may be downloaded from &lt;<a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=252" rel="nofollow">http://www.jcp.org/en/jsr/detail?id=252</a>&gt; and the Pages spec may be downloaded from &lt;<a class="jive-link-external-small" href="http://www.jcp.org/en/jsr/detail?id=245" rel="nofollow">http://www.jcp.org/en/jsr/detail?id=245</a>&gt;<i>We really want feedback!</i> <strong>Please use our <a class="jive-link-external-small" href="http://forum.java.sun.com/thread.jspa?threadID=617376&amp;tstart=0" rel="nofollow">Forum</a> to share your thoughts on the specs</strong>. Or you may send feedback to the comments alias for <a class="jive-link-email-small" href="mailto:jsr-252-comments@jcp.org">Faces</a> or <a class="jive-link-email-small" href="mailto:jsr-245-comments@jcp.org">JSP</a> (<a class="jive-link-email-small" href="mailto:jsr-252-comments@jcp.org">jsr-252-comments@jcp.org</a> and <a class="jive-link-email-small" href="mailto:jsr-245-comments@jcp.org">jsr-245-comments@jcp.org</a>respectively) .</p><span></span><p>In
+ this entry, I link to a comprehensive high level outline of the changes
+ to the spec since the 1.1 release of the Faces spec. I've decided 
+include changes present in the <a class="jive-link-external-small" href="http://jcp.org/aboutJava/communityprocess/edr/jsr252/" rel="nofollow">December Early Draft Release</a>, the <a class="jive-link-external-small" href="http://jcp.org/aboutJava/communityprocess/pr/jsr252/" rel="nofollow">April Public Review Release</a> and the current Proposed Final Draft release for completeness. As such, this entry repeats some information from my<a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2005/04/javaserver_face_1.html" rel="nofollow">blog entry on the April Public Review Release</a>. If you're looking for what's new since that the Public Review release only, please consult <a class="jive-link-external-small" href="https://javaserverfaces-spec-public.dev.java.net/issues/buglist.cgi?component=javaserverfaces-spec-public&amp;issue_status=UNCONFIRMED&amp;issue_status=NEW&amp;issue_status=STARTED&amp;issue_status=REOPENED&amp;issue_status=RESOLVED&amp;issue_status=VERIFIED&amp;issue_status=CLOSED&amp;email1=&amp;emailtype1=exact&amp;emailassigned_to1=1&amp;email2=&amp;emailtype2=exact&amp;emailreporter2=1&amp;issueidtype=include&amp;issue_id=7%2C+8%2C+12%2C+29%2C+32%2C+47%2C+50%2C+53%2C+54%2C+56%2C+68%2C+73%2C+75%2C+76%2C+78%2C+79%2C+80%2C+81%2C+82%2C+84%2C+85%2C+86%2C+87%2C+94%2C+98%2C+44%2C+79&amp;changedin=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;short_desc=&amp;short_desc_type=substring&amp;long_desc=&amp;long_desc_type=substring&amp;issue_file_loc=&amp;issue_file_loc_type=substring&amp;status_whiteboard=&amp;status_whiteboard_type=substring&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0=&amp;cmdtype=doit&amp;namedcmd=IssuesResolvedPRtoPFD&amp;newqueryname=&amp;order=Reuse+same+sort+as+last+time&amp;Submit+query=Submit+query" rel="nofollow">this issue tracker query</a>.</p><span></span><p>Keep in mind this is a high level outline, for details, I encourage you to read the relevant sections of the spec itself.</p><span></span><p>Before we get to the outline, here is a brief summary of the main changes:</p><span></span><ul><li><p>Unified EL</p><p>The
+ expression language used in Faces, which was inspired by the expression
+ language used in JSTL and JSP, has been generalized and extracted into 
+its own top level <code>javax.el</code> package. The EL is agnostic of 
+the technology hosting it, such as JSP or Faces, and is intended to be 
+generally useful in the same way one can use OGNL in a variety of 
+applications. Faces now has deprecated its internal EL in favor of using
+ the Unified EL.</p></li><li><p>New Tree Creation and Content Interweaving Model for Faces applications that use JSP</p><p>While
+ it is perfectly acceptable to use Faces without using JSP, many people 
+find their productivity increases when using these two technologies 
+together. Unfortunately, as amply documented by <a class="jive-link-external-small" href="http://www.onjava.com/pub/a/onjava/2004/06/09/jsf.html" rel="nofollow">Hans Bergsten in his article at onjava.com</a>,
+ there were some integration cases that didn't work as expected. By 
+changing the specification of the implementation of the Faces 
+ViewHandler for JSP, as well as changing the JSP custom tag base class 
+used by all Faces component tags, these problems have all been resolved.</p></li><li><p>Integration with JSTL</p><p>Another long standing problem was in using JSTL's<code>&lt;c:forEach&gt;</code>
+ tag to contain Faces input components. Because JSP has no notion of a 
+postback, it was not possible to apply the values correctly to the 
+nested input components on postback. By introducing some new concepts 
+into the EL, it is now possible to fully use <code>&lt;c:forEach&gt;</code>with
+ any kind of Faces component. This will require a new release of JSTL, 
+which will also be present in J2EE 5, along with Faces and JSP.</p></li><li><p>Back Button issues and Multi Frame or Multi Window Faces Apps</p><p>Due
+ to a deficiency in the State Management API using Faces in Multi Frame 
+or Multi Window applications presented some problems. The browser back 
+button also could cause application state to become confused. These 
+problems have now been fixed.</p></li><li><p>Associating a message with a particular component in the page.</p><p>Previous
+ revisions of the spec didn't allow for dynamically including the label 
+of a component in an error message for that component. New spec features
+ now allow for this to happen.</p><p>It is now possible to override the 
+conversion or validation message that is displayed to the user on a 
+per-instance basis. For example:</p><pre><code>
+&lt;h:inputText value="#{bean.value}" 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; requiredMessage="#{bundle.requiredMessage}"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; converterMessage="#{bundle.converterMessage}"
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; validatorMessage="#{bundle.requiredMessage}"&gt;
+&nbsp; &lt;f:validateLongRange maximum="1" minimum="10"/&gt;
+&lt;/h:inputText&gt;
+
+</code>
+</pre></li><li><p>AJAX support</p><p>As you should all know by know, 
+AJAX is mainly a component thing, but there are some things the basic 
+JSF framework can do to make things a little easier for those writing 
+AJAXian JSF components. Even without these features (ie, in JSF 1.1), <a class="jive-link-external-small" href="https://bpcatalog.dev.java.net/nonav/ajax/jsf-ajax/frames.html" rel="nofollow">it's very easy to write AJAX components for JSF</a> and easier still to use them.</p><p>Specify that the <code>FacesServlet</code> should look for an<code>init-param</code>
+ called javax.faces.LIFECYCLE_ID to identify the Lifecycle to be used 
+for processing this request. This approach allows you to map different 
+instances of the<code>FacesServlet</code> with different lifecycles. For example, one mapping for standard JSF requests and another for AJAX JSF requests.</p><p>Specify
+ the name of the state saving parameter so that AJAX scripts can 
+manually post back the state to the server using XMLHttpRequest, 
+therefore enabling the AJAX processing code to have access to the full 
+view. This approach was used in the <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2005/05/ajaxian_faces_p.html" rel="nofollow">Progress Bar</a> JSF component. The name of the parameter is<code>javax.faces.ViewState</code>.</p></li><li><p>Expose an application wide ResourceBundle to the EL.</p><p>We
+ have added a new &lt;resource-bundle&gt; element to the faces-config 
+that allows you to list zero or more resource bundles that should be 
+exposed to the EL using the new ELResolver chain. Doing this allows 
+performance optimizations that prevent the need to create a 
+ResourceBundle for every request.</p></li><li><p>API classes use generics</p><p>In
+ response to strong Expert Group demand, we have applied Java SE 5.0 
+Generics to the JSF api. Therefore, the minimum JDK requirement for JSF 
+1.2 is Java SE 5.0. I'm told that it's possible to retroweave a binary 
+to make it run under 1.4, but of course that configuration is not 
+supported or recommended by Sun.</p></li></ul><span></span><p>All of these features and more are currently available in the JSF implementation found in Sun's Open Source Appserver, <a class="jive-link-external-small" href="https://glassfish.dev.java.net/" rel="nofollow">glassfish</a>.</p><span></span><p>Now, the outline of changes is available <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/outline.html/20050825-outline.html" rel="nofollow">here</a>.</p><span></span><p><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>

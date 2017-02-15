@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "JSF 2.2 ClientWindow, Links and Open in New Tab Blog"
+date:   2013-10-07 10:39:00 -0500
+---
+<div class="jive-rendered-content"><p>I’ve
+ been talking about JSF 2.2 new features out on the conference trail for
+ quite a while now. I usually talk about the big three: Flows, Resource 
+Library Contracts, and HTML5 Friendly Markup. This blog entry talks 
+about another, mostly behind-the-scenes, feature: <code>ClientWindow</code>. I introduce the concept of <code>ClientWindow</code>
+ and give a simple example illustrating one solution to a common web 
+browser problem: the browser’s "open in new tab” or "open in new window”
+ feature.</p><span></span><p>First, some background on the <code>ClientWindow</code> feature. In the name of clean design, this feature is disabled by default. Because the Faces Flows feature entirely depends on<code>ClientWindow</code>, the usage of Faces Flows will automatically enable <code>ClientWindow</code> if it is not enabled already. To explicitly enable <code>ClientWindow</code>, you can set a <code>&lt;context-param&gt;</code> with a<code>&lt;param-name&gt;</code> of<code>javax.faces.CLIENT_WINDOW_MODE</code> and a<code>&lt;param-value&gt;</code> of <code>url</code> in your<code>web.xml</code>. For example</p><span></span><pre><code>&lt;context-param&gt;<br>
+&nbsp;&nbsp; &lt;param-name&gt;javax.faces.CLIENT_WINDOW_MODE&lt;/param-name&gt;<br>
+&nbsp;&nbsp; &lt;param-value&gt;url&lt;/param-value&gt;<br>
+ &lt;/context-param&gt;<br>
+ </code>
+</pre><span></span><p>The JSF specification allows other values for this parameter, but other values would be implementation specific.</p><span></span><p>If <code>ClientWindow</code> is enabled, it will add an extra name=value pair onto every navigation component rendered by JSF. This extra name=value pair is the rendered representation of an instance of the <code>javax.faces.lifecycle.ClientWindow</code>class. The <a class="jive-link-external-small" href="http://docs.oracle.com/javaee/7/api/javax/faces/lifecycle/ClientWindow.html" rel="nofollow">JavaDoc for that class states:</a></p><span></span><blockquote class="jive-quote"><div style="margin-left: 2em;"><p>This class represents a client window, which may be a browser tab, browser window, browser pop-up, portlet, or anything else that can display a UIComponent hierarchy rooted at a UIViewRoot.</p></div></blockquote><span></span><p>The specification provides for additional logic that will cause an instance of <code>ClientWindow</code> to be automatically created if one is not already present for the currently rendered view. Now that we’ve defined the feature, let’s explain how to trip it up, and how to fix it.</p><span></span><h2>“Open in new tab” or “Open in new window”</h2><span></span><p>If a JSF 2.2 app has the <code>ClientWindow</code> feature enabled, every view that can be reached from the landing page for that app will have the extra name=value pair appended. In Oracle Mojarra, this parameter looks like this:<code>jfwid=518a78c52da3c025ab7a31cf4d50:6</code>. Components that render as hyperlinks offer the user a browser context menu that usually includes two options: “Open in new tab” and “Open in new window”. Selecting either of these two options would effectively cause two tabs to share the same<code>ClientWindow</code>. This is a violation of the concept and any data that is client window specific (such as flow scoped data) would now be shared across the two tabs (or windows). The easiest way to work around this is to simply prevent the context menu on any link components. This can simply be accomplished using an HTML5 Friendly Markup feature in JSF 2.2: passthrough attributes.</p><span></span><p>Declare a an XML namespace on your facelet page with the following namespace URI:<code><a class="jive-link-external-small" href="http://xmlns.jcp.org/jsf/passthrough" rel="nofollow">http://xmlns.jcp.org/jsf/passthrough</a></code>. Once declared, any attribute from that namespace will automatically be rendered straight to the markup without any server side interpretation. This can be used with the handy <code>oncontextmenu</code> javascript attribute to disable the context menu. For example:</p><span></span><pre><code>&lt;html xmlns="http://www.w3.org/1999/xhtml"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:h="http://java.sun.com/jsf/html"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xmlns:my="http://xmlns.jcp.org/jsf/passthrough"&gt;<br>
+ &lt;h:form prependId="false"&gt;<br>
+&nbsp;&nbsp; &lt;p&gt;&lt;h:link value="callB via GET" outcome="callB"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; my:oncontextmenu="return false;"/&gt;&lt;/p&gt;<br>
+ &lt;/h:form&gt;<br>
+ &lt;/html&gt;<br>
+ </code>
+</pre><span></span><p>Granted, this is a pretty brute force approach, but it can be targeted at individual components. I’ve opened <a class="jive-link-external-small" href="https://java.net/jira/browse/JAVASERVERFACES_SPEC_PUBLIC-1227" rel="nofollow">JAVASERVERFACES_SPEC_PUBLIC-1227</a>to create a more nuanced approach. Please vote for it if you’re interested and maybe we’ll get to it for JSF 2.3.</p></div>

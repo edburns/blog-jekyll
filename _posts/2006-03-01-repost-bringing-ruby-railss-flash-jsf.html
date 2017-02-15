@@ -1,0 +1,123 @@
+---
+layout: post
+title:  "Repost: Bringing Ruby on Rails's Flash to JSF Blog"
+date:   2006-03-01 6:20:00 -0500
+---
+<div class="jive-rendered-content"><p>With
+ the demise of the Sun Engineer's Sandbox, my content posted there has 
+disappeared. Thankfully I saved a copy. Thanks to srcerer on <a class="jive-link-external-small" href="http://java.sun.com/javaee/javaserverfaces" rel="nofollow">the ##jsf chat room on freenode</a> for reminding me to repost this.</p><span></span><h2>Overview</h2><span></span><p>To celebrate the release of Ruby on Rails (RoR) 1.0, I have taken the <i><a class="jive-link-external-small" href="http://api.rubyonrails.com/classes/ActionController/Flash.html" rel="nofollow">flash</a></i>concept from Rails's <code>ActionController</code>
+ and brought it to JSF. For those unfamiliar with RoR or the flash, the 
+flash is basically a map whose entries have a finite, container enforced
+ lifetime. The concept is familiar; it's the same old "scope" concept 
+used in the "request", "session" and "application" classes in the 
+Servlet spec. The point of the flash is to hold information you discover
+ on <strong>this</strong> request, that you want to use on the<strong>next</strong> request, but want to be forgotten after the next request is finished</p><span></span><p>Figure 1 is a cheesy graphical depiction of the request, flash, dialog, session, and application scopes.</p><span></span><p><a href="https://community.oracle.com/blogs/edburns/2006/03/01/fig1.jpg"><img src="20060301_files/fig1.html"></a></p><span></span><p>The
+ nice thing about these scopes is that they all have a Map into which 
+you can stick things. These Maps have the special property that they 
+will be cleared when the scope ends. In the case of the flash, the map 
+is cleared after exactly two runs through the JSF request processing 
+lifecycle.</p><span></span><p>I included Shale's <a class="jive-link-external-small" href="http://struts.apache.org/struts-shale/features-dialog-manager.html" rel="nofollow">Dialog</a>
+ concept for good measure since I believe this concept is important to 
+the future of JSF For example, it's so important that JBoss Seam <a class="jive-link-external-small" href="http://docs.jboss.com/seam/reference/en/html/tutorial.html#d0e778" rel="nofollow">also provides a similar concept</a>. A Shale dialog or Seam conversation is a scope whose length is determined by the application developer.</p><span></span><h2>Background</h2><span></span><p>Of course, I needed a release-vehicle for this thing so I created a new <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/" rel="nofollow">glassfish</a> sub-project on java.net called <a class="jive-link-external-small" href="https://jsf-extensions.dev.java.net/" rel="nofollow">jsf-extensions</a>.
+ My intent is to use this project for a number of extensions to the core
+ jsf implementation. The flash is just the first the first that is ready
+ for public use. Others in the works include:</p><span></span><ul><li><p>A completion and implementation of Jacob Hookom's <a class="jive-link-external-small" href="http://weblogs.java.net/blog/jhook/archive/2005/09/jsf_avatar_vs_m_1.html" rel="nofollow">JSF Avatar proposal</a></p></li><li><p>A
+ generalization of the Sun JSF implementation's JSP tag library 
+generator. This tool is used in the Sun implementation to generate the 
+TLD and tag handlers for the html_basic taglib from the existing 
+standard JSF component metadata in the<code>standard-html-renderkit.xml</code> file. The idea is to generalize this tool so it can be used to generate the taglib for any JSF component.</p></li><li><p>A generalization of the <code>PhaseListener</code> approach used in the <a class="jive-link-external-small" href="https://bpcatalog.dev.java.net/nonav/ajax/jsf-ajax/frames.html" rel="nofollow">Sun Blueprints Solutions Catalog AJAX components</a>
+ to serve up JavaScript files so that it can serve up any file out of a 
+component jar. This problem is solved in MyFaces using the <a class="jive-link-external-small" href="http://myfaces.apache.org/tomahawk/extensionsFilter.html" rel="nofollow">Extensions Filter</a> but a PhaseListener is a more self-container approach. This problem is also solved by <a class="jive-link-external-small" href="https://weblets.dev.java.net/" rel="nofollow">the Weblets Project</a>
+ but personally I don't think the problem of loading resources is big 
+enough to warrant an entire top-level project. Also, weblets has extra 
+XML configuration steps that simply are not necessary if you use the 
+PhaseListener approach.</p></li></ul><span></span><p>But enough about the future of <code>jsf-extensions</code>, let's quickly examine how to use the flash by examining the sample war included in the jsf-extensions download.</p><span></span><h2>Getting Started</h2><span></span><ul><li><p>Download and unpack the <a class="jive-link-external-small" href="https://jsf-extensions.dev.java.net/files/documents/4420/25753/jsf-extensions-0.1alpha1.zip" rel="nofollow">jsf-extensions download</a>.</p></li><li><p>Download a recent build of glassfish, I used <a class="jive-link-external-small" href="https://glassfish.dev.java.net/servlets/NewsItemView?newsItemID=3072" rel="nofollow">Build 31</a>.</p></li><li><p>Start it up by going to the <code>bin</code> directory and running:</p><pre>./asadmin start-domain domain1
+</pre></li><li><p>Then deploy the sample app by executing:</p><pre>./asadmin deploy --user admin --password adminadmin ~/jsf-extensions-1.0alpha1/wars/run-time-test-0.1.war
+</pre><p>Of course, you need to adjust your path to the war accordingly. The app will then be accessible at <a class="jive-link-external-small" href="http://localhost:8080/run-time-test-0.1/" rel="nofollow">http://localhost:8080/run-time-test-0.1/</a>. This will take you to an index page where you should click on the "Ruby on Rails-style Flash" link.</p></li></ul><span></span><h2>App Traversal</h2><span></span><p>This
+ app illustrates using the Flash from JSP. It is also possible to use 
+the flash directly from Java Code, or via the EL API. These latter two 
+methods are described in the <a class="jive-link-external-small" href="https://jsf-extensions.dev.java.net/nonav/docs/apidocs/com/sun/faces/el/FlashELResolver.html" rel="nofollow">JavaDocs</a>.</p><span></span><p>As you may know from <a class="jive-link-external-small" href="http://java.sun.com/products/jsp/reference/techart/unifiedEL.html" rel="nofollow">Jennifer and Pierre's article on the Unified EL</a>,
+ JSF expressions can be accessed in a "get" context, or a "set context",
+ otherwise known as "rvalue" or "lvalue", respectively. Thefore, the EL 
+Expression <code>#{flash.foo}</code> will store a value into the hash 
+under the key "foo" when evaluated as an lvalue, while it will retrieve 
+the value under key "foo" from the flash when evaluated as an rvalue.</p><span></span><p>In
+ JSP pages, most expressions act as rvalues, whereas the lvalue behavior
+ does not occurr until the form is submitted and the values entered by 
+the user are stored into the expressions. However, to make it easier to 
+set expression values from JSP, including setting into the flash, the 
+jsf-extensions library includes the <code>jsfExt:set</code> tag. A simple usage of this tag found on the first page in the sample app, flash.jsp, is shown below.</p><span>&nbsp;&nbsp;&nbsp; </span><table border="1"><tbody><tr><td style="border:1px solid black;"><pre><span>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+&nbsp; &lt;head&gt;
+&nbsp;&nbsp;&nbsp; &lt;title&gt;RoR Flash Test Page 1&lt;/title&gt;
+&nbsp;&nbsp;&nbsp; &lt;%@ taglib uri="</span><a class="jive-link-external-small" href="http://java.sun.com/jsf/core" rel="nofollow">http://java.sun.com/jsf/core</a><span>"&nbsp; prefix="f" %&gt;
+&nbsp;&nbsp;&nbsp; &lt;%@ taglib uri="</span><a class="jive-link-external-small" href="http://java.sun.com/jsf/html" rel="nofollow">http://java.sun.com/jsf/html</a><span>"&nbsp; prefix="h" %&gt;
+&nbsp;&nbsp;&nbsp; &lt;%@ taglib prefix="jsfExt" uri="</span><a class="jive-link-external-small" href="http://java.sun.com/jsf/extensions" rel="nofollow">http://java.sun.com/jsf/extensions</a><span>" %&gt;
+&nbsp; &lt;/head&gt;
+
+&nbsp; &lt;body&gt;
+&lt;f:view&gt;
+
+&nbsp; &lt;h:form id="form1"&gt;
+
+&nbsp; &lt;h:panelGrid columns="2" border="1" width="600"&gt;
+
+&nbsp;&nbsp;&nbsp; Store into the flash when rendering this page&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+&nbsp;&nbsp;&nbsp; &lt;jsfExt:set var="#{flash.foo}" value="fooValue" /&gt;
+
+&nbsp;&nbsp;&nbsp; Value of &lt;code&gt;\#{flash.foo}&lt;/code&gt;, should be &lt;code&gt;null&lt;/code&gt;.
+
+&nbsp;&nbsp;&nbsp; &lt;h:outputText value="#{flash.foo}" /&gt;
+
+&nbsp;&nbsp;&nbsp; &lt;h:commandButton value="reload" /&gt;
+
+&nbsp;&nbsp;&nbsp; &lt;h:commandButton value="next" action="next" /&gt;
+
+&nbsp;&nbsp; &lt;/h:panelGrid&gt;
+
+&nbsp; &lt;/h:form&gt;
+
+&lt;/f:view&gt;
+&nbsp; &lt;/body&gt;
+&lt;/html&gt;
+</span></pre></td></tr></tbody></table><span></span><p>We're using the panelGrid tag (in way we not possible before JSF 1.2, due to the problems pointed out in <a class="jive-link-external-small" href="http://www.onjava.com/pub/a/onjava/2004/06/09/jsf.html" rel="nofollow">Hans Bergsten challenge</a>) to lay out the contents in a simple two column table. The first row shows the use of the<code>jsfExt:set</code>
+ tag to store a value into the flash. The second row shows how to get 
+things from the flash. When viewing this page the first time, you won't 
+see anything in the "Value of #{flash.foo} row" until you press the 
+"reload" button in the page. This is because the normal use-case of the 
+flash is to store things in this request that will be accessed on the 
+next request.</p><span></span><p>If you want to store something in the 
+flash for use on this request, click on the "next" button in the sample 
+app for an example. In this page we use the "flash.now" syntax, shown 
+below in JSP.</p><span>&nbsp;&nbsp;&nbsp; </span><table border="1"><tbody><tr><td style="border:1px solid black;"><pre>&lt;jsfExt:set var="#{flash.now.bar}" value="barValue" /&gt;
+
+&lt;h:outputText value="#{flash.now.bar}" /&gt;
+</pre></td></tr></tbody></table><span></span><p>By inserting the special
+ keyword "now" we tell the flash that this store operation should be 
+accessible on this request, rather than the next request. If, during 
+processing, you decide you want to promote the value from flash.now to 
+the real flash, use "flash.next" as shown on the next page of the sample
+ app.</p><span>&nbsp;&nbsp;&nbsp; </span><table border="1"><tbody><tr><td style="border:1px solid black;"><pre>&lt;f:verbatim&gt;
+&lt;jsfExt:set var="\#{flash.now.buckaroo}" value="banzai" /&gt;
+&lt;/f:verbatim&gt;
+
+Value of &lt;code&gt;\#{flash.now.buckaroo}&lt;/code&gt;, should be
+&lt;code&gt;banzai&lt;/code&gt;.
+
+&lt;h:outputText value="#{flash.now.buckaroo}" /&gt;
+
+Promote buckaroo to stick around for the next request.
+
+&lt;jsfExt:set var="#{flash.keep.buckaroo}" value="#{flash.now.buckaroo}" /&gt;
+</pre></td></tr></tbody></table><span></span><p>When you click on the 
+next button, you will be shown a page that shows that the value in the 
+flash has indeed survived the postback.</p><span>&nbsp;&nbsp;&nbsp; </span><table border="1"><tbody><tr><td style="border:1px solid black;"><pre>Show that buckaroo is still here.
+
+&lt;h:outputText value="#{flash.buckaroo}" /&gt;
+</pre></td></tr></tbody></table><span></span><p>This is a brief 
+introduction to using the flash, a more in-depth article would cover a 
+common real-world use-case, such as doing master-detail, and also cover 
+the other two entry points to using the flash, the EL API, and direct 
+programmatic use.</p><span></span><p><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>

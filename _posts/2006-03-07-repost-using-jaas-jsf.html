@@ -1,0 +1,223 @@
+---
+layout: post
+title:  "Repost: Using JAAS with JSF Blog"
+date:   2006-03-07 7:33:00 -0500
+---
+<div class="jive-rendered-content"><p>The content and ideas in this blog entry are taken from my upcoming McGraw Hill Osborne book <a class="jive-link-external-small" href="http://purl.oclc.org/NET/jsfbook/" rel="nofollow">JavaServer Faces: The Complete Reference</a>, which I am co-authoring with <a class="jive-link-external-small" href="http://www.jroller.com/page/cschalk" rel="nofollow">Chris Schalk</a>.
+ In the book, we have a chapter on Securing JavaServer Faces 
+applications. This excerpt shows how the extensible design of JavaServer
+ Faces can be used to allow JAAS to provide authentication to a JSF Web 
+application. JAAS Authorization with JSF is also covered in the book, 
+but not in this excerpt.</p><span>&nbsp;&nbsp;&nbsp; </span><table border="1"><tbody><tr><td style="border:1px solid black;"><p>We
+ will conclude this chapter by showing how to enhance the example 
+application by leveraging the standard security infrastructure of the 
+Java platform. From its inception, the Java platform has treated 
+security as a first class concern. Indeed, one of the first benefits of 
+Java was to securely bring dynamic behavior to web deployed 
+applications. Over the years, the implementation and API to security has
+ evolved, but the core principals have improved and become steadily more
+ secure. Therefore, choosing to build your application managed security 
+on top of the standard Java security features is a very safe bet.</p><p>A
+ term often applied to Java security is JAAS, which is short for Java 
+Authentication and Authorization Service. JAAS started out as an 
+optional package in JDK 1.3 but has become a core part of the Java 
+platform as of JDK 1.4. As the name implies, JAAS covers the first two 
+of the three main aspects of security: authentication and authorization.
+ Let's explore one way to integrate JAAS style authentication and 
+authorization into the application</p><h2>Using JAAS Authentication in the example application</h2><p>While
+ it would certainly be possible to call into the JAAS layer directly 
+from the example application logic, for example, from the UserRegistry 
+bean, a more re-usable solution is to encapsulate the<strong style="color:black;background-color:#a0ffff;">JAAS</strong>
+ interface in a custom ActionListener. This approach de-couples the 
+security completely from your application and takes advantage of the 
+intended use of the ActionListener extension hook.</p><p>The mechanics 
+of providing such an ActionListener are described in Chapter 11, but 
+let's review briefly here. The first step is to modify the 
+faces-config.xml file for the example reusable component library so that
+ it includes the action-listener declaration, as shown here.</p><pre><code>&lt;application&gt;
+&nbsp; &lt;action-listener&gt;
+&nbsp;&nbsp;&nbsp; com.jsfcompref.examplecomponents.util.JAASActionListener
+&nbsp; &lt;/action-listener&gt;
+&lt;/application&gt;
+</code>
+</pre><p>Then, leverage the decorator pattern, as described in Chapter 
+10, to delegate most of the work to the "real" ActionListener by 
+providing a constructor that saves a reference to it. Following the 
+constructor, the processAction( ) method must be implemented, as 
+described below.</p><pre><code>private ActionListener parent = null;
+&nbsp;&nbsp;&nbsp; 
+public JAASActionListener(ActionListener parent) {
+&nbsp; this.parent = parent;
+}
+
+public void processAction(ActionEvent event)
+&nbsp; throws AbortProcessingException {
+&nbsp; FacesContext context = FacesContext.getCurrentInstance();
+&nbsp; UIOutput comp = null;
+&nbsp; String userid = null, password = null;
+&nbsp; JAASHelper jaasHelper = new JAASHelper();
+&nbsp; 
+&nbsp; // Check to see if they are on the login page.
+&nbsp; boolean onLoginPage = (-1 != context.getViewRoot().getViewId().
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lastIndexOf("login")) ? true : false;
+&nbsp; if (onLoginPage) {
+&nbsp;&nbsp;&nbsp; if (null != (comp = (UIOutput) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; context.getViewRoot().findComponent("form:userid"))) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; userid = (String) comp.getValue();
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; if (null != (comp = (UIOutput) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; context.getViewRoot().findComponent("form:password"))) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; password = (String) comp.getValue();
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; // If JAAS authentication failed
+&nbsp;&nbsp;&nbsp; if (!jaasHelper.authenticate(userid, password)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; context.getApplication().getNavigationHandler().
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handleNavigation(context, null, "login");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Subject must not be null, since authentication succeeded
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assert(null != jaasHelper.getSubject());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Put the authenticated subject in the session.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; context.getExternalContext().getSessionMap().put(JAASSubject, 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jaasHelper.getSubject());
+&nbsp;&nbsp;&nbsp; }
+&nbsp; }
+&nbsp; parent.processAction(event);
+}
+
+</code>
+</pre><p>The first thing to note is that part of the usage contract for 
+JAASActionListener is the requirement that the username and password 
+components be nested inside a UIForm named "form", and be named "userid"
+ and "password" respectively. This expedient measure allows the 
+JAASActionListener to easily extract the user-provided values for 
+username and password so that they can be passed on to the JAASHelper 
+class. The second thing to note about the usage contract is the 
+requirement that the application provide a navigation rule for the 
+outcome "login" that causes the user to be directed to the login page if
+ the authentication failed. In the failure case, processAction( ) is not
+ called until after redirecting to the "login" outcome using 
+NavigationHandler. If authentication succeeded, the Subject is stored in
+ the session for later access. The java.security.Subject is the Java 
+class that represents the user to the runtime. (We'll cover Subject in 
+greater detail in the section on JAAS authentication.) Finally, the 
+parent processAction( ) method is called to do the normal action 
+handling. Note that this causes the existing application managed 
+authentication, as described in Chapter 9, to take place. A production 
+quality implementation would probably remove the application managed 
+authentication in favor of using JAAS, rather than just supplementing 
+it, as we have done here.</p><p>Let's examine the JAASHelper class.</p><pre><code>public class JAASHelper {
+&nbsp; 
+&nbsp; LoginContext loginContext = null;
+
+&nbsp; public JAASHelper() {
+&nbsp; }
+&nbsp; 
+&nbsp; public boolean authenticate(String userid, String password) {
+&nbsp;&nbsp;&nbsp; boolean result = false;
+&nbsp;&nbsp;&nbsp; try {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginContext = new LoginContext("FileLogin", 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new LoginCallback(userid, password));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginContext.login();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = true;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; catch (LoginException e) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // A production quality implementation would log this message
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = false;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; return result;
+&nbsp; }
+&nbsp; 
+&nbsp; public Subject getSubject () {
+&nbsp;&nbsp;&nbsp; Subject result = null;
+&nbsp;&nbsp;&nbsp; if (null != loginContext) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result = loginContext.getSubject();
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; return result;
+&nbsp; }
+&nbsp; 
+&nbsp; public static class LoginCallback implements CallbackHandler {
+&nbsp;&nbsp;&nbsp; private String userName = null;
+&nbsp;&nbsp;&nbsp; private String password = null;
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; public LoginCallback(String userName, String password) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.userName = userName;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.password = password;
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp; public void handle(Callback[] callbacks) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i&lt; callbacks.length; i++) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (callbacks[i] instanceof NameCallback) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NameCallback nc = (NameCallback)callbacks[i];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nc.setName(userName);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (callbacks[i] instanceof PasswordCallback) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PasswordCallback pc = (PasswordCallback)callbacks[i];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pc.setPassword(password.toCharArray());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp; }
+&nbsp; }
+}
+</code>
+</pre><p>The authenticate( ) method uses the class 
+java.security.auth.login.LoginContext to perform the login. The login( )
+ method of this class will throw a LoginException if the login fails for
+ any reason. This exception is caught by authenticate( ) and it responds
+ by setting result to false. false. If no exception is thrown, result is
+ set to true. authenticate( ) ends by returning the value of result.</p><p>The
+ two arguments to the LoginContext constructor are the most important 
+part of this example. The first, the literal string "FileLogin", refers 
+to an implementation of the javax.security.auth.spi.LoginModule 
+interface. This interface is implemented by a provider of a particular 
+implementation of authentication technology, for example JNDI, LDAP, or 
+database. In this example, we use a free software implementation called 
+"tagish" that provides a simple file based authentication scheme. The 
+implementation comes from John Gardner and can be found at <a class="jive-link-external-small" href="http://free.tagish.net/jaas/" rel="nofollow">http://free.tagish.net/<strong style="color:black;background-color:#a0ffff;">jaas</strong>/</a>.
+ Providing a LoginModule implementation is beyond the scope of this 
+chapter, but we must illustrate how to use one, once it has been 
+provided. This is the beauty of JAAS, the authentication technology 
+itself is separated from the rest of the system. In other words, if you 
+want to plug in LDAP, do it by providing a custom LoginModule.</p><p>The JVM is made aware of the existence of a LoginModule implementation either through a -D flag, or via a modification to the <code>JAVA_HOME/jre/lib/java.security</code> file. In our case, we use the former option: <code>-Djava.security.auth.login.config== D:/Projects/example/chapterCode/ch14/example/src/resources/tagish.login</code>Note
+ the use of forward slashes instead of the standard Windows backslashes.
+ Also note the "==" instead of just one "=". The format of this file is 
+prescribed by JAAS:</p><pre><code>FileLogin
+{
+&nbsp; com.tagish.auth.FileLogin required
+pwdFile="D:/Projects/example/chapterCode/ch14/example/src/resources/passwd";
+};
+</code>
+</pre><p>The FileLogin identifier must match the argument to the 
+LoginContext constructor. The first element inside the FileLogin 
+declaration is the fully qualified class name of the class implementing 
+LoginModule. In our application, we have bundled tagish.jar, which 
+contains this class, into the WEB-INF/lib directory of the application. 
+The required flag tells the system that the login must succeed, and 
+whether it succeeds or fails, the login must still proceed down the 
+LoginModule chain. Other valid values for this flag are requisite, 
+sufficient, and optional and are described in the javadocs for the class
+ javax.security.auth.login.Configuration. The pwdFile argument is an 
+implementation specific parameter to the code in tagish.jar that tells 
+it where to find its password file. The format of this file is also 
+implementation specific and for the example app looks like this:</p><pre><code>username:MD5 Hash Of Password:group*
+The specific file for the example follows:
+# Passwords for com.tagish.auth.FileLogin
+
+jfitness:5a64edabc9358c603103053a3c600a88:user
+stiger:40be4e59b9a2a2b5dffb918c0e86b3d7:user
+guest:084e0343a0486ff05530df6c705c8bb4:user
+jake:1200cf8ad328a60559cf5e7c5f46ee6d:user:manager
+</code>
+</pre><p><span>Obviously, a simple MD5 hash of the password is not at 
+all secure and a production quality implementation would use an actual 
+encryption algorithm. For the purposes of security, MD5 is just as 
+secure as Base64 encoding, described earlier in the chapter, which is to
+ say, not at all secure. A handy MD5 hash calculator can be found at </span><a class="jive-link-external-small" href="http://bfl.rctek.com/tools/?tool=hasher" rel="nofollow">http://bfl.rctek.com/tools/?tool=hasher</a><span>.
+ Note that user jake is a member of the user and manager groups, while 
+all the other users are simply members of the user group. Groups will 
+come into play in the next section.</span></p><p>The second argument to 
+the LoginContext constructor is an implementation of the 
+javax.security.auth.callback.CallbackHandler interface. The 
+LoginCallback implementation saves the username and password ultimately 
+originating from the userid and password components in its constructor 
+and uses standard boilerplate code to propagate them to the JAAS system.</p></td></tr></tbody></table><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

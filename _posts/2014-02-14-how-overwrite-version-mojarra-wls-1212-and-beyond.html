@@ -1,0 +1,31 @@
+---
+layout: post
+title:  "How to Overwrite The Version of Mojarra in WLS 12.1.2 and Beyond Blog"
+date:   2014-02-14 8:39:00 -0500
+---
+<div class="jive-rendered-content"><p>This
+ blog entry describes an unsupported process for overwriting the version
+ of Mojarra that comes bundled in WLS 12.1.2 and beyond with an 
+arbitrary version (from groupId org.glassfish artifactId javax.faces).</p>&nbsp; <p>Sometimes
+ it is necessary to upgrade the version of Mojarra that comes bundled in
+ WebLogic Server with a different version, either newer or older.&nbsp; 
+One such usage: the Mojarra team at Oracle uses this process to ensure 
+the in-container tests for WLS use the just-built Mojarra during 
+continuous integration.&nbsp; To support this, a profile is added to the
+ top level <code>pom.xml</code> for the automated tests.&nbsp; Though 
+the primary purpose of this profile is to aid our own continuous 
+integration builds, the profile can also be used for general purpose WLS
+ instrumentation.</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ol>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>You &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; may <a class="jive-link-external-small" href="http://jsf.java.net/checkout.html" rel="nofollow">check out the &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entire Mojarra source tree</a> or just grab the top level &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pom for the source line you require.</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>JSF 2.1.x code line <a class="jive-link-external-small" href="https://svn.java.net/svn/mojarra%7Esvn/branches/MOJARRA_2_1X_ROLLING/test/pom.xml" rel="nofollow">https://svn.java.net/svn/mojarra~svn/branches/MOJARRA_2_1X_ROLLING/test/pom.xml</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>JSF 2.2.x code line <a class="jive-link-external-small" href="https://svn.java.net/svn/mojarra%7Esvn/branches/MOJARRA_2_2X_ROLLING/test/pom.xml" rel="nofollow">https://svn.java.net/svn/mojarra~svn/branches/MOJARRA_2_2X_ROLLING/test/pom.xml</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Invoke the <code>package</code> goal, being careful to use the non-recursive mvn invocation. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p><code>mvn -N -Djsf.version=&lt;version&gt; -Dintegration.container.home=&lt;MW_HOME&gt; -Phudson-wls-prepare package</code></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p>This will cause the maven&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; artifact <code>org.glassfish:javax.faces:&lt;version&gt;</code>
+ to be pulled from the 
+local&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maven repository 
+(downloading if necessary), and applied on 
+top&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; of whatever version 
+of Mojarra is in the WLS 
+installation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at <code>MW_HOME</code>.&nbsp; Note that <code>MW_HOME</code>
+ must be&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the value as 
+specified in the README.txt in the WLS 
+installation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; zip.</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ol>&nbsp; <p>This
+ approach is entirely unsupported by Oracle and is only provided for 
+testing purposes.&nbsp; Instructions for reverting your WLS installation
+ to the previous version are outside the scope of this blog entry.&nbsp;
+ The recommended practice is to re-install WLS.</p> </div>

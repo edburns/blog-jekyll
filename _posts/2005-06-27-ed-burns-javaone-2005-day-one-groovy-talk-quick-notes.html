@@ -1,0 +1,74 @@
+---
+layout: post
+title:  "Ed Burns JavaOne 2005 Day One Groovy talk quick notes Blog"
+date:   2005-06-27 11:35:00 -0500
+---
+<div class="jive-rendered-content"><p>The most I'd heard of groovy is what <a class="jive-link-external-small" href="http://www.almaer.com/blog/" rel="nofollow">Dion</a>
+ said at the 2005 Server Side Java Symposium. There he said it was a bit
+ backwards to have a JSR for a scripting language before it was more 
+fully fleshed out. Something about a cart and a horse. Anyway, after 
+atttending this talk I can see things seem to be progressing nicely, and
+ I don't know if I agree with Dion's assesment, though I can see where 
+he's coming from.</p><span></span><p>It's all about less lines of code.</p><span></span><p>Most
+ of the web tier is duct tape with pockets of business logic. Good 
+point. Scripting languages are built for glueing things together.</p><span></span><p>Why another scripting language?</p><span></span><p>want binary compatability with Java. Want something similar to Java.</p><span></span><pre>features of Ruby Python and Smalltalk.
+
+J/Python, J/Ruby, Beanshell, all lacking.
+
+Features
+
+&nbsp;&nbsp;&nbsp; Dynamic and optional static typing.&nbsp; 
+
+&nbsp;&nbsp;&nbsp; Idea: write a component in groovy.
+
+&nbsp;&nbsp;&nbsp; Native syntax for lists, maps, arrays, etc.
+
+&nbsp;&nbsp;&nbsp; Closures: nested expressions.
+
+&nbsp;&nbsp;&nbsp; regex built in ==~
+
+&nbsp;&nbsp;&nbsp; Operator overloading, not a good example.&nbsp; 
+
+&nbsp;&nbsp;&nbsp; Semicolons are optional.
+
+Groovy JDK, intercepts all calls and delegates to underlying class if
+not implemented at the groovy level.&nbsp; Can add new methods dynamically at
+runtime.&nbsp; Can use a "use" clause to pull it in.
+
+Working with groovy and Java together.&nbsp; Groovy classes can be called
+directly from java.&nbsp; Can also use with ant.&nbsp; &lt;script&gt; tag.&nbsp; or
+&lt;groovy&gt; tag.
+
+XML Generation
+
+groovy.xml.MarkupBuilder
+
+There are lots of MarkupBuilders in groovy.&nbsp; This would be easy to build
+renderers.
+
+XML Parsing
+
+Extras
+
+&nbsp;&nbsp;&nbsp; GroovyTest.&nbsp; Easier than JUnit.
+
+&nbsp;&nbsp;&nbsp; Thicky, Server side Groovy based rich client delivery via JSP.
+
+&nbsp;&nbsp;&nbsp; Unix scripts in groovy.
+
+&nbsp;&nbsp;&nbsp; ActiveX Proxy nice for being able to connect to MS apps that expose
+&nbsp;&nbsp;&nbsp; ActiveX APIs, such as XSL.&nbsp; Can be used to drive IE.
+
+Status
+
+&nbsp;&nbsp;&nbsp; 1.0 in September
+
+&nbsp;&nbsp;&nbsp; Development time, less than half of Java
+
+&nbsp;&nbsp;&nbsp; Performance: slow 20 - 90% of java
+
+&nbsp;&nbsp;&nbsp; Ready for small non-mission critical, experimental.
+
+&nbsp;&nbsp;&nbsp; appropriate to supplement ant, unit testing
+
+</pre><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

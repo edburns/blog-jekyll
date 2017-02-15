@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "Compilllers are Helpful Blog"
+date:   2007-03-12 3:11:00 -0500
+---
+<div class="jive-rendered-content"><p>When working to revive <a class="jive-link-external-small" href="http://www.mozilla.org/projects/blackwood/webclient" rel="nofollow">Webclient</a>as
+ a means to enable one to write automated tests for Ajax Applications, I
+ ended up fixing some thread safety assertions that were failing in 
+native code. Part of this involved slightly recrafting the design of the
+ native/Java DOM bridge, originally written over seven years ago by <a class="jive-link-external-small" href="http://weblogs.java.net/blog/idk/" rel="nofollow">Igor Kushnirsky</a>. Igor's original design had lots of <code>public native</code>
+ methods. My problem was that I needed these methods to have their 
+native code executed on a particular thread. However, the DOM methods 
+can be called from any old thread in the application. Webclient already 
+does this with an internal <code>NativeEventThread</code> class. All 
+webclient methods that end up in native code happen on that thread. 
+Basically, I had to go through the Java DOM code and turn this:</p><span></span><pre>public native Element getElementById(String elementId);
+
+</pre><span></span><p>into this:</p><span></span><pre>public Element getElementById(String elementId) {
+&nbsp; // Make this happen on the NativeEventThread.
+&nbsp; return nativeGetElementById(elementId);
+}
+native Element nativeGetElementById(String elementId);
+
+</pre><span></span><p>Of course, I would have to modify the function names in the native C++ source files as well.</p><span></span><p>In case you were wondering, I did consider these solutions but rejected them.</p><span></span><dl><dt>Use Javier Pedemonte's Java XPCOM bridge</dt><dd>I
+ plan to completely rewrite the mozilla layer of webclient and dom to 
+use this most excellent software after I get the 2.0 release done. I 
+don't have time for that extensive rewrite now.</dd><dt>Use aspect oriented programming techniques</dt><dd>Sure, I could do this, but I don't want to introduce another dependency on another technology.</dd></dl><span></span><p>That
+ said, I wrote some xemacs macros as I went along and it only took a 
+couple hours of manual editing. While doing it, I re-compiled all along 
+the way. Naturally, the compiler caught some things, which I easily 
+fixed, as I went along.</p><span></span><p>This got me thinking. Say 
+this code was written entirely in a scripting language. If so, this sort
+ of "complicated, human-assisted global search and replace" change (I 
+won't call it refactoring since this particular process was so specific 
+to JNI) would be really error prone and hard to debug. The absence of a 
+type checking compiler would really make this sort of change hard.</p><span></span><p>I
+ assert that this sort of change is happens all the time in the 
+maintenance phase of a large software project. I assert that the person 
+making the change is seldom the same person who wrote the code 
+originally. Given these assertions, I predict much woe for the 
+maintenance programmer who has to do such a change on a scripting 
+language based project. I continue to urge caution for those listening 
+to scripting zealots when they consider moving more of their projects to
+ scripting languages.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

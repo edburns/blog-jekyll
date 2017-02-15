@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Try out Mojarra 2.2.0-SNAPSHOT Blog"
+date:   2011-09-26 4:53:00 -0500
+---
+<div class="jive-rendered-content"><p>If
+ you want to try out the absolute latest Mojarra 2.2-SNAPSHOT, you can 
+run it on GlassFish 3.1 or GlassFish 3.1.1. To install it, grab the 
+2.2.0-SNAPSHOT version of Mojarra from this repository.</p><span></span><pre><code> &lt;repository&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;id&gt;jvnet-nexus-snapshots&lt;/id&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;name&gt;jvnet-nexus-snapshots&lt;/name&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;url&gt;<a class="jive-link-external-small" href="https://maven.java.net/content/repositories/snapshots/" rel="nofollow">https://maven.java.net/content/repositories/snapshots/</a>&lt;/url&gt; 
+ &lt;/repository&gt; </code>
+</pre><span></span><pre><code> &lt;dependency&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;groupId&gt;org.glassfish&lt;/groupId&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;artifactId&gt;javax.faces&lt;/artifactId&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;version&gt;2.2.0-SNAPSHOT&lt;/version&gt;&nbsp;&nbsp; 
+&nbsp;&nbsp; &lt;scope&gt;provided&lt;/scope&gt; 
+ &lt;/dependency&gt; </code>
+</pre><span></span><br><br><span>&nbsp; </span><p>Once you download the <code>javax.faces.jar</code>, you must take some steps to install it in GlassFish 3.1 or 3.1.1.</p><span></span><ol><li><p>Remove <code>jsf-api.jar</code> and <code>jsf-impl.jar</code>from the <code>modules</code> directory.</p></li><li><p>Put <code>javax.faces.jar</code> in the <code>modules</code>directory.</p></li><li><p>You must modify the <code>default-web.xml</code> file in<code>domains/domain1/config</code> and <code>lib/templates</code>. In each directory, remove any mention of <code>jsf-api.jar</code>and <code>jsf-impl.jar</code> from the <code>default-web.xml</code>file. In place of the two jars, add a reference to<code>javax.faces.jar</code>.</p></li></ol><span></span><p>Once
+ Mojarra 2.2.0-SNAPSHOT has been installed in your GlassFish 3.1.1 or 
+GlassFish 3.1 container, you can use the 2.2-SNAPSHOT verson of the 
+javax.faces-war-archetype, which is just like the previous one except 
+that it depends on the 2.2-SNAPSHOT version of the JSF API. You must 
+always include the<code>-DarchetypeRepository</code> argument to mvn because SNAPSHOT artifacts are never pushed to maven central.</p><span></span><pre><code>mvn archetype:generate -DarchetypeGroupId=javax.faces -DarchetypeArtifactId=javax.faces-war-archetype -DarchetypeVersion=2.2-SNAPSHOT -DarchetypeRepository=https://maven.java.net/content/repositories/snapshots/</code>
+</pre><span></span><br><br><span>&nbsp; </span><p>This blog entry 
+signifies the culmination of the effort of many individuals from many 
+disciplines over the years. I would like to thank them all for finally 
+allowing official Java jars to flow into Maven Central.</p><span></span><p><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>

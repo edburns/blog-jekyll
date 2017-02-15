@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Using JSP Immediate Expressions to access JSF Data Blog"
+date:   2006-03-15 4:48:00 -0500
+---
+<div class="jive-rendered-content"><p>Here
+ is an ultra-quick blog entry sharing something in JSF 1.2 about which 
+I'm not sure many people are aware. Thanks to the unified EL, it is 
+possible to refer to JSF managed beans and other JSF concepts using 
+plain old JSP expressions in the page. For example, let's say you have a
+ JSF app that is a bookstore. In the app is a managed bean that is a Map
+ where the keys are ISBN numbers and the values are Book JavaBeans that 
+have properties like author, title, ISBN, etc.</p><span></span><p>In JSF
+ 1.1, to display any information from the book Map, you had to use JSF 
+components. In JSF 1.2, you can use plain old JSP ${} expressions to 
+access this data, like this:</p><span></span><pre>The title is ${books["0072262400"].title}.&nbsp; 
+</pre><span></span><p>Even though <code>books</code> is a managed bean, you can still access it without JSF.</p><span></span><p>Keep
+ in mind that you can also access all the implicit objects, including 
+JSF ones, in this manner. For example, if you wanted to use EL to get 
+the locale of the current view, you could say:</p><span></span><pre>${view.locale}
+</pre><span></span><p>As a final example, if you wanted to get the 
+remote user name of the current user using standard Servlet 
+authentication APIs you could say:</p><span></span><pre>${facesContext.externalContext.remoteUser}
+</pre><span></span><p>Basically anything that conforms to JavaBeans naming conventions and is accessible from the <code>FacesContext</code> or<code>UIViewRoot</code> can be reached via the EL in this way.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

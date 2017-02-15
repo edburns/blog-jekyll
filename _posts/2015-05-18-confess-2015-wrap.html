@@ -1,0 +1,87 @@
+---
+layout: post
+title:  "ConFESS 2015 Wrap Up Blog"
+date:   2015-05-18 9:02:00 -0500
+---
+<div class="jive-rendered-content"><h1>ConFESS 2015 Wrap Up</h1><p>Hard on the heels of <a class="jive-link-external-small" href="https://weblogs.java.net/blog/edburns/archive/2015/03/30/javaland-2015-wrap" rel="nofollow">JavaLand</a> was <a class="jive-link-external-small" href="http://2015.con-fess.com/" rel="nofollow">ConFESS</a>. This was the eighth installment of the conference that started life in 2008 as <a class="" href="https://community.oracle.com/blog/http%20]]%3E%3C%21[CDATA[%20s:/matthiaswessendorf.wordpress.com/2008/02/14/jsfdays-2008-in-vienna">JSF Days</a>,
+ switching to the name "ConFESS" in 2011. The name stands for the 
+"Conference for Enterprise Software Solutions". Last year, ConFESS was 
+held as a partnership with JavaLand in Brühl Germany. Neither party was 
+satisfied with how that turned out and in 2015 ConFESS returned to its 
+home in Vienna, where it will stay. It was a relatively small event, 
+with just over 200 participants. It nicely filled out the venue, the C3 
+event center in the 3rd district. In my opinion, its small size is a 
+large asset. The ability to have the entire event schedule on two sides 
+of a 4x5 inch card is very convenient.</p><p><a href="https://community.oracle.com/blog/20150415-confess-2015.jpg"><img __embedded_id="403" src="20150518_files/20150415-confess-2015.html" style="float: right;" width="200" height="150"></a></p><p>My
+ overall impression of the conference was very positive. There was a 
+wide variety of talks from speakers I hadn't seen before on the 
+conference circuit. There was a good breadth of coverage in diverse 
+tracks ranging from agile/methods to Java EE to tools to client side 
+technologies, and there was an excellent band on Tuesday night, <a class="jive-link-external-small" href="http://www.fsgcompany.com/" rel="nofollow">Florian Braun and FSG Company</a>. There was also a Lego Mindstorms EV3 competition that got rave reviews, but I didn't attend that portion of the event.</p><p><a href="https://community.oracle.com/blog/20150414_confess-2015.jpg"><img __embedded_id="404" src="20150518_files/20150414_confess-2015.html" style="float: left;" width="200" height="150"></a></p><p>The full set of abstracts from the conference are available at the <a class="jive-link-external-small" href="https://www.regonline.com/builder/site/tab2.aspx?EventID=1619724" rel="nofollow">regonline site for the event</a>.
+ You can use that site to learn more about the sessions for which I will
+ give my brief impressions in the remainder of this blog entry.</p><h3>Tuesday</h3><p>The Tuesday Keynote was from Oracle Labs's <a class="jive-link-external-small" href="https://twitter.com/thomaswue" rel="nofollow">Thomas Wuerthinger</a>. Thomas presented his exciting work on the <a class="jive-link-external-small" href="http://www.oracle.com/technetwork/oracle-labs/program-languages/overview/index-2301583.html" rel="nofollow">Graal VM</a>. First off, I'm glad to see that Oracle has continued Sun's tradition of funding long-term research in the spirit of <a class="jive-link-external-small" href="http://en.wikipedia.org/wiki/Sun_Microsystems_Laboratories" rel="nofollow">Sun Labs</a>,
+ founded by computing pioneer Ivan Sutherland (yep, just checked, he 
+still works for Oracle). The basic idea of Graal appears to be: take the
+ abstract syntax tree concept from compiler design and make it a first 
+class part of the JIT process, allowing the runtime to rewrite itself as
+ the program runs to achieve greater performance without sacrificing 
+agility. Cool stuff, and great for a keynote.</p><p>Sticking with the JSF heritage of the conference, next up was <a class="jive-link-external-small" href="https://twitter.com/cagataycivici" rel="nofollow">Cagatay Civici's</a>
+ talk about PrimeFaces. Cagatay introduced the new "layouts" concept, 
+built on JSF 2.2 Resource Library Contracts. The base offering consists 
+of two new layouts, <a class="jive-link-external-small" href="http://www.primefaces.org/layouts/sentinel.html" rel="nofollow">Sentinel</a> and <a class="jive-link-external-small" href="http://www.primefaces.org/layouts/spark.html" rel="nofollow">Spark</a>.
+ One thing I've always liked about PrimeFaces is how they take the base 
+concepts of the core JSF specification and use them to maximum effect, 
+taking full advantage of new features, large and small.</p><p>Diving down a level, <a class="jive-link-external-small" href="https://twitter.com/pbouillaud/status/588552316594302976" rel="nofollow">Johannes Tuchscherer</a>
+ from CloudFoundry talked about Docker and how it relates to offerings 
+from Pivotal. Johannes put the hype into perspective, showing how you 
+still need other technologies to actually create value with Docker.</p><p>Sticking in the Pivotal realm, <a class="jive-link-external-small" href="https://twitter.com/springjuergen" rel="nofollow">Jürgen Höller</a>
+ gave the Spring 4.1 overview talk. It was nice to see that they were 
+able to leverage Java SE 8 features while producing a binary that runs 
+on Java SE 6. I was happy to have the opportunity to ask Juergen how 
+pulled that trick off and the answer is basically build-time static code
+ analysis. They compile with Java SE 8 with -source and -target 1.6, and
+ have a build-time tool that looks for usages of Java SE 8 only idioms 
+and APIs, and flags them as failures.</p><p>The next talk I attended was a really practical hands on session about Java Flight Recorder from <a class="jive-link-external-small" href="https://twitter.com/johanjanssen42" rel="nofollow">Johan Janssen</a>. I'm a big fan of learning to get more out of tools I already have. JFR has been a part of the JDK for quite some time.</p><h3>Wednesday</h3><p>I
+ was happy to see my good friend and fellow Oracle employee Mike Keith 
+given the Wednesday keynote slot. Mike is a veteran of the conference 
+trail, author of <a class="jive-link-external-small" href="http://www.amazon.com/Pro-JPA-Experts-Voice-Java/dp/1430249269" rel="nofollow">Pro JPA2</a>
+ and former JPA spec lead. Mike was talking about an exciting new 
+product from Oracle: Mobile Back End As A Service (MBaaS). In a 
+nutshell, this product packages up everything enterprises need to deploy
+ mobile based applications that are built on their existing 
+infrastructure. Mike's slides are <a class="jive-link-external-small" href="http://2015.con-fess.com/TJeBJK74/ConFESS_2015_Day2_0900_R1_R2_Mike_Keith-EnterpriseMobilePlatform.pdf" rel="nofollow">available for download</a>.</p><p>My
+ own session was up next, at which I gave a status update on JSF 2.3. 
+Briefly, it's a community driven release aimed at preserving your 
+existing investment in JSF. I've uploaded my slides to <a class="jive-link-external-small" href="http://www.slideshare.net/edburns/burns-jsfconfess2015" rel="nofollow">slideshare</a>.</p><p>As a counterpart to Johan Janssen's session yesterday I attended <a class="jive-link-external-small" href="https://twitter.com/antonarhipov" rel="nofollow">Anton Arhipov</a>'s session about ZeroTurnaround's <a class="jive-link-external-small" href="http://zeroturnaround.com/software/xrebel/" rel="nofollow">XRebel</a>
+ product. I liked his straightforward pitch: most applications receive 
+very little profiling attention, let's make a super simple product that 
+lets you get the low hanging fruit with maximum performance gain. 
+Indeed, the slick browser based UI is very easy to use. When asked about
+ various corner cases, Anton was honest and answered the current state 
+of the product is very narrowly focused on where the most value can be 
+easily extracted. This focus is a key success factor for ZT, in my 
+opinion.</p><p>I've always talked up the importance of maintainability, 
+and sold that as a strong suit of the Java EE stack, so it was with 
+great interest that I attended <a class="jive-link-external-small" href="https://twitter.com/bernhard_keprt/status/588278982245818369" rel="nofollow">Bernhard Keprt</a>'s session about maintenance. One reason I like attending conferences is to remove my <a class="jive-link-external-small" href="https://www.safaribooksonline.com/library/view/secrets-of-the/9780071490832/apb.html" rel="nofollow">3rd order ignorance</a> by exposing me to technologies I otherwise would not encounter. During Bernhard's talk, he introduced me to <a class="jive-link-external-small" href="https://www.versioneye.com/" rel="nofollow">VersionEye</a>.
+ The value-add of this tool is easy to perceive: given that you have 
+lots of dependencies, let's have a tool that keeps an eye on them and 
+lets you know when they update.</p><p>Stefan Schuster gave a session 
+from his experiences in developing apps for the three big flavors of 
+mobile deployment platforms: native, Apache Cordova, and mobile web app.
+ I liked this session for its first-hand perspective.</p><p>To close out my 2015 ConFESS session attendance I viewed <a class="jive-link-external-small" href="https://twitter.com/alexgoeschl" rel="nofollow">Alex Göschl</a>'s session on AngularJS. Alex shared his experiences in deployng Angular 1 for the jobs portal for conference sponsor <a class="jive-link-external-small" href="http://willhaben.at/jobs/" rel="nofollow">Willhaben</a>.
+ FWIW, I found nine job postings for JSF on the site and four for 
+Angular. This was an enjoyable talk and Alex did a great job explaining 
+the extremely heterogeneous set of tools and technologies used in the 
+project. Prior to switching the jobs portal to Angular 1, they were 
+using GWT. It was pretty much a complete rewrite. The most useful aspect
+ of the talk to me was the ease with which such an apparently complex 
+tool chain is now accepted and leveraged by your average front end team.
+ For example, the following nine step dev time build process was rattled
+ off as if it were no big deal.</p><ol><li><p>clean build targets</p></li><li><p>compile less to css</p></li><li><p>copy vendor libraries</p></li><li><p>copy assets</p></li><li><p>compile and optimize angular templates</p></li><li><p>compile and check typescript</p></li><li><p>copy to tomcat</p></li><li><p>inject velocity templates</p></li></ol><p>It
+ must just be my Java EE roots that makes me feel that the preceding 
+list is a lot more complex than a similar build process in a Java EE 
+stack. I need to spend more time getting to know the workflow in current
+ front end shops. Can anyone recommend a user group or meetup in 
+Orlando, FL?</p><p>Following the two day conference was my full day of 
+workshops. I had a small but dedicated room of students and I hope they 
+enjoyed the sessions.</p></div>

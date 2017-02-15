@@ -1,0 +1,103 @@
+---
+layout: post
+title:  "JavaOne 2014 Day One Notes Blog"
+date:   2014-10-07 4:22:00 -0500
+---
+<div class="jive-rendered-content"><p>Update 1: added content about Greg Wilkin's Async IO session.</p>&nbsp; <p>The
+ first real day of the conference began with session one of two 
+obligatory Oracle booth duty assignments.&nbsp; Our booth had two foci: 
+showing off Java EE 7 using the <a class="jive-link-external-small" href="http://cargotracker.java.net/" rel="nofollow">Cargo Tracker Blueprints Application</a>
+ and providing insight into our plans for Java EE 8.&nbsp; To spice 
+things up a bit and perhaps draw some people in, I brought along my 
+kit-built homebrew Theremin, pictured here. <a href="https://community.oracle.com/servlet/JiveServlet/showImage/38-14343-149453/20140929-theremin.jpeg"><img __embedded_id="393" alt="Homebrew Theremin" src="20141007_files/20140929-theremin.png" style="float: right;" width="110" height="70"></a>
+ In my opinion, Java EE 8 is all about solidifying the platform by 
+increasing cohesion between the already loosely copuled parts, while 
+making incremental improvements to the parts of the platform that relate
+ directly to building HTML5 delivered web applications and hosting them 
+on the cloud. I've taken the liberty of uploading David Delabassee's 
+excellent Java EE 8 slides <a class="jive-link-external-small" href="http://www.slideshare.net/edburns/javaone-2014-java-ee-8-booth-slides" rel="nofollow">to slideshare</a> (Congrats on the <a class="jive-link-external-small" href="http://techcrunch.com/2012/05/03/linkedin-acquires-professional-content-sharing-platform-slideshare-for-119m/" rel="nofollow">$118 million payout, by the way</a>.)&nbsp;
+ I always enjoy doing booth duty.&nbsp; I look at it like I'm a TA doing
+ office hours: if people want to catch me at JavaOne, this is the best 
+time for it.</p>&nbsp; <p>Another fun aspect of JavaOne is how it all 
+blends together.&nbsp; Towards the end of my booth duty session, my 
+colleague and Servlet co-spec lead <a class="jive-link-external-small" href="https://weblogs.java.net/blogs/swchan2" rel="nofollow">Shing Wai Chan</a>
+ stopped by and we put the finishing touches on our slides for "CON5898 -
+ What Servlet 4.0 Means to You".&nbsp; Of all the JavaOne conference 
+sessions and BOFs in which I played a role this year, this was to be the
+ most technical.&nbsp; I've uploaded the slides to <a class="jive-link-external-small" href="http://www.slideshare.net/edburns/con5898-what-servlet-40-means-to-you" rel="nofollow">slideshare</a>.&nbsp; <a class="jive-link-external-small" href="http://delabassee.com/blog/" rel="nofollow">David Delabassee</a>
+ tells me this one will be in the first or second group to be uploaded 
+to Parleys.&nbsp; There were 162 pre-registrations for the session and 
+I'd estimate there were about 200 in the room.&nbsp; The session was 
+notable for being the only Java EE session that featured Java SE 9 
+technical content.&nbsp; After explaining the why and how of HTTP2, as 
+well as how it may be exposed in the Servlet 4.0 API, I included some 
+content on <a class="jive-link-external-small" href="http://openjdk.java.net/jeps/110" rel="nofollow">JEP110</a>,
+ the HTTP2 client for Java SE 9.&nbsp; Both the client and server side 
+are still very undefined at this point, but it's good to give people an 
+insight into where we're going.</p>&nbsp; <p>Directly after the Servlet 
+4.0 session, we lead a parade over to the Sutter conference room in the 
+Hilton for the combined JSF 2.3/Servlet 4.0 EG kick-off meeting.&nbsp; 
+While a pale shadow of its <a class="jive-link-external-small" href="http://www.dzone.com/links/rss/jsf_20_eg_kick_off_meeting_buy_a_feature.html" rel="nofollow">former self</a>, it was still a useful meeting.&nbsp; The full audio has been <a class="jive-link-external-small" href="https://java.net/projects/javaserverfaces-spec-public/downloads/download/JSF_2_3/Early%20Draft%20Review/20140929-servlet4-jsf23-eg-audio.m4a" rel="nofollow">uploaded to the project area on java.net</a>
+ for both Servlet and JSF.&nbsp; My intention for the meeting was to 
+establish the scope for these two specs and decide on next steps.&nbsp; 
+One big take-away, suggested by Greg Wilkins, is the need for additional
+ use cases for HTTP2 server push, aside from the obvious and important 
+one of a web framework that has a-priori knowledge of the resources that
+ are associated with a given web page. We all took the action item to 
+look for such cases and share them with the EG.&nbsp; Another notable 
+item for the kick-off meeting was an interesting idea from Neil 
+Griffin.&nbsp; Neil suggested we might investigate using our announced 
+dependency on Java SE 8 and its built-in JavaScript engine, to increase 
+the dynamism of JSF apps.&nbsp; Briefly, Neil's idea is to introduce a 
+lifecycle phase after render-response that would do some processing on 
+the rendered view to prepare it for quick display in the browser DOM, 
+delivering a direct-to-DOM view of the page.&nbsp; I asked Neil to think
+ about it some more and consider sharing the idea on the EG list.</p>&nbsp; <p>As
+ a general rule, I like to listen at more than I talk, but today the 
+only session I was able to attend was Greg Wilkins's CON2236 Async IO 
+session.&nbsp; The slides have already been posted at <a class="jive-link-external-small" href="https://oracleus.activeevents.com/2014/connect/fileDownload/session/6D6398FC71F37F047848605EBA870D9D/CON2236_Wilkins-AsyncServletIO-JavaOne2014.pdf" rel="nofollow">the JavaOne website</a>.&nbsp;
+ Greg is an excellent speaker, do make a point of seeing this session 
+when it comes up on Parleys.&nbsp; Greg did an excellent job of 
+explaining the gotchas of async IO programming, without any Responsive 
+Manifesto hype.&nbsp; Very interestingly, he did admit that the his 
+original objections to some of the Async Servlet API during the JSR-340 
+expert group discussion proved to be unfounded and that he rather liked 
+how the API turned out in the end.</p>&nbsp; <p><a href="https://community.oracle.com/servlet/JiveServlet/showImage/38-14343-149454/20140929-jcp-party.jpeg"><img __embedded_id="394" alt="JCP Party Picture" src="20141007_files/20140929-jcp-party.png" style="float:left;" width="180" height="207"></a> Next on the agenda was the Annual JCP Awards Party.&nbsp; The nominees and award winners are documented at &lt; <a class="jive-link-external-small" href="https://jcp.org/en/press/news/awards/2014award_nominees" rel="nofollow">https://jcp.org/en/press/news/awards/2014award_nominees</a>
+ &gt;.&nbsp; There was some real competition in the events this year, 
+but I'm happy to announce that Heather VanCura won the JCP 
+Member/Participant of the year award.&nbsp; Speaking as a fellow Oracle 
+employee, we all owe a debt of gratitude to Heather and her colleagues 
+for continuing to demonstrate the value of the Java Community Process 
+within a very shareholder-value (that is, short-term value) focused 
+company.&nbsp; Standards pay dividends, but they tend to be long-term 
+rather than short term.</p>&nbsp; <p>This year continues the tradition 
+started last year of hosting the event at the Cityscape area on the top 
+floor of the San Francisco Hilton.&nbsp; In the image at left you'll see
+ Heather announcing the awards. You'll also notice some musical 
+instruments.&nbsp; These were furnished courtesy of <a class="jive-link-external-small" href="http://www.jfrog.com/" rel="nofollow">JFrog</a> and played by a group fronted by <a class="jive-link-external-small" href="https://twitter.com/gbevin" rel="nofollow">Geert Bevin</a>.
+ The group was a pick-up band composed of members of the Java Community 
+and went by the name of, "The NullPointers".&nbsp; In addition to Geert,
+ the band included <a class="jive-link-external-small" href="https://twitter.com/fguime" rel="nofollow">Freddy Guime</a> of the <a class="jive-link-external-small" href="http://cjug.org/" rel="nofollow">Chicago Java Users Group</a>, <a class="jive-link-external-small" href="https://twitter.com/frankgreco" rel="nofollow">Frank Greco</a> of the <a class="jive-link-external-small" href="http://www.javasig.com/" rel="nofollow">New York Java Users Group</a>, <a class="jive-link-external-small" href="https://twitter.com/JavaFXpert" rel="nofollow">Jim Weaver</a>, Java Developer Advocate for Oracle, <a class="jive-link-external-small" href="https://twitter.com/neuroph" rel="nofollow">Zoran Severac</a>, <a class="jive-link-external-small" href="https://twitter.com/CesarHgt" rel="nofollow">Cesar Hernandez</a>, and <a class="jive-link-external-small" href="https://twitter.com/matkar" rel="nofollow">Mattias Karlsson</a>, of <a class="jive-link-external-small" href="http://www.jfokus.se/jfokus/" rel="nofollow">JFokus</a>.&nbsp;
+ I was going to sit-in on keyboard, but, as mentioned above, things 
+blend together at JavaOne, and I had to leave the party early to present
+ my JSF 2.3 BOF over at Moscone.&nbsp; Thankfully the band gave me 
+another chance to sit in during their 2nd performance on 
+Wednesday.&nbsp; It was sub-optimal to have to leave such a great event,
+ but the community is more important than the community, in this case, 
+so off to Moscone I went.</p>&nbsp; <p>This was the first year since the
+ Oracle acquisition that any part of JavaOne has been held in 
+Moscone.&nbsp; This year only the Mondy night BOFs were held there, but 
+I'm hoping it's the beginning of a trend.&nbsp; This being a BOF, rather
+ than a technical session, I incorporated content from two JSF Expert 
+Group Members, <a class="jive-link-external-small" href="https://twitter.com/kito99" rel="nofollow">Kito Mann</a> and <a class="jive-link-external-small" href="https://twitter.com/ianhlavats" rel="nofollow">Ian Hlavats</a>.&nbsp; My slides are at <a class="jive-link-external-small" href="http://www.slideshare.net/edburns/javaone-2014-bof4241-whats-next-for-jsf" rel="nofollow">slideshare</a>, as well as <a class="jive-link-external-small" href="http://www.slideshare.net/ianhlavats/jsf-23-presentation-integration-with-frontend-frameworks" rel="nofollow">Ian's</a>.
+ The basic idea for JSF 2.3 is to provide a vehicle to attend to the fit
+ and finish of the JSF spec, addressing JSF customer issues that have 
+accrued over the years, and give the community a vehicle to propose, 
+drive, and implement features that they feel are important, subject to 
+final-cut from Manfred and I.&nbsp; The former category will include 
+things like multi-component validation, Ajax method invocation, and 
+better CDI integration.&nbsp; The latter category may include things 
+like Kito's proposed JSON component rendering and Ian's proposed Twitter
+ Bootstrap integration.&nbsp; Again, the emphasis in the latter category
+ is for the community to do the heavy lifting, with oversight, veto 
+authority and integration help from Oracle.</p>&nbsp; <p>That's not a bad first day!&nbsp; Booth duty, technical session, EG meeting, JCP Party, and BOF.</p> </div>

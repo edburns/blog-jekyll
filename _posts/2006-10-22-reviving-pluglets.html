@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Reviving Pluglets Blog"
+date:   2006-10-22 4:12:00 -0500
+---
+<div class="jive-rendered-content"><p>If you read mozilla.dev.tech.plugins (who doesn't?) you may know that
+I have been working <a class="jive-link-external-small" href="http://purl.oclc.org/NET/edburns/plugletStatus/" rel="nofollow">very
+intermittantly</a> since March 2006 to revive the <a class="jive-link-external-small" href="http://www.mozilla.org/projects/blackwood/java-plugins/" rel="nofollow">Pluglet
+Project</a>.&nbsp; This project provides a sensible API to allow Firefox
+plugins to be written in the Java Programming language.</p>
+
+<p>Working from the Orlando International Airport while waiting for my
+delayed flight up to the <a class="jive-link-external-small" href="http://theajaxexperience.com/speaker_topic_view.jsp?topicId=313" rel="nofollow">Ajax
+Experience Conference in Boston, MA</a>, I managed to get the basic
+media player working, with sound too.&nbsp; However, the only reason the
+stream feature works is that the design of the MediaPlayer pluglet
+simply gets the URL of the media file from the OnStartRequest callback,
+which it then fetches directly rather than using the stream APIs to get
+the data.&nbsp; This is inefficient and not a general purpose solution.&nbsp; The
+next step will be to implement the general stream APIs all the way.</p>
+
+<p>Turns out my flight was mightily delayed and I'm stranded overnight in
+Atlanta.&nbsp; On the bright side, the Hyatt Place near the airport is quite
+nice, has included breakfast and free wireless internet, which enabled
+me to check in this snapshot.</p>
+
+<p>More later this week, if time allows.</p>
+
+<span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Glassfish, JSF 1.2 and ADF Faces (Update) Blog"
+date:   2006-01-26 8:02:00 -0500
+---
+<div class="jive-rendered-content"><p>As mentioned in an <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2006/01/glassfish_jsf_1_1.html" rel="nofollow">earlier blog</a>,
+ Glassfish has successfully run Oracle's ADF Faces components. If you 
+look in the comments, though, there were some bugs that prevent it from 
+running in the latest Glassfish, but happily these have now been fixed. I
+ have verified that this has been successfully fixed in today's nightly 
+glassfish build, after overlaying the latest JSF nightly on top of it. 
+The rest of this blog will cover how to perform an overlay of a JSF 
+nightly build on top of a glassfish binary or source build. This is 
+necessary until the next JSF integration into Glassfish, which is 
+scheduled for today, but won't be available in a promoted build until 
+next week.</p><span></span><p>The JSF Team has a new, experimental, 
+download offering in its Documents and Files section that will overlay 
+the latest JSF nightly onto a given glassfish install directory. Please 
+visit <a class="jive-link-external-small" href="https://javaserverfaces.dev.java.net/servlets/ProjectDocumentList?folderID=1703&amp;expandFolder=1703&amp;folderID=0" rel="nofollow">the nightly build section</a> of the JSF Documents and Files project and download the <code>jsf-glassfish-updater.jar</code>. This file contains the latest JSF nightly and can be executed as follows to install it into glassfish.</p><span></span><pre>java -jar jsf-glassfish-updater.jar &lt;PATH_TO_YOUR_GLASSFISH_INSTALL_DIRECTORY&gt;
+</pre><span></span><p>Where <code>PATH_TO_YOUR_GLASSFISH_INSTALL_DIRECTORY</code> is the parent of the <code>lib</code>, <code>bin</code>,<code>domains</code> (and so on) directories.</p><span></span><p>The
+ jsf-glassfish-updater.jar file will be updated nightly with the latest 
+JSF nightly build, and is a great way to get the latest JSF in cases 
+where there is no available Glassfish build with the bug-fix you need, 
+or you just don't want to download a whole new Glassfish.</p><span>&nbsp; </span><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>

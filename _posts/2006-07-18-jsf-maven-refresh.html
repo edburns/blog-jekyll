@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "JSF on Maven: refresh Blog"
+date:   2006-07-18 6:33:00 -0500
+---
+<div class="jive-rendered-content"><p>With the help of <a class="jive-link-external-small" href="http://weblogs.java.net/blog/kohsuke/" rel="nofollow">Kohsuke Kawaguchi</a>'s
+most excellent <a class="jive-link-external-small" href="https://maven-repository-importer.dev.java.net/" rel="nofollow">maven repository
+importer ant task</a>, and several iterations of trial and error, we now
+have the JSF 1.2 and 1.1 api and impl jars available under the same license as
+Glassfish on <a class="jive-link-external-small" href="https://maven-repository.dev.java.net/nonav/repository/" rel="nofollow">the
+java.net maven repository</a>.</p>
+
+<p>Put this in your project.properties or build.properties:</p>
+
+<pre>maven.repo.remote=https://maven-repository.dev.java.net/nonav/repository/,http://www.ibiblio.org/maven/</pre>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+
+<p>groupId: javax.faces</p>
+
+<p>artifactId: jsf-api</p>
+<p>artifactId: jsf-impl</p>
+
+<p>available versions: 1.1_02, 1.1_03-SNAPSHOT, 1.2, 1.2_01_B04, 1.2_01-SNAPSHOT</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+
+<p>I have also updated the POMs.&nbsp; If you're a JSF developer with
+committer access, please update the pom file in the source tree if you
+want to be more officially recognized.</p>
+
+<span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></div>
