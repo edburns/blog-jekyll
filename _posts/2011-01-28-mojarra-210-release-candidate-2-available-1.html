@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "Mojarra 2.1.0 Release Candidate 2 Available Blog"
+date:   2011-01-28 7:37:00 -0500
+---
+<div class="jive-rendered-content"><p>In <a class="jive-link-external-small" href="http://www.java.net/blog/edburns/archive/2011/01/07/mojarra-210-release-candidate-1-availabl" rel="nofollow">my last post</a>, I announced that we had made a release candidate available for Mojarra 2.1.0. I've created <a class="jive-link-external-small" href="http://java.net/jira/secure/IssueNavigator.jspa?mode=hide&amp;requestId=10272" rel="nofollow">this JIRA filter</a>
+ to capture the issues opened since that release candidate was made 
+available. As of this writing, none of the issues in that query meet the
+ criteria of delaying the GlassFish 3.1 release, so we are proceeding 
+with plans to branch the mojarra trunk as MOJARRA_2_1X_ROLLING. This 
+branch will be used to make any necessary sustaining releases to Mojarra
+ 2.1.0. Future Mojarra development will now proceed on the trunk.</p><p>I have updated the checkout instructions linked in the <a class="jive-link-external-small" href="http://wikis.sun.com/display/GlassFish/JavaServerFacesRI#JavaServerFacesRI-HowdoIaccessthesourcetreeviaversioncontrol%3F" rel="nofollow">FAQ</a> for the new repositories. I have also renamed the hudson jobs to reflect the new branch.</p><ul><li><p><a class="jive-link-external-small" href="http://hudson.glassfish.org/job/JSF_TRUNK-GF3.1/" rel="nofollow">http://hudson.glassfish.org/job/JSF_TRUNK-GF3.1/</a> for the Mojarra trunk.</p></li><li><p><a class="jive-link-external-small" href="http://hudson.glassfish.org/job/MOJARRA_2_1X_ROLLING-GF3.1/" rel="nofollow">http://hudson.glassfish.org/job/MOJARRA_2_1X_ROLLING-GF3.1/</a> for the Mojarra 2.1.0 branch.</p></li></ul><p>The
+ present development activities are focused on quality assurance of the 
+2.1.0 release candidate. The code is getting a good pounding from both 
+the GlassFish quality assurance team, and from the ADF Faces quality 
+    assurance team.</p><p>Repository &lt;<a class="jive-link-external-small" href="http://download.java.net/maven/2" rel="nofollow">http://download.java.net/maven/2</a>&gt;</p><pre class="code-java"><br> &lt;dependency&gt;<br>&nbsp;&nbsp; &lt;groupId&gt;com.sun.faces&lt;/groupId&gt;<br>&nbsp;&nbsp; &lt;artifactId&gt;jsf-api&lt;/artifactId&gt;<br>&nbsp;&nbsp; &lt;version&gt;2.1.0-b11&lt;/version&gt;<br>&nbsp;&nbsp; &lt;scope&gt;provided&lt;/scope&gt;<br> &lt;/dependency&gt;<br> &lt;dependency&gt;<br>&nbsp;&nbsp; &lt;groupId&gt;com.sun.faces&lt;/groupId&gt;<br>&nbsp;&nbsp; &lt;artifactId&gt;jsf-impl&lt;/artifactId&gt;<br>&nbsp;&nbsp; &lt;version&gt;2.1.0-b11&lt;/version&gt;<br>&nbsp;&nbsp; &lt;scope&gt;provided&lt;/scope&gt;<br> &lt;/dependency&gt;<br> </pre><p>Some blog entries will be coming soon to document what's new in 2.1.0, as well as release notes, of course.</p><p><span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>
+
+<h2>1 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964527" data-object-type="105" data-object-id="964527">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110128_files/32.png" data-avatarid="-1" data-username="victorkrauz" data-height="32" alt="victorkrauz" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110128_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">victorkrauz</a>
+                    </span>
+                        <a href="#comment-964527" id="comment-modDate-964527" class="font-color-meta-light">Feb 1, 2011 11:12 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964527">
+
+                        <!-- [DocumentBodyStart:04ffb4e6-bb00-45ce-93d1-e8cbf2ee11ca] --><div class="jive-rendered-content">
+<p>Hi, Ed.</p>
+<p><span>I was trying to send a question to&nbsp; </span><a class="jive-link-email-small" href="mailto:jsr-314-comments@jcp.org">jsr-314-comments@jcp.org</a><span> but it gives a delivery notification status problem.</span></p>
+<p>I'm currently reading the specification for fixing some weak points I&nbsp; have in JSF 2.0. When reading section 12.2 PhaseEvent the description of&nbsp; the constructor indicates that the source of the event will be the&nbsp; Lifecycle instance. But below, in the descriptions of methods&nbsp; getFacesContext&nbsp; and getPhaseId says that getSource will return the&nbsp; FacesContext instance. I thought that maybe was a very little error in&nbsp; the document, so I downloaded the 2010-11-08 version and the&nbsp; descriptions are the same. My question is what of the two objects will <b>PhaseEvent.getSource()</b> return?</p>
+<p>Thank you very much.</p>
+//</div><!-- [DocumentBodyEnd:04ffb4e6-bb00-45ce-93d1-e8cbf2ee11ca] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964527" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964527" data-object-type="105" data-object-id="964527" data-parent-object-type="38" data-parent-object-id="14304" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964527">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964527" class="acclaim-container"><span id="jive-acclaim-like-container-105-964527" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964527-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964527" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964527-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964527" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

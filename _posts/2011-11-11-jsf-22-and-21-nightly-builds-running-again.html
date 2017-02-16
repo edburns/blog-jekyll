@@ -1,0 +1,213 @@
+---
+layout: post
+title:  "JSF 2.2 and 2.1 Nightly Builds Running Again Blog"
+date:   2011-11-11 12:47:00 -0500
+---
+<div class="jive-rendered-content">
+<h2>JSF 2.2 and 2.1 Nightly Builds Running Again</h2>
+<p>I'm ashamed to say it, but we've gone over two years without having a
+ working nightly build system for Mojarra.&nbsp; As of last week or so, I
+ finally got the nightly working again.&nbsp; We now have our internal 
+hudson instances configured to publish nightly SNAPSHOT builds to the 
+java.net snapshot repository.&nbsp; Please visit my <a class="jive-link-external-small" href="http://www.java.net/blog/edburns/archive/2011/09/26/try-out-mojarra-220-snapshot" rel="nofollow">previous blog entry</a>
+ for instructions about how to access this repository. Here are the 
+maven GAV for the code lines for which there are nightly builds.&nbsp; 
+The bits are only pushed to maven if all the automated tests pass. Look 
+in the <a class="jive-link-external-small" href="https://maven.java.net/content/repositories/snapshots/org/glassfish/javax.faces/" rel="nofollow">actual maven repo</a> to see the timestamp of most recently published bits.</p>
+<h3>JSF 2.2 SNAPSHOT</h3>
+<p>This is the absolutely most recent JSF version, still in active 
+development.&nbsp; JSF 2.2, or a maintenance release thereof, will be in
+ JavaEE 7.&nbsp; For more on this code line visit &lt;<a class="jive-link-external-small" href="http://jsf-spec.java.net/" rel="nofollow">http://jsf-spec.java.net/</a>&gt;.</p>
+<p>Standalone Implementation (corresponding source jar available too)</p>
+<ul> <code>&nbsp; </code>
+&nbsp;&nbsp;&nbsp; <pre> 
+&lt;dependency&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;groupId&gt;org.glassfish&lt;/groupId&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;artifactId&gt;javax.faces&lt;/artifactId&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;version&gt;2.2.0?SNAPSHOT&lt;/version&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;scope&gt;provided&lt;/scope&gt; 
+&lt;/dependency&gt; 
+
+</pre>
+&nbsp;&nbsp;&nbsp; <div>
+&nbsp;&nbsp;&nbsp; <p>Mouse over <a href="">here<span>&nbsp; <code>&lt;dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;
+ 
+&nbsp;&nbsp;&lt;groupId&gt;com.sun.faces&lt;/groupId&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;com.sun.faces&lt;/groupId&gt;
+ 
+&nbsp;&nbsp;&lt;artifactId&gt;jsf?api&lt;/artifactId&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;jsf?impl&lt;/artifactId&gt;
+ 
+&nbsp;&nbsp;&lt;version&gt;2.2.0?SNAPSHOT&lt;/version&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;2.2.0?SNAPSHOT&lt;/version&gt;
+ 
+&lt;/dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;</code>&nbsp; </span></a> for the deprecated GAV.</p>
+&nbsp;&nbsp;&nbsp; </div>
+</ul>
+<p>The stripped API jar, only for satisfying compile time dependcies (corresponding javadoc and source jars available too)</p>
+<ul>&nbsp; <code>&nbsp; </code>
+&nbsp;&nbsp;&nbsp; <pre> 
+<dependency> &nbsp;&nbsp;
+&nbsp;&nbsp; <groupid>javax.faces</groupid> &nbsp;&nbsp;
+&nbsp;&nbsp; <artifactid>javax.faces-api</artifactid> &nbsp;&nbsp;
+&nbsp;&nbsp; <version>2.2?SNAPSHOT</version> &nbsp;&nbsp;
+&nbsp;&nbsp; <scope>provided</scope> 
+</dependency> 
+
+</pre>
+</ul>
+<h3>JSF 2.1</h3>
+<p>This code line corresponds to the most recent completed JSF spec release.</p>
+<p>Standalone Implementation (corresponding source jar available too)</p>
+<ul> <code>&nbsp; </code>
+&nbsp;&nbsp;&nbsp; <pre> 
+&lt;dependency&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;groupId&gt;org.glassfish&lt;/groupId&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;artifactId&gt;javax.faces&lt;/artifactId&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;version&gt;2.1.5?SNAPSHOT&lt;/version&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;scope&gt;provided&lt;/scope&gt; 
+&lt;/dependency&gt; 
+
+</pre>
+&nbsp;&nbsp;&nbsp; <div>
+&nbsp;&nbsp;&nbsp; <p>Mouse over <a href="">here<span>&nbsp; <code>&lt;dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;
+ 
+&nbsp;&nbsp;&lt;groupId&gt;com.sun.faces&lt;/groupId&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;com.sun.faces&lt;/groupId&gt;
+ 
+&nbsp;&nbsp;&lt;artifactId&gt;jsf?api&lt;/artifactId&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;jsf?impl&lt;/artifactId&gt;
+ 
+&nbsp;&nbsp;&lt;version&gt;2.1.5?SNAPSHOT&lt;/version&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;2.1.5?SNAPSHOT&lt;/version&gt;
+ 
+&lt;/dependency&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;</code>&nbsp; </span></a> for the deprecated GAV.</p>
+&nbsp;&nbsp;&nbsp; </div>
+</ul>
+<p>The stripped API jar, only for satisfying compile time dependcies 
+(corresponding javadoc and source jars available too). Note that this is
+ not a SNAPSHOT because JSF 2.1 is final.</p>
+<ul>&nbsp; <code>&nbsp; </code>
+&nbsp;&nbsp;&nbsp; <pre> 
+&lt;dependency&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;groupId&gt;javax.faces&lt;/groupId&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;artifactId&gt;javax.faces-api&lt;/artifactId&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;version&gt;2.1&lt;/version&gt; &nbsp;&nbsp;
+&nbsp;&nbsp; &lt;scope&gt;provided&lt;/scope&gt; 
+&lt;/dependency&gt; 
+
+</pre>
+</ul>
+<p><span class="technoratitag">&nbsp; Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>
+
+<h2>2 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964549" data-object-type="105" data-object-id="964549">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20111111_files/32.png" data-avatarid="-1" data-username="arjan_t" data-height="32" alt="arjan_t" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20111111_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">arjan_t</a>
+                    </span>
+                        <a href="#comment-964549" id="comment-modDate-964549" class="font-color-meta-light">Nov 12, 2011 2:21 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964549">
+
+                        <!-- [DocumentBodyStart:f4591947-e9ff-4fa6-acda-6639e027ed5c] --><div class="jive-rendered-content">
+<p>I wonder how all automated tests can pass. I'm trying to run the 
+tests for the Mojarra 2.2 trunk locally. The build succeeds, but the 
+tests fail on a missing maven dependency:</p>
+<p>
+</p><p>
+</p><p>[exec] [INFO] Building i_jsf_1995_ear</p>
+<p>[exec] [INFO] &nbsp; &nbsp;task-segment: [install]</p>
+<p>[exec] [INFO] ------------------------------------------------------------------------</p>
+<p></p>
+<p><span>Downloading: </span><a class="jive-link-external-small" href="http://repo1.maven.org/maven2/com/sun/faces/test/bean/1.0/bean-1.0.pom" rel="nofollow">http://repo1.maven.org/maven2/com/sun/faces/test/bean/1.0/bean-1.0.pom</a></p>
+<p><span>[exec] [INFO] Unable to find resource 'com.sun.faces.test:bean:pom:1.0' in repository central (</span><a class="jive-link-external-small" href="http://repo1.maven.org/maven2" rel="nofollow">http://repo1.maven.org/maven2</a><span>)</span></p>
+<p></p>
+<p>Does the build server still has this dependency cached perhaps, or am I doing something wrong?</p>
+//</div><!-- [DocumentBodyEnd:f4591947-e9ff-4fa6-acda-6639e027ed5c] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964549" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964549" data-object-type="105" data-object-id="964549" data-parent-object-type="38" data-parent-object-id="14322" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964549">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964549" class="acclaim-container"><span id="jive-acclaim-like-container-105-964549" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964549-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964549" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964549-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964549" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964550-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964550" data-object-type="105" data-object-id="964550">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20111111_files/32_002.png" data-avatarid="-1" data-username="javaserverfowner" data-height="32" alt="javaserverfowner" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20111111_files/level7.png" alt="Whiz" title="Whiz"></span><span class="j-status-levels j-gamification-status-level"><img src="20111111_files/level7.png" alt="Whiz" title="Whiz"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">javaserverfowner</a>
+                    </span>
+                        <a href="#comment-964550" id="comment-modDate-964550" class="font-color-meta-light">Nov 14, 2011 9:00 AM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964550">
+
+                        <!-- [DocumentBodyStart:9320624a-5eb6-42f9-bba5-8550753a663c] --><div class="jive-rendered-content">
+<p>I have seen this before, it's some kind of ordering problem.&nbsp; 
+One of the automated tests is looking for a jar that is published by 
+another of the automated tests but for some reason the ordering you are 
+observing is not conducive to things working out correctly.</p>
+<p>Can you try to manually run the "ant build install" in jsf-test/GLASSFISH-11636 ?</p>
+<p>That test only runs in certain configurations but perhaps the other 
+test that uses the jar from GLASSFISH-11636 doesn't run in that same set
+ of configurations.</p>
+<p>Ed</p>
+//</div><!-- [DocumentBodyEnd:9320624a-5eb6-42f9-bba5-8550753a663c] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964550" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964550" data-object-type="105" data-object-id="964550" data-parent-object-type="38" data-parent-object-id="14322" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964550">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964550" class="acclaim-container"><span id="jive-acclaim-like-container-105-964550" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964550-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964550" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964550-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964550" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

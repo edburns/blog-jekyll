@@ -1,0 +1,258 @@
+---
+layout: post
+title:  "Brief interview with Cay Horstmann, author of Core JSF, on 20090602 at JavaOne Blog"
+date:   2009-07-14 5:56:00 -0500
+---
+<div class="jive-rendered-content"><p>I had a brief conversation with Cay Horstmann during JavaOne at which
+I was eager to hear his list of gripes about JSF.&nbsp; Before I get into the
+content, I have to say I don’t know why people feel compelled to
+be unprofessional when they talk about this stuff.&nbsp; What can be gained
+by starting out a conversation with, “So I went through Core JSF
+and looked for all the Derogatory comments about how stupid the
+so-called expert group was...”?&nbsp; Granted, he follows up with,
+“and it wasn’t as bad as I remembered”, but still, if
+you’re going to be colloquial, why start out unprofessional about
+it?&nbsp; Thankfully, the rest of the conversation mostly sticks to the
+technical content.&nbsp; If you haven’t been to JavaOne, this is an
+example of a typical hallway conversation that I end up having
+there.</p>
+
+<p>Here are Cay’s points from the conversation.&nbsp; The raw audio is
+available at &lt;<a class="jive-link-external-small" href="http://mediacast.sun.com/users/edburns00/media/20090602-cay-horstman-jsf2-hallway-conversation.wav" rel="nofollow">http://mediacast.sun.com/users/edburns00/media/20090602-cay-horstman-jsf2-hallway-conversation.wav</a>&gt;.</p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ul>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Inconsistencies regarding converter and validator tags
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; regarding when they sometimes take an id, sometimes take a
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; method reference, sometimes they take a class name...
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Methods in Mojarra that are needed by application
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; developers.&nbsp; Look at the common things that every app
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; developer needs, put it into the API.</p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Injection.&nbsp; We have the annotation on the field, but it
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; really acts on the setter.&nbsp; This will confuse people.</p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Internationalization of Resources.&nbsp; Current design is
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; broken in the following way: it doesn’t have a natural local
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fallback mechanism as the normal ResourceBundle does.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Different Viewpoints for the JavaDoc: app developer,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; component developer, etc.</p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Love the color coding in the Javadocs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>TLDDocs missing some content (mostly fixed now).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <li><p>Cay suggests a “fit and finish JSR” for JSF.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></li>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ul>
+
+
+
+
+<p><span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span>
+</p></div>
+
+<h2>3 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964451" data-object-type="105" data-object-id="964451">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20090714_files/32.png" data-avatarid="-1" data-username="392%20Guest" data-height="32" alt="392 Guest" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20090714_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">392 Guest</a>
+                    </span>
+                        <a href="#comment-964451" id="comment-modDate-964451" class="font-color-meta-light">Jul 14, 2009 9:45 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964451">
+
+                        <!-- [DocumentBodyStart:e7af1b85-907f-4502-a87f-481133ce693d] --><div class="jive-rendered-content">
+Is it me or are there no real big issues in that list? I only see minor 
+issues.
+
+Standardizing useful Mojarra and MyFaces methods seems useful though. 
+Nobody likes to type FacesContext.getCurrentInstance() over and over 
+again.
+Useful utilities like: JSF.fc(), JSF.externalContext() and 
+JSF.viewRoot() would save me a lot of typing. These kind of utilities 
+are often the first thing I write.
+//</div><!-- [DocumentBodyEnd:e7af1b85-907f-4502-a87f-481133ce693d] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964451" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964451" data-object-type="105" data-object-id="964451" data-parent-object-type="38" data-parent-object-id="14277" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964451">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964451" class="acclaim-container"><span id="jive-acclaim-like-container-105-964451" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964451-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964451" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964451-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964451" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964452-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964452" data-object-type="105" data-object-id="964452">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20090714_files/32_002.png" data-avatarid="-1" data-username="cayhorstmann-3071947" data-height="32" alt="cayhorstmann-3071947" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20090714_files/level8.png" alt="Master" title="Master"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">cayhorstmann-3071947</a>
+                    </span>
+                        <a href="#comment-964452" id="comment-modDate-964452" class="font-color-meta-light">Jul 15, 2009 3:47 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964452">
+
+                        <!-- [DocumentBodyStart:4b82112d-7af0-4dce-a1a0-a494dd5c84dc] --><div class="jive-rendered-content">
+Hi Ed,
+
+sorry you felt offended by my initial comment--I just meant to be funny.
+ You know that I have the highest respect for your hard work. 
+
+Thanks for posting the list. I meant to do this for a long time. Just 
+for clarification. I do NOT want a JSR just for fit and finish. I'd just
+ like the JSF expert group make an explicit "fit and finish" effort for 
+JSF 2.1/3.0 in the scope of the next JSR. 
+
+@jkva: Yes, these are all minor, and my point in talking to Ed was to 
+raise visibility for these minor issues. The expert group does very well
+ with the big issues, but the "fit and finish" tends to fall between the
+ cracks when deadlines loom. 
+//</div><!-- [DocumentBodyEnd:4b82112d-7af0-4dce-a1a0-a494dd5c84dc] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964452" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964452" data-object-type="105" data-object-id="964452" data-parent-object-type="38" data-parent-object-id="14277" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964452">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964452" class="acclaim-container"><span id="jive-acclaim-like-container-105-964452" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964452-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964452" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964452-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964452" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964453-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964453" data-object-type="105" data-object-id="964453">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20090714_files/32.png" data-avatarid="-1" data-username="392%20Guest" data-height="32" alt="392 Guest" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20090714_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">392 Guest</a>
+                    </span>
+                        <a href="#comment-964453" id="comment-modDate-964453" class="font-color-meta-light">Jul 16, 2009 1:25 AM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964453">
+
+                        <!-- [DocumentBodyStart:c9dd3945-50f4-45bd-814c-582695d0477a] --><div class="jive-rendered-content">
+Cay Horstmann's comments, both in the beginning of your interview, and 
+now after your post are spot on ... and funny.&nbsp; The JEE community, 
+on the other hand, has been full of snobs for years who have spent 
+plenty of mouth on good coders like Ed and Jay in the forums and in 
+hallway conversations making derogatory statements about various 
+frameworks with the mistaken impression that it makes them sound like a 
+Java expert.
+
+From his recent book "Secrets of the Rock Star Programmers", Ed does 
+just the opposite, and a little truth goes a long way.&nbsp; For 
+example, he commends Rod Johnson saying that he is an inventor that 
+"revolutionized Enterprise Java application development".&nbsp; That's a
+ nice and professional way of saying that Rod actually fixed JEE instead
+ of just whining about it and grandstanding.
+
+How many forum posts can I recall from "Java experts" complaining about 
+this or that web framework, and _especially_ J2EE, and how it is broken 
+this way or that?&nbsp; Well, I would like to second Cay's remarks that 
+the new version of JSF looks great!
+
+Where I work, we will continue to use JSF in our apps, in spite of "how 
+stupid the so-called expert group" is because, stupid or not, the new 
+JSF is an outstanding framework, and we like seeing people, like Ed and 
+Cay, who actually step up to the plate and do the hard work that it took
+ to get JSF where it is, and it is excellent.
+
+And we have heard you other "Java expert" mouths out there and seen the 
+magic numbers you have left in our code repositories.&nbsp; We know who 
+you are, and why you try to drag other people's good work down.&nbsp; We
+ do not like you.&nbsp; Your days are numbered.
+
+//</div><!-- [DocumentBodyEnd:c9dd3945-50f4-45bd-814c-582695d0477a] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964453" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964453" data-object-type="105" data-object-id="964453" data-parent-object-type="38" data-parent-object-id="14277" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964453">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964453" class="acclaim-container"><span id="jive-acclaim-like-container-105-964453" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964453-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964453" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964453-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964453" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

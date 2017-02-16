@@ -1,0 +1,310 @@
+---
+layout: post
+title:  "JSF 2.2 Early Draft Review Available Blog"
+date:   2011-11-11 4:47:00 -0500
+---
+<div class="jive-rendered-content"><h2>JSF 2.2 Early Draft Review Available</h2>
+
+<p>Three days ago, the JSF 2.2 Early Draft Review Specification was
+released.&nbsp; You can download it from
+&lt;<a class="jive-link-external-small" href="http://jcp.org/aboutJava/communityprocess/edr/jsr344/" rel="nofollow">http://jcp.org/aboutJava/communityprocess/edr/jsr344/</a>&gt;
+and the in-progress reference implementation can be obtained by
+following the instructions
+in <a class="jive-link-external-small" href="http://www.java.net/blog/edburns/archive/2011/09/26/try-out-mojarra-220-snapshot" rel="nofollow">my
+blog entry from 26 September 2011</a>.&nbsp; With this blog entry, I want to
+quickly survey the new and proposed features, not all of which are
+implemented in Mojarra yet.&nbsp; The following content is taken from the
+Preface section in the PDF document, which is and always has been your
+one-stop-shop for discovering what's new in the spec.</p>
+
+<p>Let me begin by re-stating what I've been saying since the JSF 2.2
+kickoff BOF at <a class="jive-link-external-small" href="http://www.con-fess.com/" rel="nofollow">CON_FESS Vienna</a>
+last year: 2.0 was the last BIG FEATURE release of JSF.&nbsp; From now on,
+JSF will be maintained with smaller, more frequent releases.&nbsp; I'm hoping
+to get JSF 2.2 done in the first half of 2012.&nbsp; The first thing you'll
+note about the "Changes between 2.1 and 2.2" section: it's just a list
+of JIRA issue with a description of each one. You can read through the
+list just as well as I can so I'll just call out the more interesting
+ones here.</p>
+
+<h2>Mostly Specified Features</h2>
+
+<h3>758-ViewAction</h3>
+
+<p>This one is taken directly from Seam's Faces Module.&nbsp; This feature
+viewMetadata to the next level by letting you include actions in the
+metadata and customizing how and when the action is delivered.&nbsp; Just a
+&lt;f:viewParam&gt; is an <code>EditableValueHolder</code>,
+&lt;f:viewAction&gt; is an <code>ActionSource2</code>.</p>
+
+<h3>1001-UnifyCompositeAndNotCompositeComponents</h3>
+
+<p>Make it possible for a Facelets Tag Library to have both composite
+and non-composite components.</p>
+
+<h3>763-EverythingIsInjectable</h3>
+
+<p>Every kind of artifact created by JSF is now fully injectable via CDI
+and also can have <code>@PostConstruct</code>
+and <code>@PreDestroy</code> annotated methods which will get called at
+the right time.</p>
+
+<h3>869-ClientSideRequestForgeryProtection</h3>
+
+<p>Standardize how JSF provides CSRF protection.</p>
+
+<h3>1038-FaceletsResourceResolverAnnotation</h3>
+
+<p>Make it possible to declare a Facelets <code>ResourceResolver</code>
+without using XML.</p>
+
+<h2>Not Yet Fully Specified Features</h2>
+
+<h3>730-TaskFlows</h3>
+
+<p>Bring the best of Spring Web Flow, ADF Task Flows, and MyFaces CODI
+to the JSF spec.&nbsp; This feature intends to provide support for
+encapsulating related views together such that applications can be
+created as composites of modules of functionality, with each module
+consiting of well defined entry and exit conditions.</p>
+
+<h3>802-FileUpload</h3>
+
+<p>Finally add a component for file upload.</p>
+
+<h3>971-MultiTemplating</h3>
+
+<p>My friend and fellow java.net
+blogger <a class="jive-link-external-small" href="http://www.java.net/blog/120355?force=395" rel="nofollow">Mamadou
+Lamine Ba</a> has done some great work on this idea and is donating the
+core of it to the JSF 2.2 spec.&nbsp; The idea is to bring the best of
+Joomla! to the JSF spec.&nbsp; When you combine this feature with
+730-TaskFlows, and put the result on top of the cloud features of JavaEE
+7, you have a very compelling multi-tenant capable platform.&nbsp; Please see
+Lamine's blog entrys
+from <a class="jive-link-external-small" href="http://www.java.net/blog/lamineba/archive/2011/08/28/multi-templating-jsf-2-prototype" rel="nofollow">28
+August 2011</a>
+and <a class="jive-link-external-small" href="http://www.java.net/blog/lamineba/archive/2011/06/05/multi-templating-jsf-2-story" rel="nofollow">5
+June 2011</a> for some great details and a sharp looking demo, running
+on Google App Engine.</p>
+
+
+<p><span class="technoratitag">&nbsp; Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p>
+</div>
+
+<h2>4 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964551" data-object-type="105" data-object-id="964551">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20111111-B_files/32_002.png" data-avatarid="-1" data-username="agoncal" data-height="32" alt="agoncal" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20111111-B_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">agoncal</a>
+                    </span>
+                        <a href="#comment-964551" id="comment-modDate-964551" class="font-color-meta-light">Nov 11, 2011 9:32 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964551">
+
+                        <!-- [DocumentBodyStart:e6d402ae-31ca-44f9-8a1f-1d8ac690f0dc] --><div class="jive-rendered-content">
+<p>TaskFlows !!! That's brilliant. It really was the missing bit of the puzzle in EE.&nbsp;You have fulfilled <a class="jive-link-external-small" href="http://agoncal.wordpress.com/2011/02/11/java-ee-7-i-have-a-few-dreams/" rel="nofollow">a dream of mine</a> ;o)</p>
+//</div><!-- [DocumentBodyEnd:e6d402ae-31ca-44f9-8a1f-1d8ac690f0dc] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964551" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964551" data-object-type="105" data-object-id="964551" data-parent-object-type="38" data-parent-object-id="14323" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964551">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964551" class="acclaim-container"><span id="jive-acclaim-like-container-105-964551" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964551-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964551" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964551-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964551" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964552-->
+
+
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-1">
+    <li class="reply j-anchor-target" id="comment-964552" data-object-type="105" data-object-id="964552">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20111111-B_files/32_004.png" data-avatarid="-1" data-username="javaserverfowner" data-height="32" alt="javaserverfowner" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20111111-B_files/level7.png" alt="Whiz" title="Whiz"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">javaserverfowner</a>
+                    </span>
+                        <a href="#comment-964552" id="comment-modDate-964552" class="font-color-meta-light">Nov 12, 2011 4:14 AM</a>
+                            (<a class="font-color-meta-light localScroll" href="#comment-964551" title="Go to message">in response to agoncal</a>)
+                    </p>
+
+                </div>
+                <div id="comment-body-964552">
+
+                        <!-- [DocumentBodyStart:7bfc9b63-c0cc-4d59-b63a-6c0d9eb3fb4e] --><div class="jive-rendered-content">
+<p>I appreciate your enthusiasm, but the dream is not yet 
+fulfilled!&nbsp; I'll work that much harder on it because of your kind 
+post, though.</p>
+<p>&nbsp;</p>
+<p>Ed</p>
+//</div><!-- [DocumentBodyEnd:7bfc9b63-c0cc-4d59-b63a-6c0d9eb3fb4e] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964552" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964552" data-object-type="105" data-object-id="964552" data-parent-object-type="38" data-parent-object-id="14323" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964552">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964552" class="acclaim-container"><span id="jive-acclaim-like-container-105-964552" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964552-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964552" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964552-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964552" data-dom-actions="[]" data-parent-id="964551" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964553-->
+
+
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-1">
+    <li class="reply j-anchor-target" id="comment-964553" data-object-type="105" data-object-id="964553">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20111111-B_files/32.png" data-avatarid="-1" data-username="serge_boulay" data-height="32" alt="serge_boulay" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20111111-B_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">serge_boulay</a>
+                    </span>
+                        <a href="#comment-964553" id="comment-modDate-964553" class="font-color-meta-light">Nov 15, 2011 2:06 AM</a>
+                            (<a class="font-color-meta-light localScroll" href="#comment-964552" title="Go to message">in response to javaserverfowner</a>)
+                    </p>
+
+                </div>
+                <div id="comment-body-964553">
+
+                        <!-- [DocumentBodyStart:b19cbe61-6494-42d4-9d7f-3784000684d4] --><div class="jive-rendered-content">
+<p>I think&nbsp;that all the features will be fantastic additions to&nbsp;JSF but my favorites would be TaskFlows and ViewActions.</p>
+//</div><!-- [DocumentBodyEnd:b19cbe61-6494-42d4-9d7f-3784000684d4] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964553" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964553" data-object-type="105" data-object-id="964553" data-parent-object-type="38" data-parent-object-id="14323" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964553">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964553" class="acclaim-container"><span id="jive-acclaim-like-container-105-964553" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964553-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964553" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964553-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964553" data-dom-actions="[]" data-parent-id="964552" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964554-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964554" data-object-type="105" data-object-id="964554">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20111111-B_files/32_003.png" data-avatarid="-1" data-username="bsdmonkey" data-height="32" alt="bsdmonkey" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20111111-B_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">bsdmonkey</a>
+                    </span>
+                        <a href="#comment-964554" id="comment-modDate-964554" class="font-color-meta-light">Nov 11, 2011 10:03 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964554">
+
+                        <!-- [DocumentBodyStart:3b3c4e12-f2b9-4d84-a863-27c825cd00e5] --><div class="jive-rendered-content">
+<p>&nbsp;Am mostly excited about:</p>
+<ul>
+&nbsp;&nbsp;&nbsp; <li>CSRF protection: it would be nice if this feature goes into Servlets spec instead.</li>
+&nbsp;&nbsp;&nbsp; <li>TaskFlows.</li>
+&nbsp;&nbsp;&nbsp; <li>MultiTemplating: It would be nice if you&nbsp;can
+ add placeholders declaration to templates where a component contribute 
+markup let say I have this snipest in a facelets template &lt;div 
+role="placeholder" name="header-area"&gt;&lt;/div&gt; a 
+{composite}component loaded from a jar droped into classpath (or a 
+configurable dir specified by a context attribute) would express intent 
+to contribute markup/style to a placeholder with name "header-area".</li>
+</ul>
+//</div><!-- [DocumentBodyEnd:3b3c4e12-f2b9-4d84-a863-27c825cd00e5] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964554" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964554" data-object-type="105" data-object-id="964554" data-parent-object-type="38" data-parent-object-id="14323" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964554">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964554" class="acclaim-container"><span id="jive-acclaim-like-container-105-964554" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964554-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964554" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964554-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964554" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

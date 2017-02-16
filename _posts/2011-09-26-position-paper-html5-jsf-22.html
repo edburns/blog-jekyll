@@ -1,0 +1,219 @@
+---
+layout: post
+title:  "Position Paper on HTML5 in JSF 2.2 Blog"
+date:   2011-09-26 7:43:00 -0500
+---
+<div class="jive-rendered-content"><p>There
+ is a lot of well-founded buzz around HTML5 but I assert that nearly all
+ of it stems from how HTML5 enables the UI authoring experience to focus
+ entirely on the browser, instead of on server-side processing that 
+delivers content to the browser. <a class="jive-link-external-small" href="http://vimeo.com/808231" rel="nofollow">For years</a>,
+ I've been making the case that building a web application is really 
+building a distributed application, and therefore the art is finding the
+ best allocation of processing tasks (UI, persistence, business logic, 
+security, etc.) to processing nodes (smartphoe, tablet, laptop, desktop,
+ browser, server, etc). The emergence of HTML5 as a viable deployment 
+platform changes how we answer the question of "where does the User 
+Interface processing task go?" My goal with this blog entry is to shed 
+some light on what this means for JSF.</p><span></span><h3>Where are we now and how did we get here?</h3><span></span><p>Ever since the addition of the <code>&lt;form&gt;</code> element to HTML+ <a class="jive-link-external-small" href="http://www.w3.org/MarkUp/HTMLPlus/htmlplus_41.html" rel="nofollow">in 1993</a>developers
+ have been trying to force the pace of innovation delivered by browser 
+vendors in order to deliver more and more compelling applications while 
+lowering development/deployment/maintenance costs. Two factors have 
+historically influenced this trend: ubiquity and capability. As soon as 
+enough people had reasonably capable browsers, server side frameworks, 
+such as JSF stepped in to give developers what they'd been wanting since
+ 1993: "yeah, this browser stuff is nice, but what if I want to make my 
+own darn tags? How can I do that?"</p><span></span><p><a href="http://ridingthecrest.com/scratch/20110926-blog-html5-ubiquity.png"><img alt="Graph of browser capability vs. browser ubiquity" src="20110926-B_files/20110926-blog-html5-ubiquity.png" style="float:left;"></a></p><span></span><p>Server
+ side frameworks provide a browser-like authoring experience, but enable
+ the use of components not present in the least-common-denominator 
+browser. This is achieved through server side processing using 
+JavaScript, images, and other browser primitives. In addition to this 
+"capability extension" feature, server side frameworks also let 
+developers keep a tighter hold on security, provide better I18N, and 
+lower maintenance costs.</p><span></span><p>Now that HTML5 is reasonably
+ ubiquitous, the need for the "capability extension" feature is not as 
+pressing. For example the power of the HTML5 Canvas object, combined 
+with the full expressiveness of JavaScript, lets you do a whole lot more
+ directly on the browser. <a href="http://ridingthecrest.com/scratch/20110926-blog-ui-state-slider.png"><img alt="" src="20110926-B_files/20110926-blog-ui-state-slider.png" style="float:right;"></a>
+ Even so, I think there is still a place for server side frameworks, not
+ least for the cases of security and maintainence costs. I think the UI 
+task today is really like finding the right value for this slider. 
+Indeed most apps today need to address a huge variety of client device 
+types, and the flexibility afforded by a server side framework is an 
+asset in meeting that goal. For these and other reasons too deep for a 
+quick blog post, I think the usefulness of server side UI frameworks has
+ not yet reached its end.</p><span></span><h3>How does JSF 2.2 fit in?</h3><span></span><p>So where does that leave JSF 2.2? As you may know, HTML 5 is a huge specification and it addresses many different <a class="jive-link-external-small" href="http://dev.w3.org/html5/spec/Overview.html#kinds-of-content" rel="nofollow">categories of content</a>.
+ We are still very early in the development of JSF 2.2 but I can state 
+we plan to address elements in the following content categories.</p><span></span><dl><dt><a class="jive-link-external-small" href="http://dev.w3.org/html5/spec/Overview.html#metadata-content" rel="nofollow">Metadata</a></dt><dd><p>JSF
+ applications already have large amounts of metadata available to them. 
+We need to find the best way to allow that data to naturally express 
+itself via the corresponding capability in HTML5.</p></dd><dt><a class="jive-link-external-small" href="http://dev.w3.org/html5/spec/Overview.html#sectioning-content-0" rel="nofollow">Sectioning</a>and <a class="jive-link-external-small" href="http://dev.w3.org/html5/spec/Overview.html#sectioning-content-0" rel="nofollow">Heading</a></dt><dd><p>Just
+ as the lightweight ontology of section values in HTML5 was obtained by 
+searching google for how people were using their div tags, the same idea
+ can be applied to how people are using their facelet templates.</p></dd><dt><a class="jive-link-external-small" href="http://dev.w3.org/html5/spec/Overview.html#form-associated-element" rel="nofollow">Form associated elements</a></dt><dd><p>Form
+ based applications are the reason for must web applications and it is 
+this category that most ofthe HTML5 related work in JSF 2.2 will happen.
+ For example, HTML5 now has native slider and calendar controls, which 
+only used to be implemented using server side processing and delivering 
+JavaScript and images.</p></dd><dd><h3>Current Status</h3><p>We're still working on delivering a revision of the spec that ties up all the loose ends left over from JSF 2.1 such as<code>&lt;f:viewAction /&gt;</code>,
+ Cross Site Request Forgery protection, and File uploads. Once the Early
+ Draft Release milestone has been reached, we can start to think more 
+        seriously about what to do with HTML5.</p><p><span class="technoratitag">Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></dd></dl></div>
+
+<h2>3 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964546" data-object-type="105" data-object-id="964546">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110926-B_files/32_002.png" data-avatarid="-1" data-username="bkummel" data-height="32" alt="bkummel" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110926-B_files/level2.png" alt="Explorer" title="Explorer"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">bkummel</a>
+                    </span>
+                        <a href="#comment-964546" id="comment-modDate-964546" class="font-color-meta-light">Sep 27, 2011 10:28 AM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964546">
+
+                        <!-- [DocumentBodyStart:7ce28b4b-b921-4891-859d-f2d018ce50eb] --><div class="jive-rendered-content">
+<p>&nbsp;Hi Ed,</p>
+<p>That's a nice and short overview. It's good to see the JSF spec evolving really fast now!</p>
+<p>Best regards,</p>
+<p>Bart Kummel</p>
+//</div><!-- [DocumentBodyEnd:7ce28b4b-b921-4891-859d-f2d018ce50eb] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964546" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964546" data-object-type="105" data-object-id="964546" data-parent-object-type="38" data-parent-object-id="14320" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964546">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964546" class="acclaim-container"><span id="jive-acclaim-like-container-105-964546" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964546-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964546" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964546-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964546" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964547-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964547" data-object-type="105" data-object-id="964547">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110926-B_files/32.png" data-avatarid="-1" data-username="arjan_t" data-height="32" alt="arjan_t" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110926-B_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">arjan_t</a>
+                    </span>
+                        <a href="#comment-964547" id="comment-modDate-964547" class="font-color-meta-light">Oct 2, 2011 7:03 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964547">
+
+                        <!-- [DocumentBodyStart:2f30bd31-b1ee-4b4d-9264-2162fe93e305] --><div class="jive-rendered-content">
+<p>&nbsp;[quote]We are still very early in the development of JSF 2.2 [...] [/quote]</p>
+<p>Does this mean anything for the planning as put in JSR 344? According
+ to the anticipated schedule mentioned there, the proposed final draft 
+would be in Q4 2011. Is that still the goal?</p>
+//</div><!-- [DocumentBodyEnd:2f30bd31-b1ee-4b4d-9264-2162fe93e305] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964547" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964547" data-object-type="105" data-object-id="964547" data-parent-object-type="38" data-parent-object-id="14320" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964547">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964547" class="acclaim-container"><span id="jive-acclaim-like-container-105-964547" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964547-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964547" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964547-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964547" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964548-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964548" data-object-type="105" data-object-id="964548">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110926-B_files/32.png" data-avatarid="-1" data-username="arjan_t" data-height="32" alt="arjan_t" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110926-B_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">arjan_t</a>
+                    </span>
+                        <a href="#comment-964548" id="comment-modDate-964548" class="font-color-meta-light">Oct 4, 2011 5:55 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964548">
+
+                        <!-- [DocumentBodyStart:17b5a310-129f-44ed-a586-c29f7921084d] --><div class="jive-rendered-content">
+<p>&nbsp;With respect to the current status, I've created an overview of
+ the great work you guys have been doing the last couple of months here:
+ <a class="jive-link-external-small" href="http://jdevelopment.nl/jsf-22" rel="nofollow">What's new in JSF 2.2?</a></p>
+<p>It's just a summary of the jira issues that have been worked on for 
+JSF 2.2 and for which actual commits have been done in the trunk. (I 
+hope it's okay to post that link here, if it isn't please remove it)</p>
+//</div><!-- [DocumentBodyEnd:17b5a310-129f-44ed-a586-c29f7921084d] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964548" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964548" data-object-type="105" data-object-id="964548" data-parent-object-type="38" data-parent-object-id="14320" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964548">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964548" class="acclaim-container"><span id="jive-acclaim-like-container-105-964548" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964548-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964548" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964548-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964548" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

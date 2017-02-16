@@ -1,0 +1,79 @@
+---
+layout: post
+title:  "A Mojarra code review story Blog"
+date:   2010-12-09 1:31:00 -0500
+---
+<div class="jive-rendered-content">
+<!--break-->
+<p>Last week, I sent a code review request to the <a class="jive-link-external-small" href="http://java.net/projects/javaserverfaces/lists/dev/archive/2010-11/message/17" rel="nofollow">Mojarra dev list</a>.&nbsp; As you can see, no-one responded, but when a good friend and longtime Mojarra comitter (the winner of this <a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2008/08/want_to_help_wi.html" rel="nofollow">contest</a>) popped into the <a class="jive-link-external-small" href="http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html#IRC" rel="nofollow">JSF IRC chat room</a>, I asked him to review the changebundle.</p>&nbsp;&nbsp; <p><span>We
+ played IM tag for a while and when he finally caught me he brought a 
+potential issue to my attention.&nbsp; The issue hinges on the answer to
+ this quention: What happens when YOURAPP is deployed at </span><a class="jive-link-external-small" href="http://www.server.com/a/b/c/YOURAPP" rel="nofollow">http://www.server.com/a/b/c/YOURAPP</a><span> and you call </span><code>externalContext.getRequestContextPath()</code>?&nbsp; Does it return "/YOURAPP" or "/a/b/c/YOURAPP"?&nbsp; My friend even found this very apropos forum question: &lt;<a class="jive-link-external-small" href="http://java.itags.org/java-web-tier-apis/18160/" rel="nofollow">http://java.itags.org/java-web-tier-apis/18160/</a>&gt;.
+ Thanks to some still-yet-to-be-blogged-about efforts with Hudson, I was
+ able to get the line in question in the source level debugger in less 
+than two minutes, with the absolute latest checked out source.&nbsp; It 
+turns out, in GlassFish 3.1 at least, it returns "/a/b/c/YOURAPP", which
+    is correct.</p>&nbsp; <p>This blog post illustrates a win for community and agility, benefitting the Mojarra project.</p>&nbsp; <p><span class="technoratitag"> Technorati Tags:<a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>
+
+<h2>1 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964525" data-object-type="105" data-object-id="964525">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20101209_files/32.png" data-avatarid="-1" data-username="armen2010" data-height="32" alt="armen2010" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20101209_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">armen2010</a>
+                    </span>
+                        <a href="#comment-964525" id="comment-modDate-964525" class="font-color-meta-light">Jan 23, 2011 12:30 AM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964525">
+
+                        <!-- [DocumentBodyStart:8bf9b741-a427-4ce7-841b-c447f824d9ea] --><div class="jive-rendered-content">
+<p>Hello All,</p>
+<p>I am fanat of JSF and develop with JSF personal and corporite sites.</p>
+<p>My personal site in JSF 1.2 is lastpubs.com.</p>
+<p>But I have one question-</p>
+<p>Is JSF 2.0 solve problem with memory? JSF 1.2 eat a lot of memory in the server side and for</p>
+<p>a lot of users it can be unconfortable.</p>
+<p>We solve that problem with clusters, but if I want make site like 
+forums or chats or facebook, I think JSF will catch a lot of memory.</p>
+<p>I do not use a lot of sessions beans, it is a wrong way for programming.</p>
+<p>I interested full answer for JSF&nbsp;2.0 Performance and memory management.</p>
+<p>Best Regards,</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+//</div><!-- [DocumentBodyEnd:8bf9b741-a427-4ce7-841b-c447f824d9ea] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964525" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964525" data-object-type="105" data-object-id="964525" data-parent-object-type="38" data-parent-object-id="14302" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964525">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964525" class="acclaim-container"><span id="jive-acclaim-like-container-105-964525" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964525-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964525" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964525-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964525" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

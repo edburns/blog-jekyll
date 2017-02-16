@@ -1,0 +1,115 @@
+---
+layout: post
+title:  "Configuring WLS 12.1.2 as a two server cluster on a single UNIX host Blog"
+date:   2014-04-25 12:00:00 -0500
+---
+<div class="jive-rendered-content"><pre>Now the cluster-specific stuff begins.
+Create the Cluster
+ 
+&nbsp;&nbsp;&nbsp; Click Home::Environment::Clusters. Click New::Cluster. Set name as cluster1. Click OK. This returns you to the "Summary of Clusters" page.
+ 
+&nbsp;&nbsp;&nbsp; Click on the link for the freshly created cluster1.
+ 
+&nbsp;&nbsp;&nbsp; Set the Cluster Address to be adc00ooo. Click Save.
+ 
+Create A Machine
+ 
+A Machine is a WLS admin abstraction that lets the wls admin server interact with an important standalone Java program called the NodeManager. More on that later. Think of it as the thing that contains the managed server instances that form the nodes of your cluster.
+ 
+&nbsp;&nbsp;&nbsp; Click Environment::Machines.
+ 
+&nbsp;&nbsp;&nbsp; Click New. Set the name as machine1 and set the Machine OS to UNIX. Click Next.
+ 
+&nbsp;&nbsp;&nbsp; Set the listen address to adc00ooo. Leave the rest as is. Click finish. This takes you to the "Summary of Machines" page. Click the link for the newly created Machine.
+ 
+&nbsp;&nbsp;&nbsp; Click the Node Manager tab and verify the Listen Address and Listen Port are as expected. Note them down somewhere.
+ 
+Create the Managed Servers for the Cluster
+ 
+&nbsp;&nbsp;&nbsp; Click Environment::Servers. Click New.
+ 
+&nbsp;&nbsp;&nbsp; Fill in server name as server1.
+ 
+&nbsp;&nbsp;&nbsp; Fill in Server Listen Address as adc00ooo.
+ 
+&nbsp;&nbsp;&nbsp; Fill in Server Listen Port as 18080.
+ 
+&nbsp;&nbsp;&nbsp; Select the radio button, "Yes, make this server a member of an existing cluster". Make sure cluster1 is selected in the menu drop down.
+ 
+&nbsp;&nbsp;&nbsp; Click Next.
+ 
+&nbsp;&nbsp;&nbsp; Review the choices and click Finish.
+ 
+&nbsp;&nbsp;&nbsp; Repeat the steps in this section but use server2 and 28080 as the Server Name and Listen Port.
+ 
+Add the Managed Servers to the Machine
+ 
+&nbsp;&nbsp;&nbsp; Click Environment::Machines. Select machine1.
+ 
+&nbsp;&nbsp;&nbsp; Click the Servers tab.
+ 
+&nbsp;&nbsp;&nbsp; Click Add.
+ 
+&nbsp;&nbsp;&nbsp; Choose the "Select an existing server and associate it with this Machine" radio button. Ensure server1 is shown in the "Select a server" dropdown.
+ 
+&nbsp;&nbsp;&nbsp; Click next.
+ 
+&nbsp;&nbsp;&nbsp; Repeat the steps in this section but select "server2" this time.
+ 
+Ensure the Managed Servers are Enabled for Source Level Debugging
+ 
+If you wish to attach a JPDA enabled source level debugger to your server instances, it's easy to do! 
+</pre></div>
+
+<h2>1 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964561" data-object-type="105" data-object-id="964561">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20150425_files/32.png" data-avatarid="-1" data-username="miojo" data-height="32" alt="miojo" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20150425_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">miojo</a>
+                    </span>
+                        <a href="#comment-964561" id="comment-modDate-964561" class="font-color-meta-light">Apr 26, 2014 12:36 AM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964561">
+
+                        <!-- [DocumentBodyStart:40744d98-f9d2-427b-8888-62dc3fb5c8b8] --><div class="jive-rendered-content">
+Save some steps by simply starting NodeManager from the domain dir:
+
+&nbsp; $ user_projects/domains/base_domain/bin/startNodeManager.sh
+
+Starting from 12c, the node manager scripts are now part of the domain for easier setup.
+//</div><!-- [DocumentBodyEnd:40744d98-f9d2-427b-8888-62dc3fb5c8b8] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964561" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964561" data-object-type="105" data-object-id="964561" data-parent-object-type="38" data-parent-object-id="14337" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964561">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964561" class="acclaim-container"><span id="jive-acclaim-like-container-105-964561" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964561-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964561" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964561-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964561" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    

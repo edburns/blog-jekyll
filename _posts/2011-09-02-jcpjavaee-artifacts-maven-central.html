@@ -1,0 +1,253 @@
+---
+layout: post
+title:  "JCP/JavaEE Artifacts in Maven Central Blog"
+date:   2011-09-02 8:43:00 -0500
+---
+<div class="jive-rendered-content"><h2>JCP/JavaEE Artifacts in Maven Central</h2><p>As mentioned in the <a class="jive-link-external-small" href="http://weblogs.java.net/blog/editor/archive/2011/08/21/sonatype-adds-javanet-projects-its-central-repository?customTheme=otn" rel="nofollow">Editor’s Blog</a>,
+ java.net artifacts are finally available in Maven Central. This 
+includes the official JCP/JavaEE artifacts, being published by the 
+official steward of Java technology. This blog entry brings to your 
+attention a few points about using these artifacts, as well as 
+introducing a simple archetype that the Mojarra team uses to facilitate 
+the creation of automated regression tests.</p><p>I am not at all in the
+ position to comment on maven best practices, but one problem I’ve run 
+into is the effect of bitrot on a maven build. This can sometimes result
+ in a complicated assortment of repository entries leading to the lack 
+of a clear understanding of how your dependencies are being satisfied. 
+Now that the official JavaEE artifacts are all in maven central, you can
+ omit the repository declaration entirely from your projects, relying on
+ a mirror declaration in your settings.xml file, if necessary. If you 
+are developing a Java EE 6 application, all of the compile time 
+dependencies can be satisfied from a single artifact, in maven central.</p><div class="xml" style="font-family: monospace;"><ol><li style="background: #fcfcfc;"><div><span style="color: #000000; font-weight: bold;">&lt;dependencies<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp; <span style="color: #000000; font-weight: bold;">&lt;dependency<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;groupId<span style="color: #000000; font-weight: bold;">&gt;</span></span>javax<span style="color: #000000; font-weight: bold;">&lt;/groupId<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;artifactId<span style="color: #000000; font-weight: bold;">&gt;</span></span>javaee-api<span style="color: #000000; font-weight: bold;">&lt;/artifactId<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;version<span style="color: #000000; font-weight: bold;">&gt;</span></span>6.0<span style="color: #000000; font-weight: bold;">&lt;/version<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;scope<span style="color: #000000; font-weight: bold;">&gt;</span></span>provided<span style="color: #000000; font-weight: bold;">&lt;/scope<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp; <span style="color: #000000; font-weight: bold;">&lt;/dependency<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div><span style="color: #000000; font-weight: bold;">&lt;/dependencies<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li></ol></div><p>It is important to note that this dependency was declared with <code>&lt;scope&gt;provided&lt;/scope&gt;</code> This is the <em>only</em>
+ way you can use this dependency because the jar has been stripped of 
+all java code and contains only signatures. The actual implementation of
+ JavaEE 6 comes, naturally, from your Java EE 6 <a class="jive-link-external-small" href="http://blogs.oracle.com/arungupta/entry/which_java_ee_6_app" rel="nofollow">compliant container</a>.</p><p>If
+ you would rather go à la carte, the individual artifacts for all of the
+ JavaEE technologies are also available, as listed in these tables. The 
+first table lists artifacts that conform to the naming scheme Oracle 
+Architect, and JavaEE Titan, Bill Shannon. The scheme is documented at 
+&lt;<a class="jive-link-external-small" href="http://wikis.sun.com/display/GlassFish/Maven+Versioning+Rules" rel="nofollow">http://wikis.sun.com/display/GlassFish/Maven+Versioning+Rules</a>&gt;.</p><div class="ts-1"><div class="ts-1-1">Technology</div><div class="ts-1-2">groupId</div><div class="ts-1-3">artifactId</div><div class="ts-1-4">version</div><div class="ts-1-5">JSR-299 Contexts and Dependency Injection for JavaEE</div><div class="ts-1-6">javax.enterprise</div><div class="ts-1-7">javax.cdi-api</div><div class="ts-1-8">1.0</div><div class="ts-1-5">JSR 314 JavaServer Faces</div><div class="ts-1-6">javax.faces</div><div class="ts-1-7">javax.faces-api</div><div class="ts-1-8">2.1</div><div class="ts-1-5">JSR 330 Dependency Injection for Java</div><div class="ts-1-6">javax.inject</div><div class="ts-1-7">javax.inject</div><div class="ts-1-8">1</div><div class="ts-1-5">JSR 316 Java EE 6</div><div class="ts-1-6">javax</div><div class="ts-1-7">javaee-api</div><div class="ts-1-8">6.0</div><div class="ts-1-5">JSR 919 Java Mail</div><div class="ts-1-6">javax.mail</div><div class="ts-1-7">javax.mail-api</div><div class="ts-1-8">1.4.4</div><div class="ts-1-5">JSR 315 Java Servlet</div><div class="ts-1-6">javax.servlet</div><div class="ts-1-7">javax.servlet-api</div><div class="ts-1-8">3.0.1</div><div class="ts-1-5">JSR 245 Java Servlet</div><div class="ts-1-6">javax.servlet.jsp</div><div class="ts-1-7">javax.servlet.jsp-api</div><div class="ts-1-8">2.2.1</div><div class="gen-54"> </div></div><p>The remaining jars do not conform to the naming scheme, but are useful for compilation nonetheless.</p><div class="ts-2"><div class="ts-2-1">Technology</div><div class="ts-2-2">groupId</div><div class="ts-2-3">artifactId</div><div class="ts-2-4">version</div><div class="ts-2-5">JSR 925 JavaBeans Activation Framework</div><div class="ts-2-6">javax.activation</div><div class="ts-2-7">activation</div><div class="ts-2-8">1.1.1</div><div class="ts-2-5">JSR 250 Standard JavaEE Annotations</div><div class="ts-2-6">javax.annotation</div><div class="ts-2-7">jsr250-api</div><div class="ts-2-8">1.0</div><div class="ts-2-5">JSR 107 JCache</div><div class="ts-2-6">javax.cache</div><div class="ts-2-7">cache-api</div><div class="ts-2-8">0.2</div><div class="ts-2-5">JSR 188 Delivery Context</div><div class="ts-2-6">javax.ccpp</div><div class="ts-2-7">ccpp</div><div class="ts-2-8">1.0</div><div class="ts-2-5">(pre JCP JSR) Java Communications API</div><div class="ts-2-6">javax.comm</div><div class="ts-2-7">comm</div><div class="ts-2-8">3.0-u1</div><div class="ts-2-5">JSR 220 Enterprise Java Beans</div><div class="ts-2-6">javax.ejb</div><div class="ts-2-7">ejb-api</div><div class="ts-2-8">3.0</div><div class="ts-2-5">JSR 341 Expression Language</div><div class="ts-2-6">javax.el</div><div class="ts-2-7">el-api</div><div class="ts-2-8">2.2</div><div class="ts-2-5">JSR 52 JSP Standard Tag Library</div><div class="ts-2-6">javax.servlet</div><div class="ts-2-7">jstl</div><div class="ts-2-8">1.2</div><div class="ts-2-5">JSR 97 JavaHelp</div><div class="ts-2-6">javax.help</div><div class="ts-2-7">javahelp</div><div class="ts-2-8">2.0.05</div><div class="ts-2-5">JSR 208 Java Besiness Integration</div><div class="ts-2-6">javax.jbi</div><div class="ts-2-7">jbi</div><div class="ts-2-8">1.0</div><div class="ts-2-5">JSR 283 Java Content Repository API</div><div class="ts-2-6">javax.jcr</div><div class="ts-2-7">jcr</div><div class="ts-2-8">2.0</div><div class="ts-2-5">JSR 243 Java Data Objects 2</div><div class="ts-2-6">javax.jdo</div><div class="ts-2-7">jdo2-api</div><div class="ts-2-8">2.2</div><div class="ts-2-5">JSR 914 Java Messaging Service</div><div class="ts-2-6">javax.jms</div><div class="ts-2-7">jms-api</div><div class="ts-2-8">1.1-rev-1</div><div class="ts-2-5">JSR 181 Web Services Metadata for Java</div><div class="ts-2-6">javax.jws</div><div class="ts-2-7">jsr181-api</div><div class="ts-2-8">1.0-MR1</div><div class="ts-2-5">JSR 77 Java Management API</div><div class="ts-2-6">javax.management.j2ee</div><div class="ts-2-7">management-api</div><div class="ts-2-8">1.1-rev-1</div><div class="ts-2-5">JSR 317 Java Persistence</div><div class="ts-2-6">javax.persistence</div><div class="ts-2-7">persistence-api</div><div class="ts-2-8">1.0.2</div><div class="ts-2-5">JSR 286 Java Portlet</div><div class="ts-2-6">javax.portlet</div><div class="ts-2-7">portlet-api</div><div class="ts-2-8">2.0</div><div class="ts-2-5">JSR 322 Java EE Connector</div><div class="ts-2-6">javax.resource</div><div class="ts-2-7">connector-api</div><div class="ts-2-8">1.6-alpha-1</div><div class="ts-2-5">JSR 32: JAIN SIP API Specification</div><div class="ts-2-6">javax.sdp</div><div class="ts-2-7">nist-sdp</div><div class="ts-2-8">1.0</div><div class="ts-2-5">JSR 115 Java Authorization Contract for Containers API</div><div class="ts-2-6">javax.security</div><div class="ts-2-7">security-api</div><div class="ts-2-8">1.1-rev-1</div><div class="ts-2-5">JSR 240 JAIN SLEE</div><div class="ts-2-6">javax.slee</div><div class="ts-2-7">jainslee-api</div><div class="ts-2-8">1.1</div><div class="ts-2-5">JSR 907 Java Transaction API</div><div class="ts-2-6">javax.transaction</div><div class="ts-2-7">transaction-api</div><div class="ts-2-8">1.1-rev-1</div><div class="ts-2-5">JSR 303 Bean Validation</div><div class="ts-2-6">javax.validation</div><div class="ts-2-7">validation-api</div><div class="ts-2-8">1.0.0.GA</div><div class="ts-2-5">JSR 311 Java API for RESTful Web Services</div><div class="ts-2-6">javax.ws.rs</div><div class="ts-2-7">jsr311-api</div><div class="ts-2-8">1.1.1</div><div class="ts-2-5">JSR 222 Java Architecture for XML Binding</div><div class="ts-2-6">javax.xml.bind</div><div class="ts-2-7">jaxb-api</div><div class="ts-2-8">2.2.4</div><div class="ts-2-5">JSR 105 XML Digital Signature APIs</div><div class="ts-2-6">javax.xml.crypto</div><div class="ts-2-7">jsr105-api</div><div class="ts-2-8">1.0.1</div><div class="ts-2-5">JSR 206 Java API for XML Processing</div><div class="ts-2-6">javax.xml.parsers</div><div class="ts-2-7">jaxp-api</div><div class="ts-2-8">1.4.2</div><div class="ts-2-5">JSR 93 Java API for XML Registries</div><div class="ts-2-6">javax.xml</div><div class="ts-2-7">jaxr-api</div><div class="ts-2-8">1.0_04</div><div class="ts-2-5">JSR 101 XML RPC</div><div class="ts-2-6">javax.xml</div><div class="ts-2-7">jaxrpc-api</div><div class="ts-2-8">1.1</div><div class="ts-2-5">XML Web Services</div><div class="ts-2-6">javax.xml</div><div class="ts-2-7">jaxws-api</div><div class="ts-2-8">2.0EA3</div><div class="ts-2-5">JSR 173 Streaming API for XML</div><div class="ts-2-6">javax.xml.stream</div><div class="ts-2-7">stax-api</div><div class="ts-2-8">1.0-2</div><div class="ts-2-5">JSR 67 XML Messaging</div><div class="ts-2-6">javax.xml.soap</div><div class="ts-2-7">saaj-api</div><div class="ts-2-8">1.3.4</div><div class="ts-2-133">JSR 196 Java Authentication Service <br>Provider Interface for Containers</div><div class="ts-2-134">javax.xml</div><div class="ts-2-135">webservices-api</div><div class="ts-2-136">2.1-b16</div><div class="ts-2-5">JSR 224 XML-Based Web Services</div><div class="ts-2-6">javax.xml.ws</div><div class="ts-2-7">jaxws-api</div><div class="ts-2-8">2.2.6</div><div class="gen-54"> </div></div><p>If
+ you want to use JSF 2.1, which was released after JavaEE 6, it is 
+necessary to explicitly place a compile time dependency on that artifact
+ <em>before</em> the javaee-api 6.0 dependency.</p><div class="xml" style="font-family: monospace;"><ol><li style="background: #fcfcfc;"><div><span style="color: #000000; font-weight: bold;">&lt;dependencies<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp; <span style="color: #000000; font-weight: bold;">&lt;dependency<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;groupId<span style="color: #000000; font-weight: bold;">&gt;</span></span>javax.faces<span style="color: #000000; font-weight: bold;">&lt;/groupId<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;artifactId<span style="color: #000000; font-weight: bold;">&gt;</span></span>javax.faces-api<span style="color: #000000; font-weight: bold;">&lt;/artifactId<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;version<span style="color: #000000; font-weight: bold;">&gt;</span></span>2.1<span style="color: #000000; font-weight: bold;">&lt;/version<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;scope<span style="color: #000000; font-weight: bold;">&gt;</span></span>provided<span style="color: #000000; font-weight: bold;">&lt;/scope<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp; <span style="color: #000000; font-weight: bold;">&lt;/dependency<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div> </div></li><li style="background: #fcfcfc;"><div>&nbsp; <span style="color: #000000; font-weight: bold;">&lt;dependency<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;groupId<span style="color: #000000; font-weight: bold;">&gt;</span></span>javax<span style="color: #000000; font-weight: bold;">&lt;/groupId<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;artifactId<span style="color: #000000; font-weight: bold;">&gt;</span></span>javaee-api<span style="color: #000000; font-weight: bold;">&lt;/artifactId<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;version<span style="color: #000000; font-weight: bold;">&gt;</span></span>6.0<span style="color: #000000; font-weight: bold;">&lt;/version<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div>&nbsp;&nbsp;&nbsp; <span style="color: #000000; font-weight: bold;">&lt;scope<span style="color: #000000; font-weight: bold;">&gt;</span></span>provided<span style="color: #000000; font-weight: bold;">&lt;/scope<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #f0f0f0;"><div>&nbsp; <span style="color: #000000; font-weight: bold;">&lt;/dependency<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li><li style="background: #fcfcfc;"><div><span style="color: #000000; font-weight: bold;">&lt;/dependencies<span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li></ol></div><p>Oracle GlassFish Server 3.1.1 &lt;<a class="jive-link-external-small" href="http://glassfish.org/" rel="nofollow">http://glassfish.org/</a>&gt; contains an implementation of JSF 2.1.</p><h2>Archetypes That Use The Artifacts</h2><p>Because
+ we now have these artifacts in maven central, it is possible for us to 
+finally add archetypes that use them. This first archetype creates a 
+simple war project that depends on JSF 2.1 and JavaEE 6.</p><pre> mvn archetype:generate -DarchetypeGroupId=javax.faces -DarchetypeArtifactId=javax.faces-war-archetype -DarchetypeVersion=2.1 </pre><p>A subsequent post will document the use of another artifact, for the very latest JSF version, 2.2-SNAPSHOT.</p><p>This
+ blog entry signifies the culmination of the effort of many individuals 
+from many disciplines over the ears. I would like to thank them all for 
+    finally allowing official Java jars to flow into Maven Central.</p><p><span class="technoratitag"> Technorati Tags: <a class="jive-link-external-small" href="http://www.technorati.com/tags/edburns" rel="nofollow">edburns</a></span></p></div>
+
+<h2>4 Comments</h2>
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-0">
+    <li class="reply j-anchor-target" id="comment-964542" data-object-type="105" data-object-id="964542">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110902_files/32.png" data-avatarid="-1" data-username="sfcoy" data-height="32" alt="sfcoy" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110902_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">sfcoy</a>
+                    </span>
+                        <a href="#comment-964542" id="comment-modDate-964542" class="font-color-meta-light">Sep 6, 2011 1:58 AM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964542">
+
+                        <!-- [DocumentBodyStart:b063936b-ef96-46dc-833e-7e3d80c929a8] --><div class="jive-rendered-content">
+<p>I've found that having the java code stripped from these jars makes 
+them quite useless in a real project because any unit tests that 
+reference associated code cannot be executed.</p>
+//</div><!-- [DocumentBodyEnd:b063936b-ef96-46dc-833e-7e3d80c929a8] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964542" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964542" data-object-type="105" data-object-id="964542" data-parent-object-type="38" data-parent-object-id="14318" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964542">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964542" class="acclaim-container"><span id="jive-acclaim-like-container-105-964542" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964542-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964542" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964542-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964542" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964543-->
+
+
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-1">
+    <li class="reply j-anchor-target" id="comment-964543" data-object-type="105" data-object-id="964543">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110902_files/32_002.png" data-avatarid="-1" data-username="javaserverfowner" data-height="32" alt="javaserverfowner" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110902_files/level7.png" alt="Whiz" title="Whiz"></span><span class="j-status-levels j-gamification-status-level"><img src="20110902_files/level7.png" alt="Whiz" title="Whiz"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">javaserverfowner</a>
+                    </span>
+                        <a href="#comment-964543" id="comment-modDate-964543" class="font-color-meta-light">Sep 20, 2011 4:43 PM</a>
+                            (<a class="font-color-meta-light localScroll" href="#comment-964542" title="Go to message">in response to sfcoy</a>)
+                    </p>
+
+                </div>
+                <div id="comment-body-964543">
+
+                        <!-- [DocumentBodyStart:be4b8db4-c26d-4895-b04c-bf0dd5373186] --><div class="jive-rendered-content">
+<p>Thanks for your interest and feedback.&nbsp; If you want code that 
+executes, rather than just compiles, then you need to place a dependency
+ on a specific implementation of JSF.&nbsp; For Mojarra that is groupId:
+ org.glassfish artifact: javax.faces version: 2.1.3.</p>
+<p>&nbsp;</p>
+<p>Ed</p>
+//</div><!-- [DocumentBodyEnd:be4b8db4-c26d-4895-b04c-bf0dd5373186] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964543" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964543" data-object-type="105" data-object-id="964543" data-parent-object-type="38" data-parent-object-id="14318" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964543">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964543" class="acclaim-container"><span id="jive-acclaim-like-container-105-964543" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964543-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964543" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964543-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964543" data-dom-actions="[]" data-parent-id="964542" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964544-->
+
+
+
+    <ul class="jive-comment jive-comment-threaded jive-comment-indent-1">
+    <li class="reply j-anchor-target" id="comment-964544" data-object-type="105" data-object-id="964544">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110902_files/32_004.png" data-avatarid="-1" data-username="freiser77" data-height="32" alt="freiser77" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110902_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">freiser77</a>
+                    </span>
+                        <a href="#comment-964544" id="comment-modDate-964544" class="font-color-meta-light">May 30, 2013 10:15 AM</a>
+                            (<a class="font-color-meta-light localScroll" href="#comment-964543" title="Go to message">in response to javaserverfowner</a>)
+                    </p>
+
+                </div>
+                <div id="comment-body-964544">
+
+                        <!-- [DocumentBodyStart:9aa5b6c1-f352-4f81-baee-eae0a7a9e080] --><div class="jive-rendered-content">
+Hello Ed,
+
+if I program against the interfaces and mock the concrete 
+implementation, then the javaee apis from are pretty useless. Instead I 
+use javaee apis from geronimo as they are not stripped.
+
+Why is it necessary to make apis useless?
+//</div><!-- [DocumentBodyEnd:9aa5b6c1-f352-4f81-baee-eae0a7a9e080] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964544" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964544" data-object-type="105" data-object-id="964544" data-parent-object-type="38" data-parent-object-id="14318" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964544">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964544" class="acclaim-container"><span id="jive-acclaim-like-container-105-964544" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964544-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964544" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964544-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964544" data-dom-actions="[]" data-parent-id="964543" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    
+        <!-- End Comment -->
+
+    </li>
+    
+    <!-- parentId == -1 when the comment does not have a parent -->
+    <!-- Begin Comment 964545-->
+
+
+
+    <li class="reply j-anchor-target" id="comment-964545" data-object-type="105" data-object-id="964545">
+
+
+
+<a href="">
+    <img class="jive-avatar" src="20110902_files/32_003.png" data-avatarid="-1" data-username="behrangsa" data-height="32" alt="behrangsa" width="32" height="32" border="0">
+    <span class="j-status-levels j-gamification-status-level"><img src="20110902_files/level1.png" alt="Newbie" title="Newbie"></span></a>
+                    <div class="jive-comment-arrow"></div>
+            <div class="jive-comment-content clearfix">
+                <div class="j-comment-header">
+
+                    <p class="jive-comment-meta font-color-meta-light">
+
+                    <span class="j-username-wrap">
+                        <a href="">behrangsa</a>
+                    </span>
+                        <a href="#comment-964545" id="comment-modDate-964545" class="font-color-meta-light">Sep 28, 2011 12:06 PM</a>
+                    </p>
+
+                </div>
+                <div id="comment-body-964545">
+
+                        <!-- [DocumentBodyStart:2470f328-35bb-42c5-abbb-023e418ba909] --><div class="jive-rendered-content">
+<p>&nbsp;Nice, but I noticed that JPA 2 is missing.</p>
+//</div><!-- [DocumentBodyEnd:2470f328-35bb-42c5-abbb-023e418ba909] -->
+                </div>
+<span class="js-outcome-helpful-counts-container j-outcome-helpful-counts-container font-color-okay" data-object-type="105" data-object-id="964545" data-helpful-count="0" data-overall-count="0" data-display-overall="false"></span>
+<ul class="js-outcome-badge-container j-outcome-badge-container js-ed-105-964545" data-object-type="105" data-object-id="964545" data-parent-object-type="38" data-parent-object-id="14318" aria-label="Outcome badges" aria-live="polite"></ul>
+                <ul class="j-comment-footer js-comment-footer clearfix">
+                    <li class="jive-comment-actions font-color-meta clearfix" data-comment-id="964545">
+
+
+<span class="js-liking-control j-liking-control"><span class="jive-icon-glyph icon-thumbs-up jive-glyph-like"></span><span id="acclaim-container-105-964545" class="acclaim-container"><span id="jive-acclaim-like-container-105-964545" data-acclaim-count="0" data-can-apply="false" data-type="small" data-show-icon="true" class="js-acclaim-container acclaim-like-container"><span class="j-social-action">Like <label class="j-508-label" id="showAcclaim-964545-105-count-label">Show 0 Likes</label><a class="jive-acclaim-likedlink" data-command="showAcclaim" data-acclaim-type="like" data-object-id="964545" data-object-type="105" data-count="0" href="#" role="button" aria-labelledby="showAcclaim-964545-105-count-label" title="Show 0 Likes">(0)</a> </span></span></span></span>
+
+                    </li>
+                    <li class="jive-comment-action-button font-color-meta-light clearfix">
+<a href="#" class="font-color-meta js-outcome-button j-outcome-button" data-object-type="105" data-object-id="964545" data-dom-actions="[]" data-parent-id="-1" data-root-community="Oracle Community">Actions <span class="j-ui-elem j-action-down-arrow"></span></a>                    </li>
+                </ul>
+        </div>
+
+        <!-- End Comment -->
+
+    </li>
+    </ul>
+    
