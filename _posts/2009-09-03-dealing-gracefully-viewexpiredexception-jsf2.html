@@ -2,6 +2,7 @@
 layout: post
 title:  "Dealing Gracefully with ViewExpiredException in JSF2 Blog"
 date:   2009-09-03 1:55:00 -0500
+comments: true
 ---
 <div class="jive-rendered-content"><p>My previous entry dove under the covers for JSF 2.0 and examined<a class="jive-link-external-small" href="http://weblogs.java.net/blog/edburns/archive/2009/09/02/jsf2-composite-component-metadata" rel="nofollow">composite component metadata</a>. This one is far less esoteric and shows how to handle the <code>ViewExpiredException</code> using a new JSF feature, the <code>ExceptionHandler</code>, contributed by<a class="jive-link-external-small" href="http://blog.hibernate.org/Bloggers/Pete" rel="nofollow">Pete Muir</a> a JSF Expert Group representative from JBoss.</p><span></span><p>JSF throws a <code>ViewExpiredException</code>
  when a postback is made to a view and, for whatever reason, that view 
