@@ -367,54 +367,7 @@ biggest new features in JAX-RS-2.1, I'll discuss it in its final form.
 
 This commit added examples of using SSE in classes
 jaxrs/examples/sse/ItemStoreResource.java,
-jaxrs/examples/sse/SseClient.java andcommit d62ed77308878b7df80f56a956aa90f9d1e4b613
-Author: Pavel Bucek <pavel.bucek@oracle.com>
-Date:   Fri Feb 10 15:41:36 2017 +0100
-
-    SseBroadcaster shouldn't force SseEventSink in #onException and #onClose.
-    
-    Change-Id: I1d1c87ef04dbeb0f317eb793473812b3ad09558c
-
-diff --git a/examples/src/main/java/jaxrs/examples/sse/ItemStoreResource.java b/examples/src/main/java/jaxrs/examples/sse/ItemStoreResource.java
-index bec389f..64c8394 100644
---- a/examples/src/main/java/jaxrs/examples/sse/ItemStoreResource.java
-+++ b/examples/src/main/java/jaxrs/examples/sse/ItemStoreResource.java
-@@ -89,10 +89,10 @@ public class ItemStoreResource {
-         this.sse = sse;
-         this.broadcaster = sse.newBroadcaster();
- 
--        broadcaster.onException((sseEventOutput, e) ->
-+        broadcaster.onException((subscriber, e) ->
-                 LOGGER.log(Level.WARNING, "An exception has been thrown while broadcasting to an event output.", e));
- 
--        broadcaster.onClose(sseEventOutput -> LOGGER.log(Level.INFO, "SSE event output has been closed."));
-+        broadcaster.onClose(subscriber -> LOGGER.log(Level.INFO, "SSE event output has been closed."));
-     }
- 
-     private static volatile long reconnectDelay = 0;
-diff --git a/jaxrs-api/src/main/java/javax/ws/rs/sse/SseBroadcaster.java b/jaxrs-api/src/main/java/javax/ws/rs/sse/SseBroadcaster.java
-index 988e8ba..c9078a0 100644
---- a/jaxrs-api/src/main/java/javax/ws/rs/sse/SseBroadcaster.java
-+++ b/jaxrs-api/src/main/java/javax/ws/rs/sse/SseBroadcaster.java
-@@ -68,7 +68,7 @@ public interface SseBroadcaster extends AutoCloseable, Flow.Publisher<OutboundSs
-      * @param onException bi-consumer, taking two parameters: {@link SseEventSink}, which is the source of the
-      *                    exception and the actual {@link Exception}.
-      */
--    void onException(BiConsumer<SseEventSink, Exception> onException);
-+    void onException(BiConsumer<Flow.Subscriber<? super OutboundSseEvent>, Exception> onException);
- 
-     /**
-      * Register a listener, which will be called when the SSE event output has been closed (either by client closing
-@@ -80,7 +80,7 @@ public interface SseBroadcaster extends AutoCloseable, Flow.Publisher<OutboundSs
-      *
-      * @param onClose consumer taking single parameter, a {@link SseEventSink}, which was closed.
-      */
--    void onClose(Consumer<SseEventSink> onClose);
-+    void onClose(Consumer<Flow.Subscriber<? super OutboundSseEvent>> onClose);
- 
-     /**
-      * Subscribe {@link OutboundSseEvent} subscriber (i.e. {@link SseEventSink})
-
+jaxrs/examples/sse/SseClient.java and
 examples/sse/ServerSentEventsResource.java.  These classes are still in
 the codebase.
 
