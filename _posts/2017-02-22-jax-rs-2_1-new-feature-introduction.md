@@ -4,11 +4,14 @@ title:  JAX-RS 2.1 New Feature Introduction
 date:   2017-02-22 00:15:00 -0500
 comments: true
 ---
-In preparation for my
-[DevNexus talk on Thursday]({{ site.baseurl }}{% post_url 2017-02-21-devnexus-2017-picks %}) I
-reviewed the commit log for the JAX-RS API for all the commits in
-the 2.1 cycle, to be sure I didn't miss anything.  There are basically
-two new big ticket features in JAX-RS 2.1.
+
+In preparation for my [DevNexus talk on Thursday]({{ site.baseurl }}{%
+post_url 2017-02-21-devnexus-2017-picks %}) I reviewed the commit log
+for the JAX-RS API for all the commits in the 2.1 cycle, to be sure I
+didn't miss anything (See git://java.net/jax-rs-spec~api).  There are
+basically three new big ticket features in JAX-RS 2.1.
+
+* Integration with Arbitrary Third-Party Reactive Frameworks
 
 * Server Sent Events, with support for Reactive Streams as specified in
   the Reactive Streams API
@@ -25,6 +28,36 @@ post.
 
 Please note that this blog post documents in-progress features whose API
 will likely change before JAX-RS 2.1 is final.
+
+## Integration with Arbitrary Third-Party Reactive Frameworks
+
+The JAX-RS EG acknowledges that the state of the art of reactive
+programming has already reached maturity, and several popular frameworks
+exist, while the Java SE 9 Flow API is not yet available.  The reactive
+features in JAX-RS 2.1 are designed in the spirit of
+[innovation happens elsewhere](http://dreamsongs.com/IHE/): you can
+bring your own reactive framework.  The following example uses
+[Flowable](http://reactivex.io/) from RxJava2.
+
+<div style="padding: 5px;">
+		<div class="java" style="font-family:monospace;"><ol><li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">Client client <span style="color: #339933;">=</span> ClientBuilder.<span style="color: #006633;">newClient</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">register</span><span style="color: #009900;">&#40;</span>RxFlowableInvokerProvider.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">Flowable<span style="color: #339933;">&lt;</span>Response<span style="color: #339933;">&gt;</span> flowable <span style="color: #339933;">=</span> client.<span style="color: #006633;">target</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;http://cloud.oracle.com&quot;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .<span style="color: #006633;">request</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .<span style="color: #006633;">rx</span><span style="color: #009900;">&#40;</span>RxFlowableInvoker.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .<span style="color: #006633;">get</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">flowable.<span style="color: #006633;">subscribe</span><span style="color: #009900;">&#40;</span>response <span style="color: #339933;">-&gt;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #666666; font-style: italic;">// do something with a response when it arrives.</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+</ol></div>		</div>
+
+The work of implementing the `RxFlowableInvokerProvider` on line 1 and
+the `RxFlowableInvoker` on line 5 is beyond the scope of this blog post,
+but it is expected that reactive framework providers (or third parties)
+will provide the necessary implementations of `RxInvokerProvider` for
+popular frameworks.  This work was introduced in "commit f601630 Date:
+Thu Jan 12 10:31:41 2017 +0100".
 
 ## Server Sent Events (SSE)
 
@@ -137,20 +170,18 @@ receives an `SseEventSink` via injection.  In this simple example, the
 GET request is just made to cause the `eventSink` instance variable to
 be populated.
 
-Now the magic starts to happen.  `SseEventSink` extends the
-`javax.ws.rs.Flow.Subscriber<T>` interface, which is part of a 1:1 copy
-of the
-[Java SE 9 Flow API](http://download.java.net/java/jdk9/docs/api/java/util/concurrent/Flow.Subscriber.html)
-(which is a reactive streams compliant API.  The plan is to drop this
-copy in the version of JAX-RS that suppors Java SE 9).  You can see the
-`onNext` method of this interface being invoked within the POST
-processor on line 33.  Because JAX-RS SSE transparently supports the
-Reactive Streams API, you can rest assured that the necessary
-requirements to safely maintain a reactive-compliant application are
-met.  The meaning of `onNext` is simply, "here's another thing in the
-stream of things for you to process".  In this case, the recipient of
-the new thing is whatever parties are connected to the other end of the
-SSE connection.
+Now the magic starts to happen.  `SseEventSink` is functionally a
+[Flow.Subscriber](http://download.java.net/java/jdk9/docs/api/java/util/concurrent/Flow.Subscriber.html),
+though in the Java EE 8 delivery of JAX-RS 2.1 the class will not
+actually extend `Flow.Subscriber<T>`.  The first version of JAX-RS that
+does support Java SE 9 will do so.  In either case, the necessary
+methods from that interface are implemented so the API will remain
+unchanged.  The Java SE 9 Flow API is a reactive streams compliant API.
+You can see the `onNext` method of this interface being invoked within
+the POST processor on line 33.  The meaning of `onNext` is simply,
+"here's another thing in the stream of things for you to process".  In
+this case, the recipient of the new thing is whatever parties are
+connected to the other end of the SSE connection.
 
 A more advanced POST processor is found starting on line 46, for the
 path of `domains/{id}`.  A post to this path causes an asynchronous
@@ -197,14 +228,13 @@ take a look at the SSE Client API in JAX-RS 2.1.
 <li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
 </ol></div>		</div>
 
-Here we come upon an in-progress aspec of the SSE API:
-`SseEventSource`.  This class will eventually extend
-`Flow.Publisher<InboundSseEvent>`, but in the latest revision of
-JAX-RS 2.1, 2.1-m04, it does not.  It does, however, have all necessary the
-methods of that interface.  In the above example, the subscribe() method
-is seen on line 15.  Here we are simply printing out the messages
-received from the server.  Then, on lines 18 - 20 we are issuing a few
-POST requests to the server.
+As in the server case, `SseEventSource` is functionally equivalent to an
+instance of `Flow.Publisher<InboundSseEvent>`, and will literally be one
+in the JAX-RS version that supports Java SE 9.  It does, however, have
+all necessary the methods of that interface.  In the above example, the
+subscribe() method is seen on line 15.  Here we are simply printing out
+the messages received from the server.  Then, on lines 18 - 20 we are
+issuing a few POST requests to the server.
 
 ## Reactive Client API
 
