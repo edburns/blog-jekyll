@@ -1,0 +1,164 @@
+---
+layout: post
+title:  Notes from The New Stack Godaddy CaaS podcast
+date:   2017-03-13 11:39 -0500
+comments: true
+---
+
+<p>I use GoDaddy for my DNS hosting for this site.  I'm interested in
+Container as a Service (CaaS).
+This <a href="https://thenewstack.io/godaddy-built-container-service-platform/">podcast
+    episode</a> seems like a good fit.  Here are my notes as I listen.</p>
+
+<p>0:33 uses Kubernetes and OpenStack.  Shaheeda Nizar, director of
+engineering, GoDaddy.  Micah Rupersburg, GoDaddy CaaS engineering
+  leader.</p>
+
+<p>1:53 Why did you start to do it?  They already had IaaS powered by
+OpenStack.  Internally, the adoption of containers took
+off: <strong>mainly because of being able to package all the
+dependencies</strong>.  Once they went down this road, they needed a
+  platform that runs, orchestrates and manages these containers.</p>
+
+<p>03:33 High level overview.  Kubernetes started to take off as they
+were entering the space.  They liked the vibrant community.  They build
+Kubernets clusters on top of their OpenStack compute.  It had to be
+multi-tenant (obviously for GoDaddy).  This requirement caused much of
+  their interesting technical decisions.</p>
+
+<p>04:57 They needed to get the efficiencies of scale.  Needed partition
+and isolation.  Kubernetes namespaces allows this.  They use namespaces
+to segregate the teams from one another in production.  In staging, they
+create one namespace for each instance of their entire stack that they
+  want to test.  It can be torn down all at once.  It's a sandbox.</p>
+
+<p>06:51 Uses ActiveDirectory for group memberships and Keystone
+  (OpenStack) for authorization.  They have a custom shim that
+  syncronizes the ActiveDirectory into the authorization bit of
+  Kubernetes to provide RBAC.  Each team only has one role.  All team
+  members have all rights.  Driven by an annotation on the namespace
+  object.  Does that mean it's Java?</p>
+
+<p>07:50 What about "Nova" (a part of OpenStack).  Did you drop that?
+  Seemed like a sensitive question.  She kind of equivocated.  They may
+  adopt a hybrid cloud approach: running Kubernetes on their own
+  private cloud, but OpenStack on the public cloud and be able to
+  deploy in both places.</p>
+
+<p>08:45 Kubernetes provides isolation to give you cloud portability.
+  For example L7 load balancing has different impls on AWS vs their
+  impl, but the app's are isolated from that.  IP space is normalized.
+  They use DNS for service discovery.  They are scoped to the
+  namespace.  The federation feature of Kubernetes can be integrated
+  with DNS.</p>
+
+<p>10:11 Drilling down on the hybrid environment.  Clients have to care
+  about if they have to be in different regions.  If the client is in a
+  region for which GoDaddy does not have a regional presence, they want
+  to be able to go after that business by using public cloud for that
+  client.</p>
+
+<p>11:25 Much of the demand is driven by latency.  For example,
+  GoDaddy's main thing is searching for the availability of domain
+  names.  When someone does a query, it needs to be handled local to
+  you.  They don't have data centers in all the places they want to do
+  business.</p>
+
+<p>12:25 How do you handle the data synchronization?  They are not even
+  looking at doing that.  The data is still local.  Are you referring
+  to data governance?  If so, still to premature to talk about.
+  Distributed database sync is the real problem.  Domain resellers need
+  a local endpoint to call.</p>
+
+<p>15:05 Which are running in hybrid mode?  The multi-tenant thing is
+  still a year out.  Some apps originated as containerized, others were
+  broken up from monoliths.  They are good experts at stateless
+  microservices apps that are containerized.</p>
+
+<p>16:55 Autoscaling and resiliency to failure is such a huge win for
+  product teams.  Services have better uptime.  No paging in the middle
+  of the night.  Better response time.</p>
+
+<p>18:07 What do you use to gain visibility into what is inside the
+  containers?  For example, how do you know your containers have the
+  latest security patches applied?  They have a monitoring system:
+  metrics, logging events out (audit trail).  But they basically don't
+  keep track of what's inside containers.  They have a CICD pipeline
+  into which such inspection could be inserted.  They have standard
+  approved versions of frameworks.  Kubernetes allows you to deploy in
+  different ways, though.</p>
+
+<p>21:42 How important is telemetry.  Snap and Grafana.  There is debate
+  within Kubernetes about CI.  They are using Jenkins for CI and CD.
+  They are not using Travis.  They run their own Git servers.  They
+  use <a href="https://prometheus.io/">Prometheus</a> to collect
+  metrics.  They have a plugin that allows you to collect metrics from
+  all the containers in the cluster, and these metrics are federated to
+  a central location.  Grafana sits on top of that.  Each team can look
+  at a dashboard that represents their namespace.</p>
+
+<p>24:03 As soon as a client gets onboarded, they get their own
+  dashboard.  </p>
+
+<p>24:50 How are you managing the control plane?  They looked at Magnum,
+  but rolled their own using Ansible.  There are several different
+  layers for the CaaS.  At the network layer they use Flannel SDN,
+  backed by EtcD.  They deploy EtcD and Flannel before they deploy
+  anything else.  On top of that they deploy the Kubernetes control
+  plane.  On top of Kubernetes itself, they deploy all the ancialliary
+  services.  (Platform services).  They hope to make this available to
+  the community.</p>
+
+<p>27:54 How do you decide what to share?  1. Not re-invent. 2. Use
+  open source that's the right fit.  They have custom code for legacy
+  tie-ins.  But the intention is to write it in a standardized way.
+  There is a huge benefit of sharing if it gets popular.  The community
+  can maintain the pattern.  She thinks of it as a two way street.</p>
+
+<p>29:33 Are you still using any proprietary for new developments?  LDAP
+  integration is custom.  SSL certificates or DNS entries.  CaaS has the
+  smallest number of proprietary bits.  They
+  use <a href="http://www.fluentd.org/">FluentD</a> to collect their
+  logs with
+  a <a href="https://www.loggly.com/blog/why-journald/">JournalD</a>.</p>
+
+<p>31:35 They have a custom logging infrastructure but they wrote a
+  wrapper around it that looks like ElasticSearch.</p>
+
+<p>32:05 How much of what is in the container do you want to provide as
+  a service?  Is every product group on their own there?  The web based
+  product teams are rolling their own stuff and they have a lot of
+  expertise in that area.  They don't have a lot of visibility into the
+  actual application teams.  But they do have patterns for best
+  practices such as "how do I terminate SSL in my application with
+  NGINX?"  "How do I send events out?"  "How do I expose my metrics?"
+  They have tutorials for how to do this kind of thing.  It's really a
+  pattern library.  They want to make it so the only thing they need to
+  interact with is Kubernetes to do anything involving deployment.  One
+  single YAML and you're good.  Deploying straight to OpenStack has lots
+  of steps.  These go away with their CaaS solution.</p>
+
+<p>34:50 What is the business value of the service itself?  How is it
+  priced?  Who are the customers?  They measure the business impact in
+  1. time to market.  If developers can deploy their apps in a seamless
+  low friction environment, that's the win.  IT has transferred from a
+  "ticket based" thing where developers had to do a lot of those
+  tickets before they could deploy their app to production.  All of
+  that friction goes away.  2. The cost of devops.  How much work does a
+  dev or op have to put in to ensure the service is always up, is
+  scaling correctly, has sufficient monitoring.  </p>
+
+<p>37:03 What's next?  Healthchecking. <strong>The old downstream
+    problem shows up again!</strong>  How do we expose that type of
+    failure.  They are looking at ways to make this transparent, with
+    probing endpoints.  Making root cause analysis easier.  Elastic
+  capacity is not done yet.</p>
+
+<p>39:22 The same tired value proposition: let developers focus on their
+  code and not have to worry about the environment.  What
+  about <a href="https://github.com/funcatron">Funcatron</a>?</p>
+
+<p>39:46 Kubernetes is a great platform to build higher level
+  constructs on top of.  Machine learning on top of the cluster.</p>
+
+
