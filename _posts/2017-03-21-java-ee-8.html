@@ -1,0 +1,83 @@
+---
+layout: post
+title:  Devoxx Java EE 8
+date:   2017-03-21 10:00 -0800
+comments: true
+---
+
+<p>Raw notes from Linda DeMichiel's Java EE 8 talk.</p>
+
+<p>What was in EE 7: Actually a very action packed release, with the
+usual themes: simplicity, platform cohesion, embracing contemporary
+  standards.</p>
+
+<p>EE8: Admit the impact of the hiatus.  The original plan had to be
+  scaled back from 12 to 9 JSRs.  Really not a big scale back.</p>
+
+<p>Two net new JSRs: Security and JSON-B.  Revisions for Servlet, JSF,
+  JSON-P, JAX-RS.</p>
+
+
+<p>JSON-P.  JSON-Pointer: String syntax for referencing into a JSON
+  document.  <a href="https://tools.ietf.org/html/rfc6901">RFC-6901</a>.
+  Would be nice if there was EL integration.  JSON Patch: Ability to
+  mutate a JSON
+  document.  <a href="https://tools.ietf.org/html/rfc6902">RFC-6902</a>.
+  This has a builder API.  JSON-Merge Patch: Conditionally apply the
+  patch.  <a href="https://tools.ietf.org/html/rfc7386">RFC-7386</a>.  <strong>Also
+  includes seamless integration with Java SE 8 Lambda and
+    Strings.</strong></p>
+
+<p>JSON-B.  Like JAX-B, but for JSON.  This is the missing piece for
+  JSON in standard Java.  <code>JsonbBuilder</code> is the client entry
+  point.  <code>Jsonb</code> the thing you actually manipulate.  Allows
+  you to annotate your Java Pojo to control how it is mapped to JSON.
+  The <code>JsonBConfig</code> allows you to do this control.  The RI is
+  called <a href="http://json-b.net/">Yasson</a>.</p>
+
+<p>JAX-RS.  New features: Reactive Client API, Server Sent Events,
+  NIO.  I have more on this at <a href="{{ site.baseurl }}{%
+post_url 2017-02-22-jax-rs-2_1-new-feature-introduction %}">a previous
+  post</a>.  Linda's talk had more structure on Server Sent Events.  I
+  am glad she emphasized the value JAX-RS brings in sending SSE to both
+  client and server when doing REST.</p>
+
+<p>Servlet. But first set the context with some plain content on HTTP/2.
+  When talking about the binary framing, she mentioned that frames were
+  self describing, which was a nice observation. </p>
+
+<p>JSF. A mature technology.  An enormous number of community requested
+  fixes.  She did address why we are continuing JSF while we are not continuing MVC.  This was nice to hear.  </p>
+
+<p>CDI 2.0.  Mostly about how to use CDI in Java SE environments,
+  outside of Java SE.  This is hugely important for fat-jar style
+  Microservices.  Some enhancements to CDI events.  In 1.1, events are
+  invoked synchronously, without regard for priority.  2.0 allows
+  prioritization and ordering.  Adds async
+  events: <code>event.fireAsync()</code> and <code>@ObserveAsync</code>.</p>
+
+<p>BeanValidation 2.0.  Continuing the theme with JSF, adds support for
+  a number of Java SE 8 features.  Adds some new constraints.  Add
+  ability to apply constraints on insertion into <code>Map</code>.</p>
+
+<p>Security 1.0.  Three new APIs <code>SecurityContext,
+  HttpAuthenticationMechanism, IdentityStore</code>.  The first is under
+  debate about whether or note the first is actually
+  necessary.  <code>SecurityContext</code> is intended to supercede APIs
+  in several of the other EE technologies.  I like the
+  idea.  <code>HttpAuthenticationMechanism</code>, modeled on JASPIC,
+  and JASPIC is intended to delegate to this.  It is used to
+  authenticate callers of web applications.  <code>IdentityStore</code>
+  has methods for authentication and authorization.</p>
+
+<p>Summary: Target release date of this summer!</p>
+
+<!--
+
+<h3>Personal notes</h3>
+
+<p>What is it about a presentation that makes it easier to take
+notes?</p>
+
+
+-->
