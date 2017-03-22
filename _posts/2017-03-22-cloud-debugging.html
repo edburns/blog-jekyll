@@ -1,0 +1,79 @@
+---
+layout: post
+title:  Devoxx Cloud Debugging
+date:   2017-03-22 14:20 -0800
+comments: true
+---
+
+<p>Raw notes from Cloud Debugging
+with <a href="http://twitter.com/patricknflynn">Patrick Flynn</a>.  Java
+Tools Tech Lead on Java Cloud Platform.</p>
+
+<p>Picture from good old days, 2003.  Hardware was very manual.
+Purchase orders, procurement, six months later.  Cork board to separate
+  motherboards.</p>
+
+<p>Tooling was also not good back then.</p>
+
+<p>Did show of hands about who is doing deployments by hand.</p>
+
+<p>Today, we can provision in a matter of seconds.  Great network
+infrastructure, great physical security, but if you are deploying
+  manually, you are still not getting all the benefits.</p>
+
+
+<p>Asserts that spring boot is the platform of choice in the community
+right now.  Deployed as jars, not wars.  Demo.
+Takes <code>DataStore</code>, a google cloud platform feature.  Puts a
+  value to the data store and displays it.</p>
+
+<p>Mutates the demo to add translation.  It is a available as a maven
+dependency in maven central.  Had to look up the javadoc, out of the
+IDE.  Restarted spring boot because of dependency added.  Added language
+  detection iteratively.</p>
+
+<p>Google cloud tools for intellij has support for a number of services.
+  Plugged these heavily.  Cloud source repositories, for example.</p>
+
+<p>App Engine Flex.  Create Deployment Configuration: Went through lots
+of the fields in this dialog.  Points: Good maven support.  Need an
+appengine-web.xml.  On build, this actually orchestrates a Docker build.
+The system looks at the project type and chooses the right Docker image
+  to run it.  This is a bit slower than App Engine Standard.</p>
+
+<p>Mentioned the vendor lock in concern.  App Engine Flex is not a
+walled garden.  It allows running arbitrary APIs.  Because it depends on
+  Docker, you can take your output to any other cloud.</p>
+
+<p>Google built Borg as a container running service.  Kubernetes was
+informed by the design of Borg.  How do you run the Spring Boot demo on
+Kubernetes?  He went into the gcloud CLI and created a bunch of stuff to
+  run it.  This is entirely separate from App Engine Flex.  </p>
+
+
+<p>Showed how the debugger gets enabled: Adding the cloud debugger agent
+into the Dockerfile.  The service name and the project file are included
+  in the dockerfile so the debugger knows about it.</p>
+
+<p>Supports GitHub integration.</p>
+
+<p>Demo used the spotify Docker Maven Plugin.  Need to include
+source-context.json and source-contexts.json.  Demo also includes a
+docker push to the container registry for the google cloud
+  project.  Did the mvn deploy from the cloud platform machine.</p>
+
+<p>Additional kubernetes steps: Expose load balancer.  </p>
+
+<p>Showed lots of mutations of the config on kubernetes and App Engine
+Flex.  Showed how easy traffic splitting, canary testing, and
+  versioning works.</p>
+
+
+<p>Used Apache Bench to generate load.</p>
+
+<p>With no time left, he finally got to the debugging.  Bug: reporting
+wrong user agent.  Shows how in Intellij you can attach to running
+instances.  It syncs the source to what is actually running in the
+cloud.  This works because the agent captures what the breakpoints are,
+captures the sample at the time when it is hit.  It is not interactive
+debugging.  You can't step.  But it's still better than nothing.</p>
