@@ -1,0 +1,69 @@
+---
+layout: post
+title:  Devoxx Deep Learning
+date:   2017-03-22 14:25 -0800
+comments: true
+---
+
+<p>Raw notes from <a href="https://twitter.com/agibsonccc">Adam
+Gibson's</a> Deep Learning in Production.</p>
+
+<p>Defining Production: It's different for a startup from an enterprise,
+and different from academia.  Each have their own set of tools and
+  expectations.</p>
+
+<p>GPU clusters.  On prem research: something flexible and quick.  Not
+much need for complexity management.  Python HPC stack.  C sometimes
+  used for new neural networks.</p>
+
+<p>Cloud research: AWS/Azure spin up resources as needed.</p>
+
+<p>On Prem production: HPC, Video transcoding.  They use a lot of GPUs.
+  They also use resource schedulers: MESOS and YARN.</p>
+
+<p>I must have missed when he talked about how GPUs are essential for
+  this space.</p>
+
+<hr />
+
+<p>Hadoop: HDFS and ZooKeeper.  16:39.</p>
+
+<p>Two modes: training and inference (using a model as an API).  GPUs
+  are specialized for matrix computations.</p>
+
+<p>It started to become difficult to follow due to lots of hopping
+  around without defining the terms well enough, or at all.  It must be
+  my ignorance of the space.</p>
+
+<p>At least he showed us how to pronounce Lagom.  It's log-AHM.</p>
+
+<p>Training models is difficult and expensive.  This is why you need a
+  specialized chip.</p>
+
+<hr />
+
+<p>ETL: Extract Transform Load.</p>
+
+<p>Neural nets are made up of Tensors. <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST</a>.</p>
+
+<p>Problems to think about on a GPU cluster:</p>
+
+	<ul>
+
+	  <li><p>Memory management.  Each GPU doesn't have that much
+	      RAM, so you have to shard your problem.</p></li>
+
+	  <li><p>Throughput
+	  </p></li>
+
+	  <li><p>Resource provisioning
+	  </p></li>
+
+          <li><p>GPU allocation for job.
+	  </p></li>
+
+	</ul>
+
+<p><a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a></p>
+
+<p></p>

@@ -1,0 +1,111 @@
+---
+layout: post
+title:  Devoxx JAX-RS 2.1
+date:   2017-03-23 10:00 -0800
+comments: true
+---
+
+<p>Raw notes from <a href="https://twitter.com/spericas">Santiago Pericas-Geertsen's</a> JAX-RS 2.1 Reloaded</p>
+
+<p>Quick update on this latest "minor revision".</p>
+
+<p>Reactive Extensions.  Fits really well with JAX-RS API.</p>
+
+<p>Server-Sent Events</p>
+
+<p>Non-Blocking IO</p>
+
+<h2>Reactive Extensions</h2>
+
+<p>Asynchronous Processing in 2.0</p>
+
+<p>Server Side <code>@Suspended</code>
+  and <code>AsyncResponse</code>. Resume execution on a different thread.</p>
+
+<p>Client side <code>Future&lt;T&gt;</code>.
+  And <code>InvocationCallback</code></p>
+
+<p>Use of <code>async</code> in the midst of builders allows the delay
+  of the invocation.  Future doesn't allow you to know when it is safe
+  to call <code>get</code>.</p>
+
+<p><code>InvocationCallback</code> allows you to pass in the thing to
+call when it effectively is safe to call get.  But this doesn't easily
+allow composition: where the value for step 1 needs to be taken into
+  account in step 2, for example.  "pyramid of doom".</p>
+
+<p>Some more use cases: composition, combining values, consume values of
+  asyncronous tasks.</p>
+
+<p>Now we can use <code>CompletionStage&lt;&gt;</code>.  This fit really
+well bscause we didn't have to invent a new type, as we did
+  with <code>InvocationCallback</code>.</p>
+
+<p>Turns out that you might want to use RxJava, or some other Rx
+  thing.</p>
+
+<p>Two step process.  1. register a provider, 2. Override the default
+Invoker.</p>
+
+<p>The ability to do this is an extension for JAX-RS.  Impls are not
+  required.</p>
+
+<h2>Server-Sent Events</h2>
+
+<p>Wanted to add in JAX-RS 2, now getting to it in 2.1.</p>
+
+<p>Reviewed the basics of SSE.  Now maintained by WHATWG.</p>
+
+<p>Client API: get an <code>SseEventSource</code> target.  Subscribe to
+it, passing in the handler.  Open the event source.  It
+  is <code>AutoClosable</code>, so you can use try with resources.</p>
+
+<p>Server API: <code>SseEventSink</code> and <code>Sse</code>.  These
+can be passed to resource methods as <code>@Context</code> annotated
+arguments.  <code>SseBroadcaster</code> and <code>@Singleton</code>
+annotation.  The former is created by your application, not the runtime.
+You can use it to connect clients to the sse pipe, and also use it to
+  broadcast events when you have them.</p>
+
+<h2>Non-Blocking IO</h2>
+
+<p>Motivation: enable higher throughput and more control over IO.</p>
+
+<h2>NIO Server</h2>
+
+<p>The existing <code>StreamingOutput</code> was still blocking.</p>
+
+<p>Showed some iterations of NIO proposals.  They suffered from
+operating at the level of byte streams, also it was hard to integrate
+  with the JAX-RS pipeline.</p>
+
+<p>Current proposal: Java 9 Flows.  We want to use it.  So we are
+creating copies of the required APIs.  You don't have to use bytes.  You
+  can use objects.  You can integrate with third party libraries.</p>
+
+<p>Pattern: Publisher, Subscriber, Processor.  How does this relate to
+  JAX-RS?</p>
+
+<p>Why and how to NIO?  It's more complicated code.  But it's useful for
+large payloads, which often involve collections.  A collection of Pojos
+  is a <code>Publisher&lt;Pojo&gt;</code>.</p>
+
+<p>Added a
+new <code>MessageBodyReader</code>: <code>NioBodyReader</code>.  Same
+  for writer.</p>
+
+<p>What about Filters and Interceptors?  Still being discussed, but he
+  did commit to having the feature in there.</p>
+
+<h3>NIO Clients</h3>
+
+<p>Need a new <code>Invoker</code>.  Add <code>nio()</code> method you
+  can throw in the builder chain, and then use the normal Flow API.</p>
+
+<h2>Naming</h2>
+
+<p>Publisher = Source, Subscriber = Sink.  This lends itself to SSE.
+  You can think of SSE as a special case of NIO.  An SSE connection is
+  just a Flow of SSE Events.</p>
+
+
