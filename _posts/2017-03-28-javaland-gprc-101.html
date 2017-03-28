@@ -1,0 +1,97 @@
+---
+layout: post
+title:  JavaLand 2017 gRPC 101
+date:   2017-03-28 13:30 +0100
+comments: true
+---
+
+<p>Raw nots from <a href="http://twitter.com/saturnism">Ray Tsang</a>'s talk about <a href="http://twitter.com/grpcio">gRPC</a>.</p>
+
+<p>Finally was able to get to a session before it
+  started.  <a href="http://www.http2demo.io/">HTTP/2 Demo.</a></p>
+
+<p>Gave definition of saturnism: lead poisoning.</p>
+
+<p>Trend: revisit: breaking down monolith into Microservices.  Or
+creating microservices in greenfield.  A lot of overhead for this
+  approach: distributed systems problems.  Need additional tooling.</p>
+
+<p>Referenced <a href="http://www.ejbtutorial.com/">CORBA tutorial
+    here.</a></p>
+
+<p>RPC has a bad rep.  But he spoke highly of RMI.  Everything just
+works.  But you have to be in Java on both sides.  To fix this, we came
+up with SOAP, which lead to REST.  Why RPC: efficient and strongly type.
+REST: everything is CRUDy.  What about how to represent, for example, a
+bank account transfer operation?  On REST, you also have to write client
+  libraries.  RPC can be great if it is simple and interoperable.</p>
+
+<p>At Google, they use Stubby.  It does O(10<super>10</super>).  They
+wanted to open source Stubby.  Square used to have their own RPC thing.
+They combined and made gRPC.  Owned by the cloud native foundation.  The
+  G in GPRC means GRPC.</p>
+
+<p>Transport is in HTTP/2: binary protocol.  Gave a little talk over
+HTTP/2 features: binary, streams, HPACK, PUSH.  Protobuffer 3.
+  Marshalling and unmarshalling data.</p>
+
+<p>Showed a graph showing throughput/cpu core: binary is faster than
+  text.  It is also better for battery life.</p>
+
+<p>gRPC supports: C++, Objective C, PHP, Java.</p>
+
+<p>Finished the slideware at 14 minutes in.</p>
+
+<p>Protofile is the IDL file.  There you define the message payloads,
+  messages, etc.  Must define request and response payloads.</p>
+
+<pre><code>
+
+    syntax = "proto3";
+
+    package com.example.grpc;
+
+    option java_multiple_files = true;
+
+    enum Sentiment {
+    HAPPY = 0;
+    SAD = 1;
+    }
+
+    message HelloRequest {
+    string firstname = 1;
+    string lastmame = 2;
+    int64 age = 3;
+    Sentiment sentiment = 4;
+    repeated string hobbies = 5;
+    map&lt;string, string&gt; bagOfTricks = 6;
+    
+    }
+
+    message HelloResponse {
+    string greeting = 1;
+    }
+
+    service GreetingService {
+    rpc greeting([stream] HelloRequest) returns ([stream] HelloResponse);
+    }
+    
+</code>  </pre>
+
+<p>To run it, include mvn dependencies.  There are also stub generation
+  plugins.</p>
+
+<pre><code>
+    public class GreetingImpl extends GreetingServiceGrpc.GreetingServiceImplBase {
+    public void greeting(HelloRequest, StreamObserver response);
+    
+    }
+</code></pre>
+
+<p>Automatically supports <code>onNext, onCompleted, onError</code>.
+All builder based.  </p>
+
+<p>The client uses channels.  Supports client side interceptors.
+Supports load balancing.  Round robin.  Supports deadlines for calls.
+This is kind of a built-in circuit breakers.  </p>
+

@@ -1,0 +1,70 @@
+---
+layout: post
+title:  JavaLand 2017 Lambdas
+date:   2017-03-28 10:00 +0100
+comments: true
+---
+
+<p>Raw nots from Simon Ritter's talk.</p>
+
+<p>We had support for some functional programming in JDK 1.0: anonymous
+  inner classes.  Lambdas do it much more cleanly.</p>
+
+<p>You can use lambdas where ever the type is a <code>Functional
+Interface</code>.  It has a single abstract method: accept.</p>
+
+<p>A lambda looks like a method, but it is not associated with a class.
+  Therefore you can't call it a method.</p>
+
+<p><code>(parameters) -&gt; body</code></p>
+
+<p>There was a lot of debate of whether it should be =&gt;.</p>
+
+<p>Lambdas are closures over values, not types.  This means state cannot
+be modified in a lambda.  This means you can only refer to variables in
+the surrounding scope, they have to be effectively final.  Effectively
+means either explicitly marked final, or it's value cannot be
+changeable.</p>
+
+<p>Method references let us reuse a method as a lambda expression.
+Three different ways of using them.  Static method.  Instance method of
+  an arbitrary type. Instance method of an existing type.</p>
+
+
+<p>Performance implications.  Anonymous inner classes force the compiler
+to generate funny class names, type pollution, must be loaded at
+runtime.  Originally, lambdas were implemented this way.  Better way is
+to use invokedynamic.  Original idea of invokedymanic was to improve
+performance of dynamically typed languages on the JVM.  Defers
+implementation of the Lambda to the runtime.  It was the first thing
+added to the JVM bytecode since Java 1.0.</p>
+
+<p><code>java.lang.LambdaMetaFactory</code> returns an instance of the
+lambda functional interface type.  Can divide lambdas into two groups.
+Non-capturing lambdas: no surrounding scope being used; simple
+conversion to static method.  Capturing lambdas: does use surrounding
+scope: static method with captured variables prepended as
+  parameters or synthetic instance method of class using Lambda. </p>
+
+<p>Went over some impl performance differences between lambdas and
+anonymous inner classes.  Also for capture vs. instantiation of
+anonymous inner classes.  The latter has heap implications.  <b>Unused
+lambdas have no overhead.  Non-capturing lambdas automatically optimise.
+Method references are slightly more
+optimal.  <code>-XX:+TieredCompilation</code> gives beter
+    lambdas.  </b> This is the default.</p>
+
+<hr />
+
+<p>Alonso Church, the Lambda Calculus (1936).  A way of having a
+mathematical definition for having functions and calling them.  He was
+  Alan Turing's PhD advisor.</p>
+
+<p>Java programmers are typically imperative programmers.  Functional
+programming is not imperative: no side effects.  Lambda calculus and
+Turing machines are equivalent.  What can we do <b>only</b> using Lambda
+  expressions?</p>
+
+
+
+
