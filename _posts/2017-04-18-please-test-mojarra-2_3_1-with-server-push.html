@@ -1,0 +1,130 @@
+---
+layout: post
+title:  Please test Mojarra 2.3.1-SNAPSHOT with Servlet 4.0 Server Push
+date:   2017-04-18 15:00 -0500
+comments: true
+---
+
+<p>I still recommend JSF 2.3 EG member and major Mojarra
+committer <a href="http://arjan-tijms.omnifaces.org/p/jsf-23.html">Arjan
+Tijms'</a> blog post for a feature overview of JSF 2.3, but this post
+gives a brief look into a feature I consider a key validation of the two
+Java EE 8 specs to which I contribute: Servlet 4.0 and JSF 2.3.  The
+feature is HTTP/2 Server Push, and it's the biggest new feature in
+Servlet 4.0 in terms of API impact.  This blog post shows how Mojarra
+2.3.1-SNAPSHOT uses Servlet 4.0 Server Push and solicits testing of this
+feature for eventual inclusion in Mojarra 2.3.1, and hopefully into
+  GlassFish 5.0.</p>
+
+<h2>The Origin of the Feature</h2>
+
+<p>Way back at
+the <a href="https://www.youtube.com/watch?v=fZR-HRP7HtI">beginning of
+Servlet 4.0</a> in July 2014, when HTTP/2 itself was not even yet final,
+the idea of using Server Push for JSF was already apparent.  After all,
+the whole point of the feature, from the HTTP/2 protocol level, is to
+increase the perceived performance of web pages by allowing the server
+to start sending the assets of the web page before the browser has even
+started parsing the web page to discover what assets it needs.  (I like
+to call this
+the <a href="http://www.usccb.org/bible/matthew/6#48006008">Matthew
+6:8</a> feature of HTTP/2.)  Web Frameworks such as JSF are in a great
+position to automatically leverage this feature because the act of
+authoring the application causes the page author to explicitly indicate
+at runtime which assets go with which pages.  In other words, JSF users
+get this feature for free without having to change their app in the
+  least.</p>
+
+<h2>The Specification of the Feature</h2>
+
+<p>The Servlet Expert Group, in particular Greg Wilkins, has crafted an
+easy-to-use way to take advantage of Server Push: simply ask the
+current <code>HttpServletRequest</code> for
+a <code>newPushBuilder</code>, manipulate
+the <a href="https://maven.java.net/service/local/repositories/releases/archive/javax/servlet/javax.servlet-api/4.0.0-b05/javax.servlet-api-4.0.0-b05-javadoc.jar/!/javax/servlet/http/PushBuilder.html">PushBuilder</a>
+API as desired, and then call <code>push()</code> to initiate sending
+  the bytes of the resource to the client.</p>
+
+<p>From the JSF side, the use of the feature is not captured in the
+JavaDoc.  Rather, it is in the spec PDF section 2.2.6.  This section is
+a high level overview of what happens in the Render Response phase of
+the request processing lifecycle.  We intentionally left the push
+requirements very high level to allow maximum latitude in
+implementation.  We also had to specify it well in advance of Servlet
+4.0 going final due to scheduling constraints with finishing JSF
+  2.3.</p>
+
+<h2>The Implementation of the Feature</h2>
+
+<p>I am very thankful to my co-spec
+lead <a href="https://www.linkedin.com/in/shingwaichan/">Dr. Shing Wai
+Chan</a> for implementing the GlassFish side of this feature,
+and <a href="http://www.notshabby.net/">Ryan Lubke</a> for implementing
+the underlying Grizzly support for HTTP/2, including push.  Ryan had to
+do several last minute tweaks to get the implementation this far, and
+  it's not 100% done yet.  That's why I'm hoping you'll try it.</p>
+
+<p>On the JSF side, I modified the implementation
+of <code>ExternalContext.encodeResourceURL()</code> to push the resource
+using the <code>PushBuilder</code> API.  Because our tests run Mojarra
+against both GlassFish 4.1.1 and GlassFish 5.0 trunk, I had to code it
+such that the feature only kicks in if Servlet 4.0 is actually
+  available.</p>
+
+<h2>Testing the Feature</h2>
+
+<p>To test the feature, you must download the GlassFish nightly from
+&lt;<a href="http://download.oracle.com/glassfish/5.0/nightly/">http://download.oracle.com/glassfish/5.0/nightly/</a>&gt;
+(from 2017-04-17 or later) and replace the <code>javax.faces.jar</code>
+in the <code>modules</code> directory
+with <a href="https://maven.java.net/service/local/repositories/snapshots/content/org/glassfish/javax.faces/2.3.1-SNAPSHOT/javax.faces-2.3.1-20170417.161359-6.jar"><code>org.glassfish:javax.faces:2.3.1-SNAPSHOT</code></a>
+  (or later).</p>
+
+<p>Once your GlassFish has been patched to have the latest Mojarra,
+deploy an app that has lots of resources.  I suggest
+the <a href="http://repository.primefaces.org/org/primefaces/showcase/6.0/showcase-6.0.war">PrimeFaces
+6.0 showcase</a>.  Once deployed the easiest way to see HTTP/2 in action
+is to use Chrome with Developer Tools to hit
+&lt;https://localhost:8181/showcase-6.0/index.xhtml&gt; Note that you
+have to jump through some extra hoops because Chrome finds it easiest to
+  only support HTTP/2 over TLS.</p>
+
+<p><img src="{{ site.url }}/blog/assets/20170418-chrome-https-localhost.png" alt="Image of Chrome Your connection is not private warning" /></p>
+
+<p><img src="{{ site.url }}/blog/assets/20170418-chrome-https-localhost-02.png" alt="Image of Chrome Your connection is not private warning" /></p>
+
+<p>Once the PrimeFaces is being served over HTTPS to Chrome from your
+patched GlassFish 5.0, you can visit the "Compare" widget within the
+"Multimedia" section.  In another Chrome tab, open up
+&lt;chrome://net-internals/#events&q=type:HTTP2_SESSION&gt;.  Find the
+lowest <code>HTTP2_SESSION</code> item to localhost:8181 in the list and
+check the checkbox.  Do a find in page for <code>lara-ps3</code>.  You
+  can see that this image was pushed with server push, as shown next.</p>
+
+<p><a href="{{ site.url }}/blog/assets/20170418-net-internals-push.png"><img width="1024" height="200" src="{{ site.url }}/blog/assets/20170418-net-internals-push.png" alt="Image of Chrome Your connection is not private warning" /></a></p>
+
+<p>You can use find in page to look for other hits
+on <code>HTTP2_SESSION_RECV_PUSH_PROMISE</code> to see resources being
+  pushed.</p>
+
+<p>Clicking over to View-&gt;Developer-&gt;Developer Tools, click the
+"Disable cache" checkbox and reload the page.  Look at the Waterfall
+column ta see the impact that push has on page load times.  You can see
+that some of the resources are being delivered before the page even
+finishes loading.</p>
+
+<p><a href="{{ site.url }}/blog/assets/20170418-devtools-push.png"><img width="1024" height="273" src="{{ site.url }}/blog/assets/20170418-devtools-push.png" alt="Image of Chrome Your connection is not private warning" /></a></p>
+
+
+<p>It is beyond the scope of this article to explore this vital aspect
+of push, but I hope someone else will do so.  After all, what's the
+point of the
+feature <a href="https://www.fastcompany.com/1825005/how-one-second-could-cost-amazon-16-billion-sales">if
+it does not make page load times seem faster</a>.</p>
+
+<h2>Summary</h2>
+
+This feature is still in SNAPSHOT form.  I need testing to verify it
+works for some more cases.  If it causes any trouble at all, we may have
+to put it behind a <code>com.sun.faces context-param</code>.  Please
+leave comments here with your findings.
