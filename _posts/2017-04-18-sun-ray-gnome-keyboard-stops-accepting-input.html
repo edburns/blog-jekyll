@@ -1,0 +1,25 @@
+---
+layout: post
+title:  Sun Ray GNOME Keyboard Stops Accepting Input
+date:   2017-04-18 10:00 -0500
+comments: true
+---
+
+<p>I was happily using my Sun Ray session one day and then it stopped
+accepting keyboard input.  Nothing I tried could make anything other
+than the BEL sound happen.  After posting to an internal list at Oracle
+carried over from the Sun days, the ever helpful and
+venerable <a href="https://twitter.com/alanc">Alan Coopersmith</a> clued
+me in.  I must have held the shift key down for five seconds, turning on
+the "only accept long keypresses" feature.  This is great for people
+with Parkinson's but thankfully I'm not there yet.  But it's nice to
+  know GNOME has my back.</p>
+
+<p>If you run into this problem you can disable it by going to
+System::Preferences::Keyboard, in the Accessibility tab, and ensuring
+the "Slow Keys" checkbox is not checked.</p>
+
+<p><img src="{{ site.url }}/blog/assets/20170418-gnome-keyboard-preferences-accessibility.png" alt="Image of GNOME Keyboard Preferences Accessibility Tab with the slow keys checkbox not checked" /></p>
+
+<p>You may also want to uncheck "Accessibility features can be toggled
+with keyboard shortcuts.</p>
