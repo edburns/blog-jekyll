@@ -5,6 +5,9 @@ date:   2017-04-18 15:00 -0500
 comments: true
 ---
 
+<p><code>Updated: 2017-04-19 11:46 -0500: Called out the need to use
+exactly JDK 1.8.0_121 and why.</code></p>
+
 <p>I still recommend JSF 2.3 EG member and major Mojarra
 committer <a href="http://arjan-tijms.omnifaces.org/p/jsf-23.html">Arjan
 Tijms'</a> blog post for a feature overview of JSF 2.3, but this post
@@ -73,12 +76,16 @@ such that the feature only kicks in if Servlet 4.0 is actually
 
 <h2>Testing the Feature</h2>
 
-<p>To test the feature, you must download the GlassFish nightly from
+<p>To test the feature, you must first make sure you are using exactly
+JDK 1.8.0_121, no more no less.  The reason for this precise requirement
+is explained in this
+email <a href="https://java.net/projects/servlet-spec/lists/jsr369-experts/archive/2017-04/message/43">to
+the Servlet EG</a>.  Then, download the GlassFish nightly from
 &lt;<a href="http://download.oracle.com/glassfish/5.0/nightly/">http://download.oracle.com/glassfish/5.0/nightly/</a>&gt;
 (from 2017-04-17 or later) and replace the <code>javax.faces.jar</code>
 in the <code>modules</code> directory
 with <a href="https://maven.java.net/service/local/repositories/snapshots/content/org/glassfish/javax.faces/2.3.1-SNAPSHOT/javax.faces-2.3.1-20170417.161359-6.jar"><code>org.glassfish:javax.faces:2.3.1-SNAPSHOT</code></a>
-  (or later).</p>
+(or later).</p>
 
 <p>Once your GlassFish has been patched to have the latest Mojarra,
 deploy an app that has lots of resources.  I suggest
