@@ -1,0 +1,72 @@
+---
+layout: post
+title:  Goto Chicago 2017 Bryan Cantrill
+date:   2017-05-02 08:00 -0600
+comments: true
+---
+
+<p>Raw notes.</p>
+
+<h2>Recounting the story of a Joyent outage</h2>
+
+<p><a href="https://www.theregister.co.uk/2014/05/28/joyent_cloud_down/">Here is the register piece on the outage.</a></p>
+
+<h2>How did we get here?</h2>
+
+<p>He points out the flip side of such higly sophisticated automation:
+the stress upon the humans in the loop is amplified.  A human
+fallibility in a semi-automated system is worse than a human fallibility
+  in a non-automated system.</p>
+
+<h2>Human fallibility in semi-automated systems</h2>
+
+<p>Recounted the story of the Air Canada flight that ran out of fuel in
+flight.  767-200 in 1983.  The fuel mishap was due to the process of
+  converting from imperial to metric units at some place in the system.</p>
+
+<p>Amazon S3 outage.</p>
+
+<h2>Whither microservices?</h2>
+
+<p>Microservices suffer from the amplification problem mentioned
+  above.</p>
+
+<h2>Some non-IT illustrations</h2>
+
+<p>1963 power outage in the northeast</p>
+
+<p>This illustrates the notion of the load has to go somewhere.</p>
+
+<p>Used the example of Three Mile Island.  When you have auxiliary
+systems, those systems are not checked.  The more alarms and alerts you
+  have, the more likely they will overload the operators.</p>
+
+<p>We are gleefully deploying these distributed systems and telling
+  ourselves they will not fail.</p>
+
+<h2>Debugging in the abstract</h2>
+
+<p>Debugging is the process by which we understand pathological behavior
+  in the system.</p>
+
+<p><b>I like how he acknowledges that we have it easy in the software
+world, compared to the real world.  He is a very entertaining
+    speaker, but I don't like how he is yelling at us.</b></p>
+
+<p>Debugging is the ability to be able to ask the right questions.  He
+  described the continually narrowing set of constraints.</p>
+
+<h2>The craft of debuggable software</h2>
+
+<p>One slide as a nod to what you need to do to make things
+  debuggable.</p>
+
+<h2>A culture of debugging</h2>
+
+<p>We must have an organizational culture that supports taking the extra
+time for building for debuggability.</p>
+
+<p>When you have an outage you need to harvest all the useful
+information and learn for it.  Every outage presents an opportunity to
+  advance understanding.</p>
+

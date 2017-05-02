@@ -1,0 +1,101 @@
+---
+layout: post
+title:  Goto Chicago 2017 Martin Fowler 
+date:   2017-05-01 08:00 -0600
+comments: true
+---
+
+<p>Martin Fowler.</p>
+
+<p>Event Driven Architectures.  What do people mean by it?  Common
+  theme: something called an event.  But really it's more open ended.</p>
+
+<p>Thoughtworks internal conference in Denver.  </p>
+
+<p><a href="https://www.youtube.com/watch?v=aweV9FLTZkU">Video</a></p>
+
+<h2>I. Event Notification</h2>
+
+<h3>1. Event Notification: Dealing with subsystem coupling</h3>
+
+<p>Turns things inside out and allows systems to be decoupled.</p>
+
+<p>This pattern applies in at the macro (subsystems) and micro level
+  (text fields).</p>
+
+<h3>2. Objectification of time: The event itself being a first class
+thingamajig.</h3>
+
+<p>Encapsulates the time aspect nicely.  Objectifies the thing.</p>
+
+<p>Events and commands.  What's the difference?  The naming things.</p>
+
+<p>Events: something happened.  Commands: do something.</p>
+
+<p>If you don't separate these things conceptually, it leads to
+  reasoning problems.</p>
+
+<h3>3. Scale: Allows adding new throughput boosters without changing the architecture</h3>
+
+<p>A downside: no statement of overall behavior.  Because it is not
+  imperative, the only way to understand is to observe the running it.</p>
+
+<h2>II. Event-carried State Transfer</h2>
+
+<p>It's not always possible to keep everything inside the event.  Or,
+deciding how much information to put in the event.  Can I put so much in
+there so the systems don't need to communicate directly.  Events: cause
+followon queries</p>
+
+<p>a. Each subsystem keeps its data local.  b. each event has enough to
+  allow the local data to be updated and kept in sync.</p>
+
+<p>But now you have the consistency problem.</p>
+
+<h2>III. Event Sourcing</h2>
+
+<p>Bring in the logs.  Test: If at any time, you can blow away the
+  current state, and replay the log, and you get back the same state.</p>
+
+<p><em>Did a poll, "who uses this" was alarmed at the result.  Resorted
+    to observing that an SCM is an example of this.</em></p>
+
+<p>In the banking world, an accounting ledger is the perfect example of
+  this.</p>
+
+<p>It's a combination of every single change, plus snapshots.</p>
+
+<p>Some benefits: debugging is nicer.  You can make copies.  Can keep
+your system itself entirely in memory.  Gave the famous lmax
+  example.</p>
+
+<h2>Some downsides</h2>
+
+<p>Unfamiliar, External Systems, <code>Event schema</code> (JSON to the
+  rescue?), Identifiers</p>
+
+<p>Slip ups: trouble with event sourcing.  Felt he had to do twice as
+much work.  People conflate asynchrony with event sourcing.  It doesn't
+have to be.  It does add a lot of complexity.  (How do you do event
+sourcing without adding asynchrony?  Locking?)  Trouble with versioning
+events.  Easy refactoring: change the name of a function.  How do you
+get all the callsites?  Advice: Don't have any business logic between
+  your event and its storage.</p>
+
+<h2>IV. CQRS</h2>
+
+<p>Separate the components that read and write from your store.  You
+only ever write using the command thing.  You only ever read from the
+  query system.</p>
+
+<p>You have to be wary of this pattern.  People seem to get in trouble
+with this pattern.  "My sense is that it really has to be deep down in
+the toolbag to pull this one out."  He's been talking about having
+reporting databases for years; that's CQRS too.  Pure CQRS is the "only
+  ever write using the command thing."</p>
+
+<p><a href="http://martinfowler.com/articles/201701-event-driven.html">original article.</a></p>
+
+
+
+
