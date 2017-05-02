@@ -1,0 +1,116 @@
+---
+layout: post
+title:  Goto Chicago 2017 Randy Shoup
+date:   2017-05-02 13:30 -0600
+comments: true
+---
+
+<p>Raw notes from <a href="http://twitter.com/randyshoup">Randy Shoup</a>.</p>
+
+
+<p>VP of engineering at Stitch Fix.  Did consulting in a "CTO as a
+service", before that was Director of Engineering at Google and chief
+  engineer at eBay.</p>
+
+<p>About Stitch Fix.  Reverse of standard retail.  Fill out style
+profile, get five handpicked items, keep what you like, return the
+  rest.</p>
+
+<p>Behind the model is a lot of Art and Data Science.</p>
+
+<p>1:1 Ratio of engineering and data scientists</p>
+
+<p>Apply intelligence to <b>every</b> part of the business</p>
+
+<p>Buying, inventory management, logistics, styling, demand prediction</p>
+
+<p>What is styling: personalized recommendations based on algorithmic
+  recommendations with a human curation layer.</p>
+
+<p>Modern software dev: org, practices, culture, </p>
+
+<p>small teams, devops</p>
+
+<p>Small teams: aligned to domains, cross functional, depend on other
+  teams for help as well.</p>
+
+<p>practices: TDD.  Motherhood and apple pie.  Continuous delivery: most
+applications deployed multiple times per day.  Release smaller units of
+  work, easier to roll back and role forward.  Better for AB testing.</p>
+
+<p>Culture: The amazon model: you build it, you run it.</p>
+
+<h2>Microservices</h2>
+
+<p>Architecture Evolution</p>
+
+<p>eBay: Monolithic Perl, Monolitic C++, Java, Microservices.</p>
+
+<p>Twitter and Amazon had a similar evolution.  It's ok to start out as
+  a monolith.</p>
+
+<p>The micro of microservice is: single purpose, simple well defined
+interface, isolated persistence (each one keeps its own state).  It's
+  SOA done right.</p>
+
+<p>Approach 1: operate your own data store.  Store to your own Postgres, ie.</p>
+
+<p>Approach 2: Use a persistence service and store to your own tables,
+  operated as a service on your behalf.  Slice is isolated.</p>
+
+<h3>Maintaining interface stability</h3>
+
+<p>backward/forward compatibility of interfaces.  Can never break your
+  client's code.  Semantic versioning.  major.minor.patch</p>
+
+<p>Often maintaining multiple deployments and interface versions.  Need
+an explicit deprecation policy.</p>
+
+<p>Went through procress from extracting services from the shared
+  DB.</p>
+
+<p>Principle: single system of record.  There can be copies of that.</p>
+
+<p>Approach 2: Async event+local cache.  Customer service sends events.
+  Order service listens to events.</p>
+
+<p>Approach 3: Shared metadata library.  Read only metadata, basically
+  immutable.</p>
+
+<p>Events as first class construct.  This was from Martin's talk.  Event
+  means: statement that something interesting has happened.</p>
+
+<p>Fourth fundamental building block.  Presentation, Application,
+  Persistence, Events</p>
+
+<p>Events and Microservices go well together.</p>
+
+<p>Service interface includes: Synchronous request response.  Events the
+  service produces/consumes.</p>
+
+<p>Joins: monolithic databases make joins very easily.  How to split it out?</p>
+
+<p>Approach 1: Service that materializes the view.  Service that
+materializes the view.  </p>
+
+<p>Approach 2: Join in the client.</p>
+
+<p>Note that mashup style web apps do this.</p>
+
+<h3>Microservice Techniques: Workflows and Sagas</h3>
+
+<p>Problem: Monolithic apps make this trivially easy.  Splitting data
+across services is hard.  So, transactions turn into Sagas: Model the
+transaction as a series of steps coordinated by events.  It's like a
+workflow.  Rolllback by applying compensating operations.  Many common
+systems already do this.  For example payment processing and approval
+  workflows (expense reports).</p>
+
+<p>Ideal use for functions as a service.  Very lightweight logic,
+stateless, triggered by an event.  Healthy companies in the future will
+  be doing some or all of this.</p>
+
+
+
+
+
