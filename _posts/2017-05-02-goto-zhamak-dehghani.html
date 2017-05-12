@@ -1,0 +1,99 @@
+---
+layout: post
+title:  Goto Chicago 2017 Zhamak Dehghanil
+date:   2017-05-02 15:30 -0600
+comments: true
+---
+
+<p>Raw notes from <a href="http://twitter.com/zhamakd">Zhamak Dehghanil</a>.</p>
+
+<p>Getting to Microservices is a journey.  Looking for scale, get more
+capabilities, experimenting with improvements to their core business,
+  not just AB testing.</p>
+
+<p>Nice simple image of a journey down the hill through the valley, and
+up the hill.</p>
+
+<p>Deconstruct the monolith, unlock business capabilities.</p>
+
+<p>Overview of microservices ecosystem.</p>
+
+<p>1. Monolithic, 2. intelligently integrated, 3. layered, web app,
+  4. centrally integrated, 5. Microservices, 6. Microservices ecosystem
+  on a platform.</p>
+
+<p><b>This timeline makes me think about step 7.  Perhaps when the microservices leave the enterprise and can be sold as standalone services?</b></p>
+
+<p>Microservices around business capabilities.  API as a product, the
+fabric of integration.  Independently releaseable.  Teams aligned with
+  services.  Built on a self-served platform.</p>
+
+<h2>Monolith Evolution: The Battle</h2>
+
+<h3>1. Identify most constraining</h3>
+
+<p>Decouple the most constraining factor early.  The Knot.  Apply the
+theory of constraints, as a chain is no stronger than its weakest
+link.  For example.  A monolith that makes heavy use of session.  Need to find out what is the logical meaning of those things.  Use structural analysis tool.</p>
+
+<h3>2. Decouple capability, not code</h3>
+
+<p>The cost of reusing compared to its value is often underestimated.
+  It might be worth re-writing.  Use toxcicity evaluation tool.</p>
+
+<h3>3. Decouple what matters</h3>
+
+<p>Decouple the capability that is lively, being used... use code
+  analysis tool such as CodeScene for finding lively components.</p>
+
+<h3>4. Decouple vertically, release the data early</h3>
+
+<p>Apply the first principle of microservices: independence of build and
+operation.  Because each microservice is self contained, including
+  state, you need to extract full stack.</p>
+
+<p>the anti-patterns: only decouple facade, only decouple backend
+  services, never decouple data.</p>
+
+<h3>5. Minimize dependency back to monolith</h3>
+
+<p>When you extract, don't go back to the monolith.  Tool: expose API
+from monolith.  Use anti-corruption layer in service to use
+monolith.</p>
+
+<h3>6. Go Macro first then go Micro</h3>
+
+<p>Recognize that operating a large number of small services requires
+higher maturity.  Must walk before running.  Give yourself time to
+acquire those skills.  Tool: use hyperlinks to logical resources within
+or outside the physical service boundary.  HATEOAS: The apps can return
+links that initially point back to oneself, but then can be changed to
+point to other services, and the clients will not notice the
+transition.</p>
+
+<h3>7. Migrate in atomic steps of architecture evolution, not devolution</h3>
+
+<p>Make sure that every step takes you closer to your goal.  Sometimes
+  take a small step, sometimes take a large leap.  Tool: decouple,
+  redirect, retire.</p>
+
+<h2>The climb</h2>
+
+<p>Start with a clear outcome in mind.  Define a fitness function.
+  Experiment speed, security, throughput.  Radar chart.</p>
+
+<p>Hypothesize and measure.  Identify metrics.  For example, measure
+number of applications built with the API, how quickly you can create
+  new APIs.</p>
+
+<p>Enable with a self-service platform: Domain API, Data infrastructure,
+  Delivery Infrastructure.</p>
+
+<p>Trade-offs instead of
+solutions. <a href="https://www.youtube.com/watch?v=3_EtIWmja-4">"There
+are no solutions only tradeoffs" &mdash; Thomas Sowell</a>.  See
+also <a href="http://www.quebecoislibre.org/younkins6.html">Reality is
+Not Optional: Thomas Sowell's Vision of Man and Society</a>. Reuse
+vs. Build vs. Buy vs. Re-write. </p>
+
+<p>Align organization: How is the funding.</p>
