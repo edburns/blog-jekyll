@@ -1,0 +1,72 @@
+---
+layout: post
+title:  Java Offheap Podcast
+date:   2017-05-25 07:00 -0500
+comments: true
+---
+
+<p>I had the honor to be a guest
+on <a href="http://www.javaoffheap.com/">Java OffHeap</a>
+(<a href="http://www.twitter.com/offheap">@offheap</a>) while
+attending <a href="{{ site.baseurl }}{% post_url
+2017-04-19-goto-chicago-picks %}">Goto Chicago 2017</a>.  The link to
+the episode
+is <code>&lt;<a href="http://www.javaoffheap.com/2017/05/episode-24-nothing-like-sweet-home.html">http://www.javaoffheap.com/2017/05/episode-24-nothing-like-sweet-home.html</a>&gt;</code>,
+but this post is my summary and notes, including the segment with
+<a href="https://twitter.com/javaFXpert">Jim Weaver</a>
+and <a href="https://twitter.com/deanwampler">Dean Wampler</a>.</p>
+
+<p>02:58 I talk about the java.net sunset.  03:54 I mention that the
+email lists were still not ready at the time of the recording
+(now <a href="https://javaee.groups.io/g/javaee">now they are</a>).  I
+also mention the essential nature of the search archive for JCP mailing
+lists.  This gives an insight into one of the challenges of evolving a
+multi-year project over many releases.  04:37 I explain why we couldn't
+use Google Groups. 05:25 I call for a moment of silence for the memory
+of java.net.  05:58 I mention you can submit pull requests, but the
+governance process is not yet in place for external commits.  06:19
+Georges explains that openjdk was never running on java.net, and so is
+not impacted.  06:58 Georges explains why they are not moving to GitHub
+from Mercurial.  They have everything working well enough with
+Mercurial, so there is no need to move it over to GitHub.  07:58 I
+mention that we gave up using JIRA when moving to GitHub, and I asked if
+anyone was using <a href="http://waffle.io/">waffle.io</a> as an agile
+  overlay on top of GitHub.  No one was.</p>
+
+<p>08:58 Bob asked about the transition to the "train release".  Georges
+mentioned that we work on things in OpenJDK, and then take it to JCP for
+standardization.  We're not changing that way of doing things.  10:32
+Georges tells the story of how there is a diversity of opinions
+regarding release cadence.  11:42 Many of the things in 9 enable the
+more rapid release model.  12:07 Freddy explains how this evolved across
+the java releases.  12:48 Georges explains the "medicine to candy
+ratio".  9 has more medicine and not as much candy.  14:00 Georges
+explains how this benefits the community as a whole.  It enables the
+small things to get out more quickly without waiting for big blockbuster
+releases.  15:00 He uses the 2016 delay of 9 as how it blocked things
+like String compaction.  15:30 I mention the rapid sunset schedule for
+Java 8 itself.  16:00 George observed September 2017 is end of public
+updates for 8, but most of the criteria will not be met.  17:03 Bob
+provides some insight on the corporate adoption angle.  18:27 Georges
+pitches modularizaion's benefits.  It mitigates the need to
+call <code>sun.misc.unsafe</code>.  21:11 Freddy mentioned why people
+use it: it makes it even <b>possible</b> to consider Java.  It makes the
+performance <b>acceptable</b> compared to alternatives.  22:27 Freddy
+mentioned that the current plan is to provide standard alternatives
+before removing <code>sun.misc.unsafe</code>.  22:38 Georges talks about
+the support burden on unsafe and device driver control for
+  Minecraft.</p>
+
+<p>26:24 Bob brings up the IBM and RedHat plan to vote no on Jigsaw, as
+it relates to language development.  Georges provides some color.  27:55
+Freddy asks what's the biggest complaint from IBM and RedHat.  28:59
+Georges mentions the perils of scope creep.  29:46 Freddy asks what was
+  the outcome?  30:42 Georges answers. </p>
+
+<p>32:30 Freddy asks, if you want to have faster startups, do you have
+to use Jigsaw?  32:40 Georges answers use jlink and ahead of time
+compilation.  By using jlink, you are telling the system what you are
+actually using.  33:29 Bob points that JCP and jigsaw can butt heads
+because the releasing of Java subsets is prohibited.</p>
+
+
