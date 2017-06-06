@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java Offheap Podcast
+title:  Java Offheap Podcast: Future of Java Part I at Goto Chicago 2017
 date:   2017-05-25 07:00 -0500
 comments: true
 ---
@@ -15,6 +15,8 @@ is <code>&lt;<a href="http://www.javaoffheap.com/2017/05/episode-24-nothing-like
 but this post is my summary and notes, including the segment with
 <a href="https://twitter.com/javaFXpert">Jim Weaver</a>
 and <a href="https://twitter.com/deanwampler">Dean Wampler</a>.</p>
+
+<h2>Part I: Georges Saab and I</h2>
 
 <p>02:58 I talk about the java.net sunset.  03:54 I mention that the
 email lists were still not ready at the time of the recording
@@ -66,7 +68,76 @@ Georges mentions the perils of scope creep.  29:46 Freddy asks what was
 <p>32:30 Freddy asks, if you want to have faster startups, do you have
 to use Jigsaw?  32:40 Georges answers use jlink and ahead of time
 compilation.  By using jlink, you are telling the system what you are
-actually using.  33:29 Bob points that JCP and jigsaw can butt heads
-because the releasing of Java subsets is prohibited.</p>
+actually using.  33:29 Bob points that JCP and jigsaw can conflict
+because the releasing of Java subsets is prohibited according to legal
+rules.  Georges answers: 8 introduced "compact profiles".  Nobody has
+complained about that.  Jlink is essentially a program doing that.
+Jlink is for you to use to package the application.  35:20 Bob asks how
+  small can it get?</p>
+
+<p>36:38 Ed tells the story of the acute need for a module system in EE.
+The notion of having of modules would have influenced the design of EE.
+37:35 Ed tells the story of the ALPN backport story.  Every decision
+that is made has ripple effects down the pipeline.  38:57 Georges
+elaborates more on the train idea.  "Marbles stuck in the tube behind
+the basketball".  The heart of the train release idea is that when
+features are ready, they can be released.  To see what's coming, look at
+the JEPs.  There is a minimum amount of time for JCP releases.  They are
+looking at possibly shortening that minimum. <code>Ed personally notes:
+    <a href="https://martinfowler.com/bliki/Yagni.html">YAGNI</a>.</code></p>
+
+
+<p>42:49 Project Valhalla: value types and data representation.  45:15
+How this relates to the ends of the spectrum: micro services and really
+big data.  45:42 Freddy likes value types, in particular its cache
+  friendliness.</p>
+
+<p>46:00 Project Panama: JNI done right.  Generate ability to call into
+java from header files.  47:35 this plus value types is pretty
+  compelling.</p>
+
+<p>48:12 Status of JShell: it's in 9.  49:17 JShell removes all the
+ceremony of getting started with Java.  We'll use things we learn from
+  that to understand where we actually need the ceremony and don't.</p>
+
+<h2>Part II: Dean Wampler and Jim Weaver</h2>
+
+<p>51:18 Introductions</p>
+
+<p>53:38 Bob polls the audience about alternative JVM languages.</p>
+
+<p>54:12 What happens if JDK 9 flops?  Dean asserts the microservices
+movement is a threat to the JVM because it exposes how bloated JVM apps
+typically are.  Go and Rust: are a factor of 10/100 smaller.  55:04 But
+why does it matter if it's not a cost savings?  55:42 Dean points out
+that it matters at google scale.  56:00 Bob: jlink can help with this.
+56:50 Freddy: if we use jlink with Jigsaw, will Scala be smaller?  57:24
+Dean answers, but not quite, and points out that Lightbend does track
+JDK releases closely, citing lambda integration in a recent Scala
+  release.</p>
+
+<p>57:15 Freddy: other threats? 57:46
+  Bob: <a href="https://www.meetup.com/en-AU/ChicagoJUG/events/237330076/">Azul's
+  Paul Nauman</a>: complexity of the JVM is the JVM's worst enemy.
+  58:28 Freddy, but that's true for every language.</p>
+
+<p>59:20 Dean: another risk: Apparent with SPARK: the appeal of DSLs.
+  1:00:00 Bob: but what about debugging?  Also, SPARK and massive heap
+  sizes.  1:01:20 SPARK realized the JMM is great for general purpose,
+  but if you have a billion of the same thing, there is no need for that
+  complexity.  1:02:30 Bob: Code rot is another risk to the ecosystem.
+  People stop maintaining stuff, but the stuff is still very widely
+  used.  1:03:26 Freddy tells his JavaScript story: there's three of
+  everything: npm, bower do the same thing.  In spite of this JavaScript
+  is still #1.  1:05 Dean: npm is using Rust for its scalability behind
+  the scenes.  1:06:15 It's the old open vs. closed argument.</p>
+
+<p>1:08:07 Bob ASF: Not a problem to have multiple projects that do the
+  same thing.  But you still need the JCP side.  </p>
+
+
+/Users/ejburns/Downloads/OffHeap24_mixdown.mp3
+
+
 
 
