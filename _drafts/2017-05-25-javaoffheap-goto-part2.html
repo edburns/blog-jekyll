@@ -1,0 +1,110 @@
+---
+layout: post
+title:  Java Offheap Podcast Future of Java Part II at Goto Chicago 2017
+date:   2017-06-05 07:00 -0500
+comments: true
+---
+
+<p>I had the honor to be a guest
+on <a href="http://www.javaoffheap.com/">Java OffHeap</a>
+(<a href="http://www.twitter.com/offheap">@offheap</a>) while
+attending <a href="{{ site.baseurl }}{% post_url
+2017-04-19-goto-chicago-picks %}">Goto Chicago 2017</a>.  I am also
+happy to announce that I am in talks with the OffHeap guys to have an
+occasional guest segment on their program, tentatively called "Mark and
+Sweep" where we will feature audio content from the existing interviews
+from my book <a href="http://ridingthecrest.com/purchase.html">Secrets
+of the Rockstar Programmers</a> as well as new interviews with
+additional thought leaders.</p>
+
+<p>The link to the episode
+is <code>&lt;<a href="http://www.javaoffheap.com/2017/05/episode-24-nothing-like-sweet-home.html">http://www.javaoffheap.com/2017/05/episode-24-nothing-like-sweet-home.html</a>&gt;</code>,
+but this post is my summary and notes, including the segment with
+<a href="https://twitter.com/javaFXpert">Jim Weaver</a>
+and <a href="https://twitter.com/deanwampler">Dean Wampler</a>.</p>
+
+<h2>Part II: Dean Wampler and Jim Weaver</h2>
+
+<p>51:18 Introductions</p>
+
+<p>53:38 Bob polls the audience about alternative JVM languages.</p>
+
+<p>54:12 What happens if JDK 9 flops?  Dean asserts the microservices
+movement is a threat to the JVM because it exposes how bloated JVM apps
+typically are.  Go and Rust: are a factor of 10/100 smaller.  55:04 But
+why does it matter if it's not a cost savings?  55:42 Dean points out
+that it matters at google scale.  56:00 Bob: jlink can help with this.
+56:50 Freddy: if we use jlink with Jigsaw, will Scala be smaller?  57:24
+Dean answers, but not quite, and points out that Lightbend does track
+JDK releases closely, citing lambda integration in a recent Scala
+  release.</p>
+
+<p>57:15 Freddy: other threats? 57:46
+  Bob: <a href="https://www.meetup.com/en-AU/ChicagoJUG/events/237330076/">Azul's
+  Paul Nauman</a>: complexity of the JVM is the JVM's worst enemy.
+  58:28 Freddy, but that's true for every language.</p>
+
+<p>59:20 Dean: another risk: Apparent with SPARK: the appeal of DSLs.
+  1:00:00 Bob: but what about debugging?  Also, SPARK and massive heap
+  sizes.  1:01:20 SPARK realized the JMM is great for general purpose,
+  but if you have a billion of the same thing, there is no need for that
+  complexity.  1:02:30 Bob: Code rot is another risk to the ecosystem.
+  People stop maintaining stuff, but the stuff is still very widely
+  used.  1:03:26 Freddy tells his JavaScript story: there's three of
+  everything: npm, bower do the same thing.  In spite of this JavaScript
+  is still #1.  1:05 Dean: npm is using Rust for its scalability behind
+  the scenes.  1:06:15 It's the old open vs. closed argument.</p>
+
+<p>1:08:07 Bob ASF: Not a problem to have multiple projects that do the
+  same thing.  But you still need the JCP side to guarantee
+  interoperability. 1:08:49 Jim Weaver adds that competition is good.
+  1:09:50 when you run JDK on AWS, it is OpenJDK.  1:10:26 Bob: there
+  are things in place in the JDK to prevent fragmentation.</p>
+
+<p>1:11:30 Freddy asks: What is your opinion of 9?  Dean: They try to
+track the latest version of Java for their Scala users.  1:12:50 Lambdas
+did slow the adoption of Scala because it took away the worst pain
+point.  1:13:20 Jim: the Spring mantra make jar not war is well
+supported by jigsaw.  1:14:31 Bob points out that Spring uses a lot of
+reflection, but Jigsaw allows blocking code execution across package
+boundaries, won't that cause problems?  1:15:33 Freddy points out that 9
+lets you get close to that 20M mark on size, but notes that with Spring
+boot, you may add a lot on top of that.  Jim did not address this.
+<code>1:17:00 Freddy lists a nice process for optimization that starts
+with coarse grained and ends up with using JMH.  This is a very valuable
+  nugget.</code>  </p>
+
+<p>1:19:24 Freddy asks to what extent Pivotal is going into machine
+learning.  Jim answered that Pivotal is into data flows, such as Spring
+  cloud data flow, which works with DeepLearning4J or Tensor Flow.</p>
+
+<p>1:20:50 Freddy asks how Lightbend is doing machine learning.  They
+are looking at how to make it accessible to their developers. 1:22:04
+Bob ask how many are using Hadoop and is surprised with the small number
+  of hands.</p>
+
+<p>1:23:25 Freddy asks Dean to share the Lightbend strategy for world
+dominance.  Answer: the tools they built, Akka, Play!, Lagom.  An
+opinionated microservices framework.  What they want to do is promote
+best practices and give them the tools to do it.  Bob: we need to figure
+out a better way to structure the ideas so that regular developers can
+use it.  1:25:44 Freddy observes how hard it is to do the reactive
+  manifesto correctly.</p>
+
+<p>1:27:00 Discussion about the need to get knowledge out about best
+practices.  1:29:35 Bob observes that organizations need to change to
+adopt them.</p>
+
+<p>1:32:10 Freddy asks, why is it so hard to get microservices right?
+James: 1:32:31 data is the hard part.  1:33:55 Dean: each microservices
+has its own persistence, but this poses a problem when you evolve a
+  system and data needs to change.</p>
+
+<p>1:35:55 How have alternative JVM languages played out?  At Expedia,
+85% is just regular Java.  They do use a little Scala.  The bit that
+they do use, some developers avoid touching because they are not
+familiar with Scala.  1:37:40 Dean: about half of their devs use Scala.
+90% of the JVM usage is Java.  1:38:12 Container management and
+orchestration: Freddy: it's wild west right now.  1:39:45 Jim has a
+counter argument: perhaps use build packs instead of containers.
+1:40:10 Freddy, I wish we could settle down with the Docker stuff.</p>

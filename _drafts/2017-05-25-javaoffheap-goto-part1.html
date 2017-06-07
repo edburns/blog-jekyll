@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Java Offheap Podcast: Future of Java Part I at Goto Chicago 2017
+title:  Java Offheap Podcast Future of Java Part I at Goto Chicago 2017
 date:   2017-05-25 07:00 -0500
 comments: true
 ---
@@ -9,12 +9,17 @@ comments: true
 on <a href="http://www.javaoffheap.com/">Java OffHeap</a>
 (<a href="http://www.twitter.com/offheap">@offheap</a>) while
 attending <a href="{{ site.baseurl }}{% post_url
-2017-04-19-goto-chicago-picks %}">Goto Chicago 2017</a>.  The link to
-the episode
+2017-04-19-goto-chicago-picks %}">Goto Chicago 2017</a>.  I am also
+happy to announce that I am in talks with the OffHeap guys to have an
+occasional guest segment on their program, tentatively called "Mark and
+Sweep" where we will feature audio content from the existing interviews
+from my book <a href="http://ridingthecrest.com/purchase.html">Secrets
+of the Rockstar Programmers</a> as well as new interviews with
+additional thought leaders.</p>
+
+<p>The link to the episode
 is <code>&lt;<a href="http://www.javaoffheap.com/2017/05/episode-24-nothing-like-sweet-home.html">http://www.javaoffheap.com/2017/05/episode-24-nothing-like-sweet-home.html</a>&gt;</code>,
-but this post is my summary and notes, including the segment with
-<a href="https://twitter.com/javaFXpert">Jim Weaver</a>
-and <a href="https://twitter.com/deanwampler">Dean Wampler</a>.</p>
+but this post is my summary and notes.</p>
 
 <h2>Part I: Georges Saab and I</h2>
 
@@ -99,45 +104,4 @@ java from header files.  47:35 this plus value types is pretty
 <p>48:12 Status of JShell: it's in 9.  49:17 JShell removes all the
 ceremony of getting started with Java.  We'll use things we learn from
   that to understand where we actually need the ceremony and don't.</p>
-
-<h2>Part II: Dean Wampler and Jim Weaver</h2>
-
-<p>51:18 Introductions</p>
-
-<p>53:38 Bob polls the audience about alternative JVM languages.</p>
-
-<p>54:12 What happens if JDK 9 flops?  Dean asserts the microservices
-movement is a threat to the JVM because it exposes how bloated JVM apps
-typically are.  Go and Rust: are a factor of 10/100 smaller.  55:04 But
-why does it matter if it's not a cost savings?  55:42 Dean points out
-that it matters at google scale.  56:00 Bob: jlink can help with this.
-56:50 Freddy: if we use jlink with Jigsaw, will Scala be smaller?  57:24
-Dean answers, but not quite, and points out that Lightbend does track
-JDK releases closely, citing lambda integration in a recent Scala
-  release.</p>
-
-<p>57:15 Freddy: other threats? 57:46
-  Bob: <a href="https://www.meetup.com/en-AU/ChicagoJUG/events/237330076/">Azul's
-  Paul Nauman</a>: complexity of the JVM is the JVM's worst enemy.
-  58:28 Freddy, but that's true for every language.</p>
-
-<p>59:20 Dean: another risk: Apparent with SPARK: the appeal of DSLs.
-  1:00:00 Bob: but what about debugging?  Also, SPARK and massive heap
-  sizes.  1:01:20 SPARK realized the JMM is great for general purpose,
-  but if you have a billion of the same thing, there is no need for that
-  complexity.  1:02:30 Bob: Code rot is another risk to the ecosystem.
-  People stop maintaining stuff, but the stuff is still very widely
-  used.  1:03:26 Freddy tells his JavaScript story: there's three of
-  everything: npm, bower do the same thing.  In spite of this JavaScript
-  is still #1.  1:05 Dean: npm is using Rust for its scalability behind
-  the scenes.  1:06:15 It's the old open vs. closed argument.</p>
-
-<p>1:08:07 Bob ASF: Not a problem to have multiple projects that do the
-  same thing.  But you still need the JCP side.  </p>
-
-
-/Users/ejburns/Downloads/OffHeap24_mixdown.mp3
-
-
-
 
