@@ -14,51 +14,42 @@ March meeting:
 &lt;<a href="https://www.periscope.tv/UtahJava/1OdJrgAkgRnxX?t=11m59s">https://www.periscope.tv/UtahJava/1OdJrgAkgRnxX?t=11m59s</a>&gt;.
   This blog post covers my notes and impressions of the session.</p>
 
-"Bathe in the absurdity of the statement 'Microservices is a popular
-architectural style".
-
-Three parts
-
-What problem are we trying to solve?
-Characteristics
-Engineering Practices
-
 <h2>Introduction: What came before Microservices</h2>
 
-Microservices cannot be divorced from the engineering practices, such as
-DevOps.
+<p>Microservices cannot be divorced from the engineering practices, such as
+DevOps.</p>
 
-Contrast Microservices with what came before: SOA.  Microservices is a label
-not description.  Contrast to SOA: which is gargantuan.
+<p>Contrast Microservices with what came before: SOA.  Microservices is a label
+not description.  Contrast to SOA: which is gargantuan.</p>
 
-SOA: abstract enterprise-level coarse-grained services.
+<p>SOA: abstract enterprise-level coarse-grained services.</p>
 
-Implementation of these services: reusable as possible.  Enable the
+<p>Implementation of these services: reusable as possible.  Enable the
 business users to compose the services because the services have been
-written so well to be reusable.
+written so well to be reusable.<p>
 
-Some one-off services as well: authentication, identity, etc.
+<p>Some one-off services as well: authentication, identity, etc.</p>
 
-Message Bus: really important to enable this reuse.
+<p>Message Bus: really important to enable this reuse.</p>
 
-Why build these?  "Resume driven development"?  Goal: maximize reuse.
+<p>Why build these?  "Resume driven development"?  Goal: maximize reuse.
 Maximize canonicalitym aka DRY.  Aside: this appears to be a
-manifestation of Eric Evan's UNIVERSAL LANGUAGE concept.
+manifestation of Eric Evan's UNIVERSAL LANGUAGE concept.</p>
 
-Constraints of SOA: incremental change is hard with SOA.  The context in
+<p>Constraints of SOA: incremental change is hard with SOA.  The context in
 which SOA grew up.  Predated Open Source.  Everything was proprietary.
 OS were very heavyweight: resources and licenses.  Operation was very
-complex.
+complex.</p>
 
-"<a href="http://nealford.com/memeagora/2015/03/30/architecture_is_abstract_until_operationalized.html">Architecture
-is an abstraction until you operationalize it.</a>"
+<p>"<a href="http://nealford.com/memeagora/2015/03/30/architecture_is_abstract_until_operationalized.html">Architecture
+is an abstraction until you operationalize it.</a>"</p>
 
-I like how he explicitly called out that a key aspect of the
+<p>I like how he explicitly called out that a key aspect of the
 architecture is how it interacts with the environment around it.
 Analogy of taking the deployed system, unplugging it, putting it in the
 closet, waiting a year, and plugging it back in.  This brings in the
-dimension of time (2D -> 3D -> 4D) to the architecture.  This is what he
-means by operationalized.
+dimension of time (2D -&gt; 3D -&gt; 4D) to the architecture.  This is
+what he means by operationalized.</p>
 
 <h2>What problem are we trying to solve with Microservices?</h2>
 
@@ -211,4 +202,49 @@ instances.  This is a manifestation of the importance if putting things
 
 <p>Don't let changes build up, get things into production as quickly as
 possible.  With all the other CD stuff, deploying is actually anti
-  risky, since you have feature toggles 01:15:55</p>
+  risky, since you have feature toggles or routes.</p>
+
+<p>Service discovery: Consul, etcd, zookeeper.  Why service discovery?
+Neal says it's for elastic scaling.  I would have liked to have seen
+  more on this.</p>
+
+<p>Service visualization: Spigo, from Netflix.</p>
+
+<p>Tools: Plug
+  for <a href="http://devopsbookmarks.com/">http://devopsbookmarks.com/</a></p>
+
+<p>Neal asserts you must be doing all the things in Humble and Farley
+  before you even attempt microservices.  He enumerated what can happen
+  if you attempt it before mastery of Humble and Farley.  "If you get
+  sloppy, it gets bad fast". (A rescue consultant's
+  dream) See <a href="http://www.codingthearchitecture.com/presentations/sa2015-modular-monoliths">Simon
+  Brown's Modular Monoliths</a>
+  and <a href="http://www.adam-bien.com/roller/abien/entry/the_perfect_javaee_microservice">Adam
+  Bien's Java EE Microservice</a> for some things you might want to
+  look at before taking the jump to Microservices.  In both cases, the
+  question, "if you can't build a monolith correctly, what makes you
+  think that Microservices are the answer?" is implicitly asked.</p>
+
+<p>Is there a middle ground between SOA and Microservices?  Yes:
+  <a href="https://www.infoq.com/news/2016/10/service-based-architecture">service
+  based architectures</a>.  You have much fatter services.  The "every
+  service has its own persistence" rule is relaxed.  Integration
+  hub: the mere introduction of an ESB to a system. </p>
+
+<p>More migration paths.  Partitioning along natural boundaries.  Use
+  tools like xray or jdepend to anaylze your monolith to see how to
+  start decomposing.  Look at the transactional boundaries to see the
+  bounded contexts.  If your system relies heavily on transactions, it
+  may not be a good candidate for Microservices.  Maybe consider
+  service-based.  Start with a small number of larger services first.
+  Get the low hanging fruit.</p>
+
+<p>Trotted out the realestate.com.au example from Newman.  A great
+  example but I won't cover it here.</p>
+
+<p>Efferent coupling: first time I've heard this term since college.  I
+  must be two deep inside OS, language and runtime vendors.  Having low
+  efferent coupling means having a minimal number of dependencies.</p>
+
+<p>Neal's new
+  book: <a href="http://evolutionaryarchitecture.com/">Evolutionary Architecture</a>.</p>
