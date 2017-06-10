@@ -1,0 +1,9 @@
+Topics for future rockstar conversarions.
+
+8bitweapon Seth Sternberger: 8 bit operators project origin and process.
+Making a living with chiptune.
+
+Dan North: neurodiversity in the workforce.
+
+Sam Newman: labor cost rational for microservices.  Neal Ford's
+disintegration thing.

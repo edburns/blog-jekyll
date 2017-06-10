@@ -1,0 +1,214 @@
+---
+layout: post
+title:  Notes from Neil Ford Microservices at UJUG March 2017
+date:   2017-06-10 09:00 -0500
+comments: true
+---
+
+<p>One of the great things about working at Oracle is the high calibre
+of one's coworkers, and one of the best is my
+colleague <a href="http://www.manorrock.com /blog/">Manfred Riem</a>.
+Manfred shared this <a href="http://ujug.org/about/">UJUG</a> recording
+of <a href="https://twitter.com/neal4d">Neal Ford's</a> talk at their
+March meeting:
+&lt;<a href="https://www.periscope.tv/UtahJava/1OdJrgAkgRnxX?t=11m59s">https://www.periscope.tv/UtahJava/1OdJrgAkgRnxX?t=11m59s</a>&gt;.
+  This blog post covers my notes and impressions of the session.</p>
+
+"Bathe in the absurdity of the statement 'Microservices is a popular
+architectural style".
+
+Three parts
+
+What problem are we trying to solve?
+Characteristics
+Engineering Practices
+
+<h2>Introduction: What came before Microservices</h2>
+
+Microservices cannot be divorced from the engineering practices, such as
+DevOps.
+
+Contrast Microservices with what came before: SOA.  Microservices is a label
+not description.  Contrast to SOA: which is gargantuan.
+
+SOA: abstract enterprise-level coarse-grained services.
+
+Implementation of these services: reusable as possible.  Enable the
+business users to compose the services because the services have been
+written so well to be reusable.
+
+Some one-off services as well: authentication, identity, etc.
+
+Message Bus: really important to enable this reuse.
+
+Why build these?  "Resume driven development"?  Goal: maximize reuse.
+Maximize canonicalitym aka DRY.  Aside: this appears to be a
+manifestation of Eric Evan's UNIVERSAL LANGUAGE concept.
+
+Constraints of SOA: incremental change is hard with SOA.  The context in
+which SOA grew up.  Predated Open Source.  Everything was proprietary.
+OS were very heavyweight: resources and licenses.  Operation was very
+complex.
+
+"<a href="http://nealford.com/memeagora/2015/03/30/architecture_is_abstract_until_operationalized.html">Architecture
+is an abstraction until you operationalize it.</a>"
+
+I like how he explicitly called out that a key aspect of the
+architecture is how it interacts with the environment around it.
+Analogy of taking the deployed system, unplugging it, putting it in the
+closet, waiting a year, and plugging it back in.  This brings in the
+dimension of time (2D -> 3D -> 4D) to the architecture.  This is what he
+means by operationalized.
+
+<h2>What problem are we trying to solve with Microservices?</h2>
+
+<p>Plug for Evans DDD and Vaughn Vernon Implementing DDD.</p>
+
+<p>Defines the Bounded Context idea.  It's a business process, such as
+  "customer checkout".  No one outside the context is able to know the
+  impl details of the inside.  Combine this with Humble and Farley
+  (Continuous Delivery) and you get the Microservices Architecture.</p>
+
+<p>Diagram that shows API layer.  This is optional, but acts as a
+  facade that imposes the bounded context boundary.  It is not a part
+  of an ESB.  This is where he delivers the "everyone provides their
+  own persistence" requirement. </p>
+
+<h2>Characteristics</h2>
+
+<p>Monoliths vs. Microservices.  Difference in how the achieve scale.
+Monoliths, everyone shares the same stuff, so you achieve scale through
+clustering.  In Microservices, how you achieve scale is to add more
+instances.  This is a manifestation of the importance if putting things
+  in the right place.  In the SOA: scaling is an architectural
+  problem.  Really, it should be an ops problem.</p>
+
+<p>Products, not Projects.  This is the Conway's law thing.  You build
+  it, you run it.  Teams do not span products.  Teams maintain the same
+  product for their lifetime.  This responsibility makes people confront
+  the consequences of their actions.  <code>It eliminates the ability
+  to <a href="http://www.wisegeek.com/what-are-externalized-costs.htm">externalize
+  costs</a></code>.  He notes as an aside that propogating model changes
+  across services is very hard, though.</p>
+
+<p>"Inverse Conway Movement" Organize teams by bounded contexts, rather
+  than skillset.  Accept Conway's law as a fact of life, build teams
+  accordingly.</p>
+
+<p>Smart endpoints and dumb pipes.  REST or messaging (what about
+  gRPC?) Whatever you choose, you do have to standardize on it.
+  Embrace polyglot solutions where sensible.  (Plugs Sam Newman's
+  book).</p>
+
+<p>Aside on the challenges of "everyone provides their own persistence"
+  <a href="https://en.wikipedia.org/wiki/ACID">ACID</a>
+  vs. <a href="https://en.wikipedia.org/wiki/Eventual_consistency">BASE</a>
+  (CAP Theorem).  "We have made our users think that transactions are a
+  natural part of the universe, but they are not."  Starbucks example.
+  ATM example: batch reconciliation.  He takes pot shots at the need for
+  transactions, saying "maybe seats on an airplane" need them.  I
+  disagree.  Transactions are useful in any case where there is a lot of
+  contention: event tickets, auctions, manufacturing automation and
+  more.  But, with Microservices, you want to try to avoid transactions.
+  That I agree with.  <code>When defining bounded contexts, when you get
+  to the point when you say, "if we get any smaller than that, we'll
+  have to do a distributed transaction," that's when you stop
+  and <a href="https://www.reddit.com/r/gratefuldead/comments/1cxxk1/whats_your_favorite_rendition_of_take_a_step_back/">take
+  a step back</a> and that's where you have a boundary.</code>  This is
+  more reliable than your class diagram.</p>
+
+<p>Decentralized governance: an aside that you can change your
+  persistence within a bounded context and no-one outside it cares.
+  Without this, because everyone shares everything, we have to choose an
+  RDBMS that works for the aspect of the system that has the hardest
+  problems, while the rest of the system may not need that much
+  power.  Same for all aspects (MQ, etc).  Everyone is suffering from
+  the maximum complexity.  Microservices allows more fine grained
+  rightsizing.</p>
+
+<p>Brief plug for CICD.</p>
+
+<p>Microservices tries to avoid having something like a "customer
+  service".  Rather, each service has its own notion of customer.  It
+  turns out this is not as bad as you might think, because the right
+  decomposition of bounded contexts means that the notion of customer
+  can be conveyed as messages, without defining a customer as a
+  service.  </p>
+
+<p>"The more resuable code it is, the less usable it is."  In other
+  words, the more cases it serves, the less it is for one case.
+  Mentioned the old IBM San Francisco Project, which gave birth to
+  J2EE.  Neal felt it was the stupidest idea ever.  Well, I don't know
+  about that, but the idea did have very big consequences.</p>
+
+<p>Service orchestration.  This is necessary because we don't have
+  transactions.  This
+  is <a href="http://microservices.io/patterns/data/event-sourcing.html">Chris
+  Richardson's saga concept</a>.  </p>
+
+<h3>Benefits of Microservices</h3>
+
+<p>Maximize easy evolution.  Make changes without breaking
+  stuff.  <code>Microservices is the first architecture style developed
+  after the acceptance of continuous delivery (aka DevOps)</code>.
+  Also allows you to optimize only what matters.</p>
+
+<p>Tends to be asynchronous from birth.  This allows amazon to stay
+  within their boredom threshold, the point where users will lose
+  interest and go somewhere else, which is lost money.  "Prefer timely
+  partial over slow complete".</p>
+
+<p>Integration vs. disintegration.  "Complected deployments" to
+  intertwine things.  Components are deployed and features are released.
+  This allows us to monitor traffic and see which features are actually
+  needed, allowing empirical determination of which features you can
+  safely disintegrate.  (Economically, because features are teams, this
+  also means which employees you can lay off because they are not
+  delivering value.  I argue this is a more compelling reason for
+  companies.)</p>
+
+<p>How big?  The more services you have, the lower you drive down your
+  risk per service release.  But this does not address the complexity
+  tax of having all those services.</p>
+
+<h3>Engineering Practices</h3>
+
+<p>Design for failure, monitoring.  Monitoring is harder in
+  Microservices, but at least there is good tool support: ELK, etc.
+  This includes log aggregation.</p>
+
+<p>Mention of "synthetic transactions".  This plus monitoring is how
+  you debug.</p>
+
+<p>Mention of "correlation ids".  Again, debugging.</p>
+
+<p><a href="https://pragprog.com/book/mnee/release-it">Release It!</a>
+  "Everything in this book is considered bible in this world" Circuit
+  Breakers, bulkheads, timeouts.</p>
+
+<p><code>Engineering consistency.  Share nothing except: how the services
+  integrate (REST vs message bus vs. RPC).  The other is actual system
+  services technologies: monitoring, logging, identity.  This is the
+  "service template" idea.  Dropwizard or SpringBoot help with
+    this.</code></p>
+
+<p>Testing.  The testing pyramid.  Unit, Integration, Component,
+  End-to-end, exploratory.  Unit testing: sociable (real live objects)
+  and solitary (mocks).  Integration testing: gateway, protocol level.
+  Database integration.  Component testing: build a diagnostic mode into
+  your services.  Inproctester or plasma.  Consumer Driven Contracts:
+  Each endpoint defines the contract that the other side must adhere to
+  and codifies that into a test, which is a release gate for the other
+  endpoint.  This appears to be the microservices equivalent of an IDE
+  alerting you that when you change the signature of a method all the
+  callsites that now break.  Pact, Pacto, Janus.  Implicit assumption
+  that you have sufficient engineering maturity.  Eveyone is good at
+  writing tests, keeping the build green, etc.  End-to-end testing:
+  focus on personas and user journeys.  </p>
+
+<p>Deployment technologies.  As advanced as Docker containers or as
+  simple as executable jars.</p>
+
+<p>Don't let changes build up, get things into production as quickly as
+possible.  With all the other CD stuff, deploying is actually anti
+  risky, since you have feature toggles 01:15:55</p>
