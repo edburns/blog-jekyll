@@ -1,0 +1,197 @@
+---
+layout: post
+title:  "JAX-RS 2.1 New Feature Introduction: Server Sent Events Update"
+date:   2017-10-16 09:00 -0500
+comments: true
+---
+
+<p>I don't know what this says about my memory, but I was doing a little
+JAX-RS programming today and when I googled to remind myself of the
+particular feature I was using, I ran into <a href="{{ site.baseurl }}{%
+post_url 2017-02-22-jax-rs-2_1-new-feature-introduction %}">my own blog
+post</a> about that feature.  It took me a moment to recall that I had
+  written that earlier blog post.  I wonder if I'll forget writing this
+  one as well?</p>
+
+<p>Anyhow, both that post and the other one I found, written
+  by <a href="https://www.linkedin.com/in/pavel-bucek-16284614/">JAX-RS
+  Spec Lead Pavel Bucek</a>
+  &lt;<a href="https://blogs.oracle.com/pavelbucek/jax-rs-21-server-sent-events">https://blogs.oracle.com/pavelbucek/jax-rs-21-server-sent-events</a>&gt;
+  are now stale with respect to the final version of JAX-RS 2.1.  I
+  looked into
+  the <a href="https://github.com/javaee/glassfish-samples">GlassFish
+  Samples</a> for a similar and simple example, but found none, so I
+  took the opportunity to add two samples based on updated content from
+  Pavel's and my blog posts.  Please clone it to see the full source
+  code.  This blog post documents these two super simple samples.</p>
+
+<h2>The Simplest JAX-RS SSE Example</h2>
+
+<div class="java" style="font-family:monospace;"><ol><li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">@Path<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;/&quot;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> SSESimpleResource <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Resource</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">private</span> ManagedExecutorService executor<span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @GET</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Path<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;eventStream&quot;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Produces<span style="color: #009900;">&#40;</span>MediaType.<span style="color: #006633;">SERVER_SENT_EVENTS</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> eventStream<span style="color: #009900;">&#40;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @<a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Acontext+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">Context</span></a> SseEventSink eventSink,</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @<a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Acontext+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">Context</span></a> Sse sse<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; executor.<span style="color: #006633;">execute</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">-&gt;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">&#40;</span>SseEventSink sink <span style="color: #339933;">=</span> eventSink<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; eventSink.<span style="color: #006633;">send</span><span style="color: #009900;">&#40;</span>sse.<span style="color: #006633;">newEventBuilder</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">data</span><span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Astring+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">String</span></a>.<span style="color: #000000; font-weight: bold;">class</span>, <span style="color: #0000ff;">&quot;event1&quot;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">build</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; eventSink.<span style="color: #006633;">send</span><span style="color: #009900;">&#40;</span>sse.<span style="color: #006633;">newEventBuilder</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">data</span><span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Astring+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">String</span></a>.<span style="color: #000000; font-weight: bold;">class</span>, <span style="color: #0000ff;">&quot;event2&quot;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">build</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; eventSink.<span style="color: #006633;">send</span><span style="color: #009900;">&#40;</span>sse.<span style="color: #006633;">newEventBuilder</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">data</span><span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Astring+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">String</span></a>.<span style="color: #000000; font-weight: bold;">class</span>, <span style="color: #0000ff;">&quot;event3&quot;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">build</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Athrowable+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">Throwable</span></a> e<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; e.<span style="color: #006633;">printStackTrace</span><span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Asystem+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">System</span></a>.<span style="color: #006633;">out</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&#125;</span></div></li>
+</ol></div>
+
+  <p>Line 4 is a magic injection of
+  the <code><a href="https://javaee.github.io/javaee-spec/javadocs/javax/enterprise/concurrent/ManagedExecutorService.html">ManagedExecutorService</a></code>.
+  This class is only available in the full profile of Java EE, not the
+  web profile.  This sort of service is essential for doing SSE because
+  it's the easiest way to hand off the socket for the incoming SSE
+  subscription request to a service that can handle the scale of such a
+  resource intensive thing.</p>
+
+  <p>Line 9 and neighboring annotations make it so the HTTP GET Request
+  to "/eventStream" will return content-type text/event-stream.  Lines
+  11 and 12 are more magic to get handles to the JAX-RS 2.1 APIs for
+  SSE.  <code>SseEventSink</code> lets you send stuff down to the
+  browser.  <code>Sse</code> is a factory for other classes in the SSE
+  API.  Line 14 is a try-with-resources that lets the sink be
+    autoclosable.</p>
+
+<p>Let's take a look at the corresponding HTML.</p>
+
+<div class="xml" style="font-family:monospace;"><ol><li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;script</span> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">&quot;text/javascript&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span></span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; if(typeof(EventSource) !== &quot;undefined&quot;) {</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; var source = new EventSource(&quot;app/eventStream&quot;);</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; source.onmessage = function(event) {</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&quot;result&quot;).innerHTML += event.data + &quot;<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;br<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>&quot;;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; };</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; } else {</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&quot;result&quot;).innerHTML = &quot;Sorry, your browser does not support server-sent events...&quot;;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; }</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/script<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;h1<span style="color: #000000; font-weight: bold;">&gt;</span></span></span>SSE sample<span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/h1<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;div</span> <span style="color: #000066;">id</span>=<span style="color: #ff0000;">&quot;result&quot;</span><span style="color: #000000; font-weight: bold;">&gt;</span><span style="color: #000000; font-weight: bold;">&lt;/div<span style="color: #000000; font-weight: bold;">&gt;</span></span></span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div>
+
+<p>The JavaScript on lines 1 - 10 connects to the server when the page
+  loads and installs an SSE event handler that appends the data of each
+  SSE to the div on line 14.</p>
+
+<h2>Broadcasting to Multiple Clients</h2>
+
+<div class="java" style="font-family:monospace;"><ol><li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">@Path<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;/&quot;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">@Singleton</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> SSEBroadcastResource <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @<a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Acontext+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">Context</span></a> Sse sse<span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">static</span> SseBroadcaster sseBroadcaster<span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">synchronized</span> <span style="color: #000000; font-weight: bold;">static</span> SseBroadcaster getBroadcaster<span style="color: #009900;">&#40;</span>Sse sse<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">null</span> <span style="color: #339933;">==</span> sseBroadcaster<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sseBroadcaster <span style="color: #339933;">=</span> sse.<span style="color: #006633;">newBroadcaster</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">return</span> sseBroadcaster<span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @GET</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Path<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;subscribe&quot;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Produces<span style="color: #009900;">&#40;</span>MediaType.<span style="color: #006633;">SERVER_SENT_EVENTS</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> subscribe<span style="color: #009900;">&#40;</span>@<a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Acontext+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">Context</span></a> SseEventSink eventSink<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; eventSink.<span style="color: #006633;">send</span><span style="color: #009900;">&#40;</span>sse.<span style="color: #006633;">newEvent</span><span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;welcome!&quot;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; getBroadcaster<span style="color: #009900;">&#40;</span>sse<span style="color: #009900;">&#41;</span>.<span style="color: #006633;">register</span><span style="color: #009900;">&#40;</span>eventSink<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @POST</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Path<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;broadcast&quot;</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; @Consumes<span style="color: #009900;">&#40;</span>MediaType.<span style="color: #006633;">APPLICATION_FORM_URLENCODED</span><span style="color: #009900;">&#41;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> broadcast<span style="color: #009900;">&#40;</span>@FormParam<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">&quot;data&quot;</span><span style="color: #009900;">&#41;</span> <a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Astring+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">String</span></a> event<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; getBroadcaster<span style="color: #009900;">&#40;</span>sse<span style="color: #009900;">&#41;</span>.<span style="color: #006633;">broadcast</span><span style="color: #009900;">&#40;</span>sse.<span style="color: #006633;">newEventBuilder</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #006633;">data</span><span style="color: #009900;">&#40;</span><a href="http://www.google.com/search?hl=en&amp;q=allinurl%3Astring+java.sun.com&amp;btnI=I%27m%20Feeling%20Lucky"><span style="color: #003399;">String</span></a>.<span style="color: #000000; font-weight: bold;">class</span>, event<span style="color: #009900;">&#41;</span>.<span style="color: #006633;">build</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">&#125;</span></div></li>
+</ol></div>
+
+<p>Another example in Pavel's Blog that didn't quite work as written is
+  the <code>SseBroadcaster</code> example.  Here's one that works,
+  though I'm not happy about having to do that <code>synchronized</code>
+  method trick on lines 8 - 12, 20, and 27.  It would be better if
+  the <code>@Sse</code> could be handed into the ctor, but that was
+  giving me a CDI error in GlassFish 5.0.</p>
+
+<p>As with the first example, the GET request sets up the SSE, sending
+  an initial event.  The new thing is handing off the servicing of the
+  SSE to the handy <code>SseBroadcaster</code> on line 20.</p>
+
+<p>This resource also listens for POST requests.  It takes the form data
+  and simply broadcasts it out to the SSE.  The HTML is next.</p>
+
+<div class="html4strict" style="font-family:monospace;"><ol><li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">script</span></a> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; var i = 1;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; if(typeof(EventSource) !== &quot;undefined&quot;) {</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; var source = new EventSource(&quot;app/subscribe&quot;);</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; source.onmessage = function(event) {</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&quot;result&quot;).innerHTML += event.data + &quot;<span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/br.html"><span style="color: #000000; font-weight: bold;">br</span></a>&gt;</span>&quot;;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&quot;input&quot;).value = i++ + &quot; &quot; +</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; navigator.userAgent;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; };</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; } else {</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; document.getElementById(&quot;result&quot;).innerHTML = &quot;Sorry, your browser does not support server-sent events...&quot;;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; }</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; function submit() {</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; var params = &quot;data=&quot; + document.getElementById(&quot;input&quot;).value;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; var url = document.getElementById(&quot;form&quot;).action;</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; var xhr = new XMLHttpRequest();</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; xhr.open(&quot;POST&quot;, url);</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; xhr.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; xhr.send(params);</div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; }</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">script</span></a>&gt;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/form.html"><span style="color: #000000; font-weight: bold;">form</span></a> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;form&quot;</span> <span style="color: #000066;">method</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;POST&quot;</span> <span style="color: #000066;">action</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;app/broadcast&quot;</span> &nbsp;&gt;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; <span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/input.html"><span style="color: #000000; font-weight: bold;">input</span></a> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;input&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;hidden&quot;</span> <span style="color: #000066;">name</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;data&quot;</span>&gt;</span></div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><a href="http://december.com/html/4/element/form.html"><span style="color: #000000; font-weight: bold;">form</span></a>&gt;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/button.html"><span style="color: #000000; font-weight: bold;">button</span></a> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;button&quot;</span> <span style="color: #000066;">onclick</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;submit()&quot;</span>&gt;</span>POST<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><a href="http://december.com/html/4/element/button.html"><span style="color: #000000; font-weight: bold;">button</span></a>&gt;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/h1.html"><span style="color: #000000; font-weight: bold;">h1</span></a>&gt;</span>SSE sample<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><a href="http://december.com/html/4/element/h1.html"><span style="color: #000000; font-weight: bold;">h1</span></a>&gt;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="background: #f0f0f0;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<a href="http://december.com/html/4/element/div.html"><span style="color: #000000; font-weight: bold;">div</span></a> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;result&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><a href="http://december.com/html/4/element/div.html"><span style="color: #000000; font-weight: bold;">div</span></a>&gt;</span></div></li>
+<li style="background: #fcfcfc;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+</ol></div>
+
+<p>Lines 1 - 12 are mostly the same as in the first example.  Lines 14 -
+  20 are new.  The <code>submit()</code> function uses Ajax to send a
+  POST to the server (lines 23 - 28 in the Java listing).  The value of
+  the <code>data</code> form data comes from the hidden field, and
+  is initialized on line 7.  I just
+  use <code>navigator.userAgent</code> for novelty.</p>
+
+<p>Each click of the <code>POST</code> button causes a POST to be sent
+  to the server, which in turn causes an SSE to be sent back to the
+  client.  For extra fun, you could open up two tabs on the same page
+  and see that pressing POST on one causes the data to be updated on
+  both pages.</p>
+
+<p>Thanks to Pavel Bucek
+  and <a href="https://www.linkedin.com/in/santiago-pericas-geertsen-905685/">Santigo
+  Pericas-Geertsen</a> for stewarding the JAX-RS community to deliver a
+  very useful piece of Java EE 8.</p>
+
+
+
+
