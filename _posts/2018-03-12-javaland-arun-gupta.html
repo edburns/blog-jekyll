@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "JavaLand 2018 Arun Gupta Service Discovery In Container Orchestration Frameworks"
+date:   2018-03-12 08:00 +0100
+comments: true
+---
+
+<p>On a cold and wet morning in Phantasialand, my old pal Arun Gupta
+gave The first regular session at JavaLand 2018.  There was an
+impressive number of attendees, considering the early hour, even before
+  the opening greeting from DOAG CEO Fried Saacke.</p>
+
+<p>Speaker Bio</p>
+
+<p>The need for service discovery.  How else can services know how to
+communicate with other services?  The need for this is even more acute
+in the cloud when the location and cardinality of the services is highly
+dynamic.  This works best with stateless services.</p>
+
+<p>Examples: Docker Swarm, Kubernetes, Amazon ECS, Mesosphere</p>
+
+<h2>Docker Swarm</h2>
+
+<p>Docker for AWS.  A cloud formation template, automatic multi-host
+cluster.  Well integrated with AWS constructs: autoscaling, load
+  balancing, logs in CloudWatch.</p>
+
+<p><code>docker service create --replicas 3 --name web jboss/wildfly</code></p>
+
+<p>The default: master and four nodes.  Three replicas mean you get
+  three replicas of the whole five nodes.</p>
+
+<h3>Routing Mesh</h3>
+
+<p><code>docker service create --replicas 3 --name web -p 8080:8080 jboss/wildfly</code></p>
+
+<p>The addition of the port configures the load balancer</p>
+
+<h3>Docker Compose File</h3>
+
+<p>Defines the docker stack, containing your services.</p>
+
+<h2>Kubernetes</h2>
+
+<p>CNCF project</p>
+
+<p>Box diagram of parts of the Kubernetes cluster.</p>
+
+<p>Scheduler and Controller Manager watch the etcd, because the etcd is
+  easily watchable.</p>
+
+<p>The labels are in etcd, this allows the pods and services to be
+  loosely coupled.</p>
+
+<p>We need an ingress LB that allows your service to be seen from the
+  outside.</p>
+
+<p>Arun: 57% of K8s in the world runs on AWS.</p>
+
+
