@@ -58,6 +58,24 @@ only by example.  Then it says, "By the way, if your computed property
 happens to be read-only, you can simplify the declaration of a read-only
 computed property by removing the get keyword and its braces."
 
+## Case 3: Property Observers and the default parameter name
+
+I like the concept of property observers but wonder why they felt the
+need to define the `oldValue` and `newValue` default parameter names for
+the getter and setter.  Such as:
+
+> You can specify a name for this parameter as part of your willSet
+> implementation. If you don’t write the parameter name and parentheses
+> within your implementation, the parameter is made available with a
+> default parameter name of newValue.
+
+and
+
+> if you implement a didSet observer, it’s passed a constant parameter
+> containing the old property value. You can name the parameter or use
+> the default parameter name of oldValue.
+
+
 ## Summary
 
 This is certainly not new to Swift.  Indeed I've lamented the same thing
