@@ -2,7 +2,7 @@
 layout: post
 title:  "JavaLand 2019 Conference Picks"
 date:   2019-03-11 17:30 -0400
-comments: false
+comments: true
 ---
 
 
