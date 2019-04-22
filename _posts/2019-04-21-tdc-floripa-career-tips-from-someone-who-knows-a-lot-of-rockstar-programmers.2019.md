@@ -13,7 +13,7 @@ In my talk at 14:10 South Center Career Track, [Career Tips from Someone
 Who Knows a Lot of Rockstar
 Programmers](http://www.thedevelopersconference.com.br/tdc/2019/florianopolis/trilha-carreiras-e-mentoria),
 I will share some of the lessons I learned from the people I interviewed
-for the [Secrets of the Rockstar Programmers]({{ site.url }}) book, and
+for the [Secrets of the Rockstar Programmers]({{ site.url }}/ ) book, and
 also include some tips of my own.  Though I don't claim to be a rockstar
 programmer myself (or the newer term: "10x programmer"), I can honestly
 say I know plenty of people that who are.
