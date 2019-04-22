@@ -15,25 +15,45 @@ Programmers](http://www.thedevelopersconference.com.br/tdc/2019/florianopolis/tr
 I will share some of the lessons I learned from the people I interviewed
 for the [Secrets of the Rockstar Programmers]({{ site.url }}) book, and
 also include some tips of my own.  Though I don't claim to be a rockstar
-(or the newer term "10x") programmer myself, I can honestly say I know
-plenty of people that are.  This post covers a tip I've heard called
-"Communicating Your Value Add".
+programmer myself (or the newer term: "10x programmer"), I can honestly
+say I know plenty of people that who are.
 
 Working for big companies such as IBM, SGI, Sun, and Oracle, I've had
 the chance to sample many useful corporate trainings.  Even the most
 mundane of these, such as "Insider Trading", offer at least one nugget
-of novelty.  For example, the last time I took the "Insider Trading"
-class, I observed that several of the ethical tests I am expected to
-uphold as a corporate employee have been legally demonstrated to be
-failed by my current President and several in his administration.  Such
-observations make it obvious that there are different rules for
-different classes of people, but I digress.  The class I want to talk
-about here is one I took at Sun at least twelve years ago.  It was
-called "Communicating Your Value Add" and it was all about how to
-articulate your contribution to your company at focal review time.  I'm
-going to put my own spin on this.
+of novelty.  The corporate training I want to talk about here is one I
+took at Sun at least twelve years ago.  It was called "Communicating
+Your Value Add" and it was all about how to articulate your contribution
+to your company at performance review time.  The class included a handout,
+"Behavior/Performance-Based Questions" whose complete text I reproduce
+below.  For discussion and reference, let's call this `perf_handout`.
 
-Find a partner who has skills you lack.
+Here's the basic idea.
+
+1. Get in the habit of producing written weekly status reports as simple
+   text files.
+
+2. Annnotate some of the things you've done with `perf_handout.N` Where
+`N` is the number of the corresponding list item below.
+
+3. When performance review time comes around, you can grep through your
+   status reports for `perf_handout` and your performance review
+   practically writes itself.
+
+For example, if I successfully introduced a new code review process, my
+weekly status report would have a line like this:
+
+```
+perf_handout.6: Designed and implemented a new code review process.
+```
+
+Once you do this for a month or so, you'll notice some areas you are
+missing.  Try to fill those in, or if you can't try to partner with
+someone who you observe is able to do those things and learn from them.
+
+Here now is the complete `perf_handout` content.
+
+---
 
 ### Behavior/Performance-Based Questions
 
@@ -74,7 +94,7 @@ Find a partner who has skills you lack.
    
    9. Describe how you delegate responsibility in your current job.
    
-   10 Have you ever had to take over a leadership role unexpectedly?
+   10. Have you ever had to take over a leadership role unexpectedly?
    How did it work out?
    
    11. Sometimes it is important to disagree with others, particularly
