@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "TDC 2019 Florianópolis: Career Tips from Someone Who Knows a lot of Rockstar Programmers"
-date:   2019-04-21 19:00 -0400
-comments: false
+title:  "TDC 2019 Florianópolis: Career Tips from Someone Who Knows a lot of Rockstar Programmers 01: Communicating Your Value Add"
+date:   2019-04-21 19:00 -0300
+comments: true
 ---
 
 
