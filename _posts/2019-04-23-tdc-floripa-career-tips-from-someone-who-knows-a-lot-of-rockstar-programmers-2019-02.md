@@ -2,7 +2,7 @@
 layout: post
 title:  "TDC 2019 Florianópolis: Career Tips from Someone Who Knows a lot of Rockstar Programmers 02: Timesheets"
 date:   2019-04-23 09:00 -0300
-comments: false
+comments: true
 ---
 
 
