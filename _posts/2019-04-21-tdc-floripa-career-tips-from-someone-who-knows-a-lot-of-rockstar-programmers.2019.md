@@ -195,3 +195,152 @@ The pre-discussion forms include the questions below which are listed
    toward achieving a goal.
 
 ```
+
+### UPDATE: 2019-07-01 Microsoft Perf Handout
+
+Here are some additional similar questions that I see at Microsoft:
+
+#### Adaptability
+
+```
+36. Tell me about a time when you experienced a major organizational change (for example, a reorganization, a new supervisor or a new procedure) that created stress. 
+
+37. Describe a time when you proposed a major change in your work process or job duties. How did others respond to your proposal? 
+
+38. Describe a time when you had to complete a project in which you were provided with very little information or guidance. 
+
+39. Tell me about a time when you had to change your priorities in response to the demands of a changing situation. 
+
+40. Tell me about a time when a project, product, or service implementation did not go according to plan. 
+
+41. Describe a time when you presented a proposal or provided a service that was given an unfavorable response by stakeholders. 
+```
+
+
+#### Collaboration
+
+```
+42. Describe a time when you worked on a challenging cross-functional team that produced an exceptional deliverable. 
+
+43. Tell me about a time when you developed a relationship with another area of the company that had no previous history of collaboration. 
+
+44. Describe how you have collaborated with others outside of your immediate team to resolve a critical issue. 
+
+45. Tell me about a time when you experienced conflict with a team member. 
+
+46. Describe your most recent experience working with a virtual team. What were the challenges you faced and how did you work through them? 
+
+47. Tell me about a time when your attempt to collaborate across teams was unsuccessful. 
+```
+
+#### Customer Focus
+
+```
+48. Describe a time when you were involved in the resolution of a complaint from either an internal or an external customer. 
+
+49. Describe a time when you provided outstanding service to an internal or external customer by anticipating their needs. 
+
+50. Describe a time when you had difficulty determining the needs of a customer to provide them with a product or service that met their expectations. 
+
+51. Tell me about a time when you fell short of meeting a customer's needs. 
+
+52. Describe the strategies you have used to gather information that increased your understanding of current and future customer needs. 
+
+53. Provide an example of a time when you initiated a change in a process or policy to improve the quality of customer service 
+```
+
+#### Drive for Results
+
+```
+54. Describe a time when you uncovered something that could be problematic for your organization or team. How did you correct the situation before it became an issue? 
+
+55. Describe a time when you tried to achieve a difficult professional goal. What obstacles did you encounter that made the goal difficult? 
+
+56. Tell me about a time when you successfully removed an obstacle that interfered with your ability to complete a task effectively. 
+
+57. Describe a long-term project or assignment of which you took ownership. How did you make sure each milestone was achieved in a timely manner? 
+
+58. Provide an example of a time when you had to motivate others to complete a challenging deliverable. 
+
+59. What has been the most difficult assignment or task in your career so far? 
+```
+
+#### Influencing for Impact
+
+```
+60. Tell me about the most challenging situation that you have experienced, when you had to persuade someone to accept your point-of-view. 
+
+61. Describe a time when you had to persuade someone to complete a task, but had no formal authority over their work. 
+
+62. Tell me about a time when you had to convince others to implement a new procedure or process. 
+
+63. Tell me about a time when you successfully influenced multiple stakeholders with varying agendas. 
+
+64. Give me an example of a relationship that you developed through networking that had a positive impact on your work. 
+
+65. Give an example of a successful method (for example, research findings, anecdotes, stories, metaphors, or analogies) that you have used to convince a stakeholder to support an idea. 
+```
+
+#### Judgement
+
+```
+66. Describe a time when you made a critical error in your work. 
+
+67. Describe a situation when you had to make a major decision under time constraints. 
+
+68. Tell me about an unpopular decision you've had to make. 
+
+69. Tell me about a time when you had to make an important decision but had no policies or procedures in place to support it 
+
+70. Tell me about a situation when you had multiple alternatives from which to choose. What steps did you take to determine the most appropriate alternative? 
+
+71. Tell me about a situation that required you to build your knowledge base before solving a complex problem. 
+```
+
+### End-to-End Innovation
+
+```
+71.  Give an example of an idea that you suggested that led to improvements within your organization. 
+
+72. Tell me about a time when you presented a new idea that successfully addressed a customer’s end-to-end product experience. 
+
+73. Tell me about a time when you identified a risk and offered a unique method of addressing the risk. 
+
+74. Tell me about a time when you contributed to the development of an innovative idea that impacted the market, industry, and ecosystem. 
+
+75. Tell me about a time when an innovative product or service you worked on failed. Looking back, what would you have done differently to ensure success? 
+
+76. Tell me about a time when you had to make adjustments to a feature or product, based on considerations of the overall customer experience. 
+```
+
+#### Planning, Organizing, and Executing
+
+```
+77.Describe a situation when you made progress on a project or assignment despite ambiguity. 
+
+78. Describe a situation when you managed the impact of a change on schedule, processes, and project goals. 
+
+79. Describe a situation when you led a project with a geographically or functionally diverse team. 
+
+80. Tell me about a time when you aligned multiple stakeholders to achieve an objective. 
+
+81. Tell me about a time when you did not meet a planned milestone. 
+```
+
+
+#### Technical Excellence
+
+```
+82. Describe a situation when you came up-to-speed quickly on new tools, methods, or processes. 
+
+83. Describe a situation when you were able to create improvements in code, designs, content property, or media assets. 
+
+85. Describe a situation when you sought out a new engineering or project/program management challenge beyond your role requirements. 
+
+85. Tell me about a time when you sought out a challenging technical problem. 
+
+86. Tell me about a time when you mentored others in your area of technical expertise. 
+
+87. Tell me about a time when you had to learn a new technology. What did you do to gain expertise? 
+```
+
