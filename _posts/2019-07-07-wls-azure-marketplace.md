@@ -182,6 +182,19 @@ shown next.  The rows in the red box are the rows you need to add.
 Digital Ocean has a great primer on networking terminology at
 [https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking).
 
+##### C. (Optional) Disable the Auto Shutdown
+
+As a nod to the U.S. Government's National Institute of Standards
+(NIST) offical definition of cloud computing (which [everyone should
+read](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf))
+your VM is pre-configured to auto shut-down at 19:00 UTC.  To disable
+this potentially inconvenient setting, go to the Resource Group, click
+on the "Virtual machine" row, then type "Auto-shutdown" in the search
+box and click on the "Auto-shutdown" hit, as shown in this diagram.
+
+![wls-1212-auto-shutdown]({{ site.url }}/blog/assets/20190707-wls-1212-auto-shutdown.png "wls-1212-auto-shutdown")
+
+
 #### 5. SSH Into the Machine to Complete the Configuration
 
 Because we enabled port 22 [in step B
@@ -199,10 +212,65 @@ menu bar of the panel.
 
 ![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell.png "Cloud Shell")
 
-Tip: This opens up a new shell at the bottom of the current portal
-browser tab.  I prefer to have a full tab for the shell.  Click on the
-"Open new session" button to get one.  You may close the bottom shell if
-you like.  In the cloud shell, SSH into the machine as shown next.
+Tip: This action opens up a new shell at the bottom of the current
+portal browser tab.  I prefer to have a full tab for the shell.  Click
+on the "Open new session" button to get one.  You may close the bottom
+shell if you like.  In the cloud shell, SSH into the machine as shown
+next.
 
-![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell.png "Cloud Shell")
+![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell-02.png "Cloud Shell")
+
+The remaining actions are documented in more detail [at
+Oracle](https://docs.oracle.com/middleware/1212/wls/WLAZU/toc.htm), but
+that documentation references a version of the Azure console that has
+long since ceased to be.  Therefore, this section will update that
+content for the simple case of a single WLS domain node.  After doing
+these steps, it should be simple to use the out-of-date Oracle
+documentation to perform the more advanced configuration, such as
+[Creating a Multi-Machine Virtual Network for WebLogic
+Server](https://docs.oracle.com/middleware/1212/wls/WLAZU/toc.htm#CBABAADH).
+
+##### Set the ENV Vars
+
+In the Azure Cloud Shell, ensure the `adminadmin` user owns the
+necessary directories and files:
+
+```
+sudo chown -R adminadmin /opt/oracle
+```
+
+Enter `cat > wls-env.sh` then paste the following lines, followed by
+control-D.
+
+```
+export ORACLE_HOME=/opt/oracle/products/Middleware
+export WL_HOME=/opt/oracle/products/Middleware/wlserver
+export JAVA_HOME=/opt/oracle/products/jdk1.7.0_25
+${WL_HOME}/common/derby/bin/startNetworkServer.sh
+```
+
+Execute the script:
+
+```
+. ./wls-env.sh
+```
+
+This will set the necessary environment variables, and also start the
+built-in Derby database.  This should cause someting like the following
+to appear in the Azure Cloud Shell:
+
+```
+Mon Jul 08 15:06:33 EDT 2019 : Security manager installed using the Basic server security policy.
+Mon Jul 08 15:06:34 EDT 2019 : Apache Derby Network Server - 10.8.2.2 -
+(1181258) started and ready to accept connections on port 1527
+```
+
+Note that this port is not accessible to the public Internet because you
+have not created an inbound rule for it.  It is, however, accessible
+within the Virtual Network (vnet) created by the ARM template for Oracle
+WLS 12.1.2.
+
+
+
+
 
