@@ -20,11 +20,28 @@ for [Oracle WebLogic Server
 Now, this is admittedly ancient, supporting only Java EE 6 ([Servlet
 3.0, JSF 2.1, CDI 1.0,
 etc](https://docs.oracle.com/middleware/1212/wls/NOTES/whatsnew.htm#BGGGHCJD)).
-We will be doing **much** better than this very soon, but this post
+Microsoft will be doing **much** better than this very soon, but this post
 documents how to get WLS 12.1.2 up and running on Azure as it stands
-today.
+today.  This post will show how to do the following:
 
-## Creating the IaaS VM Within the Azure Portal
+* Create a VM for WLS 12.1.2 from the existing Azure Marketplace
+  template provided by Oracle.
+  
+* Expose the necessary network ports.
+
+* SSH into the machine and create the WLS domain.
+
+* Start the WLS server.
+
+* Access the WLS console from the public Internet.
+
+* Use the console to deploy a simple `.war` file.
+
+* Validate the `.war` works.
+
+## Creating and Configuring the IaaS VM Within the Azure Portal
+
+<!-- use H4 because it's smaller -->
 
 #### 1. Log in to the portal 
 
@@ -117,4 +134,75 @@ optimized for cheapness, not speed!
 
 Set the "OS disk type" to be "Standard HDD".  Then click the "Review +
 create", then "Create".  You will see "Your deployment is underway".
+This should only take a couple minutes to complete.
+
+##### B. Tune the Network Settings To Allow SSH and Console Access
+
+Click on "Resource Groups" then select the Resource group you created in
+step 3.  This will show you the many different resources that were
+created by the ARM template for WLS 12.1.2.
+
+![wls-1212-resources]({{ site.url
+}}/blog/assets/20190707-wls-1212-resources.png "wls-1212-resources")
+
+We are going to allow SSH and WLS Console access.  Securing an Internet
+facing resource is a huge and important topic, but far beyond the scope
+of this simple blog post.  Just know that we are doing some things here
+that almost certainly are not security best practices.
+
+Within the items in the Resource group, click on the "Network security
+group", `20190707-wls1212-nsg`.  In the "Settings" section of the middle
+pane, select "Inbound security rules".  
+
+![Network Security Groups]({{ site.url }}/blog/assets/20190707-wls-1212-nsg.png "Network Security Groups")
+
+This exposes the panel where we can customize the allowable network
+connections **into** the VM (known as "inbound" connections).  There is
+an analogous panel for configuring network connections **out** of the VM
+("outbound" connections).  You declare whether or not a particular
+connection is allowed or dis-allowed by writing "rules".  This exercise
+is going to allow just enough to accomplish the goals of the blog post.
+In the table below, rules can be added by clicking the "+ Add" button.
+They can be edited by single clicking the row in the table.  When
+adding or editing a rule make sure to scroll up and down to make sure
+you haven't missed any fields.  Before you add any rules, let's examine
+the pre-configured ones.  Note that the rows are sorted by increasing
+priority.  When Azure detects an inbound connection to the VM, Azure
+runs through each row of the inbound rules, in order of priority, to see
+if the connection matches the rule.  If it does, the rule is applied and
+traversal of the rule table stops.  If it does not, Azure keeps going
+through the rows until either a match is found or the table ends.  Note
+that Azure has pre-added a `DenyAllInbound` rule with the lowest
+priority.  This effectively means "if nothing else, deny the inbound
+connection".  Use the UI to make it so the rules look like the table
+shown next.  The rows in the red box are the rows you need to add.
+
+![Desired Inbound Rules]({{ site.url }}/blog/assets/20190707-wls-1212-nsg-modified.png "Desired Inbound Rules")
+
+Digital Ocean has a great primer on networking terminology at
+[https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking).
+
+#### 5. SSH Into the Machine to Complete the Configuration
+
+Because we enabled port 22 [in step B
+above](#b-tune-the-network-settings-to-allow-ssh-and-console-access), we
+can SSH into the host, assuming we know it's IP address.  This can be
+discovered by going to the Resource Group, clicking on the "Virtual
+machine" resource.  If you mouse over the IP address, shown in the red
+box next, you will see a button that copies the IP address to the
+clipboard.
+
+![IP Address]({{ site.url }}/blog/assets/20190707-wls-1212-ip-address.png "IP Address")
+
+Open a "Cloud Shell" by clicking on the "Cloud Shell" icon on the top
+menu bar of the panel.  
+
+![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell.png "Cloud Shell")
+
+Tip: This opens up a new shell at the bottom of the current portal
+browser tab.  I prefer to have a full tab for the shell.  Click on the
+"Open new session" button to get one.  You may close the bottom shell if
+you like.  In the cloud shell, SSH into the machine as shown next.
+
+![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell.png "Cloud Shell")
 
