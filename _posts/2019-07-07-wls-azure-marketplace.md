@@ -39,8 +39,11 @@ today.  This post will show how to do the following:
 
 * Validate the `.war` works.
 
-## Creating and Configuring the IaaS VM Within the Azure Portal
+* Shut down the server.
 
+* De-allocate the Azure resources.
+
+## Creating and Configuring the IaaS VM Within the Azure Portal
 <!-- use H4 because it's smaller -->
 
 #### 1. Log in to the portal 
@@ -142,8 +145,7 @@ Click on "Resource Groups" then select the Resource group you created in
 step 3.  This will show you the many different resources that were
 created by the ARM template for WLS 12.1.2.
 
-![wls-1212-resources]({{ site.url
-}}/blog/assets/20190707-wls-1212-resources.PNG "wls-1212-resources")
+![wls-1212-resources]({{ site.url }}/blog/assets/20190707-wls-1212-resources.PNG "wls-1212-resources")
 
 We are going to allow SSH and WLS Console access.  Securing an Internet
 facing resource is a huge and important topic, but far beyond the scope
@@ -344,7 +346,7 @@ with output similar to the following.
 <Jul 9, 2019 11:28:57 AM EDT> <Notice> <WebLogicServer> <BEA-000360> <The server started in RUNNING mode.>
 ```
 
-#### 6. Access the Admin GUI to deploy a Java EE 6 WAR.
+## Access the Admin GUI to deploy a Java EE 6 WAR.
 
 Assuming you see the all important `The server started in RUNNING
 mode.`, you may safely exit the SSH shell, and, if desired, disable the
@@ -361,6 +363,119 @@ log in to the console.
 
 ![WLS Console]({{ site.url }}/blog/assets/20190707-wls-1212-console.PNG "WLS Console")
 
+#### 1. Install the simplest WAR that will possibly work.
 
+For simplicity, let's install the simple guessNumber 2.0 war into the
+running WLS 12.1.2.  You can download the war [from this blog]({{ site.url }}/blog/assets/jsf-guessNumber-2.0.war).  
 
+The following steps will guide you to install the guessNumber war using
+the WLS Admin GUI.
 
+* Click on "Deployments" in the "Domain Structure" panel on the left.
+
+* Click on "Install" as shown next.
+
+![WLS Console]({{ site.url }}/blog/assets/20190707-wls-1212-console-install-01.PNG "WLS Console")
+
+* Click on the hyperlink "upload your file(s)" and upload the
+  `jsf-guessNumber-2.0.war`.  Click "Browse" and use the file chooser to
+  select the WAR.
+  
+* Click "Next".
+
+* On the "Install Application Assistant", ensure the
+  "jsf-guessNumber-2.0.war" is selected, and click "Next".
+  
+* On the "Choose targeting style" page, select "Install this deployment as an
+  application" and click "Next".
+  
+* On the "Optional Settings" page, click "Finish".
+
+Your console should have the following appearance, especially the green
+text in the "Messages" section.
+
+![WLS Console]({{ site.url }}/blog/assets/20190707-wls-1212-console-install-02.PNG "WLS Console")
+
+Note that we are installing the WAR into the `AdminServer` target.  This
+is not something one would normally do, but because the `basicWLSDomain`
+is set up with just the one server by default, this is what we will use.
+
+#### 2. View the Deployed App
+
+Construct a URL based on the public IP and the context-root of the app.
+For example, `http://<ip address>:7001/jsf-guessNumber-2.0/`.  Note that
+the port is `7001`, not 8080.  This is because we installed the app in
+the `AdminServer` target.  If the deployment was successful, you should
+see the simple GuessNumber JSF 2.0 app.
+
+#### 3. Shut Down the WLS Server
+
+* In the "Domain Structure" browser, expand "Environment" and click "Servers".
+
+* In the "Summary of Servers" panel, click the "Control" tab.
+
+* Click the checkbox next to "AdminServer(admin)".
+
+* Pull down the "Shutdown" dropdown and select "when work completes".
+
+* Thiss will shut down the WLS server.
+
+#### 4. Shut down the VM
+
+* Back in the Azure portal click "Resource groups" and select the
+  Resource group you created to hold this demo.
+  
+* Click on the "Virtual machine" type row.
+
+* Click "Stop".
+
+* Click "OK".
+
+##### 5. (Optional) Delete the Resource group.
+
+If you don't need this server any more, or you want to start over and
+try some other experiments, you can delete the entire Resource group
+with one action.
+
+* In the Azure console, click on Resource groups.
+
+* Check the checkbox next to your Resource group, and click the ellipsis
+  at the right end of the row.
+  
+* Choose "Delete Resource group".
+
+* As a measure to prevent accidental deletion, you have to type the
+  Resource group name, then click "Delete"
+
+This will delete the VM, network, network rules, disk, and the resource
+group itself.
+
+## Summary
+
+Even though this is very old software, it's running on the most modern
+and flexible cloud environment in the world.  In this post we did the
+following.
+
+* Create a VM for WLS 12.1.2 from the existing Azure Marketplace
+  template provided by Oracle.
+  
+* Expose the necessary network ports.
+
+* SSH into the machine and create the WLS domain.
+
+* Start the WLS server.
+
+* Access the WLS console from the public Internet.
+
+* Use the console to deploy a simple `.war` file.
+
+* Validate the `.war` works.
+
+* Shut down the server.
+
+* De-allocate the Azure resources.
+
+Watch this space, and the twitters account
+[@edburns](https://twitter.com/edburns/) and
+[@reza_rahman](https://twitter.com/reza_rahman), for upcoming
+announcments about Microsoft's plans for Java EE on Azure.
