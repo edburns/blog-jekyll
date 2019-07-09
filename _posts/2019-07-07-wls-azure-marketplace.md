@@ -58,7 +58,7 @@ It is possible to have multiple subscriptions within your Azure
 account.  If your Azure account is associated with multiple
 subscriptions, you'll need to adjust the portal so it only takes
 action on resources within that subscription.  Use this this control
-to apply the filter.  ![Azure subscription filter]({{ site.url }}/blog/assets/20190707-subscription-filter.png "Azure subscription filter")
+to apply the filter.  ![Azure subscription filter]({{ site.url }}/blog/assets/20190707-subscription-filter.PNG "Azure subscription filter")
    
 #### 3. Create a resource group
 
@@ -70,7 +70,7 @@ In this post, we'll create a resource group to hold our WLS 12.1.2
 related resources.  Click the "Resource Groups" icon:  
 
 ![Resource Group
-Icon]({{ site.url }}/blog/assets/20190707-resource-group-icon.png
+Icon]({{ site.url }}/blog/assets/20190707-resource-group-icon.PNG
 "Resource Group Icon")&nbsp;&nbsp;  
 
 Then the "+ Add" button at the top.  Fill in "Resource group with a
@@ -78,7 +78,7 @@ descriptive name.  Such as "20190707-wls1212".  Leave "Subscription" and
 "Region" as default, as shown here.
 
 ![Azure subscription filter]({{ site.url
-}}/blog/assets/20190707-resource-group-pane.png "Azure subscription
+}}/blog/assets/20190707-resource-group-pane.PNG "Azure subscription
 filter")
 
 
@@ -88,7 +88,7 @@ and all other notifications back by clicking on the "bell" icon, next to
 the "Filter your subscription" icon you clicked on in step 2.  Do this
 now and you'll see something like this.
 
-![Resource Group Created]({{ site.url }}/blog/assets/20190707-resource-group-created.png "Resource Group Created")  
+![Resource Group Created]({{ site.url }}/blog/assets/20190707-resource-group-created.PNG "Resource Group Created")  
 
 Click on the "Go to resource group".  Take some time to play around with
 the resource group view.  As we create things, they will show up here.
@@ -102,7 +102,7 @@ things in here, but for now place the cursor in the "Search the
 Marketplace" box and type `Oracle WebLogic Server 12.1.2` and press
 Enter.  
 
-![wls1212]({{ site.url }}/blog/assets/20190707-wls-1212.png "wls1212")
+![wls1212]({{ site.url }}/blog/assets/20190707-wls-1212.PNG "wls1212")
 
 Under the covers, this is an Azure Resource Manager (ARM) template,
 created by Oracle and inserted into the Azure Marketplace way back
@@ -143,7 +143,7 @@ step 3.  This will show you the many different resources that were
 created by the ARM template for WLS 12.1.2.
 
 ![wls-1212-resources]({{ site.url
-}}/blog/assets/20190707-wls-1212-resources.png "wls-1212-resources")
+}}/blog/assets/20190707-wls-1212-resources.PNG "wls-1212-resources")
 
 We are going to allow SSH and WLS Console access.  Securing an Internet
 facing resource is a huge and important topic, but far beyond the scope
@@ -154,7 +154,7 @@ Within the items in the Resource group, click on the "Network security
 group", `20190707-wls1212-nsg`.  In the "Settings" section of the middle
 pane, select "Inbound security rules".  
 
-![Network Security Groups]({{ site.url }}/blog/assets/20190707-wls-1212-nsg.png "Network Security Groups")
+![Network Security Groups]({{ site.url }}/blog/assets/20190707-wls-1212-nsg.PNG "Network Security Groups")
 
 This exposes the panel where we can customize the allowable network
 connections **into** the VM (known as "inbound" connections).  There is
@@ -177,7 +177,7 @@ priority.  This effectively means "if nothing else, deny the inbound
 connection".  Use the UI to make it so the rules look like the table
 shown next.  The rows in the red box are the rows you need to add.
 
-![Desired Inbound Rules]({{ site.url }}/blog/assets/20190707-wls-1212-nsg-modified.png "Desired Inbound Rules")
+![Desired Inbound Rules]({{ site.url }}/blog/assets/20190707-wls-1212-nsg-modified.PNG "Desired Inbound Rules")
 
 Digital Ocean has a great primer on networking terminology at
 [https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking).
@@ -192,7 +192,7 @@ this potentially inconvenient setting, go to the Resource Group, click
 on the "Virtual machine" row, then type "Auto-shutdown" in the search
 box and click on the "Auto-shutdown" hit, as shown in this diagram.
 
-![wls-1212-auto-shutdown]({{ site.url }}/blog/assets/20190707-wls-1212-auto-shutdown.png "wls-1212-auto-shutdown")
+![wls-1212-auto-shutdown]({{ site.url }}/blog/assets/20190707-wls-1212-auto-shutdown.PNG "wls-1212-auto-shutdown")
 
 Toggle the enabled to "Off".  
 
@@ -206,12 +206,12 @@ machine" resource.  If you mouse over the IP address, shown in the red
 box next, you will see a button that copies the IP address to the
 clipboard.
 
-![IP Address]({{ site.url }}/blog/assets/20190707-wls-1212-ip-address.png "IP Address")
+![IP Address]({{ site.url }}/blog/assets/20190707-wls-1212-ip-address.PNG "IP Address")
 
 Open a "Cloud Shell" by clicking on the "Cloud Shell" icon on the top
 menu bar of the panel.  
 
-![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell.png "Cloud Shell")
+![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell.PNG "Cloud Shell")
 
 Tip: This action opens up a new shell at the bottom of the current
 portal browser tab.  I prefer to have a full tab for the shell.  Click
@@ -219,7 +219,7 @@ on the "Open new session" button to get one.  You may close the bottom
 shell if you like.  In the cloud shell, SSH into the machine as shown
 next.
 
-![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell-02.png "Cloud Shell")
+![Cloud Shell]({{ site.url }}/blog/assets/20190707-wls-1212-cloud-shell-02.PNG "Cloud Shell")
 
 The remaining actions are documented in more detail [at
 Oracle](https://docs.oracle.com/middleware/1212/wls/WLAZU/toc.htm), but
@@ -359,7 +359,7 @@ I have filled in `weblogic` as the `Username`, since this is what the
 template uses.  Provide the pasword you used when you ran `execfile` and
 log in to the console.
 
-![WLS Console]({{ site.url }}/blog/assets/20190707-wls-1212-console.png "WLS Console")
+![WLS Console]({{ site.url }}/blog/assets/20190707-wls-1212-console.PNG "WLS Console")
 
 
 
