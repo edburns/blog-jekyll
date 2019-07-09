@@ -194,6 +194,7 @@ box and click on the "Auto-shutdown" hit, as shown in this diagram.
 
 ![wls-1212-auto-shutdown]({{ site.url }}/blog/assets/20190707-wls-1212-auto-shutdown.png "wls-1212-auto-shutdown")
 
+Toggle the enabled to "Off".  
 
 #### 5. SSH Into the Machine to Complete the Configuration
 
@@ -230,7 +231,7 @@ documentation to perform the more advanced configuration, such as
 [Creating a Multi-Machine Virtual Network for WebLogic
 Server](https://docs.oracle.com/middleware/1212/wls/WLAZU/toc.htm#CBABAADH).
 
-##### Set the ENV Vars
+##### A. Set the ENV Vars
 
 In the Azure Cloud Shell, ensure the `adminadmin` user owns the
 necessary directories and files:
@@ -246,8 +247,11 @@ control-D.
 export ORACLE_HOME=/opt/oracle/products/Middleware
 export WL_HOME=/opt/oracle/products/Middleware/wlserver
 export JAVA_HOME=/opt/oracle/products/jdk1.7.0_25
-${WL_HOME}/common/derby/bin/startNetworkServer.sh
+${WL_HOME}/common/derby/bin/startNetworkServer.sh || true
 ```
+
+The `|| true` causes the script to continue even if the Derby server
+doesn't start, for example because it's already started.
 
 Execute the script:
 
@@ -270,6 +274,92 @@ have not created an inbound rule for it.  It is, however, accessible
 within the Virtual Network (vnet) created by the ARM template for Oracle
 WLS 12.1.2.
 
+##### B. Create the Domain
+
+We will modify the included `basicWLSDomain.py` WLST script to make to
+create a domain to which we can log in to the admin console.
+
+```
+cd /opt/oracle/products/Middleware/wlserver/common/templates/scripts/wlst
+```
+
+This directory contains some built-in WebLogic Scripting Template (WLST)
+scripts provided by Oracle.  Copy the `basicWLSDomain.py` so we can
+safely edit it.
+
+```
+cp basicWLSDomain.py 20190709_basicWLSDomain.py
+```
+
+Find the line with `# Please set password here before using this script,
+e.g. cmo.setPassword('value')` and insert this line before it.
+
+```
+cmo.setPassword('3hu6Lfomu4#&')
+```
+
+Note, you can use any password you like.  I'm using the same password as
+earlier for convenience.  Save the file.
+
+Change to the directory containing the `wlst.sh` tool and execute it:
+
+```
+cd /opt/oracle/products/Middleware/oracle_common/common/bin
+./wlst.sh
+```
+
+At the prompt, execute the script file you just edited:
+
+```
+wls:/offline> execfile('/opt/oracle/products/Middleware/wlserver/common/templates/scripts/wlst/20190709_basicWLSDomain.py')
+```
+
+This will cause
+`/opt/oracle/products/Middleware/user_projects/domains/basicWLSDomain`
+to be created.  Append the following line to your existing
+`~/wls-env.sh` file:
+
+```
+nohup /opt/oracle/products/Middleware/user_projects/domains/basicWLSDomain/bin/startWebLogic.sh > ~/wls-log.txt & 2>&1
+```
+
+If you examine the contents of `~/wls-log.txt` you should see it ends
+with output similar to the following.
+
+```
+<Jul 9, 2019 11:28:54 AM EDT> <Notice> <Security> <BEA-090171> <Loading the identity certificate and private key stored under the alias DemoIdentity from the jks keystore file /opt/oracle/products/Middleware/user_projects/domains/basicWLSDomain/security/DemoIdentity.jks.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Security> <BEA-090169> <Loading trusted certificates from the jks keystore file /opt/oracle/products/Middleware/wlserver/server/lib/DemoTrust.jks.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Security> <BEA-090169> <Loading trusted certificates from the jks keystore file /opt/oracle/products/jdk1.7.0_25/jre/lib/security/cacerts.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "DefaultSecure[1]" is now listening on fe80:0:0:0:20d:3aff:fe54:2fff:7002 for protocols iiops, t3s, ldaps, https.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "DefaultSecure[3]" is now listening on 127.0.0.1:7002 for protocolsiiops, t3s, ldaps, https.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "Default[1]" is now listening on fe80:0:0:0:20d:3aff:fe54:2fff:7001for protocols iiop, t3, ldap, snmp, http.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "DefaultSecure[2]" is now listening on 0:0:0:0:0:0:0:1:7002 for protocols iiops, t3s, ldaps, https.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "Default" is now listening on 10.0.2.4:7001 for protocols iiop, t3,ldap, snmp, http.>
+<Jul 9, 2019 11:28:56 AM EDT> <Warning> <Server> <BEA-002611> <The hostname "localhost", maps to multiple IP addresses: 127.0.0.1, 0:0:0:0:0:0:0:1.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "DefaultSecure" is now listening on 10.0.2.4:7002 for protocols iiops, t3s, ldaps, https.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "Default[3]" is now listening on 127.0.0.1:7001 for protocols iiop,t3, ldap, snmp, http.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <Server> <BEA-002613> <Channel "Default[2]" is now listening on 0:0:0:0:0:0:0:1:7001 for protocolsiiop, t3, ldap, snmp, http.>
+<Jul 9, 2019 11:28:56 AM EDT> <Notice> <WebLogicServer> <BEA-000331> <Started the WebLogic Server Administration Server "AdminServer" fordomain "basicWLSDomain" running in development mode.>
+<Jul 9, 2019 11:28:57 AM EDT> <Notice> <WebLogicServer> <BEA-000365> <Server state changed to RUNNING.>
+<Jul 9, 2019 11:28:57 AM EDT> <Notice> <WebLogicServer> <BEA-000360> <The server started in RUNNING mode.>
+```
+
+#### 6. Access the Admin GUI to deploy a Java EE 6 WAR.
+
+Assuming you see the all important `The server started in RUNNING
+mode.`, you may safely exit the SSH shell, and, if desired, disable the
+inbound rule for SSH.
+
+Obtain the public IP address for the host as shown
+[earlier](5-ssh-into-the-machine-to-complete-the-configuration) and log
+in to `http://<ip address>:7001/console`.
+
+If everything worked correctly, you should see the following login UI.
+I have filled in `weblogic` as the `Username`, since this is what the
+template uses.  Provide the pasword you used when you ran `execfile` and
+log in to the console.
+
+![WLS Console]({{ site.url }}/blog/assets/20190707-wls-1212-console.png "WLS Console")
 
 
 
