@@ -2,7 +2,7 @@
 layout: post
 title:  "Java EE in Azure Marketplace: What's Currently Available?"
 date:   2019-07-07 12:00 -0400
-comments: false
+comments: true
 ---
 
 As mentioned in my [previous post]({{ site.url
