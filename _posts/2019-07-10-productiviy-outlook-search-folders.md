@@ -2,7 +2,7 @@
 layout: post
 title:  "Productivity: Use Outlook Search Folders"
 date:   2019-07-10 12:00 -0400
-comments: false
+comments: true
 ---
 
 ![One Weird Trick]({{ site.url }}/blog/assets/20190710-outlook-one-weird-trick.PNG "One Weird Trick")
