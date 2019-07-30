@@ -7,7 +7,7 @@ comments: false
 
 Raw Notes from Adam Bien's session.
 
-![Adam Bien]({{ site.url }}/blog/assets/20190730-adam-bien.JPG "Adam Bien")
+![Adam Bien]({{ site.url }}/blog/assets/20190730-adam-bien.jpg "Adam Bien")
 
 # Local
 
