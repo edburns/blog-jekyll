@@ -5,6 +5,8 @@ date:   2019-08-26 15:00 +0800
 comments: true
 ---
 
+[UPDATED]: indicated that Quarkus, Micronaut, and Helidon are all new since 2017.
+
 I'm very happy to be speaking at Oracle Code One for my first time.
 Even though I have been to more than a few [JavaOnes]({{ site.url }}/blog/assets/20151027-megabadge.jpg), I've never been to its
 successor.  Looking through the [content catalog](https://events.rainfocus.com/widget/oracle/oow19/catalogcodeone19), here are my day by day picks.  I'm including my sessions for reference, but also picking the one I'd attend if I wasn't speaking at that timeslot.
@@ -50,9 +52,10 @@ really well.  His delivery is crisp and uncompromising.
 
 #### 02:30 PM - 03:15 PM | Moscone South - Room 202 - Evolving Java for the Microservice and Serverless Era [DEV2556] - [Graeme Rocher](https://events.rainfocus.com/widget/oracle/oow19/catalogcodeone19?search=DEV2556)
 
-Quarkus, Micronaut, Helidon are the big three Java microservices
-players.  This one will likely give you the Micronaut perspective.  Take
-a side of Quarkus and Helidon with this and call me in the morning.
+Quarkus, Micronaut, Helidon are the big three Java microservices players
+*new since 2017*.  This one will likely give you the Micronaut
+perspective.  Take a side of Quarkus and Helidon with this and call me
+in the morning.
 
 #### 04:00 PM - 04:45 PM | Moscone South - Room 204 - Supersonic, Subatomic Java with Quarkus [DEV1799] - [Burr Sutter](https://events.rainfocus.com/widget/oracle/oow19/catalogcodeone19?search=DEV1799)
 
