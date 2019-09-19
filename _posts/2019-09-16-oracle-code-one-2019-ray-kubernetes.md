@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Oracle Code One 2019: Ray Tsang"
-date:   2019-09-16 12:30 +1100
-comments: false
+date:   2019-09-16 12:30 -0700
+comments: true
 ---
 
 Raw notes from Ray's @saturnism session.  Ray is always in motion.

@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Oracle Code One 2019: Venkat Subramanium"
-date:   2019-09-16 09:00 +1100
-comments: false
+date:   2019-09-16 09:00 -0700
+comments: true
 ---
 
 Raw notes from Venkat's @venkat_s session.

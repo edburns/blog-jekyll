@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Oracle Code One 2019: Martijn Verburg, Koichi Sakata, Mattias Karlsson"
-date:   2019-09-17 12:30 +1100
-comments: false
+date:   2019-09-17 12:30 -0700
+comments: true
 ---
 
 Raw notes from @jyukutyo, @matkar, @karianna

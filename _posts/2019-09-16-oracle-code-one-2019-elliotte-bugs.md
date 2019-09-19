@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Oracle Code One 2019: Elliotte Rusty Harold Bugs"
-date:   2019-09-16 12:30 +1100
-comments: false
+date:   2019-09-16 12:30 -0700
+comments: true
 ---
 
 Raw notes from Elliotte Rusty Harold's [@elharo](https://twitter.com/elharo) session
