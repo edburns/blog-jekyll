@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Oracle Code One 2019: Takin' Care of Business, Java Edition"
-date:   2019-09-17 12:30 -0700
+date:   2019-09-19 08:00 -0700
 comments: true
 ---
 
