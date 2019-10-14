@@ -19,7 +19,7 @@ we'll get in touch to help build a POC of your software running on Azure.  No st
 
 ### Update WebLogic Server on Azure IaaS
 
-Back in July, I documented the state of WLS on Azure [IaaS](https://aka.ms/NISTSays) in a [blog post]({% post_url 2019-07-07-wls-azure-marketplace %}).  I'm happy to say that we have made great progress since then in partnership with Oracle to update the offer, which you can read more about in Jacob Thomas's post on [the WebLogic Blog](https://blogs.oracle.com/weblogicserver/oracle-weblogic-server-on-microsoft-azure-iaas).  Here is a video walk through of the IaaS offer for WLS.
+Back in July, I documented the state of WLS on Azure [IaaS](https://aka.ms/NISTSays) in a [blog post]({{ site.baseurl }}{% post_url 2019-07-07-wls-azure-marketplace %}).  I'm happy to say that we have made great progress since then in partnership with Oracle to update the offer, which you can read more about in Jacob Thomas's post on [the WebLogic Blog](https://blogs.oracle.com/weblogicserver/oracle-weblogic-server-on-microsoft-azure-iaas).  Here is a video walk through of the IaaS offer for WLS.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/m7evI4lObcI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
