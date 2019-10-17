@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Java EE? Want to explore Azure? Free POC from Reza and I"
 date:   2019-10-02 13:36 -0400
-comments: false
+comments: true
 ---
 
 I've been very busy bringing Java EE to Azure since I [joined Microsoft this June](/blog{% post_url 2019-05-23-joining-microsoft %}).  I have devoted a fair chunk of that time to learning Azure fundamentals, [getting to know the broader Java team](https://blogs.microsoft.com/blog/2019/08/19/microsoft-acquires-jclarity-to-help-optimize-java-workloads-on-azure/), building the team, partnering with Oracle, and working with my Program Manager Reza Rahman to help identify and develop customers interested in Java EE on Azure.  This last point is the subject of this blog post.
