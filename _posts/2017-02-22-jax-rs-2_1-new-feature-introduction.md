@@ -5,8 +5,7 @@ date:   2017-02-22 00:15:00 -0500
 comments: true
 ---
 
-In preparation for my [DevNexus talk on Thursday]({{ site.baseurl }}{%
-post_url 2017-02-21-devnexus-2017-picks %}) I reviewed the commit log
+In preparation for my [DevNexus talk on Thursday](/blog{% post_url 2017-02-21-devnexus-2017-picks %}) I reviewed the commit log
 for the JAX-RS API for all the commits in the 2.1 cycle, to be sure I
 didn't miss anything (See git://java.net/jax-rs-spec~api).  There are
 basically three new big ticket features in JAX-RS 2.1.

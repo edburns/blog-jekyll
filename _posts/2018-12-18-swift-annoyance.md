@@ -79,7 +79,7 @@ and
 ## Summary
 
 This is certainly not new to Swift.  Indeed I've lamented the same thing
-about [Perl]({{ site.baseurl }}{% post_url
+about [Perl](/blog{% post_url
 2010-03-03-perils-8220there8217s-more-one-way-do-it8221 %}).  I just
 think this "look at how powerful my syntax is with the beautiful
 abstractions I've made that allow me to state things so simply"

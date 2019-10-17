@@ -13,8 +13,7 @@ lead me to misunderstand how to use the `subscribe` method in RxSwift.
 
 ## Details
 
-As I've said [before]({{ site.baseurl }}{% post_url
-2017-06-10-neil-ford-microservices-ujug-march-2017 %}), one of the
+As I've said [before](/{% post_url 2017-06-10-neil-ford-microservices-ujug-march-2017 %}), one of the
 things I love about working on my current team at Oracle is the
 opportunity to learn new things and put them in practice.  Currently
 this means learing Swift and RxSwift.  While doing the usual TDD, I
