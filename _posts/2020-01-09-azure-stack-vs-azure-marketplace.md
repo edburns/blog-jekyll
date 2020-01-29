@@ -2,7 +2,7 @@
 layout: post
 title:  "How to Check if Something in Azure Marketplace is Available in Azure Stack"
 date:   2020-01-09 15:00-0500
-comments: false
+comments: true
 ---
 
 I was recently asked if the [WebLogic on Azure Virtual
