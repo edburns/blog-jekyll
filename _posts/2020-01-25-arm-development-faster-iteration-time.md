@@ -5,6 +5,8 @@ date:   2020-01-25 14:40-0500
 comments: true
 ---
 
+## UPDATE: 2020-01-30 export with https://resources.azure.com/
+
 If you found your way to this post and your first reaction is 
 "[well duh](https://www.urbandictionary.com/define.php?term=Thank%20you%20Captain%20Obvious)",
 please leave a comment, because I'd love to know how you came upon your
@@ -65,6 +67,33 @@ feature of the portal to download the ARM template JSON file.  You may
 want to do this for each big chunk of functionality in your system, then
 stitch them together.  Iterate at the command line using the technique
 in the next tip.
+
+### Use the resources.azure.com
+
+I have observed that the "export template" feature does not always give
+you the full JSON.  For example, in the case of Application Gateway, the
+`backendAddresses` was empty, even though it had a pool and targets.  A
+colleague pointed out this enormously useful resource
+[https://resources.azure.com/](https://resources.azure.com/).
+
+Here is a quick sketch of how I used it to get the full JSON of a
+deployed Application Gateway.  Note, this is not an ARM template, but it
+can help a lot.
+
+1. Visit https://resources.azure.com/
+
+2. Type in the resource group in which the resource is deployed: ejb012803c
+
+3. Maybe make a choice. 
+
+   a. If offered with an autosuggest, pick the resource and you are done.
+   
+   b. If not offered with an autosuggest.  In the left pane, expand nodes like this
+   
+   ```
+   subscriptions > Your subscription > resourceGroups > ejb012803c > Providers >
+     Microsoft.Network > applicationGateways > ejb012803c
+   ```
 
 ### Start with one of the templates from `azure-quickstart-templates`
 
