@@ -34,7 +34,7 @@ JSON file, with all of the pitfalls that entails, such as:
   to catch some stupid mistakes at authoring time, but a proper DSL
   would do a better job of it.
   
-* You [can't even put comments in there](https://github.com/Azure/azure-resource-manager-schemas/issues/851).
+* ~~You [can't even put comments in there](https://github.com/Azure/azure-resource-manager-schemas/issues/851).~~ UPDATE: 2020-04-21: // comments in JSON work now.
 
 As a DSL for Azure, I think Terraform may be a better fit.  Indeed
 [Terraform is well supported by
