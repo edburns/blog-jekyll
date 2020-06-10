@@ -359,7 +359,7 @@ racism of white Southern voters without pronouncing it openly:
 
 Mr. Atwater is explaining more than the Southern strategy.  He is
 explaining the birth of the good/bad binary.  This sociolinguistic
-construct is what has enabled racism to continues to thrive and grow
+construct is what has enabled racism to continue to thrive and grow
 since the civil rights era.
 
 ## Chapter 5 The Good/Bad Binary
