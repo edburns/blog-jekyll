@@ -5,6 +5,10 @@ date:   2020-06-09 08:20-0500
 comments: true
 ---
 
+Cross posted at
+[LinkedIn](https://www.linkedin.com/pulse/white-fragility-robin-diangelo-highlights-ed-burns/),
+if that's your thing.
+
 ## TL;DR
 
 "[White Fragility](https://robindiangelo.com/publications/)" by [Robin
