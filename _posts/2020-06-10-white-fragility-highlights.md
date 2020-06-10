@@ -168,7 +168,7 @@ in. Y'all ain't that special.
 ### Objectivity
 
 (Aside: The Objectivity of Subjectivity scene from
-[Love and Death](https://www.youtube.com/watch?v=X5cQcmAtjJ0) covers
+[Love and Death](http://quietube7.com/v.php/http://www.youtube.com/watch?v=X5cQcmAtjJ0) covers
 objectivity also.  Yes, Woody Allen is implicated in #MeToo, but
 Diane Keaton is
 [quoted here](https://www.refinery29.com/en-us/2018/09/210100/woody-allen-me-too-timeline#slide-4)
