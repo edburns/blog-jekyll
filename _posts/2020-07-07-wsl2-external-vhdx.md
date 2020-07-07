@@ -95,7 +95,7 @@ WSL2 into the `.vhdx`, allowing you to get the missing files.
 
 The super handy `\\wsl$\<distroname>` usage in Windows File Explorer
 should work also.  In my case I was able to get the files by visiting
-`\\wsl$\Ubuntu\home\edburns\workareas` in Windows Explorer.
+`\\wsl$\Debian\home\edburns\workareas` in Windows Explorer.
 
 Thanks again to [Craig Loewen](https://twitter.com/craigaloewen) for
 this tip.
