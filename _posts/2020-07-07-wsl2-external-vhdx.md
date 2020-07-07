@@ -6,15 +6,15 @@ comments: true
 ---
 
 This post documents how to hack a Windows registry entry to gain access
-to the contents of a WSL2 `.vhdx` drive which resides within a Windows
-10 System Image on an external drive.
+to the contents of a [WSL2](https://aka.ms/install-wsl) `.vhdx` volume
+which resides within a Windows 10 System Image on an external disk.
 
 ## Scenario
 
 Everyone should have a backup strategy that works for them in terms of
 `hassle factor` and `capability`: your strategy should have `no more hassle`
 than you are willing to put up with to give you a `daily backup
-capability`.  
+capability`.
 
 On macOS, I use the excellent [Carbon Copy
 Cloner](https://bombich.com/).  On Windows 10 I use the built-in [Create
@@ -31,6 +31,11 @@ file..."oh wait.  The file is within the WSL image. [:sad trombone:]".
 With help from WSL2 Twitter celebrity [Craig
 Loewen](https://twitter.com/craigaloewen) I used this process to get my
 lost commits.
+
+If you don't already have WSL2, you should totally get it.  Get started at 
+&lt;[https://aka.ms/install-wsl](https://aka.ms/install-wsl)&gt;.  I was a Mac
+user from 2007 until I joined Microsoft in June 2019.  If not for WLS2,
+I'd still be a Mac user.
 
 ## How to Access WSL2 .vhdx on External Drive Within a Windows 10 System Image
 
