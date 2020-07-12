@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to use quickly extract text from an image with Microsoft OneNote"
+title:  "How to quickly extract text from an image with Microsoft OneNote"
 date:   2019-11-05 10:15 -0500
 comments: true
 ---
