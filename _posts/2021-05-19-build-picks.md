@@ -27,6 +27,8 @@ Join [Julien Dubois](https://twitter.com/juliendubois), [Jonathan Giles](https:/
 interstitial programming segment talking about high velocity cloud
 native Java.
 
+* [Watch on YouTube](https://www.youtube.com/watch?v=gFRbTWS32EA)
+
 ### 18:00 EDT Kroger joins Customer Tech Talks to discuss how they are using Java on Azure to manage stock levels across their stores
 
 Success at Microsoft is all about impact.  How much impact does your
@@ -41,10 +43,13 @@ the leading grocery retailers in the US.  They also own [Fred Meyer](https://twi
 
 ### 18:00 EDT Ask the Java at Microsoft Experts
 
-[Reza Rahman](https://twitter.com/reza_rahman), [Bruno Borges](https://twitter.com/brunoborges), [Martijn Verburg](https://twitter.com/karianna], [Asir Selvasingh](https://twitter.com/asirselvasingh) and I are
+[Reza Rahman](https://twitter.com/reza_rahman), [Bruno Borges](https://twitter.com/brunoborges), [Martijn Verburg](https://twitter.com/karianna), [Asir Selvasingh](https://twitter.com/asirselvasingh) and I are
 in the virtual booth and are excited to take your questions.
 
-[Content catalog link](https://mybuild.microsoft.com/sessions/aded32d6-b9e3-486c-a208-9ebcece1fbdd?source=sessions)
+* [Content catalog link](https://mybuild.microsoft.com/sessions/aded32d6-b9e3-486c-a208-9ebcece1fbdd?source=sessions)
+
+* [Watch on YouTube](https://www.youtube.com/watch?v=AIc6rdEe3Ys)
+
 
 ## Thursday, 26 May 2021
 
