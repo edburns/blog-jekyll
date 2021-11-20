@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Workshop-Tage Keynote Summary Document"
-date:   2021-11-21 18:40-0500
+date:   2021-11-19 18:40-0500
 comments: true
 ---
 
@@ -247,6 +247,15 @@ lack of a concept of containers, though Solaris did have Zones. Docker
 itself started in a similar way, with LXC, but now using
 `libcontainer`.  Happily, the best parts of Solaris are now in
 GNU/Linux, such as ZFS and DTrace (shout out to Brian Cantrill).
+
+With these economic forces, we can now have an enormously powerful and
+encompassing IT estate managed by a single pane of glass, as shown in
+this prophetic video.
+
+<video width="500" height="360" controls>
+  <source src="https://www.dropbox.com/s/wal5pt2bgqj6is2/eb-719-blade-runner-zoom-in-finished.mp4?raw=1" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 #### Commoditization of all aspects of IT infrastructure
 
