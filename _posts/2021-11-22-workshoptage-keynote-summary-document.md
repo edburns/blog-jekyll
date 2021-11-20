@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Workshop-Tage Keynote Summary Document"
-date:   2021-11-19 18:40-0500
+date:   2021-11-21 18:40-0500
 comments: true
 ---
 
