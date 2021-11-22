@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Workshop-Tage Keynote Summary Document"
+title:  "Innovation, Gratitude, Compassion and the Cloud - Workshop-Tage Keynote Summary Document"
 date:   2021-11-22 08:40-0500
 comments: true
 ---
