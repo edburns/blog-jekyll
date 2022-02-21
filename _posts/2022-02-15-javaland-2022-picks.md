@@ -9,19 +9,21 @@ Cross posted at [dev.to](https://dev.to/edburns00/).
 
 In my [previous]({{ site.url }}/blog/2021/05/19/build-picks.html) "session picks" post I lamented, "Ever since the end of in-person events, I have not bothered to do my traditional session picks posts".  Well, with [JavaLand 2022](https://javaland.eu) fast approaching, the time has come to resume the practice.
 
-All times in local timezone in JavaLand.
+All times in local timezone in JavaLand.  See [the program](https://www.javaland.eu/de/programm/) for more details on each session.
 
 ### Monday, 14 March 2022
 
-#### 17:00 - 19:00 Dambali (Matamba) Pattern matching mit Java
+#### 17:00 - 19:00 Dambali (Matamba) - Pattern matching mit Java
 
-The day before JavaLand is usually reserved for JavaLand kids activities, but with Coronavirus I have not heard about any such activity.  What I do see on the schedule is one talk from German Java Conference veteran [Falk Sippach](https://twitter.com/sippsack) and newcomer [Merlin B&ouml;gershausen](https://twitter.com/MBoegie) about pattern matching in Java.  Nope, it's not regular expressions they're talking about.  They are talking about language level features such as pattern matching in switch statements, records, and arrays, as described in this authoritative blog post from [Andrew Binstock](https://blogs.oracle.com/javamagazine/post/java-project-amber-lambda-loom-panama-valhalla).  The talk is in German, but well worth a look.  It's also the only scheduled talk on Monday.
+The day before JavaLand is usually reserved for JavaLand kids activities, but with Coronavirus I have not heard about any such plans.  What I do see on the schedule is one talk from German Java conference veteran [Falk Sippach](https://twitter.com/sippsack) and newcomer [Merlin B&ouml;gershausen](https://twitter.com/MBoegie) about pattern matching in Java.  Nope, it's not regular expressions they're talking about.  They are talking about language level features such as pattern matching in switch statements, records, and arrays, as described in this authoritative blog post from [Andrew Binstock](https://blogs.oracle.com/javamagazine/post/java-project-amber-lambda-loom-panama-valhalla).  The talk is in German, but well worth a look.  It's also the only scheduled talk on Monday.
 
 ### Tuesday, 15 March 2022
 
-#### 08:30 - 09:10 Schauspielhaus Unittesting für Jakarta EE - das vernachlässigte Wesen
+#### 08:30 - 09:10 Schauspielhaus - Unittesting für Jakarta EE - das vernachlässigte Wesen
 
 After many years of working mainly with the arrangement of boxes on architecture diagrams, and the JSON it takes to connect those boxes, I look forward to looking deep inside a single box at the humble Unit Test. Join [Gunnar Hilling](https://github.com/guhilling/) for this Jakarta EE focused look at this neglected discipline.
+
+I also close out my conference picks with a talk about assertions.
 
 #### 09:30 - 10:00 - Silverado - Begrüßung
 
@@ -33,7 +35,7 @@ I am unfamiliar with [Dr. Carola Lilienthal](https://twitter.com/Cairolali), but
 
 #### 11:00 - 10:40 - Schauspielhaus - Quarkus: a Bliss for Developers
 
-Alex Soto Bueno is delivering a talk on the flagship, post-monolith,
+Alex Soto Bueno is delivering a talk on Red Hat's flagship, post-monolith,
 cloud-native, enterprise Java developer runtime. I'm confident it will
 be true to the legacy of excellent talks from the legendary Burr
 Sutter.  Even though this talk competes with Ivar Grimstad's Jakarta
@@ -43,9 +45,9 @@ future, and some of the EE10 specs will eventually show up in Quarkus.
 
 #### 12:00 - 12:40 - Wintergarden - Low Cost, Cloud Native, Open Standard Java on Azure Kubernetes Service
 
-My biased opinion recommends my own session.  [Emily Jiang](https://twitter.com/emilyfhjiang) and will address this fact. Customers have made it clear: they want Kubernetes, but they want it easy and affordable. It is possible to address these two competing concerns by using open source runtimes on commodity hardware. This lecture shows how to use the EPLv1 licensed Open Liberty runtime on vanilla Azure Kubernetes Service.
+My biased opinion recommends my own session.  [Emily Jiang](https://twitter.com/emilyfhjiang) and will observe that customers have made it clear: they want Kubernetes, but they want it easy and affordable. It is possible to address these two competing concerns by using open source runtimes on commodity hardware. This lecture shows how to use the EPLv1 licensed Open Liberty runtime on vanilla Azure Kubernetes Service.
 
-If I wasn't giving this talk, though, I would attend [Johan Janssen's](https://twitter.com/johanjanssen42)
+If I wasn't giving this talk, I would attend [Johan Janssen's](https://twitter.com/johanjanssen42)
 "Why and How to Upgrade to Java 17" in Silverado.  I find an in-person conference is really great for these "one stop shop" sessions.
 
 #### 13:00 - 13:40 - Silverado - The Project that Changed my Mind on Java Modules
@@ -76,7 +78,7 @@ The first thing that popped into my mind when reading [Sascha Selzer's](https://
 
 #### 16:00 - 16:40 - Rotunde - Observing Cloud Native Java Apps Using OpenTelemetry on AWS, GCP and Azure
 
-Sticking with the operations angle, this talk covers OpenTelemetry.  I'd say that OpenTelemetry will do for observability what the Servlet API did for CGI-BIN: make it standard for all Java apps.  Check talk by [Bernhard Lubomski](https://www.xing.com/profile/Bernhard_Lubomski/cv) out.
+Sticking with the operations angle, this talk covers OpenTelemetry.  I'd say that OpenTelemetry will do for observability what the Servlet API did for CGI-BIN: make it standard for all Java apps.  Check this talk by [Bernhard Lubomski](https://www.xing.com/profile/Bernhard_Lubomski/cv) out.
 
 #### 17:00 - 17:40 - Wintergarten - OpenId Connect Support in Jakarta EE 10
 
@@ -85,23 +87,22 @@ force behind Payara and also an active Jakarta EE contributor. This
 talk demonstrates the continued vitality of Jakarta EE by showing how
 the OpenId Connect standard is supported in Jakarta EE 10.  From a
 historical perspective, the Security API, introduced by David Blevins
-in Jakarta EE 8, is a great foundation for this even more important
-API.  I am curious to see if Spring adopts this or continues in their
+in Jakarta EE 8, is a great foundation for OpenId Connect.  I am curious to see if Spring adopts the Security spec or continues in their
 [go your own way](https://www.youtube.com/watch?v=VZAJMBFq85s)
 approach when it comes to the "invent vs adopt" decision.
 
 #### 18:00 - 18:40 - Silverado - How to Survive a Live Coding Session
 
 I have observed the world-master of live coding, Dr. Venkat
-Subramaniam, and wondered, "how does he do it?" This meta-session from
-[Jacek Kunicki](https://twitter.com/rucek) offers, "tips and tricks
-presented here will help you feel more comfortable and prepared for
-(almost) everything. Real-life horror stories included!"  Sounds
-great!
+Subramaniam, and wondered, "how does he do it?" This meta-session
+about live coding sessions from [Jacek
+Kunicki](https://twitter.com/rucek) offers, "tips and tricks [to] help
+you feel more comfortable and prepared for (almost)
+everything. Real-life horror stories included!"  Sounds great!
 
 #### 19:00 - 19:40 - Quantum 1+2 - Die neue Gesprächskultur: ganz wie in Panama
 
-I'm glad to see my JSF expert group old colleague [Bernd Müller](https://www.goodreads.com/review/show/378749161) is still donig new and exciting different things in the Java world.  This particular topic of native-Java interaction (but not the GraalVM kind) is close to my heart, having worked with JNI over [20 years ago](https://www-archive.mozilla.org/oji/).
+I'm glad to see my JSF expert group old colleague [Bernd Müller](https://www.goodreads.com/review/show/378749161) is still doing new and exciting different things in the Java world.  This particular topic of native-Java interaction (but not the GraalVM kind) is close to my heart, having worked with JNI over [20 years ago](https://www-archive.mozilla.org/oji/).
 
 ### Wednesday, 16 March 2022
 
@@ -116,7 +117,7 @@ some details on the other horses.  I think it's worth a look.
 My own interviews with [Rockstar Programmers](https://ridingthecrest.com/) support the observation that mastery of tools is the single most important skill in the Rockstar programmer's toolbox. This session from [Bouke Nijhuis](https://twitter.com/BoukeNijhuis), gives you tips for mastery of the most masterful Java IDE.
 
 
-#### 11:00 - 11:40 - Wintergarten - Increase Your Productivity with IntelliJ
+#### 11:00 - 11:40 - Wintergarten - From Zero to Spring Boot Hero with GitHub Codespaces
 
 Have you heard of GitHub codespaces? Well, [Sandra Ahlgrimm](https://twitter.com/sKriemhild) is a past master of this transformative developer technology.  She joins forces with [Martin Lippert](http://twitter.com/martinlippert) to show how to become super productive with CodeSpaces and Spring Boot.
 
@@ -125,7 +126,7 @@ Have you heard of GitHub codespaces? Well, [Sandra Ahlgrimm](https://twitter.com
 My main job at Microsoft is to ensure Java EE application server
 workloads have a great home on Azure.  I have seen irrefutable Azure
 revenue numbers that prove the Java EE app server is far from dead.
-I'm looking forward to an outside perspective from [Dirk Weil](https://twitter.com/dirkweil)on this same question.
+I'm looking forward to an outside perspective from [Dirk Weil](https://twitter.com/dirkweil) on this same question.
 
 #### 13:00 - 13:40 - Wintergarten - Die All-Stars der Software-Bugs – und was wir von ihnen lernen können
 
@@ -155,7 +156,7 @@ All of us have been installing JDKs on machines for years and years, but how man
 
 #### 17:00 - 17:40 - Quantum 3+4 - Im Dutzend billiger. Kann's eine Assertion mehr sein? Mit AssertJ zum Testerfolg
 
-There is a whole track on testing at JavaLand, but this is the only talk I've selected. I assure you, this is not because testing is unimportant. Rather, my role as Principal Architect at Microsoft has me living at a higher level of abstraction.  However, I am fascinated by the journey of the humble assertion over time.  The **assert** keyword was added to Java in 2002, but since then the entire practice of CI/CD has evolved.  This talk from [Birgit Kratz](https://twitter.com/bikratz) shows how the concept of assertions is compatible with our contemporary highly-automated development practice.
+There is a whole track on testing at JavaLand, but this is only the second testing talk I've selected. I assure you, this is not because testing is unimportant. Rather, my role as Principal Architect at Microsoft has me working at a higher level of abstraction.  However, I am fascinated by the journey of the humble assertion over time.  The `assert` keyword was added to Java in 2002, but since then the entire practice of CI/CD has evolved.  This talk from [Birgit Kratz](https://twitter.com/bikratz) shows how the concept of assertions is compatible with our contemporary highly-automated development practice.
 
 ### Thursday, 17 March 2022
 
