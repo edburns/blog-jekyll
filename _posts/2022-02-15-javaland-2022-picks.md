@@ -112,7 +112,7 @@ When I first published this post, I had recommended Fabian's talk
 titled "State of the Java Metrics Libraries" in Rotunde.  I still want
 to see this talk, but I must recommend you attend my colleagues
 [Martijn Verburg](https://twitter.com/karianna) and [George
-Adams's](https://twitter.com/gdams) talk about the latest entrant in
+Adams's](https://twitter.com/gdams_) talk about the latest entrant in
 the OpenJDK ecosystem, Microsoft. You can read more about it in this
 blog post announcing [Microsoft joining the JCP](https://devblogs.microsoft.com/java/microsoft-deepens-its-investments-in-java/).
 
