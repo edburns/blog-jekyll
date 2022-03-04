@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Ed's JavaLand 2022 Session Picks"
+title:  "Ed's JavaLand 2022 Session Picks (Updated)"
 date:   2022-02-15 19:25-0400
 comments: true
 ---
 
-Cross posted at [dev.to](https://dev.to/edburns00/).
+Cross posted at [dev.to](https://dev.to/edburns00/eds-javaland-2022-session-picks-updated-2ghj).
 
 In my [previous]({{ site.url }}/blog/2021/05/19/build-picks.html) "session picks" post I lamented, "Ever since the end of in-person events, I have not bothered to do my traditional session picks posts".  Well, with [JavaLand 2022](https://javaland.eu) fast approaching, the time has come to resume the practice.
 
@@ -106,11 +106,15 @@ I'm glad to see my JSF expert group old colleague [Bernd Müller](https://www.go
 
 ### Wednesday, 16 March 2022
 
-#### 09:00 - 09:40 - Rotunde - State of the Java Metrics Libraries
+#### 09:00 - 09:40 - Wintergarden - Java at Microsoft - Behind the scenes 
 
-In the java metrics library horse race, my money is on OpenTelemtry.
-This talk from [Fabian Stäber](https://twitter.com/fstabr) gives us
-some details on the other horses.  I think it's worth a look.
+When I first published this post, I had recommended Fabian's talk
+titled "State of the Java Metrics Libraries" in Rotunde.  I still want
+to see this talk, but I must recommend you attend my colleagues
+[Martijn Verburg](https://twitter.com/karianna) and [George
+Adams's](https://twitter.com/gdams) talk about the latest entrant in
+the OpenJDK ecosystem, Microsoft. You can read more about it in this
+blog post announcing [Microsoft joining the JCP](https://devblogs.microsoft.com/java/microsoft-deepens-its-investments-in-java/).
 
 #### 10:00 - 10:40 - Wintergarten - Increase Your Productivity with IntelliJ
 
