@@ -37,6 +37,19 @@ If you don't already have WSL2, you should totally get it.  Get started at
 user from 2007 until I joined Microsoft in June 2019.  If not for WLS2,
 I'd still be a Mac user.
 
+## Update 2022-08-23
+
+New from [Craig Loewen](https://twitter.com/craigaloewen).
+
+If you are using the "Store" version of WSL2, that is, installed from https://aka.ms/wslstorepage, you can use the `--import` and `--export` commands for `wsl` in PowerShell.
+
+1. In a PowerShell (maybe elevated for good measure, not sure if it's necessary), shut down wsl.  `wsl --shutdown`.
+1. Get the distro name of the distro whose VHD you want to export. `wsl -l -v`.
+1. Export the distro to a .vhdx file. `wsl --export <your distro name> .\yourDistroName.vhdx` This will be a large file.
+1. Move the `.vhdx` file to your new machine.
+1. Import the vhd. `wsl --import --vhd <your distro name> <Install Location> .\yourDistroName.vhdx` .
+
+
 ## How to Access WSL2 .vhdx on External Drive Within a Windows 10 System Image
 
 We will edit the Windows registry to point a new Debian WSL2
