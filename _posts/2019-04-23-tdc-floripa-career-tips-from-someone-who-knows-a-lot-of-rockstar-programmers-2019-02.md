@@ -39,8 +39,10 @@ Here's the basic idea.
    about what you did.
    
 I've been doing this since I started telecommuting in 2002, so I have
-seventeen years of monthly spreadsheets.  Here is a sample spreadsheet you can download and customize: [201904-timesheet.xlsx]({{
-   site.url }}/blog/assets/201904-timesheet.xlsx "201904-timesheet.xlsx").
+seventeen years of monthly spreadsheets.  Here is a sample spreadsheet you can download and customize: [2023MM-timesheet.xlsx]({{
+   site.url }}/blog/assets/2023MM-timesheet.xlsx "2023MM-timesheet.xlsx").
+   
+Update: 2023-08-07: My employer switched to discretionary time off (DTO). I personally believe DTO benefits employers more than employees. I'm not alone in this belief. See [Why unlimited time off is often better for employers than employees](https://financialpost.com/fp-work/unlimited-time-off-better-employers-than-employees) and [Unlimited Paid Time Off: A Good or Bad Idea?](https://www.shrm.org/ResourcesAndTools/hr-topics/benefits/Pages/Unlimited-PTO.aspx). I added a simple DTO tracking facility to the spreadsheet.
    
 Like my previous post about status reports, this seems mundane and
 annoying, but over time, it adds up to a valuable searchable resource.
