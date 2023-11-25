@@ -49,7 +49,20 @@ For an apparently very helpful resource on `TCC.db` see [A deep dive into macOS 
 1. `chown` the `TCC.db` file to your userid.
 1. `cd` to get back to your home directory.
 
+#### Re-enable System Integrity Protection (SIP)
+
+1. Shut down and reboot in "Recovery mode".
+   1. Shut down.
+   1. Hold down Command R while powering on.
+   1. Release when the Apple logo appears.
+1. When you get a menu bar, in the **Utilities menu** select **Terminal**.
+1. The terminal should open as root.
+1. `csrutil enable`.
+1. Exit the terminal and quit the **Terminal** app.
+1. Restart.
+
 #### Run the tccutil command
 
 1. `tccutil reset Microphone`. If you want to reset other permissions, there is a big schema of names.  To reset everything replace `Microphone` with `All`. Case is sensitive.
 1. You should see a message that indicates success.
+
