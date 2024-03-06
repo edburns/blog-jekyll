@@ -5,7 +5,7 @@ date:   2024-03-02 20:20-0500
 comments: true
 ---
 
-Cross posted at [dev.to](https://dev.to/edburns00/eds-javaland-2022-session-picks-updated-2ghj).
+Cross posted at [dev.to](https://dev.to/edburns/eds-javaland-2024-session-picks-23cd).
 
 I'm very blessed to have the opportunity to speak at the 10th anniversary JavaLand conference. It will be very different to not be at PhantasiaLand this year, but I am so fortunate to have been there all the previous years. It's just as well since I was starting to not be able to handle the Black Mamba roller coaster anymore.  Also, I'm hoping it takes less time to walk between sessions at this [new venue](https://thevendry.com/venue/197499/nurburgring-nurburg-germany).
 
