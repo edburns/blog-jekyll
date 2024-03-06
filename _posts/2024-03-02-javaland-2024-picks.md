@@ -7,7 +7,7 @@ comments: true
 
 Cross posted at [dev.to](https://dev.to/edburns00/eds-javaland-2022-session-picks-updated-2ghj).
 
-I'm very blessed to have the opportunity to speak at the 10th anniversary JavaLand conference. It will be very different to not be at PhantasiaLand this year, but I am so fortunate to have been there all the previous years. It's just as well since I was starting to not be able to handle the Black Mamba roller coaster any more.  Also, I'm hoping it takes less time to walk between sessions at this [new venue](https://thevendry.com/venue/197499/nurburgring-nurburg-germany).
+I'm very blessed to have the opportunity to speak at the 10th anniversary JavaLand conference. It will be very different to not be at PhantasiaLand this year, but I am so fortunate to have been there all the previous years. It's just as well since I was starting to not be able to handle the Black Mamba roller coaster anymore.  Also, I'm hoping it takes less time to walk between sessions at this [new venue](https://thevendry.com/venue/197499/nurburgring-nurburg-germany).
 
 Since this is the tenth anniversary of JavaLand, and I have had the extreme good fortune at presenting at every one of them, I dug up the links of all my previous session picks posts. See how far we've come together!
 
@@ -18,7 +18,7 @@ Since this is the tenth anniversary of JavaLand, and I have had the extreme good
 - [2015]({{ site.url }}/blog/2015/01/15/javaland-2015-conference-picks.html)
 - [2014]({{ site.url }}/blog/2014/03/03/eds-javaland-2014-picks.html)
 
-All times in local timezone in JavaLand.  See [the program](https://www.javaland.eu/de/programm/) for more details on each session.
+All times in local time zone in JavaLand.  See [the program](https://www.javaland.eu/de/programm/) for more details on each session.
 
 ### Tuesday, 09 April 2024
 
@@ -40,19 +40,19 @@ When I spoke of the great job that advocates are doing in my [pre-conference int
 
 My talk is Prepare for Jakarta EE 11. I am giving this talk on behalf of [Ivar Grimstad](https://twitter.com/ivar_grimstad) due to Ivar being at the very poorly scheduled, from a JavaLand attendee's perspective, [DevNexus](https://devnexus.org/). However, I'm well qualified to give the talk because I'm the [release co-coordinator for Jakarta EE 11](https://projects.eclipse.org/content/project-lead-election-edward-burns-jakarta-ee-platform). Come to this talk to hear what's new in the very soon-to-be-released Jakarta EE 11.
 
-If I wasn't giving a talk in this timeslot, I'd attend visit **Nürburgring Hotel Grid 1 - 3** for The (Unknown) Nifty Details of Maven Plugin Configuration by [Karl Heinz Marbaise](https://twitter.com/khmarbaise). Maven plugins are super powerful, and usable in both Maven and Gradle. But how much do you know about getting the most from the plugins you use? This talk has the answers.
+If I wasn't giving a talk in this timeslot, I'd attend visit **Nürburgring Hotel Grid 1 - 3** for "The (Unknown) Nifty Details of Maven Plugin Configuration" by [Karl Heinz Marbaise](https://twitter.com/khmarbaise). Maven plugins are super powerful, and usable in both Maven and Gradle. But how much do you know about getting the most from the plugins you use? This talk has the answers.
 
 #### 13:00 - 14:30 Nürburgring Hotel Grid 4 Ist meine Java-Anwendung bereit für ide Cloud? Wass kann ich wie migrieren?
 
-I'm delighted to have the opportunity to present this session with my colleague and long time collaborator [Sandra Ahlgrimm](https://twitter.com/skriemhild). In this new-to-JavaLand format 80 minute session. We'll cover how to get your Jakarta EE application into the cloud, on App Service, Container Apps, AKS, ARO, and VMs.
+I'm delighted to have the opportunity to present this session with my colleague and longtime collaborator [Sandra Ahlgrimm](https://twitter.com/skriemhild). In this new-to-JavaLand format 80-minute session. We'll cover how to get your Jakarta EE application into the cloud, on App Service, Container Apps, AKS, ARO, and VMs.
 
 If I wasn't giving a talk in this timeslot, I'd visit **ring°arena** to attend Der Mensch in Mittlepunkt: Moderne Developer Experience im Enterprise-Context, by [Nico Enking](https://www.f-i.de/Ueber-uns/mehralsTech/TeamFI/People-Stories/Nico-Enking) and [Jan-Christoph Schlieker](https://www.linkedin.com/in/jan-christoph-schlieker/?originalSubdomain=de). This session looks like it will introduce the role of a developer experience curator in the context of enterprise software development. This role seems like it can really help increase the success of software projects.
 
-Due to the 80 minute format of my session, there's time for another if you don't want to attend it. In this case, I'd recommend Philosophy4Devs by [Rüdiger zu Dohna](https://twitter.com/ruezd). Do any readers remember famous fluff talker [Ted Neward](https://twitter.com/tedneward)? I recall Ted was very proud of his philosophy background. Considering how well he's done for himself, you may want to check out this talk.
+Due to the 80-minute format of my session, there's time for another if you don't want to attend it. In this case, I'd recommend Philosophy4Devs by [Rüdiger zu Dohna](https://twitter.com/ruezd). Do any readers remember famous fluff talker [Ted Neward](https://twitter.com/tedneward)? I recall Ted was very proud of his philosophy background. Considering how well he's done for himself, you may want to check out this talk.
 
 #### 15:00 - 15:40 ring°kino Pair Programming with GitHub Copilot
 
-[Frederieke Scheper](https://twitter.com/fbascheper) promises to show us how well GitHub Copilot delivers on the its promise to let you "focus on solving bigger problems by spending less time creating boilerplate and repetitive code." I've used it myself, and I can say it does pretty well at that, for many classes of problem. Also, no slides. Venkat style!
+[Frederieke Scheper](https://twitter.com/fbascheper) promises to show us how well GitHub Copilot delivers on its promise to let you "focus on solving bigger problems by spending less time creating boilerplate and repetitive code." I've used it myself, and I can say it does pretty well at that, for many classes of problem. Also, no slides. Venkat style!
 
 #### 15:00 - 16:40 media°center Continuous Integration and Continuous Delivery (CI/CD) for Jakarta EE Applications or Nürburgring Hotel Grid 1 - 3 Going AOT: Everything you need to know about GraalVM for Java Applications
 
@@ -61,36 +61,68 @@ This slot conflicts with my 16:00 talk "Developer Career Masterplan", but if I w
 * Continuous Integration and Continuous Delivery (CI/CD) for Jakarta EE Applications
 * Going AOT: Everything you need to know about GraalVM for Java Applications
 
-The CI/CD one from Jakarta EE expert [Luqman Saeed](https://www.udemy.com/user/salmankhan). In the ninteen years since the introduction of Hudson, CI/CD has gone from being the sign of a mature software development shop to an absolutely must-have way that work is done. Even so, it's still not easy to perform at scale. This talk promises to show how to do it with Jakarta EE applications.
+The CI/CD one from Jakarta EE expert [Luqman Saeed](https://www.udemy.com/user/salmankhan). In the nineteen years since the introduction of Hudson, CI/CD has gone from being the sign of a mature software development shop to an absolutely must-have way that work is done. Even so, it's still not easy to perform at scale. This talk promises to show how to do it with Jakarta EE applications.
 
-The GraalVM one from [Alina Yurenko](https://twitter.com/alina_yurenko) is a hot topic and Alina is a great and very experienced speaker. I like how Alina will focus on the production aspects. If I was attending, I'd be keen to ask about Project Leyden and other aspects of how do you handle debugging of a native Java app.
+The GraalVM one from [Alina Yurenko](https://twitter.com/alina_yurenko) is a hot topic and Alina is a great and very experienced speaker. I like how Alina will focus on the production aspects. If I was attending, I'd be keen to ask about Project Leyden and other aspects of how one handles debugging of a native Java app.
 
 #### 16:00 - 16:40 ring°arena Developer Career Masterplan: Build your path to senior level and beyond
 
-Way back in 2008, I wrote a book where I interviewed a bunch of successful programmers and asked them all about their professional journey. My pals Heather and Bruno have taken a similar approach, but supplemented it with their own insights. I had the honor of being on the other side of the microphone for this new book. After having read it, I can say it's a great read. If you want to see what it's about, come to this talk.
+Way back in 2008, I wrote a book where I interviewed a bunch of successful programmers and asked them all about their professional journey. My pals Heather and Bruno have taken a similar approach but supplemented it with their own insights. I had the honor of being on the other side of the microphone for this new book. After having read it, I can say it's a great read. If you want to see what it's about, come to this talk.
 
 If I wasn't giving a talk at this time, I'd visit **ring°academy** to attend NEWCOMER: C4 - Documentation to blow (up) your mind! The talk will introduce the C4 model for documentation. I'd love to see what "diagrams as code" is all about. I've seen the promise of similar systems since the late 1990s, but so far none of them have really had a lasting impact. Maybe this time it's different.
 
 #### 17:00 - 17:40 Bitburger Event-Center Teil B Was Jeder Java-Entwickler über Strings wissen Sollte
 
-Strings? In 2024? You bet! The humble String class is so ubiquitous, yet has seen so many evolutions (especially for a final class) over the years it's worth a whole session. Also, this supports my point with Nicolai Parlog's session above. Yes Java is old, but it is also getting better all the time. With this session from [Bernd Müller](https://www.ostfalia.de/cms/de/pws/bernd-mueller/index.html) you can see how this applies to String.
+Strings? In 2024? You bet! The humble String class is so ubiquitous yet has seen so many evolutions (especially for a final class) over the years it's worth a whole session. Also, this supports my point with Nicolai Parlog's session above. Yes, Java is old, but it is also getting better all the time. With this session from JSF Expert Group alumnus [Bernd Müller](https://www.ostfalia.de/cms/de/pws/bernd-mueller/index.html) you can see how this applies to String.
 
 #### 18:00 - 18:40 ring°academy NEWCOMER: AI Ethics in Software Engineering
 
-After observing first hand some of the impact of the roll out of GitHub copilot on secondary school computer science education, I'm keenly interested in this topic. [Moritz Schmidt](https://www.linkedin.com/in/moritz-schmidt-3a3131221/?originalSubdomain=de) will explore the hoary topic of the ethical impact of AI.
+After observing firsthand some of the impact of the roll out of GitHub copilot on secondary school computer science education, I'm keenly interested in this topic. [Moritz Schmidt](https://www.linkedin.com/in/moritz-schmidt-3a3131221/?originalSubdomain=de) will explore the hoary topic of the ethical impact of AI.
 
 ### Wednesday, 10 April 2024
 
-#### 09:00 - 09:40
-#### 10:00 - 10:40
-#### 11:00 - 11:40
-#### 12:00 - 12:40
-#### 13:00 - 13:40
-#### 14:00 - 14:40
-#### 15:00 - 15:40
-#### 16:00 - 16:40
-#### 17:00 - 17:40
+#### 09:00 - 09:40 ring°kino Don't be afraid of the final boss: Explain ideas for improvement to management
+
+Don't miss this one. This touches on a topic I addressed on [2019-04-21]({{ site.url }}/blog/2019/04/21/tdc-floripa-career-tips-from-someone-who-knows-a-lot-of-rockstar-programmers.2019.html): "Communicating your value add". That post was about communicating your value add as an individual contributor.
+
+> Working for big companies such as IBM, SGI, Sun, and Oracle, I’ve had the chance to sample many useful corporate trainings. Even the most mundane of these, such as “Insider Trading”, offer at least one nugget of novelty. The corporate training I want to talk about here is one I took at Sun at least twelve years ago. It was called “Communicating Your Value Add” and it was all about how to articulate your contribution to your company at performance review time. The class included a handout, “Behavior/Performance-Based Questions” whose complete text I reproduce below. For discussion and reference, let’s call this perf_handout.
+
+This session from [Christian Seifert](https://www.linkedin.com/in/cn-seifert/?originalSubdomain=de) shows how to do that for your entire team. Put the two together and you have a powerful technique for showing your contribution to the bottom line. Such efforts make it more painful for them to lay you off, and also make it easier for you to get a better job someplace else, should that be appropriate.
+
+#### 10:00 - 10:40 Nürburgring Hotel Grid 1 - 3 Improving your skills with the debugger
+
+The program committee did a great job this year. With [Bernd's Strings talk](#1700---1740-bitburger-event-center-teil-b-was-jeder-java-entwickler-über-strings-wissen-sollte) and this one from [Bourke Nijhuis](https://sessionize.com/bouke-nijhuis), you really get some much needed fundamentals. Even if you are late-in-career like I am, continually reinforcing fundamentals is very important. <img src="{{ site.url }}/blog/assets/20240306-fundamentals.gif" width="200" alt="Spring training fundamentals" style="float: right;" />
+
+#### 11:00 - 11:40 ring°arena Die unsichtbare Hand im Code
+
+Of course [Hendrik Ebbers](https://twitter.com/hendrikEbbers) and [Sandra Parsick](https://twitter.com/SandraParsick) will do an amazing job with the community keynote. I don't know how they are going to follow-up [last year's impactful installment](https://www.doag.org/de/home/news/javaland-2023-community-keynote-teilt-eure-geschichte/), which dealt with some weighty topics. As an insider at one of these IT-Giganten, I'll be curious to see what they think is really happening inside our "Geheime Räte" (hint, at least for my employer, it is always customer obsession).
+
+#### 12:00 - 12:40 Coca-Cola business°lounge A fun and absurd introduction to Vector Databases
+
+My day job is mostly about the prosaic, but critical revenue and generating legacy Java apps. It's far away from new stuff like Vector Databases. As such, I need to expend extra effort to stay up on such things. This talk from [Alexander Chatzizacharias](https://www.crunchbase.com/person/alexander-chatzizacharias) is a great and time-efficient way to make me smarter about it.
+
+#### 13:00 - 13:40 Bitburger Event-Center Teil B Pimp your Jakarta EE Applications
+
+I view this talk as an essential supplement to [my 12:00 - 12:40 Tuesday talk](#1200---1240-bitburger-event-center-teil-b-prepare-for-jakarta-ee-11). [Dirk Weil](https://twitter.com/dirkweil) looks like he's going to cover lots of great stuff, including migration with OpenRewrite. I hope my booth duty schedule permits me to attend.
+
+#### 14:00 - 14:40 ring°arena Prompt-Engineering für Entwickler
+
+When I first started using GPT for serious work questions, I thought the phrase "prompt engineering" was far too grand a term for what I was doing. However, after working more and more with it, I realize there is a skill to it, and it pays to develop the skill. Check out this talk from my old pal [Ralf Müller](https://twitter.com/RalfDMueller) and become a prompt engineering pro.
+
+#### 15:00 - 15:40 Bitburger Event-Center Teil B Learn Pattern Matching Through Puzzlers
+
+This session from my old pal and JSF Expert Group alumnus [Cay Horstmann](https://twitter.com/cayhorstmann) covers yet another amazing fundamental programming language technology brought to Java developers. I'm pretty sure [Nicolai Parlog](https://twitter.com/nipafx) will have touched on it in his session on [Tuesday](#1100---1140-ringarena-modern-java-in-action), but Cay, as a professional educator, will give you a deep understanding of this powerful, yet tricky to use, feature.
+
+#### 16:00 - 16:40 Bitburger Event-Center Teil B IfC -- Infrastructure FROM code
+
+A lot of my job at Microsoft is working with Azure's Infrastructure As Code (IaC) technology, Bicep. This second session from [Rüdiger zu Dohna](https://twitter.com/ruezd) promises to leverage that concept even further. Historically, I've noticed that techniques which build on top of powerful abstractions can really increase productivity. IaC is definitely a very powerful abstraction, so I want to see what this one's about.
+
+#### 17:00 - 17:40 ring°arena Open-Source Contribution - Why is it worth the hassle?
+
+My lived experience, and the experience of the authors and experts behind [Heather and Bruno's book](#1600---1640-ringarena-developer-career-masterplan-build-your-path-to-senior-level-and-beyond), testify that it's worth the hassle. If you needed any more evidence, come to this session from [Dominika Tarsarz-Sochacka](https://www.payara.fish/teamblog/author/dominika/).
 
 ### Thursday, 11 April 2024
 
-#### 09:00 - 17:00
+#### 09:00 - 17:00 Nürburgring Hotel Grid 3 Automated Code Refactoring with OpenRewrite
+
+I've seen lots of customers asking about the kind of thing being addressed in this full day workshop from [Sebastian Konieczek](https://www.linkedin.com/in/sebastian-konieczek/?originalSubdomain=de). The OpenRewrite framework, from [Moderne](https://moderne.io/) (formerly of Netflix) is a powerful idea worth learning about.
