@@ -253,7 +253,7 @@ encompassing IT estate managed by a single pane of glass, as shown in
 this prophetic video.
 
 <video width="500" height="360" controls>
-  <source src="https://www.dropbox.com/s/wal5pt2bgqj6is2/eb-719-blade-runner-zoom-in-finished.mp4?raw=1" type="video/mp4">
+  <source src="https://www.dropbox.com/scl/fi/qdrhwn83zddhty39tl0di/eb-719-blade-runner-zoom-in-finished.mp4?rlkey=79avm8q8n3i39phgcbr34lsvc&st=g36lf5zw&raw=1" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
