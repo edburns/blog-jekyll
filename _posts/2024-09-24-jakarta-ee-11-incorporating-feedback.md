@@ -25,7 +25,8 @@ Institutional memory is the way groups of humans learn from mistakes and avoid r
 
 It is far easier to show responsiveness to developer feedback when the possible costs of a committing a mistake are contained within a single project. In light of the high possible costs, the Jakarta EE 11 platform project was intentionally modest with our goals for incorporating developer feedback. This is our implementation of the tried and true strategy of "underpromise and overdeliver".
 
-Let's review the [modest goals](https://docs.google.com/document/d/1m-dkvbL0iFFzitO4vt1SVq6GGSJyFdCDM2NU_FzGS10/edit#heading=h.il1isyaqw4eb) set out by the Steering Committee and see how we did in EE 11.
+Leading up to Jakarta EE 11, we conducted an open community discussion on requirements for Jakarta EE 11 and captured them in this [Jakarta EE 11 Discussion](https://docs.google.com/document/d/1m-dkvbL0iFFzitO4vt1SVq6GGSJyFdCDM2NU_FzGS10/edit#heading=h.il1isyaqw4eb) document. Let’s review the community input we received, which was primarily developer-driven, and see how we did in EE11.
+
 
 ### Underpromise
 
