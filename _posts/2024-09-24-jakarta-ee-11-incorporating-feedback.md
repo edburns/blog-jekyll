@@ -5,7 +5,7 @@ date:   2024-09-23 12:15-0800
 comments: true
 ---
 
-Cross posted at [dev.to](https://dev.to/edburns/).
+Cross posted at [dev.to](https://dev.to/edburns/how-well-did-jakarta-ee-11-respond-to-the-needs-of-developers-1824).
 
 ### Executive Summary
 
