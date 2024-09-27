@@ -9,15 +9,15 @@ Cross posted at [dev.to](https://dev.to/edburns/how-well-did-jakarta-ee-11-respo
 
 ### Executive Summary
 
-The [Jakarta Steering Committee](https://jakarta.ee/committees/steering/) chartered the [Jakarta Platform project](https://jakartaee.github.io/platform/) with the goal of incorporating developer feedback in the development of EE 11. This blog post reviews the performance of the Platform Project and awards a [GPA](https://gpacalculator.io/how-to-calculate-gpa/) of 3.43 on a 4 point scale of achieving this goal. 
+The [Jakarta Steering Committee](https://jakarta.ee/committees/steering/) chartered the [Jakarta EE Platform project](https://jakartaee.github.io/platform/) with the goal of incorporating developer feedback in the development of EE 11. This blog post reviews the performance of the Platform Project and awards a [GPA](https://gpacalculator.io/how-to-calculate-gpa/) of 3.43 on a 4 point scale of achieving this goal. 
 
 ### Introduction
 
 I am humbled and honored to find myself in a position of helping to deliver the next iteration of Jakarta EE. I've held many roles in J2EE/Java EE/Jakarta EE over the decades: implementer, spec lead, advocate, author, tester, and more. My current role, however, is a new one for me release co-coordinator.
 
-In this role, I co-lead (along with Arjan Tijms) the Jakarta Platform project, which is responsible for delivering the finished Jakarta EE specification (and component specifications), the corresponding TCK, and at least on ratifying compatible implementation for all of the specifications. Importantly, there need not be one single monolithic implementation that satisfies all the component TCKs at the same time, but there must be one single monolithic implementation that passes the Platform TCK.
+In this role, I co-lead (along with Arjan Tijms) the Jakarta EE Platform project, which is responsible for delivering the finished Jakarta EE specification (and component specifications), the corresponding TCK, and at least on ratifying compatible implementation for all of the specifications. Importantly, there need not be one single monolithic implementation that satisfies all the component TCKs at the same time, but there must be one single monolithic implementation that passes the Platform TCK.
 
-In the spirit of transparency that I was fortunate enough to start over [two decades ago](https://www.ridingthecrest.com/blog/2004/06/28/welcome-javaserver-tm-faces-implementation-project.html), this blog post examines how well the [Jakarta Platform project](https://jakartaee.github.io/platform/) did during EE 11 in meeting one of the goals set for the Platform project by the [Steering Committee](https://jakarta.ee/committees/steering/): incorporate developer feedback.
+In the spirit of transparency that I was fortunate enough to start over [two decades ago](https://www.ridingthecrest.com/blog/2004/06/28/welcome-javaserver-tm-faces-implementation-project.html), this blog post examines how well the [Jakarta EE Platform project](https://jakartaee.github.io/platform/) did during EE 11 in meeting one of the goals set for the Platform project by the [Steering Committee](https://jakarta.ee/committees/steering/): incorporate developer feedback.
 
 ### Underpromise and overdeliver
 
