@@ -98,7 +98,7 @@ Mr. Testcontainer himself, [Kevin Wittek](https://wittek.dev/) is an experienced
 
 [Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5175)
 
-I had the extreme pleasure of seeing Alastair Cockburn give a keynote when I presented at [Jaoo 2006](https://web.archive.org/web/20060925101953/http://www.jaoo.dk/speakers/show_speaker.jsp?oid=27). Apparently this is one of Alastair Cockburn's more recent ideas on the further evolution of agile development.
+I had the extreme pleasure of seeing Alastair Cockburn give a keynote when I presented at [Jaoo 2006](https://web.archive.org/web/20060925101953/http://www.jaoo.dk/speakers/show_speaker.jsp?oid=27). Apparently this is one of Alastair Cockburn's more recent ideas on the further evolution of agile development. [Falk Sippach](https://www.sippsack.de/) is an experienced speaker, JUG leader, and iJUG contributor. I look forward to this talk.
 
 #### Tuesday 17:00 - 17:40 ring°arena Boost Your Performance and Developer Productivity with Jakarta EE 11
 
