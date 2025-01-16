@@ -37,68 +37,91 @@ There is also an Unconference on Community day from 15:00 - 18:30 in the Coca-Co
 
 I haven't used flipcharts much, but they do seem very accessible and durable. I think I should learn more about how to use them. Sebastian and Alexander present a session inspired by the lessons from the book [Der Flipchart Coach](https://www.amazon.com/Flipchart-Coach-Profi-Tipps-Visualisieren-Pr%C3%A4sentieren-Flipchart/dp/3941965948). Because I have become a huge fan of the book [Presentation Patterns](https://www.amazon.com/Presentation-Patterns-Techniques-Crafting-Presentations/dp/0321820800/), I appreciate the power of a session that is based on a book. As I enter the third decade of my career, it's high time I learn how to use flipcharts to make impact.
 
-### Monday, 31 March 2024
+### Tuesday 1 April 2024
 
-#### 08:30 - 10:10 ring°kino Deserialization exploits in Java: why should I care?
+#### Tuesday 08:30 - 10:10 ring°kino Deserialization exploits in Java: why should I care?
 
 [Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5333)
 
-This talk has several things going for it. First and foremost, the speaker, [Brian Vermeer](https://brianvermeer.nl/) is a seasoned veteran with a stellar track record of engaging talks. Second the topic. I'm familiar with deserialization attacks back from my JSF days: client side state saving at one time used something like serialization.  But this talk goes beyond Java to also XML, JSON, and YAML serialization.
+This talk has several things going for it. First and foremost, the speaker, [Brian Vermeer](https://brianvermeer.nl/) is a seasoned veteran with a stellar track record of engaging talks. Second the topic. I'm familiar with deserialization attacks back from my JSF days: client side state saving at one time used something like serialization.  But this talk goes beyond Java to also XML, JSON, and YAML serialization. An attack vector as old as seralization attacks means the prior art for attackers is vast. This one is important.
 
-#### 10:00 - 10:40 ring°arena Fried Begrüßung and opening Keynote
+#### Tuesday 10:00 - 10:40 ring°arena Fried Begrüßung and opening Keynote
 
 The keynote speaker has not yet been announced, but Fried's Begrüßung is always entertaining.
 
-#### 11:00 - 11:40 ring°arena Building AI powered applications in Java
+#### Tuesday 11:00 - 11:40 Bitburger Event Center Teil A Building AI powered applications in Java
 
 [Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5179)
 
 There is no question that powerful forces in our industry have bet the future AI and are doing everything they can to make that future happen. I look to my old friend and former PowerPoint karaoke sparring partner [Andres Almiray](https://andresalmiray.com/) to sort the hype from the reality.
 
-#### 12:00 - 12:40 Bitburger Event-Center Teil B Prepare for Jakarta EE 11
+I am also presenting at this time, in ring°arena. My session is titled **A survey of cloud readiness for Jakarta EE 11**.
 
-<img src="{{ site.url }}/blog/assets/20240302-bitburburger-edburns.jpg" width="200" alt="Author enjoying Bitburger 0.0" style="float: left;" /> As a longtime fan of Das gute Bitburger Pils, I'm excited that my first of three back-to-back talks on Tuesday is in the Bitburger Event Center. I'm confident that part B is the best part.
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5163).
 
-My talk is Prepare for Jakarta EE 11. I am giving this talk on behalf of [Ivar Grimstad](https://twitter.com/ivar_grimstad) due to Ivar being at the very poorly scheduled, from a JavaLand attendee's perspective, [DevNexus](https://devnexus.org/). However, I'm well qualified to give the talk because I'm the [release co-coordinator for Jakarta EE 11](https://projects.eclipse.org/content/project-lead-election-edward-burns-jakarta-ee-platform). Come to this talk to hear what's new in the very soon-to-be-released Jakarta EE 11.
+My session will teach:
+- What’s new in Jakarta EE 11 and why it’s interesting to Java developers.
+- An overview of how to run Jakarta EE 11 on Azure, Google, and AWS.
+- A deep dive in how to run Jakarta EE 11 on Azure Container Apps.
 
-If I wasn't giving a talk in this timeslot, I'd attend visit **Nürburgring Hotel Grid 1 - 3** for "The (Unknown) Nifty Details of Maven Plugin Configuration" by [Karl Heinz Marbaise](https://twitter.com/khmarbaise). Maven plugins are super powerful, and usable in both Maven and Gradle. But how much do you know about getting the most from the plugins you use? This talk has the answers.
+#### Tuesday 12:00 - 12:40 
 
-#### 13:00 - 14:30 Nürburgring Hotel Grid 4 Ist meine Java-Anwendung bereit für ide Cloud? Wass kann ich wie migrieren?
+Because these two sessions are so very different, I have no problem recommending them both.
 
-I'm delighted to have the opportunity to present this session with my colleague and longtime collaborator [Sandra Ahlgrimm](https://twitter.com/skriemhild). In this new-to-JavaLand format 80-minute session. We'll cover how to get your Jakarta EE application into the cloud, on App Service, Container Apps, AKS, ARO, and VMs.
+##### ring°arena
 
-If I wasn't giving a talk in this timeslot, I'd visit **ring°arena** to attend Der Mensch in Mittlepunkt: Moderne Developer Experience im Enterprise-Context, by [Nico Enking](https://www.f-i.de/Ueber-uns/mehralsTech/TeamFI/People-Stories/Nico-Enking) and [Jan-Christoph Schlieker](https://www.linkedin.com/in/jan-christoph-schlieker/?originalSubdomain=de). This session looks like it will introduce the role of a developer experience curator in the context of enterprise software development. This role seems like it can really help increase the success of software projects.
+If you want a soft skills session at this time, go with [Sophie Küster](https://www.linkedin.com/in/sophie-k%C3%BCster-1901b4149/)'s [One of the Lads - Things I'm tired of hearing about women in tech](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5164). First, let me appeal to your self-interest. By learning about workplace concerns are important to a cohort including a large and growing segment of the workforce, you'l improve your workplace effectiveness. Second, Sophie is an excellent and engaging speaker.
 
-Due to the 80-minute format of my session, there's time for another if you don't want to attend it. In this case, I'd recommend Philosophy4Devs by [Rüdiger zu Dohna](https://twitter.com/ruezd). Do any readers remember famous fluff talker [Ted Neward](https://twitter.com/tedneward)? I recall Ted was very proud of his philosophy background. Considering how well he's done for himself, you may want to check out this talk.
+##### Bitburger Event Center Teil B
 
-#### 15:00 - 15:40 ring°kino Pair Programming with GitHub Copilot
+If you want a technical sesion at this time go with [Samuel Nitsche](https://developer-sam.de/)'s [Code Reading - Die unterschätzte Superkraft](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5171). Given that AI is so great at parsing text, but not so great at reasoning about it, I believe having this skill in your head will give you a big edge.
 
-[Frederieke Scheper](https://twitter.com/fbascheper) promises to show us how well GitHub Copilot delivers on its promise to let you "focus on solving bigger problems by spending less time creating boilerplate and repetitive code." I've used it myself, and I can say it does pretty well at that, for many classes of problem. Also, no slides. Venkat style!
+#### Tuesday 13:00 - 13:40 Business Center - Bergwerk SBOMs: Die Stückliste für sichere Softwarearchitektur
 
-#### 15:00 - 16:40 media°center Continuous Integration and Continuous Delivery (CI/CD) for Jakarta EE Applications or Nürburgring Hotel Grid 1 - 3 Going AOT: Everything you need to know about GraalVM for Java Applications
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5212)
 
-This slot conflicts with my 16:00 talk "Developer Career Masterplan", but if I wasn't giving that talk, I'd absolutely go to one of these two.
+I am choosing to highlight this session from [Richard Attermeyer](https://www.linkedin.com/in/richard-attermeyer/) because ensuring all your software produces SBOMs is a great way to be a part of the solution for building world less prone to hacking. Sooner or later, all of us will be victims. We as software professionals have a duty to make things better, or at least atone for some of the damage we have already caused.
 
-* Continuous Integration and Continuous Delivery (CI/CD) for Jakarta EE Applications
-* Going AOT: Everything you need to know about GraalVM for Java Applications
+#### Tuesday 14:00 - 14:40 ring°arena No Dependencies: Pure Java AI/LLM integration
 
-The CI/CD one from Jakarta EE expert [Luqman Saeed](https://www.udemy.com/user/salmankhan). In the nineteen years since the introduction of Hudson, CI/CD has gone from being the sign of a mature software development shop to an absolutely must-have way that work is done. Even so, it's still not easy to perform at scale. This talk promises to show how to do it with Jakarta EE applications.
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5166)
 
-The GraalVM one from [Alina Yurenko](https://twitter.com/alina_yurenko) is a hot topic and Alina is a great and very experienced speaker. I like how Alina will focus on the production aspects. If I was attending, I'd be keen to ask about Project Leyden and other aspects of how one handles debugging of a native Java app.
+The legendary [Adam Bien](https://adam-bien.com) comes to JavaLand. Adam's approach for decades has been to show how you can accomplish most of what you need in an enterprise software stack with a minimum of external dependencies. As the previous session from Richard Attermeyer showed, every dependency you introduce is a security risk (that's why everything needs an SBOM, just so you can check.) While this is true, it's even better to minimize your dependencies as much as possible. Don't miss this one!
 
-#### 16:00 - 16:40 ring°arena Developer Career Masterplan: Build your path to senior level and beyond
+#### Tuesday 15:00 - 15:40 BMW M Showroom Learning GenAI/LLM programming with langchain4j and Testcontainers
 
-Way back in 2008, I wrote a book where I interviewed a bunch of successful programmers and asked them all about their professional journey. My pals Heather and Bruno have taken a similar approach but supplemented it with their own insights. I had the honor of being on the other side of the microphone for this new book. After having read it, I can say it's a great read. If you want to see what it's about, come to this talk.
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5207)
 
-If I wasn't giving a talk at this time, I'd visit **ring°academy** to attend NEWCOMER: C4 - Documentation to blow (up) your mind! The talk will introduce the C4 model for documentation. I'd love to see what "diagrams as code" is all about. I've seen the promise of similar systems since the late 1990s, but so far none of them have really had a lasting impact. Maybe this time it's different.
+Mr. Testcontainer himself, [Kevin Wittek](https://wittek.dev/) is an experienced speaker, software developer, and [musician](https://www.youtube.com/watch?v=LfbDw8f-AbM). Given the centrality of testing to all software development in the past and future, and the centrality of AI to all software development in the present and future, this combination will be very important to understand. Kevin will show you how.
 
-#### 17:00 - 17:40 Bitburger Event-Center Teil B Was Jeder Java-Entwickler über Strings wissen Sollte
+#### Tuesday 16:00 - 16:40 Bitburger Event-Center Teil B Walking Skeleton - Softwarearchitektur ohne Fleisch?
 
-Strings? In 2024? You bet! The humble String class is so ubiquitous yet has seen so many evolutions (especially for a final class) over the years it's worth a whole session. Also, this supports my point with Nicolai Parlog's session above. Yes, Java is old, but it is also getting better all the time. With this session from JSF Expert Group alumnus [Bernd Müller](https://www.ostfalia.de/cms/de/pws/bernd-mueller/index.html) you can see how this applies to String.
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5175)
 
-#### 18:00 - 18:40 ring°academy NEWCOMER: AI Ethics in Software Engineering
+I had the extreme pleasure of seeing Alastair Cockburn give a keynote when I presented at [Jaoo 2006](https://web.archive.org/web/20060925101953/http://www.jaoo.dk/speakers/show_speaker.jsp?oid=27). Apparently this is one of Alastair Cockburn's more recent ideas on the further evolution of agile development.
 
-After observing firsthand some of the impact of the roll out of GitHub copilot on secondary school computer science education, I'm keenly interested in this topic. [Moritz Schmidt](https://www.linkedin.com/in/moritz-schmidt-3a3131221/?originalSubdomain=de) will explore the hoary topic of the ethical impact of AI.
+#### Tuesday 17:00 - 17:40 ring°arena Boost Your Performance and Developer Productivity with Jakarta EE 11
+
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5169)
+
+My colleague [Ivar Grimstad](https://www.linkedin.com/in/ivargrimstad) gives the productivity angle on the latest iteration of the standard for enterprise Java.
+
+#### Tuesday 18:00 - 18:40 ring°arena What is New in MicroProfile?
+
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5320)
+
+In a perfect complement to Ivar's session, my colleague [Emily Jiang](https://www.linkedin.com/in/emilyfhjiang/) gives an overview in the latest version of MicroProfile. MicroProfile sits alongside Jakarta EE as a collection of standards adopted by multiple vendors for enterprise Java.
+
+#### Tuesday 19:00 - 19:40 Lindner Congress Hotel Grid 1-32401 From Zero to Secured: Live-Coding a Jakarta EE REST App with MicroProfile & JWT
+
+[Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5225)
+
+As Adam Bien has long shown, the power of combining open standard specifications in an a la carte fashion tends to help delivering maintainable enterprise software on schedule and within budget. This session is another example:
+
+* Live-coding a RESTful app from scratch using the latest versions of JAX-RS, JPA, and MicroProfile.
+* Implementing JWT-based authentication.
+* Documenting REST endpoints with OpenAPI.
+* Creating a responsive frontend with Angular and connecting it to the REST app.
 
 ### Wednesday, 10 April 2024
 
