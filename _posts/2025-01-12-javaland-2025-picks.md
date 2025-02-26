@@ -122,7 +122,7 @@ In a perfect complement to Ivar's session, my colleague [Emily Jiang](https://ww
 
 [Program link](https://meine.doag.org/events/javaland/2025/agenda/#agendaId.5225)
 
-As Adam Bien has long shown, the power of combining open standard specifications in an a la carte fashion tends to help delivering maintainable enterprise software on schedule and within budget. This session is another example:
+As Adam Bien has long shown, the power of combining open standard specifications in an a la carte fashion tends to help delivering maintainable enterprise software on schedule and within budget. This session from [Hanno Embregts](https://hanno.codes) is another example:
 
 * Live-coding a RESTful app from scratch using the latest versions of JAX-RS, JPA, and MicroProfile.
 * Implementing JWT-based authentication.
