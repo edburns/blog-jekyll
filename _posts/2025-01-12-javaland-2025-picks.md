@@ -5,7 +5,7 @@ date:   2025-02-25 15:50-0500
 comments: true
 ---
 
-Cross posted at [dev.to](https://dev.to/edburns/eds-javaland-2025-session-picks).
+Cross posted at [dev.to](https://dev.to/edburns00/eds-javaland-2025-session-picks-3p2i).
 
 I'm very blessed to have the opportunity to speak at the 11th anniversary [JavaLand conference](https://javaland.eu/). This is the second year the conference will be held at [Nürburgring](https://thevendry.com/venue/197499/nurburgring-nurburg-germany). It turns out it took even more time to walk between sessions. Maybe this year will be better.
 
