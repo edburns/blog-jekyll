@@ -13,7 +13,7 @@ I'm very excited to do my typical JUG tour around JavaLand. Here are my planned 
 
 3.	JUG Braunschweig 26 March - [Java and AI with LangChain4j](https://www.jug-ostfalen.de/event/2025/03/26/langchain4j.html)
 
-4.	JUG Bielefeld 27 March - Java and AI with LangChain4j
+4.	JUG Bielefeld 27 March - [Java and AI with LangChain4j](https://www.meetup.com/java-user-group-bielefeld/events/306454726/)
 
 6.	JUG Darmstadt 8 April - Java and AI with LangChain4j
 
