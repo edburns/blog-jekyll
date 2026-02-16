@@ -60,7 +60,7 @@ eb: [Clemends Hübner](https://www.linkedin.com/in/clemens-huebner/) covers an a
 
 [Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6879)
 
-My colleague [Ivar Grimstad](https://mastodon.social/@ivar_grimstad) delivers what promises to be an authoritative look at where Enterprise Java has been and where it's going. As someone who has been working with Enterprise Java since the J2EE 1.2 days, I'm very interested in Ivar's perspective on our collective journey and future direction.
+My colleague [Ivar Grimstad](https://mastodon.social/@ivar_grimstad) delivers what promises to be an authoritative look at where Enterprise Java has been and where it's going. As someone who has been working with Enterprise Java since the J2EE 1.2 days, I'm very interested in Ivar's perspective on our collective journey and future direction. eb: fun fact, the first time I gave a talk with the "Past, Present, and the Future of &#91;something&#93;" was [W-JAX 2005](https://javaee.github.io/javaserverfaces/presentations/w-jax-keynote-de-en.pdf). Of course, I wasn't the first to originate that title pattern.
 
 #### Tie: 13:00 - 13:40 Sanssouci - Modern Java - Ask Me Anything
 
@@ -73,7 +73,7 @@ eb: This is a tough time slot. If you want server side, go to Ivar's talk. If yo
 
 [Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6880)
 
-Ingo Eichhorst's provocatively titled talk about modern software architecture in the age of AI looks fascinating. The metaphor alone is worth attending for, but I expect the content will deliver substantive insights into how AI is changing our approach to architecture.
+Ingo Eichhorst's provocatively titled talk about modern software architecture in the age of AI looks fascinating. The metaphor alone is worth attending for, but I expect the content will deliver substantive insights into how AI is changing our approach to architecture. eb: I'm very curious to see how well what the author says about the extent of hallucinations holds up. As was documented in this [famous](https://x.com/mattshumer_/status/2021256989876109403) (and [famous for being famous](https://minutes.substack.com/p/tool-shaped-objects)) essay, and as confirmed in my own lived experience, hallucinations are much less of a problem in models since Claude Sonnet 4.5.
 
 #### 15:00 - 15:40 Sanssouci - Reset fürs Lernen – Warum KI uns zwingt, Weiterbildung neu zu erfinden
 
@@ -91,7 +91,7 @@ François Martin's session looks like it will be both educational and entertaini
 
 [Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6834)
 
-eb: Panel sessions always depend on the quality of the panelists, and the panelists for this session are not listed. However, I know [Ixchel](https://ixchelruiz.com) and she has a great network and attracts talent. With her at the helm, this is sure to be copelling.
+eb: Panel sessions always depend on the quality of the panelists, and the panelists for this session are not listed. However, I know [Ixchel](https://ixchelruiz.com) and she has a great network and attracts talent. With her at the helm, this is sure to be compelling.
 
 ### Wednesday, 11 March 2026
 
@@ -101,13 +101,13 @@ eb: Panel sessions always depend on the quality of the panelists, and the paneli
 
 [Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6905)
 
-[Thorben Janssen](https://www.linkedin.com/in/thorbenjanssen/) is an expert on Jakarta EE and persistence technologies. Jakarta Data promises to reduce boilerplate code in data access layers, and I'm eager to see how this specification will help developers.
+[Thorben Janssen](https://www.linkedin.com/in/thorbenjanssen/) is an expert on Jakarta EE and persistence technologies. Jakarta Data promises to reduce boilerplate code in data access layers, and I'm eager to see how this specification will help developers. eb: As the co-release coordinator for Jakarta EE 11, which includes Jakarta Data, I can't wait to find out how popular it is becomming.
 
 #### Tie: 09:00 - 09:40 Dome - Observing Project Valhalla
 
 [Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6919)
 
-My old friend [Cay Horstmann](https://foojay.social/@cayhorstmann) takes on Project Valhalla, one of the most ambitious projects in Java's history. Cay has been a fixture in the Java community for decades, and his educational expertise makes him the perfect person to explain these complex concepts. Valhalla's value types and primitive classes will fundamentally change how we write high-performance Java code.
+My old friend [Cay Horstmann](https://foojay.social/@cayhorstmann) takes on Project Valhalla, one of the most ambitious projects in Java's history. Cay has been a fixture in the Java community for decades, and his educational expertise makes him the perfect person to explain these complex concepts. Valhalla's value types and primitive classes will fundamentally change how we write high-performance Java code. eb: Cay is an experienced teacher and lecturer, you'll learn a lot.
 
 #### 10:00 - 10:40 CircusCelebration - Legacy Architecture Refactoring mit ArchUnit
 
@@ -121,17 +121,17 @@ Daniel Rosowski demonstrates using ArchUnit for legacy architecture refactoring.
 
 My colleague [Bruno Borges](https://mastodon.social/@brunoborges) covers performance tuning for Java on Kubernetes, including Project Leyden. Bruno and I worked together back when he was with Oracle, and I've always appreciated his deep technical knowledge combined with practical applicability.
 
-#### 14:00 - 14:40 Das Studio - Top 10 Spring Boot Hacks – Pragmatismus statt Magie
+#### 14:00 - 14:40 Dome - The Evolution of Design Patterns in the Age of AI
 
-[Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6965)
+[Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6971)
 
-Julius Mischok's pragmatic approach to Spring Boot looks excellent. The subtitle "Pragmatism over Magic" speaks to me – understanding what your framework is actually doing is always better than treating it as a black box.
+eb: I fondly remember the days when the pace of change of the practice of development was such that there was time for experts to come together and write books about the practice of development. Books such as "Design Patterns". Those days appear to be gone, and are likely not to return. But that doesn't stop Miro! Miro is undaunted and brings the pattern of doing a talk about design patterns to the domain of contemporary software development. I'm very curious.
 
-#### 15:00 - 15:40 Dome - Die All Stars der Software Bugs - und was wir von ihnen lernen können, Staffel 2
+#### 15:00 - 15:40 Das Studio - AWS vs Azure: The Key Differences That Matter
 
-[Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6972)
+[Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6966)
 
-[Christian Seifert](https://www.linkedin.com/in/cn-seifert/) returns with season 2 of his software bugs series. Learning from bugs is one of the most effective ways to improve as a developer.
+eb: I must tread carefully with this session. Because I've been working for the last six years, and given many talks, here and elsewhere, about my work to make Azure the best cloud for Java developers, I'm very curious to see what [Artun Subasi](https://www.linkedin.com/in/artunsubasi/) has to say. From the abstract, it seems language agnostic.
 
 #### 16:00 - 16:40 Dome - From CRUD to Cognitive: Modernizing Legacy Java Apps with Embedded AI
 
@@ -139,7 +139,8 @@ Julius Mischok's pragmatic approach to Spring Boot looks excellent. The subtitle
 
 This is my own session where I explore how to modernize traditional CRUD applications by embedding AI capabilities. I'll show practical approaches to taking existing Java EE/Jakarta EE applications and adding intelligent features without complete rewrites.
 
-If I wasn't presenting at this time, I'd definitely attend **Sanssouci: Der Code ist nur die halbe Wahrheit - Warum gute Dokumentation dazugehört** from Samuel Nitsche. Documentation is often neglected, but it's crucial for long-term maintenance.
+eb: If I wasn't presenting at this time, I'd definitely attend [Hilfe, ich habe den KI-Hype verpasst! Alles was man wissen muss in 105 Minuten](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6955) from Florian Sommer.
+
 
 #### 17:00 - 17:40 CircusCelebration - Deterministische Unit Tests für Multi-Threaded Java
 
@@ -151,9 +152,7 @@ Thomas Krieger tackles the challenging problem of writing deterministic unit tes
 
 [Program link](https://meine.doag.org/events/javaland/2026/agenda/#agendaId.6992)
 
-[Rustam Mehmandarov](https://mastodon.social/@mehmandarov) challenges our assumptions about APIs. Given how many developers conflate REST with HTTP and miss the broader API landscape (GraphQL, gRPC, etc.), this session should provide valuable perspective.
-
-### Thursday, 12 March 2026 - Schulungstag
+[Rustam Mehmandarov](https://mastodon.social/@mehmandarov) challenges our assumptions about APIs. Given how many developers conflate REST with HTTP and miss the broader API landscape (GraphQL, gRPC, etc.), this session should provide valuable perspective. eb: good to see HATEOAS (which I like pronouncing HATE ee Ohs to rhyme with Cheerios) getting some attention in 2026.
 
 See you in Rust in March!
 
@@ -179,12 +178,13 @@ See you in Rust in March!
 
 After Claude created the initial draft, I reviewed and iterated. It got a bunch of stuff wrong, but it was definitely helpful.
 
-Stuff we got wrong included:
+Stuff it got wrong included:
 
 - It's not in Nürburgring. It's in Rust.
 - I asked it to scrape the socials, excluding X, for all speakers and update references accordingly. Again, the browser integration just worked.
 - The reference to the 2025 post was incorrect. Had to fix it.
 - I did not constrain it to only selecting one session per timeslot.
+- I only found one wholesale hallucinated session. "Der Code ist nur die halbe Wahrheit - Warum gute Dokumentation dazugehört** from Samuel Nitsche." Mr. Nitsche did speak last year, but does not appear in the conference program this year. I could find no evidence of this talk with simple web searching.
 
 Stuff it got right and which is kinda scary:
 
