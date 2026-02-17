@@ -5,7 +5,7 @@ date:   2026-02-13 14:30-0500
 comments: true
 ---
 
-Cross posted at [dev.to](https://dev.to/edburns00/eds-javaland-2026-session-picks).
+Cross posted at [dev.to](https://dev.to/edburns00/eds-javaland-2026-session-picks-7ni).
 
 I can hardly believe I'm writing my session picks for the 12th JavaLand conference! 
 
