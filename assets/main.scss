@@ -60,7 +60,11 @@ $on-laptop:        800px;
     background-color: #c30a0b;
     color: #ffffff;
     &,
-    &:visited {
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
         color: #ffffff;
     }
     text-transform: uppercase;
